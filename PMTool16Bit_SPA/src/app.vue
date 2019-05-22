@@ -1,26 +1,20 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+  <v-app>
+    <core-filter />
+
+    <core-toolbar />
+
+    <core-drawer />
+
+    <core-view />
+  </v-app>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+<style lang="scss">
+@import '@/styles/index.scss';
 
-@Component({
-
-})
-export default class App extends Vue {}
-</script>
-
-<style>
-html,body{
-    width: 100%;
-    height: 100%;
-    background: #f0f0f0;
-    overflow: hidden;
-}
-#app{
-  height: 100%;
+/* Remove in 1.2 */
+.v-datatable thead th.column.sortable i {
+  vertical-align: unset;
 }
 </style>
