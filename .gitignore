@@ -7,3 +7,5 @@ bin/
 aspnet-core/src/PMTool16Bit.Web.Host/App_Data/Logs/
 aspnet-core/src/PMTool16Bit.Web.Mvc/App_Data/Logs/
 aspnet-core/src/PMTool16Bit.Migrator/Logs/Logs.txt
+/Database/PMTool16BitDb_log.ldf
+/Database/PMTool16BitDb.mdf
