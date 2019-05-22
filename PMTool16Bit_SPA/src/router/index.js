@@ -1,62 +1,113 @@
-/**
- * Vue Router
- *
- * @library
- *
- * https://router.vuejs.org/en/
- */
+import Vue from 'vue';
+import Router from 'vue-router';
 
-// Lib imports
-import Vue from 'vue'
-import VueAnalytics from 'vue-analytics'
-import Router from 'vue-router'
-import Meta from 'vue-meta'
+import Dashboard from '../pages/Dashboard.vue';
+import Social from '../pages/Social.vue';
+import Media from '../pages/Media.vue';
+import Snackbar from '../pages/Snackbar.vue';
+import Chart from '../pages/Chart.vue';
+import Mailbox from '../pages/Mailbox.vue';
+import Calendar from '../pages/Calendar.vue';
+import Login from '../pages/core/Login.vue';
+import Error from '../pages/core/Error.vue';
 
-// Routes
-import paths from './paths'
 
-function route (path, view, name) {
-  return {
-    name: name || view,
-    path,
-    component: (resovle) => import(
-      `@/views/${view}.vue`
-    ).then(resovle)
-  }
-}
 
-Vue.use(Router)
+Vue.use(Router);
 
-// Create a new router
-const router = new Router({
-  mode: 'history',
-  routes: paths.map(path => route(path.path, path.view, path.name)).concat([
-    { path: '*', redirect: '/dashboard' }
-  ]),
-  scrollBehavior (to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    }
-    if (to.hash) {
-      return { selector: to.hash }
-    }
-    return { x: 0, y: 0 }
-  }
-})
-
-Vue.use(Meta)
-
-// Bootstrap Analytics
-// Set in .env
-// https://github.com/MatteoGabriele/vue-analytics
-if (process.env.GOOGLE_ANALYTICS) {
-  Vue.use(VueAnalytics, {
-    id: process.env.GOOGLE_ANALYTICS,
-    router,
-    autoTracking: {
-      page: process.env.NODE_ENV !== 'development'
-    }
-  })
-}
-
-export default router
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'Dashboard',
+      component: Dashboard,
+      meta: {
+        breadcrumb: [
+          { name: 'Dashboard' }
+        ]
+      }
+    },
+    {
+      path: '/mailbox',
+      name: 'Mailbox',
+      component: Mailbox,
+      meta: {
+        breadcrumb: [
+          { name: 'Dashboard', href: 'Dashboard' },
+          { name: 'Mailbox' }
+        ]
+      }
+    },
+    {
+      path: '/snackbar',
+      name: 'Snackbar',
+      component: Snackbar,
+      meta: {
+        breadcrumb: [
+          { name: 'Dashboard', href: 'Dashboard' },
+          { name: 'Snackbar' }
+        ]
+      }
+    },
+    {
+      path: '/calendar',
+      name: 'Calendar',
+      component: Calendar,
+      meta: {
+        breadcrumb: [
+          { name: 'Dashboard', href: 'Dashboard' },
+          { name: 'Calendar' }
+        ]
+      }
+    },
+    {
+      path: '/social',
+      name: 'Social',
+      component: Social,
+      meta: {
+        breadcrumb: [
+          { name: 'Dashboard', href: 'Dashboard' },
+          { name: 'Social' }
+        ]
+      }
+    },
+    {
+      path: '/media',
+      name: 'Media',
+      component: Media,
+      meta: {
+        breadcrumb: [
+          { name: 'Dashboard', href: 'Dashboard' },
+          { name: 'Media' }
+        ]
+      }
+    },
+    {
+      path: '/chart',
+      name: 'Chart',
+      component: Chart,
+      meta: {
+        breadcrumb: [
+          { name: 'Dashboard', href: 'Dashboard' },
+          { name: 'Chart' }
+        ]
+      }
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login,
+      meta: {
+        allowAnonymous: true
+      }
+    },
+    {
+      path: '/error',
+      name: 'Error',
+      component: Error,
+      meta: {
+        allowAnonymous: true
+      }
+    },
+  ]
+});
