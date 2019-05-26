@@ -11,6 +11,13 @@
       </router-link>
     </v-toolbar>
     <v-list>
+        <v-list-tile @click="changeRoute('testPage',0)">
+        <v-list-tile-action>
+          <v-icon>dashboard</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-title :class="[{'active': selectedIndex === 0}, 'item-title' ]" >Test Page</v-list-tile-title>
+      </v-list-tile>
+
       <v-list-tile @click="changeRoute('Dashboard', 1)">
         <v-list-tile-action>
           <v-icon>dashboard</v-icon>

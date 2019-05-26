@@ -10,6 +10,7 @@ import Mailbox from '../pages/Mailbox.vue';
 import Calendar from '../pages/Calendar.vue';
 import Login from '../pages/core/Login.vue';
 import Error from '../pages/core/Error.vue';
+import testPage from '../pages/testPage.vue';
 
 
 
@@ -17,6 +18,16 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
+    {
+      path: '/',
+      name: 'testPage',
+      component: testPage,
+      meta: {
+        breadcrumb: [
+          { name: 'testPage' }
+        ]
+      }
+    },
     {
       path: '/',
       name: 'Dashboard',

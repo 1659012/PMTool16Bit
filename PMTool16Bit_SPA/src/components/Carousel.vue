@@ -20,6 +20,7 @@
 
 <script>
 export default {
+  props:["inputData"],
   data() {
     return {
       items: [
