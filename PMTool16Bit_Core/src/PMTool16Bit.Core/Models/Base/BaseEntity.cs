@@ -5,7 +5,7 @@ using Abp.Timing;
 
 namespace PMTool16Bit.Models
 {
-   public class BaseEnity : Entity
+   public class BaseEntity : Entity
     {
     }
 }

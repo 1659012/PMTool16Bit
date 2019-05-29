@@ -13,6 +13,7 @@ namespace PMTool16Bit.EntityFrameworkCore
         public DbSet<Project> Projects { get; set; }
         public DbSet<EventTable> EventTables { get; set; }
         public DbSet<EvenTask> EvenTasks { get; set; }
+        public DbSet<ProjectMember> ProjectMembers { get; set; }
 
         public PMTool16BitDbContext(DbContextOptions<PMTool16BitDbContext> options)
             : base(options)
@@ -26,7 +27,23 @@ namespace PMTool16Bit.EntityFrameworkCore
                 .WithOne(e => e.Project)
                 /*.OnDelete(DeleteBehavior.Cascade); */;
 
+            modelBuilder.Entity<Project>()
+               .HasMany(c => c.EventTables)
+               .WithOne(e => e.Project)
+               /*.OnDelete(DeleteBehavior.Cascade); */;
 
+            modelBuilder.Entity<ProjectMember>()
+                .HasKey(bc => new { bc.ProjectId, bc.MemberId });
+
+            modelBuilder.Entity<ProjectMember>()
+                .HasOne(bc => bc.Member)
+                .WithMany(b => b.ProjectMembers)
+                .HasForeignKey(bc => bc.MemberId);
+
+            modelBuilder.Entity<ProjectMember>()
+                .HasOne(bc => bc.Project)
+                .WithMany(c => c.ProjectMembers)
+                .HasForeignKey(bc => bc.ProjectId);
 
 
             base.OnModelCreating(modelBuilder);

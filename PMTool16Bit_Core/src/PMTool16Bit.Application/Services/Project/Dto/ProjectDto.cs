@@ -18,6 +18,7 @@ namespace PMTool16Bit.Services
 
         #region Reference      
         public virtual ICollection<EventTable> EventTables { get; set; }
+        public ICollection<ProjectMember> ProjectMembers { get; set; }
         #endregion
     }
 }
