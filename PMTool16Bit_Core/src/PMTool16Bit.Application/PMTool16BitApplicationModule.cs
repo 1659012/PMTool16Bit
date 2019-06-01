@@ -35,6 +35,13 @@ namespace PMTool16Bit
                     cfg.CreateMap<ProjectCreateDto, Project>()
                     .ForMember(x => x.EventTables, opt => opt.Ignore());
 
+                    cfg.CreateMap<ProjectMemberDto, ProjectMember>()
+                        .ForMember(x => x.Id, opt => opt.Ignore())
+                        .ForMember(x => x.Project, opt => opt.Ignore())
+                        .ForMember(x => x.Member, opt => opt.Ignore())
+
+                        ;
+
                 }
             );
         }

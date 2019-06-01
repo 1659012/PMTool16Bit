@@ -5,7 +5,7 @@ using Abp.Timing;
 
 namespace PMTool16Bit.Models
 {
-    public class BaseAuditEntity : BaseEnity, IAudited, ISoftDelete, IPassivable
+    public class BaseAuditEntity : BaseEntity, IAudited, ISoftDelete, IPassivable
     {
         public bool IsDeleted { get; set; } = false;
         public DateTime CreationTime { get; set; } = Clock.Now;

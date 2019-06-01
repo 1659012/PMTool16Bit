@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Abp.Authorization.Users;
 using Abp.Extensions;
+using PMTool16Bit.Models;
 
 namespace PMTool16Bit.Authorization.Users
 {
@@ -30,5 +31,9 @@ namespace PMTool16Bit.Authorization.Users
 
             return user;
         }
+
+        #region reference
+        public virtual ICollection<ProjectMember> ProjectMembers { get; set; }
+        #endregion
     }
 }
