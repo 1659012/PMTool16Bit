@@ -32,18 +32,18 @@ namespace PMTool16Bit.Services
         {
             return base.CreateFilteredQuery(input)
                 .Include(p => p.EventTables)
-                .WhereIf (input.AdminId!=null, p=> p.AdminId==input.AdminId)
-                .WhereIf(!string.IsNullOrEmpty(input.ProjectName), t => t.ProjectName.Contains(input.ProjectName));
+                .WhereIf (input.AdminId!=null, p=> p.OwnerId==input.AdminId)
+                .WhereIf(input.ProjectName.IsNotNullOrEmpty(), t => t.ProjectName.Contains(input.ProjectName));
         }
     
         public async Task<object> GetProjectDropdown(ProjectFilter input)
         {
             return await Repository.GetAll()
-                .WhereIf(input.AdminId != null, p => p.AdminId == input.AdminId)                
+                .WhereIf(input.AdminId != null, p => p.OwnerId == input.AdminId)                
                 .Select(p => new
                 {
                     p.Id,
-                    p.AdminId,
+                    p.OwnerId,
                     p.ProjectName
                 })
                 .ToListAsync();

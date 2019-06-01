@@ -2,10 +2,10 @@
 
 namespace PMTool16Bit.Services
 {
-    public class EventTableFilter : PagedAndSortedResultRequestDto
+    public class GroupTaskFilter : PagedAndSortedResultRequestDto
     {
         public int? ProjectId { get; set; }
     
-        public string TableName { get; set; }
+        public string GroupTaskName { get; set; }
     }
 }

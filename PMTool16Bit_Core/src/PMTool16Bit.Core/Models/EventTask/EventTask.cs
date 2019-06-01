@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PMTool16Bit.Models
 {
-    public class EvenTask : BaseAuditEntity
+    public class EventTask : BaseAuditEntity
     {
         [StringLength(EnumLength.TaskName)]
         public string TaskName { get; set; }
@@ -12,12 +12,12 @@ namespace PMTool16Bit.Models
         [StringLength(EnumLength.Description)]
         public string Description { get; set; }
 
-        public int? EventTableId { get; set; }
+        public int GroupTaskId { get; set; }
 
         #region Reference
 
-        [ForeignKey(nameof(EventTableId))]
-        public virtual EventTable EventTable { get; set; }
+        [ForeignKey(nameof(GroupTaskId))]
+        public virtual GroupTask GroupTask { get; set; }
 
 
         #endregion

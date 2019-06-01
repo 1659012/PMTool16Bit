@@ -11,8 +11,8 @@ namespace PMTool16Bit.EntityFrameworkCore
     {
         /* Define a DbSet for each entity of the application */
         public DbSet<Project> Projects { get; set; }
-        public DbSet<EventTable> EventTables { get; set; }
-        public DbSet<EvenTask> EvenTasks { get; set; }
+        public DbSet<GroupTask> EventTables { get; set; }
+        public DbSet<EventTask> EvenTasks { get; set; }
         public DbSet<ProjectMember> ProjectMembers { get; set; }
 
         public PMTool16BitDbContext(DbContextOptions<PMTool16BitDbContext> options)

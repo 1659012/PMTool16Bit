@@ -2834,3 +2834,85 @@ INFO  2019-05-29 11:54:17,113 [10   ] ore.Mvc.Internal.ControllerActionInvoker -
 INFO  2019-05-29 11:54:17,148 [10   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
 INFO  2019-05-29 11:54:17,175 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) in 295.4775ms
 INFO  2019-05-29 11:54:17,175 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 310.0146ms 200 application/json; charset=utf-8
+DEBUG 2019-06-01 15:51:54,025 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-06-01 15:51:54,104 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-06-01 15:51:54,121 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: PMTool16Bit.Web.Host.Startup.PMTool16BitWebHostModule, PMTool16Bit.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-01 15:51:54,124 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: PMTool16Bit.PMTool16BitWebCoreModule, PMTool16Bit.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-01 15:51:54,125 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: PMTool16Bit.PMTool16BitApplicationModule, PMTool16Bit.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-01 15:51:54,125 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: PMTool16Bit.PMTool16BitCoreModule, PMTool16Bit.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-01 15:51:54,125 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-01 15:51:54,126 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-01 15:51:54,126 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-01 15:51:54,126 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-01 15:51:54,127 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: PMTool16Bit.EntityFrameworkCore.PMTool16BitEntityFrameworkModule, PMTool16Bit.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-01 15:51:54,127 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-01 15:51:54,127 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-01 15:51:54,128 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-01 15:51:54,128 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-01 15:51:54,128 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-01 15:51:54,128 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-01 15:51:54,132 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-06-01 15:51:54,198 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-06-01 15:51:54,198 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-06-01 15:51:54,199 [1    ] o.Configuration.LanguageManagementConfig - Converted PMTool16Bit (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-06-01 15:51:54,199 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-06-01 15:51:54,493 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: PMTool16Bit.EntityFrameworkCore.PMTool16BitDbContext, PMTool16Bit.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-01 15:51:54,920 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-06-01 15:51:54,967 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-06-01 15:51:54,978 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-06-01 15:51:55,014 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: PMTool16Bit
+DEBUG 2019-06-01 15:51:55,017 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-06-01 15:51:55,053 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-06-01 15:51:55,112 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2019-06-01 15:51:55,112 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-06-01 15:51:55,120 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Users.Dto.CreateUserDto
+DEBUG 2019-06-01 15:51:55,120 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Users.Dto.UserDto
+DEBUG 2019-06-01 15:51:55,121 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-06-01 15:51:55,121 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-06-01 15:51:55,121 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Roles.Dto.CreateRoleDto
+DEBUG 2019-06-01 15:51:55,121 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Roles.Dto.PermissionDto
+DEBUG 2019-06-01 15:51:55,122 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Roles.Dto.RoleDto
+DEBUG 2019-06-01 15:51:55,122 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-06-01 15:51:55,123 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.MultiTenancy.Dto.TenantDto
+DEBUG 2019-06-01 15:51:55,123 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.EventTableDto
+DEBUG 2019-06-01 15:51:55,123 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.ProjectDto
+DEBUG 2019-06-01 15:51:55,123 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.ProjectMemberDto
+INFO  2019-06-01 15:52:00,546 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2019-06-01 15:52:02,189 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action PMTool16Bit.Web.Host.Controllers.HomeController.Index (PMTool16Bit.Web.Host)
+INFO  2019-06-01 15:52:02,581 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Web.Host.Controllers.HomeController.Index (PMTool16Bit.Web.Host) - Validation state: Valid
+INFO  2019-06-01 15:52:02,585 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Web.Host.Controllers.HomeController.Index (PMTool16Bit.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 2.02ms.
+INFO  2019-06-01 15:52:02,904 [9    ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-06-01 15:52:02,917 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Web.Host.Controllers.HomeController.Index (PMTool16Bit.Web.Host) in 723.7203ms
+INFO  2019-06-01 15:52:02,983 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2442.0298ms 302 
+INFO  2019-06-01 15:52:02,995 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger  
+INFO  2019-06-01 15:52:03,008 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 13.5743ms 301 
+INFO  2019-06-01 15:52:03,014 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
+INFO  2019-06-01 15:52:03,044 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 29.6909ms 200 text/html
+INFO  2019-06-01 15:52:03,087 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-bundle.js  
+INFO  2019-06-01 15:52:03,089 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-standalone-preset.js  
+INFO  2019-06-01 15:52:03,090 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui.css  
+INFO  2019-06-01 15:52:03,091 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/abp.swagger.js  
+INFO  2019-06-01 15:52:03,119 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/ui/abp.js  
+INFO  2019-06-01 15:52:03,143 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger/ui/abp.swagger.js'. Physical path: 'D:\PMTool16Bit\PMTool16Bit_Core\src\PMTool16Bit.Web.Host\wwwroot\swagger\ui\abp.swagger.js'
+INFO  2019-06-01 15:52:03,143 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 51.9561ms 200 application/javascript
+INFO  2019-06-01 15:52:03,145 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger/ui/abp.js'. Physical path: 'D:\PMTool16Bit\PMTool16Bit_Core\src\PMTool16Bit.Web.Host\wwwroot\swagger\ui\abp.js'
+INFO  2019-06-01 15:52:03,145 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 26.1127ms 200 application/javascript
+INFO  2019-06-01 15:52:03,145 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+INFO  2019-06-01 15:52:03,147 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 57.5396ms 200 text/css
+INFO  2019-06-01 15:52:03,151 [10   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+INFO  2019-06-01 15:52:03,151 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 62.1932ms 200 application/javascript
+INFO  2019-06-01 15:52:03,171 [9    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+INFO  2019-06-01 15:52:03,171 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 83.4865ms 200 application/javascript
+INFO  2019-06-01 15:52:03,528 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
+INFO  2019-06-01 15:52:03,863 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 334.8754ms 200 application/json;charset=utf-8
+INFO  2019-06-01 15:52:55,531 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/TokenAuth/Authenticate application/json 50
+WARN  2019-06-01 15:52:55,539 [10   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-06-01 15:52:55,540 [10   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-06-01 15:52:55,582 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Authenticate", controller = "TokenAuth", area = ""}. Executing action PMTool16Bit.Controllers.TokenAuthController.Authenticate (PMTool16Bit.Web.Core)
+WARN  2019-06-01 15:52:55,583 [10   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-06-01 15:52:55,583 [10   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-06-01 15:52:56,008 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Controllers.TokenAuthController.Authenticate (PMTool16Bit.Web.Core) with arguments (PMTool16Bit.Models.TokenAuth.AuthenticateModel) - Validation state: Valid
+INFO  2019-06-01 15:52:56,756 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Controllers.TokenAuthController.Authenticate (PMTool16Bit.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 748.0895ms.
+INFO  2019-06-01 15:52:56,782 [15   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-06-01 15:52:56,805 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Controllers.TokenAuthController.Authenticate (PMTool16Bit.Web.Core) in 1222.1424ms
+INFO  2019-06-01 15:52:56,807 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1275.4659ms 200 application/json; charset=utf-8
