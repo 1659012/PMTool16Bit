@@ -76,6 +76,12 @@ namespace PMTool16Bit.Web.Host.Startup
                 });
             });
 
+            //ignore cycles in objects
+            services.AddMvc()
+                .AddJsonOptions(
+                options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+               );
+
             // Configure Abp and Dependency Injection
             return services.AddAbp<PMTool16BitWebHostModule>(
                 // Configure Log4Net logging

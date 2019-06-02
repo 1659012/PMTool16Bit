@@ -13,4 +13,8 @@
   <ItemGroup>
     <ProjectReference Include="..\PMTool16Bit.Core\PMTool16Bit.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BaseModel\" />
+    <Folder Include="BaseService\" />
+  </ItemGroup>
 </Project>

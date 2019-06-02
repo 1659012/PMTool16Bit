@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PMTool16Bit.EntityFrameworkCore;
 
 namespace PMTool16Bit.Migrations
 {
     [DbContext(typeof(PMTool16BitDbContext))]
-    partial class PMTool16BitDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190526074144_addProjectTable_EventTable")]
+    partial class addProjectTable_EventTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -946,8 +948,6 @@ namespace PMTool16Bit.Migrations
                     b.Property<string>("AuthenticationSource")
                         .HasMaxLength(64);
 
-                    b.Property<int>("AvatarId");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasMaxLength(128);
@@ -1035,39 +1035,7 @@ namespace PMTool16Bit.Migrations
                     b.ToTable("AbpUsers");
                 });
 
-            modelBuilder.Entity("PMTool16Bit.Models.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Content")
-                        .HasMaxLength(500);
-
-                    b.Property<DateTime>("CreationTime");
-
-                    b.Property<long?>("CreatorUserId");
-
-                    b.Property<int>("EventTaskId");
-
-                    b.Property<string>("FileIds");
-
-                    b.Property<bool>("IsActive");
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<DateTime?>("LastModificationTime");
-
-                    b.Property<long?>("LastModifierUserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventTaskId");
-
-                    b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("PMTool16Bit.Models.EventTask", b =>
+            modelBuilder.Entity("PMTool16Bit.Models.EventTable", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1076,57 +1044,6 @@ namespace PMTool16Bit.Migrations
                     b.Property<DateTime>("CreationTime");
 
                     b.Property<long?>("CreatorUserId");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(500);
-
-                    b.Property<int>("GroupTaskId");
-
-                    b.Property<bool>("IsActive");
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<DateTime?>("LastModificationTime");
-
-                    b.Property<long?>("LastModifierUserId");
-
-                    b.Property<string>("TaskName")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GroupTaskId");
-
-                    b.ToTable("EvenTasks");
-                });
-
-            modelBuilder.Entity("PMTool16Bit.Models.EventTaskMember", b =>
-                {
-                    b.Property<int>("EventTaskId");
-
-                    b.Property<long>("MemberId");
-
-                    b.Property<int>("Id");
-
-                    b.HasKey("EventTaskId", "MemberId");
-
-                    b.HasIndex("MemberId");
-
-                    b.ToTable("EventTaskMembers");
-                });
-
-            modelBuilder.Entity("PMTool16Bit.Models.GroupTask", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreationTime");
-
-                    b.Property<long?>("CreatorUserId");
-
-                    b.Property<string>("GroupTaskName")
-                        .HasMaxLength(256);
 
                     b.Property<bool>("IsActive");
 
@@ -1138,11 +1055,14 @@ namespace PMTool16Bit.Migrations
 
                     b.Property<int>("ProjectId");
 
+                    b.Property<string>("TableName")
+                        .HasMaxLength(256);
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("GroupTasks");
+                    b.ToTable("EventTables");
                 });
 
             modelBuilder.Entity("PMTool16Bit.Models.Project", b =>
@@ -1150,6 +1070,8 @@ namespace PMTool16Bit.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AdminId");
 
                     b.Property<DateTime>("CreationTime");
 
@@ -1166,28 +1088,9 @@ namespace PMTool16Bit.Migrations
                     b.Property<string>("ProjectName")
                         .HasMaxLength(256);
 
-                    b.Property<long>("ProjectOwnerId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ProjectOwnerId");
-
                     b.ToTable("Projects");
-                });
-
-            modelBuilder.Entity("PMTool16Bit.Models.ProjectMember", b =>
-                {
-                    b.Property<int>("ProjectId");
-
-                    b.Property<long>("MemberId");
-
-                    b.Property<int>("Id");
-
-                    b.HasKey("ProjectId", "MemberId");
-
-                    b.HasIndex("MemberId");
-
-                    b.ToTable("ProjectMembers");
                 });
 
             modelBuilder.Entity("PMTool16Bit.MultiTenancy.Tenant", b =>
@@ -1390,60 +1293,10 @@ namespace PMTool16Bit.Migrations
                         .HasForeignKey("LastModifierUserId");
                 });
 
-            modelBuilder.Entity("PMTool16Bit.Models.Comment", b =>
-                {
-                    b.HasOne("PMTool16Bit.Models.EventTask", "EventTask")
-                        .WithMany("Comments")
-                        .HasForeignKey("EventTaskId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("PMTool16Bit.Models.EventTask", b =>
-                {
-                    b.HasOne("PMTool16Bit.Models.GroupTask", "GroupTask")
-                        .WithMany("EventTasks")
-                        .HasForeignKey("GroupTaskId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("PMTool16Bit.Models.EventTaskMember", b =>
-                {
-                    b.HasOne("PMTool16Bit.Models.EventTask", "EventTask")
-                        .WithMany("EventTaskMembers")
-                        .HasForeignKey("EventTaskId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("PMTool16Bit.Authorization.Users.User", "Member")
-                        .WithMany("EventTaskMembers")
-                        .HasForeignKey("MemberId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("PMTool16Bit.Models.GroupTask", b =>
+            modelBuilder.Entity("PMTool16Bit.Models.EventTable", b =>
                 {
                     b.HasOne("PMTool16Bit.Models.Project", "Project")
-                        .WithMany("GroupTasks")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("PMTool16Bit.Models.Project", b =>
-                {
-                    b.HasOne("PMTool16Bit.Authorization.Users.User", "ProjectOwner")
-                        .WithMany()
-                        .HasForeignKey("ProjectOwnerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("PMTool16Bit.Models.ProjectMember", b =>
-                {
-                    b.HasOne("PMTool16Bit.Authorization.Users.User", "Member")
-                        .WithMany("ProjectMembers")
-                        .HasForeignKey("MemberId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("PMTool16Bit.Models.Project", "Project")
-                        .WithMany("ProjectMembers")
+                        .WithMany("EventTables")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
