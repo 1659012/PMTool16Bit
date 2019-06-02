@@ -36,6 +36,8 @@ namespace PMTool16Bit.Authorization.Users
 
         #region reference
         public virtual ICollection<ProjectMember> ProjectMembers { get; set; }
+        public virtual ICollection<EventTaskMember> EventTaskMembers { get; set; }
+
         #endregion
     }
 }

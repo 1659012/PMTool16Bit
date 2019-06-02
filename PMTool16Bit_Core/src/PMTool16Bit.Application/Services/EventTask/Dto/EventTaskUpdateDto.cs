@@ -1,4 +1,5 @@
 ﻿using PMTool16Bit.Models.Enum;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace PMTool16Bit.Services
@@ -12,5 +13,11 @@ namespace PMTool16Bit.Services
         public string Description { get; set; }
 
         public int GroupTaskId { get; set; }
+
+        #region Reference
+
+        public virtual List<EventTaskMemberDto> EventTaskMembers { get; set; }
+
+        #endregion
     }
 }

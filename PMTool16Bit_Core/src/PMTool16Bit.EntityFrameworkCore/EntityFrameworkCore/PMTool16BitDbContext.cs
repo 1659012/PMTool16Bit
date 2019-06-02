@@ -11,9 +11,11 @@ namespace PMTool16Bit.EntityFrameworkCore
     {
         /* Define a DbSet for each entity of the application */
         public DbSet<Project> Projects { get; set; }
-        public DbSet<GroupTask> EventTables { get; set; }
+        public DbSet<GroupTask> GroupTasks { get; set; }
         public DbSet<EventTask> EvenTasks { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         public DbSet<ProjectMember> ProjectMembers { get; set; }
+        public DbSet<EventTaskMember> EventTaskMembers { get; set; }
 
         public PMTool16BitDbContext(DbContextOptions<PMTool16BitDbContext> options)
             : base(options)
@@ -23,14 +25,19 @@ namespace PMTool16Bit.EntityFrameworkCore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Project>()
-                .HasMany(c => c.EventTables)
+                .HasMany(c => c.GroupTasks)
                 .WithOne(e => e.Project)
-                /*.OnDelete(DeleteBehavior.Cascade); */;
+                /*.OnDelete(DeleteBehavior.Cascade); */; 
 
-            modelBuilder.Entity<Project>()
-               .HasMany(c => c.EventTables)
-               .WithOne(e => e.Project)
+            modelBuilder.Entity<GroupTask>()
+               .HasMany(c => c.EventTasks)
+               .WithOne(e => e.GroupTask)
                /*.OnDelete(DeleteBehavior.Cascade); */;
+
+            modelBuilder.Entity<EventTask>()
+              .HasMany(c => c.Comments)
+              .WithOne(e => e.EventTask)
+              .OnDelete(DeleteBehavior.Cascade); 
 
             modelBuilder.Entity<ProjectMember>()
                 .HasKey(bc => new { bc.ProjectId, bc.MemberId });
@@ -44,7 +51,20 @@ namespace PMTool16Bit.EntityFrameworkCore
                 .HasOne(bc => bc.Project)
                 .WithMany(c => c.ProjectMembers)
                 .HasForeignKey(bc => bc.ProjectId);
+            
 
+            modelBuilder.Entity<EventTaskMember>()
+             .HasKey(bc => new { bc.EventTaskId, bc.MemberId });
+
+            modelBuilder.Entity<EventTaskMember>()
+                .HasOne(bc => bc.EventTask)
+                .WithMany(c => c.EventTaskMembers)
+                .HasForeignKey(bc => bc.EventTaskId);
+
+            modelBuilder.Entity<EventTaskMember>()
+              .HasOne(bc => bc.Member)
+              .WithMany(c => c.EventTaskMembers)
+              .HasForeignKey(bc => bc.MemberId);
 
             base.OnModelCreating(modelBuilder);
         }

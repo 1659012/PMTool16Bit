@@ -9,7 +9,7 @@ namespace PMTool16Bit.Services
 {
     public class ProjectFilter : PagedAndSortedResultRequestDto
     {
-        public int? AdminId { get; set; }
+        public long? ProjectOwnerId { get; set; }
 
         //[StringLength(EnumLength.ProjectName)]
         public string ProjectName { get; set; }

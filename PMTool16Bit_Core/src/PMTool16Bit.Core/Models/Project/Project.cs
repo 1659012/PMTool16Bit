@@ -9,16 +9,16 @@ namespace PMTool16Bit.Models
 {
   public  class Project: BaseAuditEntity
     {
-        public int OwnerId { get; set; }
+        public long ProjectOwnerId { get; set; }
 
         [StringLength(EnumLength.ProjectName)]
         public string ProjectName { get; set; }
 
 
         #region Reference  
-        [ForeignKey(nameof(OwnerId))]
+        [ForeignKey(nameof(ProjectOwnerId))]
         public virtual User ProjectOwner { get; set; }
-        public virtual ICollection<GroupTask> EventTables { get; set; }
+        public virtual ICollection<GroupTask> GroupTasks { get; set; }
         public virtual ICollection<ProjectMember> ProjectMembers { get; set; }
 
         #endregion

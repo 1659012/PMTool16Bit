@@ -1,4 +1,5 @@
 ﻿using PMTool16Bit.Models.Enum;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,6 +20,8 @@ namespace PMTool16Bit.Models
         [ForeignKey(nameof(GroupTaskId))]
         public virtual GroupTask GroupTask { get; set; }
 
+        public virtual ICollection<EventTaskMember> EventTaskMembers { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
 
         #endregion
     }

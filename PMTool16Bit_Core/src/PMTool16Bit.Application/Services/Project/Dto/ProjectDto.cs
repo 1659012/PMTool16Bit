@@ -11,17 +11,17 @@ namespace PMTool16Bit.Services
     [AutoMapFrom(typeof(Project))]
     public class ProjectDto : BaseAuditedDto
     {
-        public int ProjectOwnerId { get; set; }
+        public long ProjectOwnerId { get; set; }
 
         //[StringLength(EnumLength.ProjectName)]
         public string ProjectName { get; set; }
 
 
         #region Reference  
-        [ForeignKey(nameof(ProjectOwnerId))]
+        //[ForeignKey(nameof(ProjectOwnerId))]
         public virtual UserDto ProjectOwner { get; set; }
-        public virtual ICollection<GroupTask> EventTables { get; set; }
-        public ICollection<ProjectMember> ProjectMembers { get; set; }
+        public virtual ICollection<GroupTaskDto> GroupTasks { get; set; }
+        public ICollection<ProjectMemberDto> ProjectMembers { get; set; }
         #endregion
     }
 }

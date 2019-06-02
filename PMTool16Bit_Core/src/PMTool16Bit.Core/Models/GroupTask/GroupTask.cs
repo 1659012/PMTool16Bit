@@ -1,5 +1,6 @@
 ﻿
 using PMTool16Bit.Models.Enum;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,8 +17,9 @@ namespace PMTool16Bit.Models
 
         [ForeignKey(nameof(ProjectId))]
         public virtual Project Project { get; set; }
-      
-        
+
+        public virtual ICollection<EventTask> EventTasks { get; set; }
+
         #endregion
     }
 }

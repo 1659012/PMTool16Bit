@@ -13,18 +13,19 @@ namespace PMTool16Bit.Services
     [AutoMapFrom(typeof(EventTask))]
     public class EventTaskDto : BaseAuditedDto
     {
-        [StringLength(EnumLength.TaskName)]
+        //[StringLength(EnumLength.TaskName)]
         public string TaskName { get; set; }
 
-        [StringLength(EnumLength.Description)]
+        //[StringLength(EnumLength.Description)]
         public string Description { get; set; }
 
         public int GroupTaskId { get; set; }
 
         #region Reference
-
-        [ForeignKey(nameof(GroupTaskId))]
-        public virtual GroupTask GroupTask { get; set; }
+       
+        public virtual GroupTaskDto GroupTask { get; set; }
+        public virtual ICollection<EventTaskMemberDto> EventTaskMembers { get; set; }
+        public virtual ICollection<CommentDto> Comments { get; set; }
 
 
         #endregion

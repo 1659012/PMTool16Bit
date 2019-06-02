@@ -11,6 +11,7 @@ namespace PMTool16Bit.Models.Enum
         public const int TaskName = 256;
         public const int Description = 500;
         public const int CommentContent = 500;
+        public const int IdLimit = 128;
 
     }
 }
