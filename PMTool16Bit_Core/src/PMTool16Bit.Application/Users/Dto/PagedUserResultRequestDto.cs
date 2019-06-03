@@ -1,7 +1,7 @@
 ﻿using Abp.Application.Services.Dto;
 using System;
 
-namespace PMTool16Bit.Users.Dto
+namespace PMTool16Bit.Users
 {
     //custom PagedResultRequestDto
     public class PagedUserResultRequestDto : PagedResultRequestDto

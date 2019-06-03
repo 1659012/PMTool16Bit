@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using PMTool16Bit.Authorization.Users;
 
-namespace PMTool16Bit.Users.Dto
+namespace PMTool16Bit.Users
 {
     public class UserMapProfile : Profile
     {

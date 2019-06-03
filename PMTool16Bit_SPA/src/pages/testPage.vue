@@ -10,39 +10,46 @@
         <v-text-field v-model="firstName" label="First name" placeholder="Placeholder"></v-text-field>
       </v-flex>
     </v-layout>
+    <code>{{editedItem}}</code>
   </v-container>
 </template>
 
 <script>
-import Carousel from "../components/Carousel";
+
 export default {
-  components: { Carousel },
+  components: {  },
   props: [],
   data() {
     return {
-      name: "han hoan",
-      firstName: "Le",
-      items: [1, 2, 3, 4]
+      editedItem: {}
     };
   },
   mounted() {
     this.initialize();
   },
-  computed: {
-    fullName() {
-      return this.name + this.firstName;
-    }
-  },
-  watch: {
-    name() {
-      console.log("name changed!");
-    }
-  },
+  computed: {},
+  watch: {},
   methods: {
     initialize() {
       this.loadData();
     },
-    loadData() {}
+    loadData() {
+      let me=this;
+      this.axios
+        .get("http://localhost:21021/api/services/app/ProjectService/GetById?", {
+          params: {
+            id: 2
+          }
+        })
+        .then(response => {
+          if (response.data.success) {
+            me.editedItem = response.data.result;          
+          }
+        })
+        .catch(e => {
+          this.errors.push(e);
+        });
+    }
   }
 };
 </script>
