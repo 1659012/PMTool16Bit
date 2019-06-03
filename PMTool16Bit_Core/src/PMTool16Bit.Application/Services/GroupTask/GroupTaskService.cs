@@ -13,13 +13,13 @@ using System.Threading.Tasks;
 namespace PMTool16Bit.Services
 {
     //[AbpAuthorize(PermissionNames.Pages_Users)]
-    public class EventTableService : AsyncCrudAppService<EventTable, EventTableDto, int, EventTableFilter, EventTableCreateDto, EventTableUpdateDto>, IEventTableService
+    public class GroupTaskService : AsyncCrudAppService<GroupTask, GroupTaskDto, int, GroupTaskFilter, GroupTaskCreateDto, GroupTaskUpdateDto>, IGroupTaskService
     {
         //private readonly IUserAppService userAppService;
         //private readonly IRepository<EventTable> eventTableRepository;
 
-        public EventTableService(
-             IRepository<EventTable> repository
+        public GroupTaskService(
+             IRepository<GroupTask> repository
             //IUserAppService userAppService,
             //IRepository<EventTable> eventTableRepository
 
@@ -28,27 +28,13 @@ namespace PMTool16Bit.Services
             //this.eventTableRepository = eventTableRepository;
         }
 
-        protected override IQueryable<EventTable> CreateFilteredQuery(EventTableFilter input)
+        protected override IQueryable<GroupTask> CreateFilteredQuery(GroupTaskFilter input)
         {
             return base.CreateFilteredQuery(input)
                 //.Include(p => p.Project)
                 .WhereIf (input.ProjectId!=null, p=> p.ProjectId==input.ProjectId)
-                .WhereIf(!string.IsNullOrEmpty(input.TableName), t => t.TableName.Contains(input.TableName));
-        }
-    
-        public async Task<object> GetProjectDropdown(EventTableFilter input)
-        {
-            return await Repository.GetAll()
-                .WhereIf(input.ProjectId != null, p => p.ProjectId == input.ProjectId)                
-                .Select(p => new
-                {
-                    p.Id,
-                    p.ProjectId,
-                    p.TableName
-                })
-                .ToListAsync();
-        }
-
+                ;
+        }  
     
     }
 }

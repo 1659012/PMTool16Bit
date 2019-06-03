@@ -1,10 +1,10 @@
 ﻿using PMTool16Bit.Models.Enum;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PMTool16Bit.Models
+namespace PMTool16Bit.Services
 {
-    public class EvenTask : BaseAuditEntity
+    public class EventTaskCreateDto : BaseUpdateDto
     {
         [StringLength(EnumLength.TaskName)]
         public string TaskName { get; set; }
@@ -12,12 +12,11 @@ namespace PMTool16Bit.Models
         [StringLength(EnumLength.Description)]
         public string Description { get; set; }
 
-        public int? EventTableId { get; set; }
+        public int GroupTaskId { get; set; }
 
         #region Reference
 
-        [ForeignKey(nameof(EventTableId))]
-        public virtual EventTable EventTable { get; set; }
+        public virtual List<EventTaskMemberDto> EventTaskMembers { get; set; }
 
 
         #endregion

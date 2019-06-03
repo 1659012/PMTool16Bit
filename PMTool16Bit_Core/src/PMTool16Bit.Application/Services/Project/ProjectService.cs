@@ -31,19 +31,19 @@ namespace PMTool16Bit.Services
         protected override IQueryable<Project> CreateFilteredQuery(ProjectFilter input)
         {
             return base.CreateFilteredQuery(input)
-                .Include(p => p.EventTables)
-                .WhereIf (input.AdminId!=null, p=> p.AdminId==input.AdminId)
-                .WhereIf(!string.IsNullOrEmpty(input.ProjectName), t => t.ProjectName.Contains(input.ProjectName));
+                .Include(p => p.GroupTasks)
+                .WhereIf (input.ProjectOwnerId!=null, p=> p.ProjectOwnerId==input.ProjectOwnerId)
+                .WhereIf(input.ProjectName.IsNotNullOrEmpty(), t => t.ProjectName.Contains(input.ProjectName));
         }
     
         public async Task<object> GetProjectDropdown(ProjectFilter input)
         {
             return await Repository.GetAll()
-                .WhereIf(input.AdminId != null, p => p.AdminId == input.AdminId)                
+                .WhereIf(input.ProjectOwnerId != null, p => p.ProjectOwnerId == input.ProjectOwnerId)                
                 .Select(p => new
                 {
                     p.Id,
-                    p.AdminId,
+                    p.ProjectOwnerId,
                     p.ProjectName
                 })
                 .ToListAsync();

@@ -10,13 +10,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PMTool16Bit.Services
 {
-    [AutoMapFrom(typeof(EventTable))]
-    public class EventTableDto : BaseAuditedDto
+    [AutoMapFrom(typeof(GroupTask))]
+    public class GroupTaskDto : BaseAuditedDto
     {
         public int ProjectId { get; set; }
 
-        [StringLength(EnumLength.TableName)]
-        public string TableName { get; set; }
+        [StringLength(EnumLength.GroupTaskName)]
+        public string GroupTaskName { get; set; }
 
         #region Reference
 

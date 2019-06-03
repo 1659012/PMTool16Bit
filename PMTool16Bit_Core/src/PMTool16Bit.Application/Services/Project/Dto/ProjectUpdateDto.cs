@@ -8,9 +8,16 @@ namespace PMTool16Bit.Services
 {
     public class ProjectUpdateDto : BaseUpdateDto
     {
-        public int AdminId { get; set; }
+        public long ProjectOwnerId { get; set; }
 
         [StringLength(EnumLength.ProjectName)]
         public string ProjectName { get; set; }
+
+
+        #region Reference
+        public virtual List<GroupTaskDto> GroupTasks { get; set; }
+
+        public List<ProjectMemberDto> ProjectMembers { get; set; }
+        #endregion
     }
 }
