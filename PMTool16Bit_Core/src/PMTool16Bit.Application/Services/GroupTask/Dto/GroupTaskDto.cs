@@ -20,8 +20,11 @@ namespace PMTool16Bit.Services
 
         #region Reference
 
-        [ForeignKey(nameof(ProjectId))]
-        public virtual Project Project { get; set; }
+        //[ForeignKey(nameof(ProjectId))]
+        //public virtual Project Project { get; set; }
+
+        public virtual ICollection<EventTaskDto> EventTasks { get; set; }
+
         #endregion
     }
 }
