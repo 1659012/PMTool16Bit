@@ -4,11 +4,8 @@ using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Models;
-using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-
 
 namespace PMTool16Bit.Services
 {
@@ -24,24 +21,26 @@ namespace PMTool16Bit.Services
             //IRepository<EventTable> eventTableRepository
 
             ) : base(repository)
-        {           
+        {
             //this.eventTableRepository = eventTableRepository;
         }
 
         protected override IQueryable<Project> CreateFilteredQuery(ProjectFilter input)
         {
             return base.CreateFilteredQuery(input)
-                .Include(p => p.ProjectMembers)
-                .ThenInclude(p =>p.Member)
-                .Include(p => p.GroupTasks)
-                .WhereIf (input.ProjectOwnerId!=null, p=> p.ProjectOwnerId==input.ProjectOwnerId)
+                .Include(p => p.ProjectOwner)
+                //.Include(p => p.ProjectMembers)
+                //.ThenInclude(p => p.Member)
+                //.Include(p => p.GroupTasks)
+                .WhereIf(input.Id != null, p => p.Id == input.Id)
+                .WhereIf(input.ProjectOwnerId != null, p => p.ProjectOwnerId == input.ProjectOwnerId)
                 .WhereIf(input.ProjectName.IsNotNullOrEmpty(), t => t.ProjectName.Contains(input.ProjectName));
         }
-    
+
         public async Task<object> GetProjectDropdown(ProjectFilter input)
         {
             return await Repository.GetAll()
-                .WhereIf(input.ProjectOwnerId != null, p => p.ProjectOwnerId == input.ProjectOwnerId)                
+                .WhereIf(input.ProjectOwnerId != null, p => p.ProjectOwnerId == input.ProjectOwnerId)
                 .Select(p => new
                 {
                     p.Id,
@@ -51,13 +50,40 @@ namespace PMTool16Bit.Services
                 .ToListAsync();
         }
 
-        public async Task<Project> GetById(EntityDto<int> input)
+        public override Task<ProjectDto> Get(EntityDto<int> input)
         {
-           return await Repository                
-                .GetAll()
-                .Include(p=>p.ProjectMembers)
-                .ThenInclude(p=>p.Member)
-                .FirstOrDefaultAsync(p=>p.Id==input.Id);
+            var filter = new ProjectFilter()
+            {
+                Id = input.Id
+            };
+            var query = base.CreateFilteredQuery(filter)
+                .Include(p => p.ProjectOwner)
+                .Include(p => p.ProjectMembers)
+                .ThenInclude(p => p.Member)
+                .Include(p => p.GroupTasks)
+                .ThenInclude (p=> p.EventTasks)
+                
+                .Where(p => p.Id == input.Id);
+            ;
+            var result = query.FirstOrDefaultAsync();
+
+            return base.Get(input);
+        }
+
+        public Task<ProjectDto> GetById(EntityDto<int> input)
+        {
+            var filter = new ProjectFilter()
+            {
+                Id = input.Id
+            };
+            var query = base.CreateFilteredQuery(filter)
+                .Include(p => p.ProjectOwner)
+                .Include(p => p.ProjectMembers)
+                .ThenInclude(p => p.Member)
+                .Include(p => p.GroupTasks)
+                .Where(p => p.Id == input.Id);
+            var result = query.FirstOrDefaultAsync();
+            return base.Get(input);
         }
     }
 }
