@@ -5186,3 +5186,191 @@ INFO  2019-06-06 16:06:16,698 [7    ] ore.Mvc.Internal.ControllerActionInvoker -
 INFO  2019-06-06 16:06:16,979 [6    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
 INFO  2019-06-06 16:06:17,097 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) in 1326.4283ms
 INFO  2019-06-06 16:06:17,123 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2866.7399ms 200 application/json; charset=utf-8
+DEBUG 2019-06-06 20:54:35,143 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-06-06 20:54:35,220 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-06-06 20:54:35,237 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: PMTool16Bit.Web.Host.Startup.PMTool16BitWebHostModule, PMTool16Bit.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-06 20:54:35,239 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: PMTool16Bit.PMTool16BitWebCoreModule, PMTool16Bit.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-06 20:54:35,240 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: PMTool16Bit.PMTool16BitApplicationModule, PMTool16Bit.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-06 20:54:35,240 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: PMTool16Bit.PMTool16BitCoreModule, PMTool16Bit.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-06 20:54:35,240 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-06 20:54:35,240 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-06 20:54:35,240 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-06 20:54:35,241 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-06 20:54:35,241 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: PMTool16Bit.EntityFrameworkCore.PMTool16BitEntityFrameworkModule, PMTool16Bit.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-06 20:54:35,241 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-06 20:54:35,241 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-06 20:54:35,242 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-06 20:54:35,242 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-06 20:54:35,242 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-06 20:54:35,242 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-06 20:54:35,245 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-06-06 20:54:35,330 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-06-06 20:54:35,330 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-06-06 20:54:35,330 [1    ] o.Configuration.LanguageManagementConfig - Converted PMTool16Bit (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-06-06 20:54:35,330 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-06-06 20:54:35,629 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: PMTool16Bit.EntityFrameworkCore.PMTool16BitDbContext, PMTool16Bit.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-06-06 20:54:36,037 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-06-06 20:54:36,080 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-06-06 20:54:36,089 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-06-06 20:54:36,094 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: PMTool16Bit
+DEBUG 2019-06-06 20:54:36,098 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-06-06 20:54:36,128 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-06-06 20:54:36,174 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 17 classes define auto mapping attributes
+DEBUG 2019-06-06 20:54:36,174 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-06-06 20:54:36,181 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Users.CreateUserDto
+DEBUG 2019-06-06 20:54:36,182 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Users.UserDto
+DEBUG 2019-06-06 20:54:36,182 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-06-06 20:54:36,182 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-06-06 20:54:36,182 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Roles.Dto.CreateRoleDto
+DEBUG 2019-06-06 20:54:36,182 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Roles.Dto.PermissionDto
+DEBUG 2019-06-06 20:54:36,182 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Roles.Dto.RoleDto
+DEBUG 2019-06-06 20:54:36,183 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-06-06 20:54:36,183 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.MultiTenancy.Dto.TenantDto
+DEBUG 2019-06-06 20:54:36,183 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.CommentDto
+DEBUG 2019-06-06 20:54:36,183 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.EventTaskDto
+DEBUG 2019-06-06 20:54:36,183 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.EventTaskMemberDto
+DEBUG 2019-06-06 20:54:36,183 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.GroupTaskDto
+DEBUG 2019-06-06 20:54:36,183 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.ProjectCreateDto
+DEBUG 2019-06-06 20:54:36,183 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.ProjectDto
+DEBUG 2019-06-06 20:54:36,183 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.ProjectMemberDto
+INFO  2019-06-06 20:54:40,068 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2019-06-06 20:54:41,615 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action PMTool16Bit.Web.Host.Controllers.HomeController.Index (PMTool16Bit.Web.Host)
+INFO  2019-06-06 20:54:41,989 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Web.Host.Controllers.HomeController.Index (PMTool16Bit.Web.Host) - Validation state: Valid
+INFO  2019-06-06 20:54:41,993 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Web.Host.Controllers.HomeController.Index (PMTool16Bit.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 1.8192ms.
+INFO  2019-06-06 20:54:42,219 [9    ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-06-06 20:54:42,230 [9    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Web.Host.Controllers.HomeController.Index (PMTool16Bit.Web.Host) in 611.2138ms
+INFO  2019-06-06 20:54:42,290 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2227.5738ms 302 
+INFO  2019-06-06 20:54:42,294 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
+INFO  2019-06-06 20:54:42,332 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 38.2428ms 200 text/html
+INFO  2019-06-06 20:54:42,357 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui.css  
+INFO  2019-06-06 20:54:42,377 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui.css was not modified
+INFO  2019-06-06 20:54:42,380 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 23.9012ms 304 text/css
+INFO  2019-06-06 20:54:42,468 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-bundle.js  
+INFO  2019-06-06 20:54:42,469 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui-bundle.js was not modified
+INFO  2019-06-06 20:54:42,469 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.4609ms 304 application/javascript
+INFO  2019-06-06 20:54:42,474 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-standalone-preset.js  
+INFO  2019-06-06 20:54:42,475 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui-standalone-preset.js was not modified
+INFO  2019-06-06 20:54:42,475 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.9394ms 304 application/javascript
+INFO  2019-06-06 20:54:43,646 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
+INFO  2019-06-06 20:54:43,742 [12   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-06 20:54:44,030 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 383.2964ms 200 application/json;charset=utf-8
+INFO  2019-06-06 20:55:55,583 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetAll  
+INFO  2019-06-06 20:55:55,584 [12   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-06 20:55:55,643 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetAll (PMTool16Bit.Application)
+INFO  2019-06-06 20:55:55,890 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetAll (PMTool16Bit.Application) with arguments (PMTool16Bit.Services.ProjectFilter) - Validation state: Valid
+INFO  2019-06-06 20:55:56,205 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetAll (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 314.3381ms.
+INFO  2019-06-06 20:55:56,243 [16   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-06-06 20:55:56,269 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetAll (PMTool16Bit.Application) in 626.2ms
+INFO  2019-06-06 20:55:56,269 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 685.8488ms 200 application/json; charset=utf-8
+INFO  2019-06-06 21:06:12,546 [37   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/services/app/User/Create application/json-patch+json 186
+WARN  2019-06-06 21:06:12,553 [37   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-06-06 21:06:12,554 [37   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-06-06 21:06:12,558 [37   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-06 21:06:12,566 [37   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "Create", controller = "User"}. Executing action PMTool16Bit.Users.UserAppService.Create (PMTool16Bit.Application)
+WARN  2019-06-06 21:06:12,566 [37   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-06-06 21:06:12,566 [37   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-06-06 21:06:13,114 [37   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Users.UserAppService.Create (PMTool16Bit.Application) with arguments (PMTool16Bit.Users.CreateUserDto) - Validation state: Valid
+WARN  2019-06-06 21:06:13,578 [39   ] Mvc.ExceptionHandling.AbpExceptionFilter - Email 'lenguyenhanhoan@gmail.com' is already taken.
+Abp.UI.UserFriendlyException: Email 'lenguyenhanhoan@gmail.com' is already taken.
+   at Abp.Authorization.Users.AbpUserManager`2.CheckDuplicateUsernameOrEmailAddressAsync(Nullable`1 expectedUserId, String userName, String emailAddress) in D:\Github\aspnetboilerplate\src\Abp.ZeroCore\Authorization\Users\AbpUserManager.cs:line 412
+   at Abp.Authorization.Users.AbpUserManager`2.CreateAsync(TUser user) in D:\Github\aspnetboilerplate\src\Abp.ZeroCore\Authorization\Users\AbpUserManager.cs:line 116
+   at Microsoft.AspNetCore.Identity.UserManager`1.CreateAsync(TUser user, String password)
+   at PMTool16Bit.Users.UserAppService.Create(CreateUserDto input) in D:\PMTool16Bit\PMTool16Bit_Core\src\PMTool16Bit.Application\Users\UserAppService.cs:line 65
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+INFO  2019-06-06 21:06:13,586 [39   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-06-06 21:06:13,589 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Users.UserAppService.Create (PMTool16Bit.Application) in 1023.6713ms
+INFO  2019-06-06 21:06:13,591 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1045.2106ms 500 application/json; charset=utf-8
+INFO  2019-06-06 21:06:26,934 [37   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/User/GetAll  
+INFO  2019-06-06 21:06:26,934 [37   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-06 21:06:26,941 [37   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "User"}. Executing action PMTool16Bit.Users.UserAppService.GetAll (PMTool16Bit.Application)
+INFO  2019-06-06 21:06:26,945 [37   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Users.UserAppService.GetAll (PMTool16Bit.Application) with arguments (PMTool16Bit.Users.PagedUserResultRequestDto) - Validation state: Valid
+INFO  2019-06-06 21:06:27,131 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Users.UserAppService.GetAll (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 185.9378ms.
+INFO  2019-06-06 21:06:27,138 [37   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-06-06 21:06:27,140 [37   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Users.UserAppService.GetAll (PMTool16Bit.Application) in 198.9795ms
+INFO  2019-06-06 21:06:27,140 [37   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 206.3315ms 200 application/json; charset=utf-8
+INFO  2019-06-06 21:07:01,666 [40   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/services/app/User/Create application/json-patch+json 201
+WARN  2019-06-06 21:07:01,666 [40   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-06-06 21:07:01,666 [40   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-06-06 21:07:01,666 [40   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-06 21:07:01,670 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "Create", controller = "User"}. Executing action PMTool16Bit.Users.UserAppService.Create (PMTool16Bit.Application)
+WARN  2019-06-06 21:07:01,670 [40   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-06-06 21:07:01,670 [40   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-06-06 21:07:01,673 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Users.UserAppService.Create (PMTool16Bit.Application) with arguments (PMTool16Bit.Users.CreateUserDto) - Validation state: Valid
+INFO  2019-06-06 21:07:01,961 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Users.UserAppService.Create (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 287.3593ms.
+INFO  2019-06-06 21:07:02,117 [47   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-06-06 21:07:02,118 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Users.UserAppService.Create (PMTool16Bit.Application) in 447.2062ms
+INFO  2019-06-06 21:07:02,118 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 452.1828ms 200 application/json; charset=utf-8
+INFO  2019-06-06 21:07:37,944 [43   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/services/app/ProjectService/Create application/json-patch+json 264
+WARN  2019-06-06 21:07:37,944 [43   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-06-06 21:07:37,945 [43   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-06-06 21:07:37,945 [43   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-06 21:07:37,951 [43   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "Create", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.Create (PMTool16Bit.Application)
+WARN  2019-06-06 21:07:37,951 [43   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-06-06 21:07:37,951 [43   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-06-06 21:07:37,978 [43   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.Create (PMTool16Bit.Application) with arguments ([ProjectCreateDto 0]) - Validation state: Valid
+INFO  2019-06-06 21:07:38,009 [43   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.Create (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 31.2799ms.
+INFO  2019-06-06 21:07:38,014 [43   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-06-06 21:07:38,015 [43   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.Create (PMTool16Bit.Application) in 63.5794ms
+INFO  2019-06-06 21:07:38,015 [43   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 70.3573ms 200 application/json; charset=utf-8
+INFO  2019-06-06 21:08:06,305 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetAll  
+INFO  2019-06-06 21:08:06,305 [49   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-06 21:08:06,308 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetAll (PMTool16Bit.Application)
+INFO  2019-06-06 21:08:06,309 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetAll (PMTool16Bit.Application) with arguments (PMTool16Bit.Services.ProjectFilter) - Validation state: Valid
+INFO  2019-06-06 21:08:06,317 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetAll (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 7.2699ms.
+INFO  2019-06-06 21:08:06,321 [51   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-06-06 21:08:06,321 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetAll (PMTool16Bit.Application) in 12.9938ms
+INFO  2019-06-06 21:08:06,321 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 16.6733ms 200 application/json; charset=utf-8
+INFO  2019-06-06 21:08:40,289 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/Get?Id=3  
+INFO  2019-06-06 21:08:40,289 [51   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-06 21:08:40,301 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "Get", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application)
+INFO  2019-06-06 21:08:40,309 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) with arguments (Abp.Application.Services.Dto.EntityDto`1[System.Int32]) - Validation state: Valid
+INFO  2019-06-06 21:08:40,435 [56   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 126.1701ms.
+INFO  2019-06-06 21:08:40,440 [56   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-06-06 21:08:40,441 [56   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) in 139.4692ms
+INFO  2019-06-06 21:08:40,441 [56   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 151.9297ms 200 application/json; charset=utf-8
+INFO  2019-06-06 21:50:41,604 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetAll?ProjectOwnerId=1  
+INFO  2019-06-06 21:50:41,605 [49   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-06 21:50:41,616 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetAll (PMTool16Bit.Application)
+INFO  2019-06-06 21:50:41,617 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetAll (PMTool16Bit.Application) with arguments (PMTool16Bit.Services.ProjectFilter) - Validation state: Valid
+INFO  2019-06-06 21:50:41,650 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetAll (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 32.4358ms.
+INFO  2019-06-06 21:50:42,064 [49   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-06-06 21:50:42,064 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetAll (PMTool16Bit.Application) in 448.4888ms
+INFO  2019-06-06 21:50:42,064 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 460.2286ms 200 application/json; charset=utf-8
+INFO  2019-06-06 23:14:57,670 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetById?Id=2  
+INFO  2019-06-06 23:14:57,683 [71   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-06-06 23:14:57,751 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetById", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application)
+INFO  2019-06-06 23:14:57,757 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application) with arguments (Abp.Application.Services.Dto.EntityDto`1[System.Int32]) - Validation state: Valid
+INFO  2019-06-06 23:14:57,950 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 193.6119ms.
+INFO  2019-06-06 23:14:57,974 [71   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-06-06 23:14:57,976 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application) in 225.5958ms
+INFO  2019-06-06 23:14:57,977 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 306.7339ms 200 application/json; charset=utf-8
+INFO  2019-06-06 23:26:32,731 [117  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetById?&id=2  
+WARN  2019-06-06 23:26:32,731 [117  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-06-06 23:26:32,732 [117  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-06-06 23:26:32,739 [117  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetById", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application)
+WARN  2019-06-06 23:26:32,739 [117  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-06-06 23:26:32,739 [117  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-06-06 23:26:32,740 [117  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application) with arguments (Abp.Application.Services.Dto.EntityDto`1[System.Int32]) - Validation state: Valid
+INFO  2019-06-06 23:26:32,769 [111  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 28.7441ms.
+INFO  2019-06-06 23:26:32,775 [111  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-06-06 23:26:32,775 [111  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application) in 36.2103ms
+INFO  2019-06-06 23:26:32,775 [111  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 44.2673ms 200 application/json; charset=utf-8
+INFO  2019-06-06 23:31:03,472 [106  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetById?&id=2  
+WARN  2019-06-06 23:31:03,473 [106  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-06-06 23:31:03,473 [106  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-06-06 23:31:03,481 [106  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetById", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application)
+WARN  2019-06-06 23:31:03,482 [106  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-06-06 23:31:03,482 [106  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-06-06 23:31:03,486 [106  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application) with arguments (Abp.Application.Services.Dto.EntityDto`1[System.Int32]) - Validation state: Valid
+INFO  2019-06-06 23:31:03,510 [101  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 23.8666ms.
+INFO  2019-06-06 23:31:03,519 [101  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-06-06 23:31:03,519 [101  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application) in 37.5343ms
+INFO  2019-06-06 23:31:03,520 [101  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 47.1642ms 200 application/json; charset=utf-8
