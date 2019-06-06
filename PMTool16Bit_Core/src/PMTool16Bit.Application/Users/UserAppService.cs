@@ -18,7 +18,6 @@ using PMTool16Bit.Authorization.Accounts;
 using PMTool16Bit.Authorization.Roles;
 using PMTool16Bit.Authorization.Users;
 using PMTool16Bit.Roles.Dto;
-using PMTool16Bit.Users.Dto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

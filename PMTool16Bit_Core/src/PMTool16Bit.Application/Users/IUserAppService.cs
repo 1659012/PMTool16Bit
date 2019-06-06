@@ -2,7 +2,6 @@ using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using PMTool16Bit.Roles.Dto;
-using PMTool16Bit.Users.Dto;
 
 namespace PMTool16Bit.Users
 {

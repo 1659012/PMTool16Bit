@@ -5,7 +5,7 @@ using Abp.AutoMapper;
 using Abp.Runtime.Validation;
 using PMTool16Bit.Authorization.Users;
 
-namespace PMTool16Bit.Users.Dto
+namespace PMTool16Bit.Users
 {
     [AutoMapTo(typeof(User))]
     public class CreateUserDto : IShouldNormalize

@@ -1,6 +1,7 @@
 ﻿using Abp.AutoMapper;
 using PMTool16Bit.Authorization.Users;
 using PMTool16Bit.Models;
+using PMTool16Bit.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;

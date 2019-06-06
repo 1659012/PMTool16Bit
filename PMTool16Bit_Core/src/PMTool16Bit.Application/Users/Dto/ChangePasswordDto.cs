@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PMTool16Bit.Users.Dto
+namespace PMTool16Bit.Users
 {
     public class ChangePasswordDto
     {

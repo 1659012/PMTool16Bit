@@ -4,7 +4,6 @@ using Shouldly;
 using Xunit;
 using Abp.Application.Services.Dto;
 using PMTool16Bit.Users;
-using PMTool16Bit.Users.Dto;
 
 namespace PMTool16Bit.Tests.Users
 {

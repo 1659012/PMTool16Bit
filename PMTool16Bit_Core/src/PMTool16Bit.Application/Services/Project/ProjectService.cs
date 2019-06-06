@@ -31,6 +31,8 @@ namespace PMTool16Bit.Services
         protected override IQueryable<Project> CreateFilteredQuery(ProjectFilter input)
         {
             return base.CreateFilteredQuery(input)
+                .Include(p => p.ProjectMembers)
+                .ThenInclude(p =>p.Member)
                 .Include(p => p.GroupTasks)
                 .WhereIf (input.ProjectOwnerId!=null, p=> p.ProjectOwnerId==input.ProjectOwnerId)
                 .WhereIf(input.ProjectName.IsNotNullOrEmpty(), t => t.ProjectName.Contains(input.ProjectName));
@@ -49,6 +51,13 @@ namespace PMTool16Bit.Services
                 .ToListAsync();
         }
 
-    
+        public async Task<Project> GetById(EntityDto<int> input)
+        {
+           return await Repository                
+                .GetAll()
+                .Include(p=>p.ProjectMembers)
+                .ThenInclude(p=>p.Member)
+                .FirstOrDefaultAsync(p=>p.Id==input.Id);
+        }
     }
 }
