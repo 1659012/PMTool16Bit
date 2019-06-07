@@ -5374,3 +5374,14 @@ INFO  2019-06-06 23:31:03,510 [101  ] ore.Mvc.Internal.ControllerActionInvoker -
 INFO  2019-06-06 23:31:03,519 [101  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
 INFO  2019-06-06 23:31:03,519 [101  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application) in 37.5343ms
 INFO  2019-06-06 23:31:03,520 [101  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 47.1642ms 200 application/json; charset=utf-8
+INFO  2019-06-06 23:35:16,139 [94   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetById?&id=2  
+WARN  2019-06-06 23:35:16,139 [94   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-06-06 23:35:16,139 [94   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-06-06 23:35:16,144 [94   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetById", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application)
+WARN  2019-06-06 23:35:16,144 [94   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-06-06 23:35:16,144 [94   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-06-06 23:35:16,146 [94   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application) with arguments (Abp.Application.Services.Dto.EntityDto`1[System.Int32]) - Validation state: Valid
+INFO  2019-06-06 23:35:16,171 [104  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 24.3567ms.
+INFO  2019-06-06 23:35:16,177 [104  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-06-06 23:35:16,177 [104  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetById (PMTool16Bit.Application) in 32.5923ms
+INFO  2019-06-06 23:35:16,177 [104  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 38.1116ms 200 application/json; charset=utf-8
