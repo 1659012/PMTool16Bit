@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import menu from '@/api/menu';
+import menu from '../router/menu';
 export default {
   data () {
     return {
