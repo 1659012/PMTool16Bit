@@ -17,6 +17,7 @@ using PMTool16Bit.Authorization;
 using PMTool16Bit.Authorization.Users;
 using PMTool16Bit.Models.TokenAuth;
 using PMTool16Bit.MultiTenancy;
+using PMTool16Bit.Users;
 
 namespace PMTool16Bit.Controllers
 {
@@ -30,6 +31,7 @@ namespace PMTool16Bit.Controllers
         private readonly IExternalAuthConfiguration _externalAuthConfiguration;
         private readonly IExternalAuthManager _externalAuthManager;
         private readonly UserRegistrationManager _userRegistrationManager;
+        private readonly IUserAppService _userAppService;
 
         public TokenAuthController(
             LogInManager logInManager,
@@ -38,7 +40,8 @@ namespace PMTool16Bit.Controllers
             TokenAuthConfiguration configuration,
             IExternalAuthConfiguration externalAuthConfiguration,
             IExternalAuthManager externalAuthManager,
-            UserRegistrationManager userRegistrationManager)
+            UserRegistrationManager userRegistrationManager,
+            IUserAppService userAppService)
         {
             _logInManager = logInManager;
             _tenantCache = tenantCache;
@@ -47,25 +50,45 @@ namespace PMTool16Bit.Controllers
             _externalAuthConfiguration = externalAuthConfiguration;
             _externalAuthManager = externalAuthManager;
             _userRegistrationManager = userRegistrationManager;
+            _userAppService = userAppService;
         }
 
+        //[HttpPost]
+        //public async Task<AuthenticateResultModel> Authenticate([FromBody] AuthenticateModel model)
+        //{
+        //    var loginResult = await GetLoginResultAsync(
+        //        model.UserNameOrEmailAddress,
+        //        model.Password,
+        //        GetTenancyNameOrNull()
+        //    );
+
+        //    var accessToken = CreateAccessToken(CreateJwtClaims(loginResult.Identity));
+
+        //    return new AuthenticateResultModel
+        //    {
+        //        AccessToken = accessToken,
+        //        EncryptedAccessToken = GetEncrpyedAccessToken(accessToken),
+        //        ExpireInSeconds = (int)_configuration.Expiration.TotalSeconds,
+        //        UserId = loginResult.User.Id
+        //    };
+        //}
         [HttpPost]
-        public async Task<AuthenticateResultModel> Authenticate([FromBody] AuthenticateModel model)
+        public async Task<AuthenticateUserModel> Authenticate([FromBody] AuthenticateModel model)
         {
             var loginResult = await GetLoginResultAsync(
                 model.UserNameOrEmailAddress,
                 model.Password,
                 GetTenancyNameOrNull()
             );
-
+            
             var accessToken = CreateAccessToken(CreateJwtClaims(loginResult.Identity));
-
-            return new AuthenticateResultModel
+            var profile = await _userAppService.GetUserProfile(loginResult.User.Id);
+            return new AuthenticateUserModel
             {
-                AccessToken = accessToken,
-                EncryptedAccessToken = GetEncrpyedAccessToken(accessToken),
-                ExpireInSeconds = (int)_configuration.Expiration.TotalSeconds,
-                UserId = loginResult.User.Id
+                AccessToken = accessToken,              
+                UserId = loginResult.User.Id,
+                UserName = loginResult.User.UserName,
+                Profile = profile
             };
         }
 

@@ -43,7 +43,7 @@ namespace PMTool16Bit.Users
         public int AvatarId { get; set; }
 
         #region reference
-        public ICollection<ProjectMemberDto> ProjectMembers { get; set; }
+        public virtual ICollection<ProjectMemberDto> ProjectMembers { get; set; }
         public virtual ICollection<EventTaskMemberDto> EventTaskMembers { get; set; }
 
         #endregion

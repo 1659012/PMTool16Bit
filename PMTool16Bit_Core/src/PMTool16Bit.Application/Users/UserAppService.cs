@@ -217,6 +217,17 @@ namespace PMTool16Bit.Users
 
             return true;
         }
+        #region Customize Authenticate
+        public async Task<UserDto> GetUserProfile(long userId)
+        {          
+            var user = await GetEntityByIdAsync(userId);
+            var userDto = MapToEntityDto(user);
+            //var permissionModelList = await _userManager.GetGrantedPermissionsAsync(user);
+
+            return userDto;
+        }
+
+        #endregion
 
     }
 }

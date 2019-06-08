@@ -10,5 +10,8 @@ namespace PMTool16Bit.Users
         Task<ListResultDto<RoleDto>> GetRoles();
 
         Task ChangeLanguage(ChangeUserLanguageDto input);
+
+        Task<UserDto> GetUserProfile(long userId);
     }
+
 }
