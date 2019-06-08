@@ -361,7 +361,7 @@ import {
 import Material from 'vuetify/es5/util/colors';
 import MiniChart from '@/components/widgets/chart/MiniChart';
 import BoxChart from '@/components/widgets/chart/BoxChart';
-import VWidget from '@/components/VWidget';
+import VWidget from '@/components/layout/VWidget';
 export default {
   components: {
     BoxChart,

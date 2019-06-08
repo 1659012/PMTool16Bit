@@ -1,8 +1,10 @@
-import TestPage from "../views/TestPage.vue";
+import TestPage from "../views/testPage/TestPage.vue";
+import Dashboard from "../views/dashboard/Dashboard.vue";
 export default [
   {
     path: "/testpage",
-    meta: { breadcrumb: true },
+    // meta: { breadcrumb: true },
+    breadcrumb: 'Home Page',
     name: "TestPage",
     component: TestPage
   },
@@ -75,11 +77,7 @@ export default [
     path: "/dashboard",
     meta: { breadcrumb: true },
     name: "Dashboard",
-    component: () =>
-      import(
-        /* webpackChunkName: "routes" */
-        `@/views/Dashboard.vue`
-      )
+    component: Dashboard
   },
 
   {

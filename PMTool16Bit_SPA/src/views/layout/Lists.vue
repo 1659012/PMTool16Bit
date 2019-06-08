@@ -316,7 +316,7 @@
 
 <script>
 import { getUser } from '@/api/user';
-import VWidget from '@/components/VWidget';
+import VWidget from '@/components/layout/VWidget';
 export default {
   components: {
     VWidget

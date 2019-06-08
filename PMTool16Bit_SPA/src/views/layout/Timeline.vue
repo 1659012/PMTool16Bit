@@ -108,7 +108,7 @@
 </template>
 
 <script>
-import VWidget from '@/components/VWidget';
+import VWidget from '@/components/layout/VWidget';
 import API from '@/api';
 import VCircle from '@/components/circle/VCircle.js';
 export default {

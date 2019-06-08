@@ -213,7 +213,7 @@
 </template>
 
 <script>
-import VWidget from '@/components/VWidget';
+import VWidget from '@/components/layout/VWidget';
 import Countries  from '@/api/country';
 export default {
   components: {

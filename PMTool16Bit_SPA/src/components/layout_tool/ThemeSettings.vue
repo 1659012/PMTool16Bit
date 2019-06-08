@@ -50,6 +50,7 @@
 
 <script>
 import colors from 'vuetify/es5/util/colors';
+// import colors from '../../';
 export default {
   data () {
     return {
