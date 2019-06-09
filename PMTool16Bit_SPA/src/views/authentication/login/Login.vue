@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import { APP_MUTATIONS, APP_ACTIONS } from "../../../store/store";
 export default {
   data: () => ({
     loading: false,
@@ -53,17 +54,38 @@ export default {
       this.axios
         .post("http://localhost:21021/api/TokenAuth/Authenticate", this.model)
         .then(response => {
-          this.loading = false;
+          // me.loading = false;
           if (response.data.success) {
             console.log(response.data.result);
+            me.$store.commit(
+              APP_MUTATIONS.SET_TOKEN,
+              response.data.result.accessToken
+            );
+            me.$localStorage.set(
+              "profile",
+              JSON.stringify(response.data.result.profile)
+            );
+            me.$localStorage.set("token", response.data.result.accessToken);
+            me.$localStorage.set("roles", response.data.result.roles);
+            window.location.reload();
+            setTimeout(() => {
+              me.$store.commit(APP_MUTATIONS.LOGIN_SUCCESS);
+              me.$store.dispatch(APP_ACTIONS.LOGIN, {
+                token: response.data.result.accessToken,
+                profile: response.data.result.profile,
+                // roles: response.data.result.roles
+                roles: null
+              });
+            }, 3000);
           } else {
+            // me.loading = false;
             me.$notify({
               group: "message",
               duration: 3000,
-              type: "success",
-              title: "Note",
-              text: response.data.error.message
-            });
+              type: "error",
+              title: response.data.error.message,
+              text: response.data.error.details
+            });           
           }
         });
     }

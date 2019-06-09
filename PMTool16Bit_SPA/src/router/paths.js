@@ -1,13 +1,24 @@
 import TestPage from "../views/testPage/TestPage.vue";
 import Dashboard from "../views/dashboard/Dashboard.vue";
 import Login from "../views/authentication/login/Login.vue";
+import ProjectList from "../views/project_tool/project_list/ProjectList.vue";
+export const AUTH_REQUIRED = {
+  auth: true
+};
 export default [
   {
     path: "/testpage",
     // meta: { breadcrumb: true },
-    breadcrumb: 'Home Page',
+    // breadcrumb: 'Home Page',
     name: "TestPage",
-    component: TestPage
+    component: TestPage,
+    meta: { ...AUTH_REQUIRED }//
+  },
+  {
+    path: "/projectlist",  
+    name: "ProjectList",
+    component: ProjectList,
+    meta: { ...AUTH_REQUIRED }
   },
   {
     path: "*",
@@ -60,7 +71,7 @@ export default [
       public: true
     },
     name: "Login",
-    component:Login
+    component: Login
   },
   {
     path: "/",
@@ -74,7 +85,8 @@ export default [
     path: "/dashboard",
     meta: { breadcrumb: true },
     name: "Dashboard",
-    component: Dashboard
+    component: Dashboard,
+    meta: { ...AUTH_REQUIRED }
   },
 
   {

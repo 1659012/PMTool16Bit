@@ -40,7 +40,7 @@ const Menu = [
     ]
   },
 
-  { header: "Project Management" },
+  { header: "Project Management Tool" },
   {
     title: "Project list",
     group: "testPageList",
@@ -50,17 +50,10 @@ const Menu = [
       {
         name: "testPage",
         title: "Test page",
-        badge: "new",
+        // badge: "new",
         component: "TestPage"
-      },
-      {
-        name: "statistic",
-        title: "Statistic",
-        badge: "new",
-        component: "components/statistic"
-      },
-      { name: "chart", title: "Chart", component: "components/chart" },
-      { name: "list", title: "List", component: "components/widget-list" }
+      },     
+      { name: "ProjectList", title: "Project list", component: "ProjectList" },
     ]
   },
   // { divider: true },

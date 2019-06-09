@@ -9,11 +9,17 @@
     </v-toolbar-items>
 
     <v-btn icon href="https://github.com/1659012/PMTool16Bit" target="_blank" title="My source on github">
-       <v-icon class="fa-2x">fa-github</v-icon>    
+      <v-icon class="fa-2x">fa-github</v-icon>
     </v-btn>
+
     <v-btn icon @click="handleFullScreen()" title="Full screen">
       <v-icon>fullscreen</v-icon>
     </v-btn>
+
+    <v-btn flat icon color="error" title="Logout" @click="logout">
+      <v-icon>exit_to_app</v-icon>
+    </v-btn>
+    
     <v-menu offset-y origin="center center" class="elelvation-1" :nudge-bottom="14" transition="scale-transition">
       <v-btn icon flat slot="activator">
         <v-badge color="red" overlap>
@@ -21,7 +27,7 @@
           <v-icon medium>notifications</v-icon>
         </v-badge>
       </v-btn>
-      <notification-list></notification-list>      
+      <notification-list></notification-list>
     </v-menu>
     <v-menu offset-y origin="center center" :nudge-bottom="10" transition="scale-transition">
       <v-btn icon large flat slot="activator">
@@ -56,6 +62,7 @@
 // import NotificationList from "@/components/widgets/list/NotificationList";
 import NotificationList from "../../components/widgets/list/NotificationList";
 import Util from "@/util";
+import { APP_ACTIONS, APP_MUTATIONS } from "../../store/store";
 export default {
   name: "app-toolbar",
   components: {
@@ -100,6 +107,12 @@ export default {
     },
     handleFullScreen() {
       Util.toggleFullScreen();
+    },
+    logout() {
+      if (confirm("Are you sure to logout?")) {
+        this.$store.commit(APP_MUTATIONS.NOT_AUTH);
+        this.$store.commit(APP_MUTATIONS.SET_TOKEN, "");
+      }
     }
   }
 };

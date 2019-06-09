@@ -23,7 +23,7 @@ export const APP_MUTATIONS = {
   // MARK_ALL_NOTIFICATION_AS_READ: 'MARK_ALL_NOTIFICATION_AS_READ',
 };
 
-export default new Vuex.Store({
+export const store = new Vuex.Store({
   state: {
     token: "",
     userId: {},
@@ -58,6 +58,7 @@ export default new Vuex.Store({
     // },
     [APP_MUTATIONS.LOGIN_SUCCESS](state) {
       state.auth = true;
+      state.permissionFailed = true;// to do
     },
     [APP_MUTATIONS.NOT_AUTH](state, path) {
       if (path) {
@@ -77,14 +78,14 @@ export default new Vuex.Store({
       // let roles = localStorage.getItem("roles");
       let profile = JSON.parse(localStorage.getItem("profile"));
       if (token) {
-        // return true;
+       
         context.commit(APP_MUTATIONS.LOGIN_SUCCESS);
         context.commit(APP_MUTATIONS.SET_USER, profile);
         // context.commit(APP_MUTATIONS.SET_ROLES, roles);
       } else {
         context.commit(APP_MUTATIONS.NOT_AUTH);
       }
-      // return false;
+     
     },
     [APP_ACTIONS.LOGIN]: (context, { token, profile, roles }) => {
       context.commit(APP_MUTATIONS.SET_TOKEN, token);
