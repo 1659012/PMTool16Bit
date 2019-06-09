@@ -208,7 +208,7 @@ import PostSingleCard from '@/components/widgets/card/PostSingleCard';
 import WeatherCard from '@/components/widgets/card/WeatherCard';
 import PlainTable from '@/components/widgets/list/PlainTable';
 import PlainTableOrder from '@/components/widgets/list/PlainTableOrder';
-import VWidget from '@/components/layout/VWidget';
+import VWidget from '@/components/layout_tool/VWidget';
 import Material from 'vuetify/es5/util/colors';
 import VCircle from '@/components/circle/VCircle';
 import BoxChart from '@/components/widgets/chart/BoxChart';

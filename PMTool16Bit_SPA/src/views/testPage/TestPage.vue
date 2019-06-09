@@ -47,13 +47,13 @@ export default {
   methods: {
     initialize() {
       // this.loadData();
-      //  this.$notify({
-      //   group: "message",
-      //   duration: 3000,
-      //   type: "success",
-      //   title: "Note",
-      //   text: "initialize"
-      // });
+       this.$notify({
+        group: "message",
+        duration: 3000,
+        type: "success",
+        title: "Note",
+        text: "initialize"
+      });
     },
     loadData() {
       let me = this;

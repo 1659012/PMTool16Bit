@@ -143,12 +143,14 @@ namespace PMTool16Bit.Users
 
         protected override async Task<User> GetEntityByIdAsync(long id)
         {
-            var user = await Repository.GetAllIncluding(x => x.Roles).FirstOrDefaultAsync(x => x.Id == id);
+            var user = await Repository
+                //.GetAllIncluding(x => x.Roles)
+                .FirstOrDefaultAsync(x => x.Id == id);
 
-            if (user == null)
-            {
-                throw new EntityNotFoundException(typeof(User), id);
-            }
+            //if (user == null)
+            //{
+            //    throw new EntityNotFoundException(typeof(User), id);
+            //}
 
             return user;
         }
@@ -217,15 +219,46 @@ namespace PMTool16Bit.Users
 
             return true;
         }
-        #region Customize Authenticate
+        #region Customize UserData
+
+        [AbpAllowAnonymous]
         public async Task<UserDto> GetUserProfile(long userId)
         {          
-            var user = await GetEntityByIdAsync(userId);
-            var userDto = MapToEntityDto(user);
+            var user =await GetEntityByIdAsync(userId);
+            //var userDto = MapToEntityDto(user);
             //var permissionModelList = await _userManager.GetGrantedPermissionsAsync(user);
-
-            return userDto;
+            //return userDto;
+            return new UserDto
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                Name = user.Name,
+                Surname = user.Surname,
+                FullName = user.Name + " " + user.Surname,
+                EmailAddress = user.EmailAddress,
+                AvatarId = user.AvatarId,
+            };
         }
+
+
+        //public async Task<UserDto> GetUserProfile(string userNameOrEmailAddress)
+        //{
+        //    var user = await GetEntityByUserName(userNameOrEmailAddress);
+        //    if (user == null)
+        //        return null;
+        //    //var userDto = MapToEntityDto(user);
+        //    //var permissionModelList = await _userManager.GetGrantedPermissionsAsync(user);
+        //    //return userDto;
+        //    return new UserDto
+        //    {
+        //        UserName = user.UserName,
+        //        Name = user.Name,
+        //        Surname = user.Surname,
+        //        FullName = user.Name + " " + user.Surname,
+        //        EmailAddress = user.EmailAddress,
+        //        AvatarId = user.AvatarId,
+        //    };
+        //}
 
         #endregion
 

@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using PMTool16Bit.Roles.Dto;
 
 namespace PMTool16Bit.Users
@@ -11,6 +12,7 @@ namespace PMTool16Bit.Users
 
         Task ChangeLanguage(ChangeUserLanguageDto input);
 
+        [AbpAllowAnonymous]
         Task<UserDto> GetUserProfile(long userId);
     }
 

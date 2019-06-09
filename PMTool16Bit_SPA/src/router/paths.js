@@ -1,5 +1,6 @@
 import TestPage from "../views/testPage/TestPage.vue";
 import Dashboard from "../views/dashboard/Dashboard.vue";
+import Login from "../views/authentication/login/Login.vue";
 export default [
   {
     path: "/testpage",
@@ -59,11 +60,7 @@ export default [
       public: true
     },
     name: "Login",
-    component: () =>
-      import(
-        /* webpackChunkName: "routes" */
-        `@/views/Login.vue`
-      )
+    component:Login
   },
   {
     path: "/",

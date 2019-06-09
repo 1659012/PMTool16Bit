@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import VWidget from '@/components/layout/VWidget';
+import VWidget from '@/components/layout_tool/VWidget';
 export default {
   components: {
     VWidget

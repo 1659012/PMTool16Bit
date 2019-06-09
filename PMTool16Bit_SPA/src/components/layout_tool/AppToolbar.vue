@@ -5,13 +5,13 @@
     <v-text-field flat solo-inverted prepend-icon="search" label="Search" class="hidden-sm-and-down"></v-text-field>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      <v-btn flat href="#">Hire Me</v-btn>
+      <!-- <v-btn flat href="#">Hire Me</v-btn> -->
     </v-toolbar-items>
 
-    <v-btn icon href="https://github.com/tookit/vue-material-admin">
-      <v-icon class="fa-2x">fa-github</v-icon>
+    <v-btn icon href="https://github.com/1659012/PMTool16Bit" target="_blank" title="My source on github">
+       <v-icon class="fa-2x">fa-github</v-icon>    
     </v-btn>
-    <v-btn icon @click="handleFullScreen()">
+    <v-btn icon @click="handleFullScreen()" title="Full screen">
       <v-icon>fullscreen</v-icon>
     </v-btn>
     <v-menu offset-y origin="center center" class="elelvation-1" :nudge-bottom="14" transition="scale-transition">

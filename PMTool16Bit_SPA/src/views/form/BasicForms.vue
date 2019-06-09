@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import VWidget from '@/components/layout/VWidget';
+import VWidget from '@/components/layout_tool/VWidget';
 import EventForm from '@/components/widgets/form/EventForm';
 import ContactForm from '@/components/widgets/form/ContactForm';
 import PaymentForm from '@/components/widgets/form/PaymentForm';
