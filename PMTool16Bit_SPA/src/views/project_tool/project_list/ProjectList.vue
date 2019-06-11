@@ -1,51 +1,58 @@
 
 <template>
   <v-container fluid grid-list-lg>
-    <h1>Project list</h1>
-    <v-toolbar flat color="transparent">
-      <v-btn color="success" @click="exportExcel">Export data</v-btn>
-      <v-spacer></v-spacer>
-      <v-btn color="primary" dark @click="createProject">New Project</v-btn>
+    <v-card>
+      <v-toolbar card dense flat color="transparent">
+        <v-toolbar-title>
+          <h4>Project list</h4>
+        </v-toolbar-title>
+        <v-btn color="success" @click="exportExcel">Export data</v-btn>
+        <v-spacer></v-spacer>
+        <v-btn color="primary" dark @click="createProject">New Project</v-btn>
 
-      <v-dialog lazy v-model="dialog" fullscreen hide-overlay persistent>
-        <!-- <createorder v-if="dialog" lazy v-model="editedItem" @close="close"/> -->
-      </v-dialog>
-    </v-toolbar>
+        <v-dialog lazy v-model="dialog" fullscreen hide-overlay persistent>
+          <!-- <createorder v-if="dialog" lazy v-model="editedItem" @close="close"/> -->
+        </v-dialog>
+      </v-toolbar>
+      <v-divider></v-divider>
+      <template>
+        <v-layout row wrap mx-3>
+          <v-flex lg12>filter here</v-flex>
+          <v-flex lg12>
+            <v-data-table
+              :headers="headers"
+              :items="items"
+              class="elevation-1"
+              :rows-per-page-items="[10,20,50,100]"
+              :loading="loading"
+              :pagination.sync="pagination"
+              :total-items="totalItems"
+            >
+              <template slot="items" 
+              slot-scope="props" 
+              class="list-item" 
+              transition="slide-y-transition">
+                <tr class="tableRow">
+                  <td class="colMax150">{{ props.item.projectName }}</td>
 
-    <v-layout row wrap mx-3>
-      <v-flex lg12>filter here</v-flex>
-    </v-layout>
-
-    <div>
-      <v-data-table
-        :headers="headers"
-        :items="items"
-        class="elevation-1"
-        :rows-per-page-items="[10,20,50,100]"
-        :loading="loading"
-        :pagination.sync="pagination"
-        :total-items="totalItems"
-      >
-        <template slot="items" slot-scope="props" class="list-item" transition="slide-y-transition">
-          <tr class="tableRow">
-            <td class="colMax150">{{ props.item.projectName }}</td>
-
-            <td class="text-lg-center colMax120">
-              <v-btn flat icon @click="editItem(props.item)">
-                <v-icon small>edit</v-icon>
-              </v-btn>
-              <v-btn flat icon @click="deleteItem(props.item)">
-                <v-icon small>delete</v-icon>
-              </v-btn>
-            </td>
-          </tr>
-        </template>
-        <template slot="no-data">
-          <v-btn color="primary" @click="resetFilterData()">Reset</v-btn>
-        </template>
-      </v-data-table>
-    </div>
-
+                  <td class="text-lg-center colMax120">
+                    <v-btn flat icon @click="editItem(props.item)">
+                      <v-icon small>edit</v-icon>
+                    </v-btn>
+                    <v-btn flat icon @click="deleteItem(props.item)">
+                      <v-icon small>delete</v-icon>
+                    </v-btn>
+                  </td>
+                </tr>
+              </template>
+              <template slot="no-data">
+                <v-btn color="primary" @click="resetFilterData()">Reset</v-btn>
+              </template>
+            </v-data-table>
+          </v-flex>
+        </v-layout>
+      </template>
+    </v-card>
     <v-layout row wrap>
       <v-flex lg4 v-for="(item, index) in items" :key="index">
         <v-card>

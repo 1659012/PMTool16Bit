@@ -68,33 +68,13 @@ namespace PMTool16Bit.Controllers
             return new AuthenticateResultModel
             {
                 AccessToken = accessToken,
-                EncryptedAccessToken = GetEncrpyedAccessToken(accessToken),
-                ExpireInSeconds = (int)_configuration.Expiration.TotalSeconds,
+                //EncryptedAccessToken = GetEncrpyedAccessToken(accessToken),
+                //ExpireInSeconds = (int)_configuration.Expiration.TotalSeconds,
                 UserId = loginResult.User.Id,
                 UserName = loginResult.User.UserName,
                 Profile = profile
             };
-        }
-        //[HttpPost]
-        //public async Task<AuthenticateUserModel> Authenticate([FromBody] AuthenticateModel model)
-        //{
-        //    var loginResult = await GetLoginResultAsync(
-        //        model.UserNameOrEmailAddress,
-        //        model.Password,
-        //        GetTenancyNameOrNull()
-        //    );
-
-        //    var accessToken = CreateAccessToken(CreateJwtClaims(loginResult.Identity));
-        //    var profile = await _userAppService.GetUserProfile(loginResult.User.Id);
-        //    return new AuthenticateUserModel
-        //    {
-        //        AccessToken = accessToken,
-        //        ExpireInSeconds = (int)_configuration.Expiration.TotalSeconds,
-        //        UserId = loginResult.User.Id,
-        //        UserName = loginResult.User.UserName,
-        //        Profile = profile
-        //    };
-        //}
+        }        
 
         [HttpGet]
         public List<ExternalLoginProviderInfoModel> GetExternalAuthenticationProviders()
