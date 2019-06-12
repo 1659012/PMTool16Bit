@@ -5,7 +5,8 @@
         <app-drawer class="app--drawer"></app-drawer>
         <app-toolbar class="app--toolbar"></app-toolbar>
         <v-content>
-          <PageHeader v-if="$route.meta.breadcrumb"/>
+          <!-- -->
+          <!-- <PageHeader  v-if="$route.meta.breadcrumb"/> -->
           <div class="page-wrapper">
             <router-view></router-view>
           </div>
