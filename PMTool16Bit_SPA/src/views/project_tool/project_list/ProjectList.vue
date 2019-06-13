@@ -142,6 +142,8 @@ export default {
   },
   mounted() {
     this.initialize();
+    console.log(this.$store.state);
+    console.log(this.$router.currentRoute);
   },
   methods: {
     initialize() {},

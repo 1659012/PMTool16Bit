@@ -49,7 +49,7 @@ export const store = new Vuex.Store({
       }
     },
     [APP_MUTATIONS.SET_USER]: (state, profile) => {
-      state.userId = profile.userId;
+      state.userId = profile.id;
       state.userName = profile.userName;
       state.profile = profile;
     },

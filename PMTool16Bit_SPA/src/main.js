@@ -57,6 +57,104 @@ Vue.filter("dateTime", function(value) {
         value.toLocaleTimeString("en-US")
     : "";
 });
+Vue.mixin({
+  methods: {
+    toDateString(date) {
+      if (date) return moment(String(date)).format("YYYY-MM-DD");
+    },
+    toMonthString(date) {
+      if (date) return moment(String(date)).format("YYYY-MM");
+    },
+    createItem(item, url, me, isCloseModal = true) {
+      Vue.axios.post(url, item).then(response => {
+        if (response.data.success) {
+          if (isCloseModal) me.close(response.data.result);
+          else me.updateResult(response.data.result);
+          Vue.notify({
+            group: "message",
+            type: "success",
+            title: "Add",
+            text: "Create successfully"
+          });
+          return response.data.result;
+        } else {
+          Vue.notify({
+            group: "message",
+            type: "error",
+            title: "Important message",
+            text: "Create unsuccessfully"
+          });
+        }
+      });
+      // .catch(e => {
+      // this.errors.push(e);
+      // });
+    },
+    updateItem(item, url, me, isCloseModal = true) {
+      me.saveLoading = true;
+      Vue.axios
+        .put(url, item)
+        .then(response => {
+          if (response.data.success) {
+            if (isCloseModal) me.close(response.data.result);
+            else me.updateResult(response.data.result);
+            Vue.notify({
+              group: "message",
+              type: "success",
+              title: "Update",
+              text: "Data has been updated!"
+            });
+            me.saveLoading = false;
+            return response.data.result;
+          } else {
+            Vue.notify({
+              group: "message",
+              type: "error",
+              title: "Important message",
+              text: "Hello user! This is a notification!"
+            });
+            me.saveLoading = false;
+          }
+        })
+        .catch(e => {
+          me.saveLoading = false;
+          // this.errors.push(e);
+        });
+    },
+    deleteItem(item, url, me) {
+      if (confirm("Are you sure you want to delete this item?")) {
+        Vue.axios
+          .delete(url, { params: { Id: item.id } })
+          .then(response => {
+            if (response.data.success) {
+              me.loadData();
+              Vue.notify({
+                group: "message",
+                type: "success",
+                title: "Delete",
+                text: "Data has been deleted!"
+              });
+              return response.data.success;
+            } else {
+              Vue.notify({
+                group: "message",
+                type: "error",
+                title: "Important message",
+                text: "Hello user! This is a notification!"
+              });
+            }
+          })
+          .catch(e => {
+            // this.errors.push(e);
+          });
+      }
+    },
+    getFullPath(path) {
+      path = path.replace(/\\/g, "/");
+      return store.state.baseUrl + path;
+    }
+  }
+});
 
 router.onReady(() => {
   // let defaultpath = listrouter.Dashboard.path;
