@@ -10,11 +10,11 @@
       </v-btn>
 
       <v-spacer></v-spacer>
-          <v-btn >filer sorting here</v-btn>
-        <v-divider vertical></v-divider>
+      <v-btn>filer sorting here</v-btn>
+      <v-divider vertical></v-divider>
       <v-tooltip bottom mr-0>
         <template v-slot:activator="{ on }">
-          <v-btn color="primary" dark v-on="on" icon flat class="mr-1">
+          <v-btn color="primary" dark v-on="on" icon flat class="mr-1" @click="handleGridView">
             <v-icon>apps</v-icon>
           </v-btn>
         </template>
@@ -23,66 +23,82 @@
 
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
-          <v-btn color="primary" dark v-on="on" icon flat class="ml-1">
+          <v-btn color="primary" dark v-on="on" icon flat class="mx-1" @click="handleListView">
             <v-icon>format_list_bulleted</v-icon>
           </v-btn>
         </template>
         <span>List View</span>
       </v-tooltip>
 
-      <v-dialog lazy v-model="dialog" fullscreen hide-overlay persistent>      
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn color="primary" dark v-on="on" icon flat class="ml-1" @click="handleAllView">
+            <v-icon>vertical_split</v-icon>
+          </v-btn>
+        </template>
+        <span>All View</span>
+      </v-tooltip>
+      <!-- fullscreen hide-overlay persistent -->
+      <v-dialog lazy v-model="dialog" max-width="600px" persistent>
         <ProjectCreate v-if="dialog" lazy v-model="editedItem" @close="close"/>
       </v-dialog>
-
     </v-toolbar>
-     <v-layout row wrap mx-3>
-        <!-- <v-flex lg12>filter here</v-flex> -->
-        <v-flex lg12>
-          <v-data-table
-            :headers="headers"
-            :items="items"
-            class="elevation-1"
-            :rows-per-page-items="[10,20,50,100]"
-            :loading="loading"
-            :pagination.sync="pagination"
-            :total-items="totalItems"
-          >
-            <template slot="items" slot-scope="props" class="list-item" transition="slide-y-transition">
-              <tr class="tableRow">
-                <td class="colMax150">{{ props.item.projectName }}</td>
-
-                <td class="text-lg-center colMax120">
-                  <v-btn flat icon @click="editItem(props.item)">
-                    <v-icon small>edit</v-icon>
-                  </v-btn>
-                  <v-btn flat icon @click="deleteItem(props.item)">
-                    <v-icon small>delete</v-icon>
-                  </v-btn>
-                </td>
-              </tr>
-            </template>
-            <template slot="no-data">
-              <v-btn color="primary" @click="resetFilterData()">Reset</v-btn>
-            </template>
-          </v-data-table>
-        </v-flex>
-      </v-layout>
-
-    <v-layout row wrap mx-3>
-      <v-flex lg4 v-for="(item, index) in items" :key="index">
-        <v-card>
-          <v-card-title primary-title>
-            <div>
-              <h3 class="headline mb-0">{{item.projectName}}</h3>
-            </div>
-          </v-card-title>
-          <v-card-actions>
-            <v-btn flat color="green">Edit</v-btn>
-            <v-btn flat color="orange">Delete</v-btn>
-          </v-card-actions>
-        </v-card>
+    <v-layout row wrap mx-3 v-show="listView">
+      <!-- <v-flex lg12>filter here</v-flex> -->
+      <v-flex lg12>
+        <v-data-table
+          :headers="headers"
+          :items="items"
+          class="elevation-1"
+          :rows-per-page-items="[10,20,50,100]"
+          :loading="loading"
+          :pagination.sync="pagination"
+          :total-items="totalItems"
+        >
+          <template slot="items" slot-scope="props" class="list-item" transition="slide-y-transition">
+            <tr class="tableRow">
+              <td class="colMax150">{{ props.item.projectName }}</td>
+              <td class="colMax150">{{ props.item.projectOwner?props.item.projectOwner.fullName:"" }}</td>
+              <td class="text-lg-center colMax120">
+                <v-btn flat icon @click="editItem(props.item)">
+                  <v-icon small>edit</v-icon>
+                </v-btn>
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on }">
+                    <v-btn flat icon v-on="on" @click="deleteItem(props.item)" :disabled="props.item.projectOwnerId==userId">
+                      <v-icon small>delete</v-icon>
+                    </v-btn>
+                  </template>
+                  <span>Delete project</span>
+                </v-tooltip>
+              </td>
+            </tr>
+          </template>
+          <template slot="no-data">
+            <v-btn color="primary" @click="resetFilterData()">Reset</v-btn>
+          </template>
+        </v-data-table>
       </v-flex>
     </v-layout>
+
+    <v-layout row wrap mx-3 v-show="gridView">
+      <v-flex lg3 v-for="(item, index) in items" :key="index">
+        <v-hover>
+          <v-card slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
+            <v-card-title primary-title>
+              <div>
+                <h4 class="mb-0">{{item.projectName}}</h4>
+              </div>
+            </v-card-title>
+            <v-card-actions>
+              <v-btn flat color="green">Edit</v-btn>
+              <v-btn flat color="orange" @click="deleteItem(item)" :disabled="item.projectOwnerId==userId">Delete</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-hover>
+      </v-flex>
+    </v-layout>
+    <!-- <code>{{items[0]}}</code> -->
   </v-container>
 </template>
 <script>
@@ -107,6 +123,10 @@ export default {
         value: "projectName"
       },
       {
+        text: "Project owner",
+        value: "projectOwner.fullName"
+      },
+      {
         text: "Actions",
         align: "center",
         value: "tool",
@@ -115,7 +135,10 @@ export default {
     ],
     items: [],
     editedItem: {},
-    defaultItem: {}
+    defaultItem: { projectName: "", projectOwnerId: null },
+    userId: null,
+    gridView: false,
+    listView: true
   }),
 
   computed: {
@@ -146,7 +169,21 @@ export default {
     console.log(this.$router.currentRoute);
   },
   methods: {
-    initialize() {},
+    initialize() {
+      this.defaultItem.projectOwnerId = this.userId = this.$store.state.userId;
+    },
+    handleListView() {
+      this.listView = true;
+      this.gridView = false;
+    },
+    handleGridView() {
+      this.listView = false;
+      this.gridView = true;
+    },
+    handleAllView() {
+      this.listView = true;
+      this.gridView = true;
+    },
     resetFilterData() {
       this.filter = {};
       // this.resetFilter = true;
@@ -156,14 +193,14 @@ export default {
       // }, 10);
     },
     createProject() {
-      // this.editedItem = Object.assign({}, this.defaultItem);
-      // this.dialog = true;
+      this.editedItem = Object.assign({}, this.defaultItem);
+      this.dialog = true;
     },
     loadData() {
       let me = this;
       me.loading = true;
       this.axios
-        .get("http://localhost:21021/api/services/app/ProjectService/GetAll", {
+        .get("ProjectService/GetAll", {
           params: {
             skipCount: (me.pagination.page - 1) * me.pagination.rowsPerPage,
             maxResultCount: me.pagination.rowsPerPage,
@@ -192,7 +229,7 @@ export default {
       // this.dialog = true;
     },
     deleteItem(item) {
-      // this.$root.deleteItem(item, "OrderService/Delete", this);
+      this.$root.deleteItem(item, "ProjectService/Delete", this);
     },
     close(item) {
       this.loadData();

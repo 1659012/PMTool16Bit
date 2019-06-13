@@ -56,14 +56,14 @@ export default {
         .then(response => {
           // me.loading = false;
           if (response.data.success) {
-            console.log(response.data.result);
-             me.$notify({
-              group: "message",
-              duration: 3000,
-              type: "success",
-              title: "Login success",
-              text: "Hi "+ response.data.result.profile.username
-            });    
+            // console.log(response.data.result);
+            //  me.$notify({
+            //   group: "message",
+            //   duration: 3000,
+            //   type: "success",
+            //   title: "Login success",
+            //   text: "Hi "+ response.data.result.profile.username
+            // });    
             me.$store.commit(
               APP_MUTATIONS.SET_TOKEN,
               response.data.result.accessToken
