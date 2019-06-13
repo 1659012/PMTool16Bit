@@ -2,17 +2,20 @@ import Vue from "vue";
 import "./plugins/vuetify";
 import App from "./App.vue";
 import router from "./router/router";
-// import store from "./store/store";
 import { store, APP_ACTIONS, APP_MUTATIONS } from "./store/store";
 import "./registerServiceWorker";
 import "roboto-fontface/css/roboto/roboto-fontface.css";
 import "font-awesome/css/font-awesome.css";
 import interceptor from "./store/interceptor";
+import titleMixin from "./mixin/titleMixin";
+
 import axios from "axios";
 import VueAxios from "vue-axios";
 import VueLocalStorage from "vue-localstorage";
 import Notifications from "vue-notification";
 import VeeValidate from "vee-validate";
+import Vue2Filters from "vue2-filters";
+
 // import paths from "./router/paths";
 // import Breabcrumbs from 'vue-2-breadcrumbs';
 
@@ -21,7 +24,15 @@ Vue.use(VueAxios, axios);
 Vue.use(VueLocalStorage);
 Vue.use(Notifications);
 Vue.use(VeeValidate);
+Vue.use(Vue2Filters);
 // Vue.use(Breabcrumbs);
+Vue.use(require("vue-moment"));
+
+//
+Vue.mixin(titleMixin);
+
+interceptor();
+
 var ApiURL = (axios.defaults.baseURL =
   process.env.NODE_ENV !== "production"
     ? "http://localhost:21021/api/services/app/"
@@ -32,7 +43,20 @@ var BaseUrl =
     ? "http://localhost:21022/"
     : "http://api.pmtool16bit.vn/";
 
-interceptor();
+//Filter datetime
+Vue.filter("date", function(value) {
+  return value ? moment(String(value)).format("DD-MMM-YYYY") : "";
+});
+Vue.filter("month", function(value) {
+  return value ? moment(String(value)).format("MMM/YYYY") : "";
+});
+Vue.filter("dateTime", function(value) {
+  return value
+    ? moment(String(value)).format("MMM-DD-YYYY") +
+        " " +
+        value.toLocaleTimeString("en-US")
+    : "";
+});
 
 router.onReady(() => {
   // let defaultpath = listrouter.Dashboard.path;

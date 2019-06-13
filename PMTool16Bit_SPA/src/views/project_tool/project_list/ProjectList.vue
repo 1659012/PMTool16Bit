@@ -5,7 +5,7 @@
       <!-- <v-toolbar-title>
           <h4>Projects</h4>
       </v-toolbar-title>-->
-      <v-btn :loading="loading3" :disabled="loading3" color="deep-purple darken-1" flat class="pl-0" @click="createProject">
+      <v-btn color="deep-purple darken-1" flat class="pl-0" @click="createProject">
         <v-icon left dark class>add_circle_outline</v-icon>New Project
       </v-btn>
 
