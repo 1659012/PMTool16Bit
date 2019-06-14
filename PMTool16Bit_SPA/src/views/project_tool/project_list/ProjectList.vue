@@ -12,18 +12,10 @@
       <v-spacer></v-spacer>
       <v-btn>filer sorting here</v-btn>
       <v-divider vertical></v-divider>
-      <v-tooltip bottom mr-0>
-        <template v-slot:activator="{ on }">
-          <v-btn color="primary" dark v-on="on" icon flat class="mr-1" @click="handleGridView">
-            <v-icon>apps</v-icon>
-          </v-btn>
-        </template>
-        <span>Grid View</span>
-      </v-tooltip>
 
-      <v-tooltip bottom>
+       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
-          <v-btn color="primary" dark v-on="on" icon flat class="mx-1" @click="handleListView">
+          <v-btn :color="listView && !gridView ?'primary':'grey'" dark v-on="on" icon flat class="mx-1" @click="handleListView">
             <v-icon>format_list_bulleted</v-icon>
           </v-btn>
         </template>
@@ -32,7 +24,18 @@
 
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
-          <v-btn color="primary" dark v-on="on" icon flat class="ml-1" @click="handleAllView">
+          <v-btn :color="!listView && gridView ?'primary':'grey'" dark v-on="on" icon flat class="mr-1" @click="handleGridView">
+            <v-icon>apps</v-icon>
+          </v-btn>
+        </template>
+        <span>Grid View</span>
+      </v-tooltip>
+
+     
+
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn :color="gridView && listView ?'primary':'grey'" dark v-on="on" icon flat class="ml-1" @click="handleAllView">
             <v-icon>vertical_split</v-icon>
           </v-btn>
         </template>
@@ -60,7 +63,7 @@
               <td class="colMax150">{{ props.item.projectName }}</td>
               <td class="colMax150">{{ props.item.projectOwner?props.item.projectOwner.fullName:"" }}</td>
               <td class="text-lg-center colMax120">
-                <v-btn flat icon @click="editItem(props.item)">
+                <v-btn flat icon  :to="`/ProjectDetail/${props.item.id}`">
                   <v-icon small>edit</v-icon>
                 </v-btn>
                 <v-tooltip bottom>

@@ -6,6 +6,6 @@ namespace PMTool16Bit.Services
     {        
         public string TaskName { get; set; }       
         public string Description { get; set; }
-        public int? GroupTaskId { get; set; }
+        public int? TaskGroupId { get; set; }
     }
 }

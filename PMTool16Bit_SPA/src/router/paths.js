@@ -2,6 +2,7 @@ import TestPage from "../views/testPage/TestPage.vue";
 import Dashboard from "../views/dashboard/Dashboard.vue";
 import Login from "../views/authentication/login/Login.vue";
 import ProjectList from "../views/project_tool/project_list/ProjectList.vue";
+import ProjectDetail from "../views/project_tool/project_list/ProjectDetail.vue";
 export const AUTH_REQUIRED = {
   auth: true
 };
@@ -12,12 +13,18 @@ export default [
     // breadcrumb: 'Home Page',
     name: "TestPage",
     component: TestPage,
-    meta: { ...AUTH_REQUIRED }//
+    meta: { ...AUTH_REQUIRED } //
   },
   {
-    path: "/projectlist",  
+    path: "/projectlist",
     name: "ProjectList",
     component: ProjectList,
+    meta: { ...AUTH_REQUIRED }
+  },
+  {
+    path: "/projectdetail/:id?",
+    name: "projectdetail",
+    component: ProjectDetail,
     meta: { ...AUTH_REQUIRED }
   },
   {

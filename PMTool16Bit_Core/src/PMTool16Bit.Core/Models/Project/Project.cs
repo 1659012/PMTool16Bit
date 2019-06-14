@@ -14,11 +14,16 @@ namespace PMTool16Bit.Models
         [StringLength(EnumLength.ProjectName)]
         public string ProjectName { get; set; }
 
+        [StringLength(EnumLength.ShortDescription)]
+        public string ShortDescription { get; set; }
+
+
+
 
         #region Reference  
         [ForeignKey(nameof(ProjectOwnerId))]
         public virtual User ProjectOwner { get; set; }
-        public virtual ICollection<GroupTask> GroupTasks { get; set; }
+        public virtual ICollection<TaskGroup> TaskGroups { get; set; }
         public virtual ICollection<ProjectMember> ProjectMembers { get; set; }
 
         #endregion

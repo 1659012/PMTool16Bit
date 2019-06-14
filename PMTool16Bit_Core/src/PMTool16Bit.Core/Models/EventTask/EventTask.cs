@@ -13,12 +13,12 @@ namespace PMTool16Bit.Models
         [StringLength(EnumLength.Description)]
         public string Description { get; set; }
 
-        public int GroupTaskId { get; set; }
+        public int TaskGroupId { get; set; }
 
         #region Reference
 
-        [ForeignKey(nameof(GroupTaskId))]
-        public virtual GroupTask GroupTask { get; set; }
+        [ForeignKey(nameof(TaskGroupId))]
+        public virtual TaskGroup GroupTask { get; set; }
 
         public virtual ICollection<EventTaskMember> EventTaskMembers { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }

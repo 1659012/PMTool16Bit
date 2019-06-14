@@ -13,13 +13,13 @@ using System.Threading.Tasks;
 namespace PMTool16Bit.Services
 {
     //[AbpAuthorize(PermissionNames.Pages_Users)]
-    public class GroupTaskService : AsyncCrudAppService<GroupTask, GroupTaskDto, int, GroupTaskFilter, GroupTaskCreateDto, GroupTaskUpdateDto>, IGroupTaskService
+    public class TaskGroupService : AsyncCrudAppService<TaskGroup, TaskGroupDto, int, TaskGroupFilter, TaskGroupCreateDto, TaskGroupUpdateDto>, ITaskGroupService
     {
         //private readonly IUserAppService userAppService;
         //private readonly IRepository<EventTable> eventTableRepository;
 
-        public GroupTaskService(
-             IRepository<GroupTask> repository
+        public TaskGroupService(
+             IRepository<TaskGroup> repository
             //IUserAppService userAppService,
             //IRepository<EventTable> eventTableRepository
 
@@ -28,7 +28,7 @@ namespace PMTool16Bit.Services
             //this.eventTableRepository = eventTableRepository;
         }
 
-        protected override IQueryable<GroupTask> CreateFilteredQuery(GroupTaskFilter input)
+        protected override IQueryable<TaskGroup> CreateFilteredQuery(TaskGroupFilter input)
         {
             return base.CreateFilteredQuery(input)
                 //.Include(p => p.Project)

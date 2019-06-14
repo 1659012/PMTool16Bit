@@ -2,7 +2,7 @@ using Abp.Application.Services;
 
 namespace PMTool16Bit.Services
 {
-    public interface IGroupTaskService : IApplicationService
+    public interface ITaskGroupService : IApplicationService
     {
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PMTool16Bit.EntityFrameworkCore;
 
 namespace PMTool16Bit.Migrations
 {
     [DbContext(typeof(PMTool16BitDbContext))]
-    partial class PMTool16BitDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190614161153_updateProject_RenameTaskGroup")]
+    partial class updateProject_RenameTaskGroup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1081,6 +1083,8 @@ namespace PMTool16Bit.Migrations
                     b.Property<string>("Description")
                         .HasMaxLength(500);
 
+                    b.Property<int>("GroupTaskId");
+
                     b.Property<bool>("IsActive");
 
                     b.Property<bool>("IsDeleted");
@@ -1089,14 +1093,12 @@ namespace PMTool16Bit.Migrations
 
                     b.Property<long?>("LastModifierUserId");
 
-                    b.Property<int>("TaskGroupId");
-
                     b.Property<string>("TaskName")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TaskGroupId");
+                    b.HasIndex("GroupTaskId");
 
                     b.ToTable("EvenTasks");
                 });
@@ -1406,7 +1408,7 @@ namespace PMTool16Bit.Migrations
                 {
                     b.HasOne("PMTool16Bit.Models.TaskGroup", "GroupTask")
                         .WithMany("EventTasks")
-                        .HasForeignKey("TaskGroupId")
+                        .HasForeignKey("GroupTaskId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

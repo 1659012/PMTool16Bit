@@ -6,12 +6,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PMTool16Bit.Models
 {
-    public class GroupTask : BaseAuditEntity
+    public class TaskGroup : BaseAuditEntity
     {
         public int ProjectId { get; set; }
 
         [StringLength(EnumLength.GroupTaskName)]
-        public string GroupTaskName { get; set; }
+        public string TaskGroupName { get; set; }
 
         #region Reference
 

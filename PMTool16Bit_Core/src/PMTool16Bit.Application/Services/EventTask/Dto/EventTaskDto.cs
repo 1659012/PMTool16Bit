@@ -19,11 +19,11 @@ namespace PMTool16Bit.Services
         //[StringLength(EnumLength.Description)]
         public string Description { get; set; }
 
-        public int GroupTaskId { get; set; }
+        public int TaskGroupId { get; set; }
 
         #region Reference
        
-        public virtual GroupTaskDto GroupTask { get; set; }
+        public virtual TaskGroupDto GroupTask { get; set; }
         public virtual ICollection<EventTaskMemberDto> EventTaskMembers { get; set; }
         public virtual ICollection<CommentDto> Comments { get; set; }
 
