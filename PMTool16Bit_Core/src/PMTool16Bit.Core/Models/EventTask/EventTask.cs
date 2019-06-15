@@ -1,4 +1,5 @@
 ﻿using PMTool16Bit.Models.Enum;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,6 +13,12 @@ namespace PMTool16Bit.Models
 
         [StringLength(EnumLength.Description)]
         public string Description { get; set; }
+
+        public DateTime? DueDate { get; set; }
+
+        public bool IsMarked { get; set; }
+
+        public bool IsCompleted { get; set; }
 
         public int TaskGroupId { get; set; }
 

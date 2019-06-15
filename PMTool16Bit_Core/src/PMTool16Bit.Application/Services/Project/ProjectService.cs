@@ -81,7 +81,8 @@ namespace PMTool16Bit.Services
                 .Include(p => p.ProjectMembers)
                 .ThenInclude(p => p.Member)
                 .Include(p => p.TaskGroups)
-                .ThenInclude(p => p.EventTasks)                
+                .ThenInclude(p => p.EventTasks)
+                .ThenInclude(q => q.EventTaskMembers)
                 .Where(p => p.Id == input.Id);
             var result = query.FirstOrDefaultAsync();
             return base.Get(input);

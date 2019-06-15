@@ -27,7 +27,9 @@ namespace PMTool16Bit.Users
         [StringLength(AbpUserBase.MaxEmailAddressLength)]
         public string EmailAddress { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
+
+        public bool IsPublishProfile { get; set; } = true;
 
         public string[] RoleNames { get; set; }
 

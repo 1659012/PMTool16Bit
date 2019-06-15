@@ -57,6 +57,10 @@ namespace PMTool16Bit
                     .ForMember(x => x.GroupTask, opt => opt.Ignore())
                     ;
 
+                    cfg.CreateMap<EventTaskUpdateDto, EventTask>()
+                   .ForMember(x => x.GroupTask, opt => opt.Ignore())
+                   ;
+
                     cfg.CreateMap<EventTaskMemberDto, EventTaskMember>()
                     .ForMember(x => x.Id, opt => opt.Ignore())
                     ;

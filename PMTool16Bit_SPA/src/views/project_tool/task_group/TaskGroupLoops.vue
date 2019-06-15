@@ -5,15 +5,26 @@
       <v-flex lg3 v-for="(taskGroup, taskGroupIndex) in taskGroups" :key="taskGroupIndex">
         <v-hover>
           <v-card class="rounded-card" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
-            <v-card-title primary-title>
+            <v-toolbar flat px-1>
+              <v-toolbar-title class="subheading">{{taskGroup.taskGroupName}}</v-toolbar-title>
+              <v-spacer></v-spacer>
+              <v-btn icon>
+                <v-icon>search</v-icon>
+              </v-btn>
+              <v-btn icon>
+                <v-icon>more_vert</v-icon>
+              </v-btn>
+            </v-toolbar>
+            <!-- <v-card-title primary-title>
               <div>
                 <h5 class="mb-0">{{taskGroup.taskGroupName}}</h5>
               </div>
-            </v-card-title>
+            </v-card-title>-->
 
-            <v-card-text>
-              <EventTaskLoops :eventTasks="taskGroup.eventTasks" :loadData="loadData"/>
-            </v-card-text>
+            <!-- <v-card-text>
+             
+            </v-card-text>-->
+            <EventTaskLoops :eventTasks="taskGroup.eventTasks" :loadData="loadData"/>
 
             <v-card-actions>
               <v-dialog lazy v-model="taskGroup.eventTaskDialog" max-width="600px" persistent>
@@ -76,3 +87,4 @@ export default {
   }
 };
 </script>
+

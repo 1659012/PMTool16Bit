@@ -15,6 +15,7 @@ import VueLocalStorage from "vue-localstorage";
 import Notifications from "vue-notification";
 import VeeValidate from "vee-validate";
 import Vue2Filters from "vue2-filters";
+import moment from "moment";
 
 // import paths from "./router/paths";
 // import Breabcrumbs from 'vue-2-breadcrumbs';
@@ -26,7 +27,10 @@ Vue.use(Notifications);
 Vue.use(VeeValidate);
 Vue.use(Vue2Filters);
 // Vue.use(Breabcrumbs);
-Vue.use(require("vue-moment"));
+
+Vue.use(require('vue-moment'), {
+  moment
+})
 
 //
 Vue.mixin(titleMixin);
@@ -60,10 +64,16 @@ Vue.filter("dateTime", function(value) {
 Vue.mixin({
   methods: {
     toDateString(date) {
-      if (date) return moment(String(date)).format("YYYY-MM-DD");
+      if (date) return moment(date).format("YYYY-MM-DD");
+      return "";
     },
     toMonthString(date) {
-      if (date) return moment(String(date)).format("YYYY-MM");
+      if (date) return moment(date).format("YYYY-MM");
+      return "";
+    },
+    momentFromNow(date) {      
+      if (date) return moment(date).fromNow();
+      return "";
     },
     createItem(item, url, me, isCloseModal = true) {
       Vue.axios.post(url, item).then(response => {

@@ -977,6 +977,8 @@ namespace PMTool16Bit.Migrations
 
                     b.Property<bool>("IsPhoneNumberConfirmed");
 
+                    b.Property<bool>("IsPublishProfile");
+
                     b.Property<bool>("IsTwoFactorEnabled");
 
                     b.Property<DateTime?>("LastModificationTime");
@@ -1081,9 +1083,15 @@ namespace PMTool16Bit.Migrations
                     b.Property<string>("Description")
                         .HasMaxLength(500);
 
+                    b.Property<DateTime?>("DueDate");
+
                     b.Property<bool>("IsActive");
 
+                    b.Property<bool>("IsCompleted");
+
                     b.Property<bool>("IsDeleted");
+
+                    b.Property<bool>("IsMarked");
 
                     b.Property<DateTime?>("LastModificationTime");
 

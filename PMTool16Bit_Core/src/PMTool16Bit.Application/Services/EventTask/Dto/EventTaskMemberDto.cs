@@ -18,6 +18,6 @@ namespace PMTool16Bit.Services
         public virtual EventTask EventTask { get; set; }
         public long MemberId { get; set; }        
         public virtual User Member { get; set; }
-
+        //public bool IsMarked { get; set; }
     }
 }

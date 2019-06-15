@@ -2,7 +2,7 @@
 <template>
   <v-card>
     <v-card-title>
-      <h4 class="headline">Create Event Task</h4>
+      <h4 class="headline">Update Event Task</h4>
     </v-card-title>
     <v-container grid-list-md px-3 py-2>
       <v-layout row wrap>
@@ -17,6 +17,15 @@
           ></v-text-field>
 
           <v-textarea name="Description" label="Description" v-model="editedItem.description" v-validate="{ max:256 }"></v-textarea>
+
+          <DateTimePicker :input="editedItem.dueDate" :output.sync="editedItem.dueDate" :label="`Due date`"/>
+          
+          <v-switch v-model="editedItem.isCompleted" label="isCompleted"></v-switch>
+
+           <v-switch v-model="editedItem.isMarked" label="BookMark"></v-switch>
+
+          <UserCombobox :defaultItems="editedItem.eventTaskMembers" :returnItems.sync="editedItem.eventTaskMembers"/>
+
         </v-flex>
       </v-layout>
     </v-container>
@@ -31,26 +40,18 @@
 <script>
 // import _ from "lodash";
 // import moment from "moment";
-// import DatePicker from "../basiccomponents/DatePicker";
+import DateTimePicker from "../../../components/basic/DateTimePicker";
+import UserCombobox from "../../../components/combobox/UserCombobox";
 export default {
   // title: "",
-  components: {},
-  props: ["taskGroupId"],
-  data: () => ({
-    editedItem: {
-      taskName: "",
-      taskGroupId: null,
-      eventTaskMembers: [],
-      description: ""
-    }
-  }),
+  components: {DateTimePicker ,UserCombobox},
+  props: ["editedItem"],
+  data: () => ({}),
 
   computed: {},
 
   watch: {},
-  mounted() {
-    this.editedItem.taskGroupId = this.taskGroupId;
-  },
+  mounted() {},
   methods: {
     close(item) {
       this.$emit("close", item);
@@ -64,6 +65,8 @@ export default {
     save() {
       this.$validator.validateAll().then(result => {
         if (result) {
+
+          this.editedItem.lastModificationTime=new Date();
           if (this.editedItem.id) {
             this.update();
           } else {
