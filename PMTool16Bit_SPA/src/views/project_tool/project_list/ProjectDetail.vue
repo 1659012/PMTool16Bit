@@ -6,43 +6,16 @@
         <TaskGroupCreate v-if="taskGroupDialog" lazy :projectId="editedItem.id" @close="close"/>
       </v-dialog>
     </v-toolbar>
-    <v-layout row wrap>
-      <v-flex lg12>
-        <div>
-          <h3 class="headline">{{editedItem.projectName}}</h3>
-        </div>
-      </v-flex>
-      <v-flex lg4 v-for="(item, index) in taskGroups" :key="index">
-        <v-hover>
-          <v-card slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
-            <v-card-title primary-title>
-              <div>
-                <h5 class="mb-0">{{item.taskGroupName}}</h5>
-               
-              </div>
-            </v-card-title>
-            <v-card-actions>
-              <v-dialog lazy v-model="item.eventTaskDialog" max-width="600px" persistent>
-                <EventTaskCreate v-if="item.eventTaskDialog" lazy :taskGroupId="item.id" @close="item.eventTaskDialog=false;loadData()"/>
-              </v-dialog>
-               <v-btn flat color="blue" @click="item.eventTaskDialog=true;">Add task</v-btn>
-              <v-btn flat color="green">Edit</v-btn>
-              <v-btn flat color="orange" @click="deleteTaskGroup(item)">Delete</v-btn>
-            </v-card-actions>
-          </v-card>          
-        </v-hover>
-        <div>
-          <code>{{item.eventTasks}}</code>
-          </div>
-      </v-flex>
-
-      <v-flex lg4>
-        <v-btn color="deep-purple darken-1" flat class="pl-0" @click="taskGroupDialog=true;">
+    <div>
+      <h3 class="headline">{{editedItem.projectName}}</h3>
+       <v-btn color="deep-purple darken-1" flat class="pl-0" @click="taskGroupDialog=true;">
           <v-icon left dark class>add_circle_outline</v-icon>Add Task group
         </v-btn>
-      </v-flex>
-    </v-layout>
-    <code>{{editedItem}}</code>
+    </div>
+
+    <TaskGroupLoops :taskGroups.sync="editedItem.taskGroups"/>
+   
+    <!-- <code>{{editedItem}}</code> -->
   </v-container>
 </template>
 <script>
@@ -51,9 +24,10 @@
 // import DatePicker from "../basiccomponents/DatePicker";
 import TaskGroupCreate from "./TaskGroupCreate";
 import EventTaskCreate from "./EventTaskCreate";
+import TaskGroupLoops from "../task_group/TaskGroupLoops";
 export default {
   title: "Project detail",
-  components: { TaskGroupCreate, EventTaskCreate },
+  components: { TaskGroupCreate, EventTaskCreate, TaskGroupLoops },
   props: [],
   data: () => ({
     editedItem: {},
