@@ -17,7 +17,6 @@
           ></v-text-field>
 
           <v-textarea name="Description" label="Description" v-model="editedItem.description" v-validate="{ max:256 }"></v-textarea>
-          <code>{{taskGroupId}}</code>
         </v-flex>
       </v-layout>
     </v-container>

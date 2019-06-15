@@ -3,18 +3,18 @@
   <v-container fluid grid-list-lg>
     <v-toolbar dense flat color="transparent">
       <v-dialog lazy v-model="taskGroupDialog" max-width="600px" persistent>
-        <TaskGroupCreate v-if="taskGroupDialog" lazy :projectId="editedItem.id" @close="close"/>
+        <TaskGroupCreate v-if="taskGroupDialog" lazy :projectId="editedItem.id" @close="taskGroupDialog=false;loadData()"/>
       </v-dialog>
     </v-toolbar>
     <div>
       <h3 class="headline">{{editedItem.projectName}}</h3>
-       <v-btn color="deep-purple darken-1" flat class="pl-0" @click="taskGroupDialog=true;">
-          <v-icon left dark class>add_circle_outline</v-icon>Add Task group
-        </v-btn>
+      <v-btn color="deep-purple darken-1" flat class="pl-0" @click="taskGroupDialog=true;">
+        <v-icon left dark class>add_circle_outline</v-icon>Add Task group
+      </v-btn>
     </div>
 
-    <TaskGroupLoops :taskGroups.sync="editedItem.taskGroups"/>
-   
+    <TaskGroupLoops :taskGroups.sync="editedItem.taskGroups" :loadData="loadData"/>
+
     <!-- <code>{{editedItem}}</code> -->
   </v-container>
 </template>
@@ -22,19 +22,17 @@
 // import _ from "lodash";
 // import moment from "moment";
 // import DatePicker from "../basiccomponents/DatePicker";
-import TaskGroupCreate from "./TaskGroupCreate";
-import EventTaskCreate from "./EventTaskCreate";
+import TaskGroupCreate from "../task_group/TaskGroupCreate";
 import TaskGroupLoops from "../task_group/TaskGroupLoops";
 export default {
   title: "Project detail",
-  components: { TaskGroupCreate, EventTaskCreate, TaskGroupLoops },
+  components: { TaskGroupCreate, TaskGroupLoops },
   props: [],
   data: () => ({
     editedItem: {},
     taskGroups: [],
     projectId: null,
-    taskGroupDialog: false,
-    eventTaskDialog: false
+    taskGroupDialog: false
   }),
 
   computed: {},
@@ -67,13 +65,6 @@ export default {
         .catch(e => {
           this.errors.push(e);
         });
-    },
-    close(item) {
-      this.loadData();
-      this.taskGroupDialog = false;
-    },
-    deleteTaskGroup(item) {
-      this.$root.deleteItem(item, "TaskGroupService/Delete", this);
     },
     create() {
       this.$root.createItem(this.editedItem, "ProjectService/Create", this);

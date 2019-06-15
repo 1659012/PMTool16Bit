@@ -4,17 +4,17 @@
     <v-layout row wrap>
       <v-flex lg3 v-for="(taskGroup, taskGroupIndex) in taskGroups" :key="taskGroupIndex">
         <v-hover>
-          <v-card slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
+          <v-card class="rounded-card" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
             <v-card-title primary-title>
               <div>
                 <h5 class="mb-0">{{taskGroup.taskGroupName}}</h5>
               </div>
             </v-card-title>
+
             <v-card-text>
-              <div v-for="(eventTask, eventTaskIndex) in taskGroup.eventTasks" :key="eventTaskIndex">
-                <code>{{taskGroup.eventTasks}}</code>
-              </div>
+              <EventTaskLoops :eventTasks="taskGroup.eventTasks" :loadData="loadData"/>
             </v-card-text>
+
             <v-card-actions>
               <v-dialog lazy v-model="taskGroup.eventTaskDialog" max-width="600px" persistent>
                 <EventTaskCreate
@@ -39,10 +39,11 @@
 // import moment from "moment";
 // import DatePicker from "../basiccomponents/DatePicker";
 import EventTaskCreate from "../event_task/EventTaskCreate";
+import EventTaskLoops from "../event_task/EventTaskLoops";
 export default {
   // title: "",
-  components: { EventTaskCreate },
-  props: ["taskGroups"],
+  components: { EventTaskCreate, EventTaskLoops },
+  props: ["taskGroups", "loadData"],
   data: () => ({}),
 
   computed: {},
@@ -52,8 +53,8 @@ export default {
     this.taskGroups = this.value;
   },
   methods: {
-    close(item) {
-      this.$emit("close", item);
+    deleteTaskGroup(item) {
+      this.$root.deleteItem(item, "TaskGroupService/Delete", this);
     },
     create() {
       this.$root.createItem(this.editedItem, "EventTaskService/Create", this);
