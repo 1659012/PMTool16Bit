@@ -2,7 +2,7 @@ const PriorityLevels = [
   {
     value: 0,
     text: "Low",
-    color: "grey lighten-4",
+    color: "grey lighten-2",
     icon: "alarm"
   },
   {

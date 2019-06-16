@@ -3,58 +3,77 @@
   <div>
     <v-divider></v-divider>
     <v-list class="py-0">
-      <div v-for="(eventTask, eventTaskIndex) in eventTasks" :key="eventTaskIndex" @click="openEventTaskDetail(eventTask)" class="customeList">
+      <div v-for="(eventTask, eventTaskIndex) in eventTasks" :key="eventTaskIndex" @click="openEventTaskDetail(eventTask)" class="customeList pt-1">
         <v-list-tile avatar ripple>
           <v-list-tile-content>
             <v-list-tile-sub-title class="text--primary" style="display: flex;
               align-items: center;">
               <v-tooltip left>
                 <template v-slot:activator="{ on }">
-                  <v-icon :color="eventTask.isCompleted? 'teal accent-3': 'grey lighten-4'" v-on="on">check_circle</v-icon>
+                  <v-icon :color="eventTask.isCompleted? 'teal accent-3': 'grey lighten-2'" v-on="on">check_circle</v-icon>
                 </template>
                 <span>{{eventTask.isCompleted?'Comleted':'Incomplete'}}</span>
               </v-tooltip>
-              <span class="ml-2">{{ eventTask.taskName }}</span>
+              <span class="ml-1">{{ eventTask.taskName }}</span>
             </v-list-tile-sub-title>
 
-             <v-list-tile-sub-title class="text--primary" style="display: flex;
+            <v-list-tile-sub-title class="text--primary" style="display: flex;
               align-items: center;">
+              <v-layout row wrap style="display: flex;
+              align-items: center;">
+                <v-flex xs1>
+                  <v-tooltip left>
+                    <template v-slot:activator="{ on }">
+                      <v-icon color="light-blue accent-1" v-on="on">event</v-icon>
+                    </template>
+                    <span>Due date</span>
+                  </v-tooltip>
+                </v-flex>
+
+                <v-flex xs5>
+                  <span class="pl-2">{{eventTask.dueDate?eventTask.dueDate:""|date}}</span>
+                </v-flex>
+
+                <v-flex xs1>
+                  <v-tooltip left>
+                    <template v-slot:activator="{ on }">
+                      <v-icon :color="eventTask.eventTaskMembers.length>0?'light-blue accent-1':'grey lighten-2'" v-on="on">assignment_ind</v-icon>
+                    </template>
+                    <span>{{eventTask.eventTaskMembers.length>0?'Assigned members':'Unassign'}}</span>
+                  </v-tooltip>
+                </v-flex>
+              
+                <v-flex xs5>
+                  <span class="ml-2">Hoan</span>
+                </v-flex>
+              </v-layout>
+            </v-list-tile-sub-title>
+          </v-list-tile-content>
+
+          <v-list-tile-action>
+            <v-list-tile-action-text>{{momentFromNow(eventTask.lastModificationTime)}}</v-list-tile-action-text>
+            
+            <div>
               <v-tooltip left>
                 <template v-slot:activator="{ on }">
                   <v-icon :color="priorityLevels[eventTask.priorityLevel].color" v-on="on">{{priorityLevels[eventTask.priorityLevel].icon}}</v-icon>
                 </template>
                 <span>Priority level: {{priorityLevels[eventTask.priorityLevel].text}}</span>
               </v-tooltip>
-             
-              <span class="mx-2">
-                {{eventTask.dueDate?eventTask.dueDate:""|date}}
-              </span>
 
-
-              <v-tooltip left>
+                <v-tooltip right>
                 <template v-slot:activator="{ on }">
-                  <v-icon :color="priorityLevels[eventTask.priorityLevel].color" v-on="on">{{priorityLevels[eventTask.priorityLevel].icon}}</v-icon>
+                   <v-icon v-on="on" :color="eventTask.isMarked? 'orange': 'grey lighten-1'">star</v-icon>
                 </template>
-                <span>Priority level: {{priorityLevels[eventTask.priorityLevel].text}}</span>              
+                <span>Bookmark</span>
               </v-tooltip>
-
-                <span class="ml-2">Hoan</span>
-            </v-list-tile-sub-title>
-            
-            <v-list-tile-sub-title>
-              <!-- <img class="customAvatar mr-2" src="../../../assets/logo.png">
-              <img class="customAvatar mr-2" src="../../../assets/logo.png">-->
-            </v-list-tile-sub-title>
-          </v-list-tile-content>
-
-          <v-list-tile-action>
-            <v-list-tile-action-text>{{momentFromNow(eventTask.lastModificationTime)}}</v-list-tile-action-text>
-            <v-icon :color="eventTask.isMarked? 'orange': 'grey lighten-1'">star</v-icon>
+             
+            </div>
           </v-list-tile-action>
         </v-list-tile>
 
         <v-divider v-if="eventTaskIndex + 1 < eventTasks.length" :key="`divider-${eventTaskIndex}`"></v-divider>
-        <!-- <code>{{eventTask.priorityLevelItem}}</code> -->
+        <!-- <code>{{eventTask.eventTaskMembers}}</code> -->
       </div>
     </v-list>
 
@@ -72,7 +91,7 @@ export default {
   data: () => ({
     eventTaskDialog: false,
     editedItem: {},
-    render:false,
+    render: false,
     priorityLevels: Enums.PriorityLevels
   }),
 
@@ -84,8 +103,8 @@ export default {
     //   let foundItem = this.priorityLevels.find(
     //     priorityLevel => priorityLevel.value == eventTask.priorityLevel
     //   );
-    //   if (foundItem) eventTask.priorityLevelItem = foundItem;  
-    //   console.log(foundItem);   
+    //   if (foundItem) eventTask.priorityLevelItem = foundItem;
+    //   console.log(foundItem);
     // });
     // let me= this;
     //  _.delay(() => (me.render = true), 10);
