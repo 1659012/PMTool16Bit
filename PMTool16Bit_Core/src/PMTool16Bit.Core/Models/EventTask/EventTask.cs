@@ -18,7 +18,13 @@ namespace PMTool16Bit.Models
 
         public bool IsMarked { get; set; }
 
+        [StringLength(EnumLength.IdLimit)]
+        public string FileIds { get; set; }
+
         public bool IsCompleted { get; set; }
+
+        [Range(0, 3)]
+        public int PriorityLevel { get; set; }
 
         public int TaskGroupId { get; set; }
 

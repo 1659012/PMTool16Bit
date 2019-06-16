@@ -1085,6 +1085,9 @@ namespace PMTool16Bit.Migrations
 
                     b.Property<DateTime?>("DueDate");
 
+                    b.Property<string>("FileIds")
+                        .HasMaxLength(128);
+
                     b.Property<bool>("IsActive");
 
                     b.Property<bool>("IsCompleted");
@@ -1096,6 +1099,8 @@ namespace PMTool16Bit.Migrations
                     b.Property<DateTime?>("LastModificationTime");
 
                     b.Property<long?>("LastModifierUserId");
+
+                    b.Property<int>("PriorityLevel");
 
                     b.Property<int>("TaskGroupId");
 

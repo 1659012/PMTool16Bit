@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <v-menu
+    <!-- <v-menu
       ref="menu"
       lazy
       :close-on-content-click="false"
@@ -19,22 +19,29 @@
         <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
         <v-btn flat color="primary" @click="$refs.menu.save(date)">OK</v-btn>
       </v-date-picker>
-    </v-menu>  
+    </v-menu>-->
+
+    <v-menu v-model="menu" :close-on-content-click="false" :nudge-right="40" lazy transition="scale-transition" offset-y full-width min-width="290px">
+      <template v-slot:activator="{ on }">
+        <v-text-field v-model="date" :label="label?label:'Pick date'" prepend-icon="event" :clearable="clearable" v-on="on"></v-text-field>
+      </template>
+      <v-date-picker v-model="date" @input="menu = false"></v-date-picker>
+    </v-menu>
   </div>
 </template>
 <script>
 export default {
   components: {},
-  props: ["label","input","output"],
-  data: () => ({date:null, menu:false}),
+  props: ["label","clearable", "input", "output"],
+  data: () => ({ date: null, menu: false }),
   computed: {},
   watch: {
-    date(value){
+    date(value) {
       this.$emit("update:output", value);
     }
   },
   mounted() {
-    this.date= this.input?this.input.slice(0,10):null;
+    this.date = this.input ? this.input.slice(0, 10) : null;
   },
   methods: {}
 };

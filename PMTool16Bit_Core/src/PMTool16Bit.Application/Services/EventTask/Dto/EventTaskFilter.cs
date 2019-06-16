@@ -11,5 +11,6 @@ namespace PMTool16Bit.Services
         public bool? IsMarked { get; set; }
         public bool? IsCompleted { get; set; }
         public int? TaskGroupId { get; set; }
+        public int? PriorityLevel { get; set; }
     }
 }

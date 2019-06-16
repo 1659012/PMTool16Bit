@@ -15,6 +15,13 @@ namespace PMTool16Bit.Services
         public DateTime? DueDate { get; set; }
         public bool IsMarked { get; set; }
         public bool IsCompleted { get; set; }
+
+        [StringLength(EnumLength.IdLimit)]
+        public string FileIds { get; set; }
+
+        [Range(0, 3)]
+        public int PriorityLevel { get; set; }
+
         public int TaskGroupId { get; set; }
 
         #region Reference
