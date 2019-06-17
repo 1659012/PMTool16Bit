@@ -14,5 +14,7 @@ namespace PMTool16Bit.Services
 
         //[StringLength(EnumLength.ProjectName)]
         public string ProjectName { get; set; }
+     
+        public string ShortDescription { get; set; }
     }
 }

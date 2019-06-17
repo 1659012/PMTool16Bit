@@ -16,6 +16,8 @@ namespace PMTool16Bit.Models
 
         public long MemberId { get; set; }
 
+        //public bool IsMarked { get; set; }
+
         [ForeignKey(nameof(MemberId))]
         public virtual User Member { get; set; }
 

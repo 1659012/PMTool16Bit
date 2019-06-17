@@ -259,6 +259,19 @@ namespace PMTool16Bit.Users
         //        AvatarId = user.AvatarId,
         //    };
         //}
+        public async Task<List<UserDropdownDto>> GetDropdown()
+        {
+            return await Repository
+                .GetAll()               
+                .OrderBy(p => p.Name)
+                .Select(p => new UserDropdownDto
+                {
+                    Id = p.Id,
+                    FullName = p.FullName,
+                    EmailAddress = p.EmailAddress
+                })
+                .ToListAsync();
+        }
 
         #endregion
 

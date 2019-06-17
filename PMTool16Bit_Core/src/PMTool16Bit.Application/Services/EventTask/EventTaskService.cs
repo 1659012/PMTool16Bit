@@ -16,20 +16,28 @@ namespace PMTool16Bit.Services
     public class EventTaskService : AsyncCrudAppService<EventTask, EventTaskDto, int, EventTaskFilter, EventTaskCreateDto, EventTaskUpdateDto>, IEventTaskService
     {
         //private readonly IUserAppService userAppService;
-        //private readonly IRepository<EventTable> eventTableRepository;
+        private readonly IRepository<EventTaskMember> eventTaskMemberRepository;
 
         public EventTaskService(
-             IRepository<EventTask> repository
+             IRepository<EventTask> repository,
             //IUserAppService userAppService,
-            //IRepository<EventTable> eventTableRepository
+            IRepository<EventTaskMember> eventTaskMemberRepository
 
             ) : base(repository)
-        {           
+        {
             //this.eventTableRepository = eventTableRepository;
+            this.eventTaskMemberRepository = eventTaskMemberRepository;
+        }
+
+        public override Task<EventTaskDto> Update(EventTaskUpdateDto input)
+        {
+            eventTaskMemberRepository.Delete(p => p.EventTaskId == input.Id);
+            return base.Update(input);
         }
 
         protected override IQueryable<EventTask> CreateFilteredQuery(EventTaskFilter input)
         {
+
             return base.CreateFilteredQuery(input);
               
         }  

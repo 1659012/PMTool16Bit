@@ -11,7 +11,7 @@ namespace PMTool16Bit.EntityFrameworkCore
     {
         /* Define a DbSet for each entity of the application */
         public DbSet<Project> Projects { get; set; }
-        public DbSet<GroupTask> GroupTasks { get; set; }
+        public DbSet<TaskGroup> TaskGroups { get; set; }
         public DbSet<EventTask> EvenTasks { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<ProjectMember> ProjectMembers { get; set; }
@@ -25,11 +25,11 @@ namespace PMTool16Bit.EntityFrameworkCore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Project>()
-                .HasMany(c => c.GroupTasks)
+                .HasMany(c => c.TaskGroups)
                 .WithOne(e => e.Project)
                 /*.OnDelete(DeleteBehavior.Cascade); */; 
 
-            modelBuilder.Entity<GroupTask>()
+            modelBuilder.Entity<TaskGroup>()
                .HasMany(c => c.EventTasks)
                .WithOne(e => e.GroupTask)
                /*.OnDelete(DeleteBehavior.Cascade); */;

@@ -15,7 +15,9 @@ namespace PMTool16Bit.Authorization.Users
             return Guid.NewGuid().ToString("N").Truncate(16);
         }
 
+        public override bool IsActive { get; set; } = true;
         public int AvatarId { get; set; }
+        public bool IsPublishProfile { get; set; } = true;
 
         public static User CreateTenantAdminUser(int tenantId, string emailAddress)
         {

@@ -1,4 +1,5 @@
 ﻿using PMTool16Bit.Models.Enum;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -11,8 +12,17 @@ namespace PMTool16Bit.Services
 
         [StringLength(EnumLength.Description)]
         public string Description { get; set; }
+        public DateTime? DueDate { get; set; }
+        public bool IsMarked { get; set; }
+        public bool IsCompleted { get; set; }
 
-        public int GroupTaskId { get; set; }
+        [StringLength(EnumLength.IdLimit)]
+        public string FileIds { get; set; }
+
+        [Range(0, 3)]
+        public int PriorityLevel { get; set; }
+
+        public int TaskGroupId { get; set; }
 
         #region Reference
 

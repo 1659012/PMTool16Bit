@@ -977,6 +977,8 @@ namespace PMTool16Bit.Migrations
 
                     b.Property<bool>("IsPhoneNumberConfirmed");
 
+                    b.Property<bool>("IsPublishProfile");
+
                     b.Property<bool>("IsTwoFactorEnabled");
 
                     b.Property<DateTime?>("LastModificationTime");
@@ -1050,7 +1052,8 @@ namespace PMTool16Bit.Migrations
 
                     b.Property<int>("EventTaskId");
 
-                    b.Property<string>("FileIds");
+                    b.Property<string>("FileIds")
+                        .HasMaxLength(128);
 
                     b.Property<bool>("IsActive");
 
@@ -1080,22 +1083,33 @@ namespace PMTool16Bit.Migrations
                     b.Property<string>("Description")
                         .HasMaxLength(500);
 
-                    b.Property<int>("GroupTaskId");
+                    b.Property<DateTime?>("DueDate");
+
+                    b.Property<string>("FileIds")
+                        .HasMaxLength(128);
 
                     b.Property<bool>("IsActive");
 
+                    b.Property<bool>("IsCompleted");
+
                     b.Property<bool>("IsDeleted");
+
+                    b.Property<bool>("IsMarked");
 
                     b.Property<DateTime?>("LastModificationTime");
 
                     b.Property<long?>("LastModifierUserId");
+
+                    b.Property<int>("PriorityLevel");
+
+                    b.Property<int>("TaskGroupId");
 
                     b.Property<string>("TaskName")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GroupTaskId");
+                    b.HasIndex("TaskGroupId");
 
                     b.ToTable("EvenTasks");
                 });
@@ -1113,36 +1127,6 @@ namespace PMTool16Bit.Migrations
                     b.HasIndex("MemberId");
 
                     b.ToTable("EventTaskMembers");
-                });
-
-            modelBuilder.Entity("PMTool16Bit.Models.GroupTask", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreationTime");
-
-                    b.Property<long?>("CreatorUserId");
-
-                    b.Property<string>("GroupTaskName")
-                        .HasMaxLength(256);
-
-                    b.Property<bool>("IsActive");
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<DateTime?>("LastModificationTime");
-
-                    b.Property<long?>("LastModifierUserId");
-
-                    b.Property<int>("ProjectId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("GroupTasks");
                 });
 
             modelBuilder.Entity("PMTool16Bit.Models.Project", b =>
@@ -1168,6 +1152,9 @@ namespace PMTool16Bit.Migrations
 
                     b.Property<long>("ProjectOwnerId");
 
+                    b.Property<string>("ShortDescription")
+                        .HasMaxLength(256);
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProjectOwnerId");
@@ -1188,6 +1175,36 @@ namespace PMTool16Bit.Migrations
                     b.HasIndex("MemberId");
 
                     b.ToTable("ProjectMembers");
+                });
+
+            modelBuilder.Entity("PMTool16Bit.Models.TaskGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<int>("ProjectId");
+
+                    b.Property<string>("TaskGroupName")
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("TaskGroups");
                 });
 
             modelBuilder.Entity("PMTool16Bit.MultiTenancy.Tenant", b =>
@@ -1400,9 +1417,9 @@ namespace PMTool16Bit.Migrations
 
             modelBuilder.Entity("PMTool16Bit.Models.EventTask", b =>
                 {
-                    b.HasOne("PMTool16Bit.Models.GroupTask", "GroupTask")
+                    b.HasOne("PMTool16Bit.Models.TaskGroup", "GroupTask")
                         .WithMany("EventTasks")
-                        .HasForeignKey("GroupTaskId")
+                        .HasForeignKey("TaskGroupId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -1416,14 +1433,6 @@ namespace PMTool16Bit.Migrations
                     b.HasOne("PMTool16Bit.Authorization.Users.User", "Member")
                         .WithMany("EventTaskMembers")
                         .HasForeignKey("MemberId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("PMTool16Bit.Models.GroupTask", b =>
-                {
-                    b.HasOne("PMTool16Bit.Models.Project", "Project")
-                        .WithMany("GroupTasks")
-                        .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -1444,6 +1453,14 @@ namespace PMTool16Bit.Migrations
 
                     b.HasOne("PMTool16Bit.Models.Project", "Project")
                         .WithMany("ProjectMembers")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PMTool16Bit.Models.TaskGroup", b =>
+                {
+                    b.HasOne("PMTool16Bit.Models.Project", "Project")
+                        .WithMany("TaskGroups")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

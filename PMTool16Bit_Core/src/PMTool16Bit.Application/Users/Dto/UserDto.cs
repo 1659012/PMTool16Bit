@@ -42,6 +42,10 @@ namespace PMTool16Bit.Users
 
         public int AvatarId { get; set; }
 
+        public string AvatarUrl { get; set; }
+
+        public bool IsPublishProfile { get; set; }
+
         #region reference
         public virtual ICollection<ProjectMemberDto> ProjectMembers { get; set; }
         public virtual ICollection<EventTaskMemberDto> EventTaskMembers { get; set; }

@@ -16,6 +16,9 @@ namespace PMTool16Bit.Services
         [StringLength(EnumLength.ProjectName)]
         public string ProjectName { get; set; }
 
+        [StringLength(EnumLength.ShortDescription)]
+        public string ShortDescription { get; set; }
+
 
         #region Reference
 

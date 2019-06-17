@@ -13,9 +13,12 @@ namespace PMTool16Bit.Services
         [StringLength(EnumLength.ProjectName)]
         public string ProjectName { get; set; }
 
+        [StringLength(EnumLength.ShortDescription)]
+        public string ShortDescription { get; set; }
+
 
         #region Reference
-        public virtual List<GroupTaskDto> GroupTasks { get; set; }
+        public virtual List<TaskGroupDto> TaskGroups { get; set; }
 
         public List<ProjectMemberDto> ProjectMembers { get; set; }
         #endregion

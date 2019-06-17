@@ -1,4 +1,5 @@
 ﻿using PMTool16Bit.Models.Enum;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,12 +14,24 @@ namespace PMTool16Bit.Models
         [StringLength(EnumLength.Description)]
         public string Description { get; set; }
 
-        public int GroupTaskId { get; set; }
+        public DateTime? DueDate { get; set; }
+
+        public bool IsMarked { get; set; }
+
+        [StringLength(EnumLength.IdLimit)]
+        public string FileIds { get; set; }
+
+        public bool IsCompleted { get; set; }
+
+        [Range(0, 3)]
+        public int PriorityLevel { get; set; }
+
+        public int TaskGroupId { get; set; }
 
         #region Reference
 
-        [ForeignKey(nameof(GroupTaskId))]
-        public virtual GroupTask GroupTask { get; set; }
+        [ForeignKey(nameof(TaskGroupId))]
+        public virtual TaskGroup GroupTask { get; set; }
 
         public virtual ICollection<EventTaskMember> EventTaskMembers { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }

@@ -6,7 +6,6 @@ using System.Text;
 using PMTool16Bit.Services;
 using System.ComponentModel.DataAnnotations.Schema;
 using PMTool16Bit.Users;
-using PMTool16Bit.Users;
 
 namespace PMTool16Bit.Services
 {
@@ -17,12 +16,13 @@ namespace PMTool16Bit.Services
 
         //[StringLength(EnumLength.ProjectName)]
         public string ProjectName { get; set; }
-
+        
+        public string ShortDescription { get; set; }
 
         #region Reference  
         //[ForeignKey(nameof(ProjectOwnerId))]
         public virtual UserDto ProjectOwner { get; set; }
-        public virtual ICollection<GroupTaskDto> GroupTasks { get; set; }
+        public virtual ICollection<TaskGroupDto> TaskGroups { get; set; }
         public ICollection<ProjectMemberDto> ProjectMembers { get; set; }
         #endregion
     }
