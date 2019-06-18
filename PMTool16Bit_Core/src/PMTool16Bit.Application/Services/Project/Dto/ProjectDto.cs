@@ -21,7 +21,7 @@ namespace PMTool16Bit.Services
 
         #region Reference  
         //[ForeignKey(nameof(ProjectOwnerId))]
-        public virtual UserDto ProjectOwner { get; set; }
+        public virtual UserSimpleDto ProjectOwner { get; set; }
         public virtual ICollection<TaskGroupDto> TaskGroups { get; set; }
         public ICollection<ProjectMemberDto> ProjectMembers { get; set; }
         #endregion

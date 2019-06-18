@@ -50,26 +50,6 @@ namespace PMTool16Bit.Services
                 .ToListAsync();
         }
 
-        public override Task<ProjectDto> Get(EntityDto<int> input)
-        {
-            //var filter = new ProjectFilter()
-            //{
-            //    Id = input.Id
-            //};
-            //var query = base.CreateFilteredQuery(filter)
-            //    .Include(p => p.ProjectOwner)
-            //    .Include(p => p.ProjectMembers)
-            //    .ThenInclude(p => p.Member)
-            //    .Include(p => p.GroupTasks)
-            //    .ThenInclude (p=> p.EventTasks)
-                
-            //    .Where(p => p.Id == input.Id);
-            //;
-            //var result = query.FirstOrDefaultAsync();
-
-            return base.Get(input);
-        }
-
         public Task<ProjectDto> GetProjectDetailById(EntityDto<int> input)
         {
             var filter = new ProjectFilter()
@@ -83,8 +63,10 @@ namespace PMTool16Bit.Services
                 .Include(p => p.TaskGroups)
                 .ThenInclude(p => p.EventTasks)
                 .ThenInclude(q => q.EventTaskMembers)
+                .ThenInclude(m => m.Member)
                 .Where(p => p.Id == input.Id);
             var result = query.FirstOrDefaultAsync();
+
             return base.Get(input);
         }
     }

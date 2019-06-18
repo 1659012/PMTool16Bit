@@ -38,9 +38,13 @@ namespace PMTool16Bit.Services
         protected override IQueryable<EventTask> CreateFilteredQuery(EventTaskFilter input)
         {
 
-            return base.CreateFilteredQuery(input);
-              
+            return base.CreateFilteredQuery(input);              
         }  
+        //private string GetMemberNames(EventTaskDto eventTaskDto)
+        //{
+        //    string result = "";
+        //    return result;
+        //}
     
     }
 }

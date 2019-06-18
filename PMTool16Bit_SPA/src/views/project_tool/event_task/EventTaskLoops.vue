@@ -24,13 +24,13 @@
                 <v-flex xs1>
                   <v-tooltip left>
                     <template v-slot:activator="{ on }">
-                      <v-icon color="light-blue accent-1" v-on="on">event</v-icon>
+                      <v-icon :color="eventTask.dueDate?'light-blue accent-1':'grey lighten-2'" v-on="on">event</v-icon>
                     </template>
-                    <span>Due date</span>
+                    <span>{{eventTask.dueDate? 'Due date': 'Unassign due date'}}</span>
                   </v-tooltip>
                 </v-flex>
 
-                <v-flex xs5>
+                <v-flex xs4>
                   <span class="pl-2">{{eventTask.dueDate?eventTask.dueDate:""|date}}</span>
                 </v-flex>
 
@@ -39,12 +39,15 @@
                     <template v-slot:activator="{ on }">
                       <v-icon :color="eventTask.eventTaskMembers.length>0?'light-blue accent-1':'grey lighten-2'" v-on="on">assignment_ind</v-icon>
                     </template>
-                    <span>{{eventTask.eventTaskMembers.length>0?'Assigned members':'Unassign'}}</span>
+                    <span>{{eventTask.eventTaskMembers.length>0?'Assigned members':'Unassign member'}}</span>
                   </v-tooltip>
                 </v-flex>
-              
-                <v-flex xs5>
-                  <span class="ml-2">Hoan</span>
+
+                <v-flex xs4>
+                  <span
+                    class="ml-2"
+                    :title="eventTask.eventTaskMembers.length > 0?getMemberNames(eventTask.eventTaskMembers):''"
+                  >{{getMemberNames(eventTask.eventTaskMembers)|truncate(15)}}</span>
                 </v-flex>
               </v-layout>
             </v-list-tile-sub-title>
@@ -52,7 +55,7 @@
 
           <v-list-tile-action>
             <v-list-tile-action-text>{{momentFromNow(eventTask.lastModificationTime)}}</v-list-tile-action-text>
-            
+
             <div>
               <v-tooltip left>
                 <template v-slot:activator="{ on }">
@@ -61,13 +64,12 @@
                 <span>Priority level: {{priorityLevels[eventTask.priorityLevel].text}}</span>
               </v-tooltip>
 
-                <v-tooltip right>
+              <v-tooltip right>
                 <template v-slot:activator="{ on }">
-                   <v-icon v-on="on" :color="eventTask.isMarked? 'orange': 'grey lighten-1'">star</v-icon>
+                  <v-icon v-on="on" :color="eventTask.isMarked? 'orange': 'grey lighten-1'">star</v-icon>
                 </template>
-                <span>Bookmark</span>
+                <span>{{eventTask.isMarked?'Bookmarked':'Bookmarke this task'}}</span>
               </v-tooltip>
-             
             </div>
           </v-list-tile-action>
         </v-list-tile>
@@ -98,17 +100,7 @@ export default {
   computed: {},
 
   watch: {},
-  mounted() {
-    // this.eventTasks.forEach(eventTask => {
-    //   let foundItem = this.priorityLevels.find(
-    //     priorityLevel => priorityLevel.value == eventTask.priorityLevel
-    //   );
-    //   if (foundItem) eventTask.priorityLevelItem = foundItem;
-    //   console.log(foundItem);
-    // });
-    // let me= this;
-    //  _.delay(() => (me.render = true), 10);
-  },
+  mounted() {},
   methods: {
     openEventTaskDetail(item) {
       this.editedItem = Object.assign({}, item);
@@ -118,6 +110,17 @@ export default {
       this.editedItem = {};
       this.eventTaskDialog = false;
       this.loadData();
+    },
+    getMemberNames(eventTaskMembers) {
+      if (Array.isArray(eventTaskMembers) && eventTaskMembers.length > 0) {
+        var names = "";
+        eventTaskMembers.forEach(item => {
+          names += item.member.name + ", ";
+        });
+        names = names.substring(0, names.length - 2);
+        return names;
+      }
+      return " ";
     },
     create() {
       this.$root.createItem(this.editedItem, "EventTaskService/Create", this);

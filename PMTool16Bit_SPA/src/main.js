@@ -61,6 +61,17 @@ Vue.filter("dateTime", function(value) {
         value.toLocaleTimeString("en-US")
     : "";
 });
+
+//Filter datetime
+Vue.filter('truncate', function (value, limit) {
+  if(!value) return "";
+
+  if (value.length > limit) {
+      value = value.substring(0, (limit - 3)) + '...';
+  }
+
+  return value
+});
 Vue.mixin({
   methods: {
     toDateString(date) {
