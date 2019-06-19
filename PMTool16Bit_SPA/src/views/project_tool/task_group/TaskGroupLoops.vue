@@ -8,41 +8,44 @@
             <v-toolbar flat px-1>
               <v-toolbar-title class="subheading">{{taskGroup.taskGroupName}}</v-toolbar-title>
               <v-spacer></v-spacer>
-              <v-btn icon>
-                <v-icon>search</v-icon>
-              </v-btn>
-              <v-btn icon>
-                <v-icon>more_vert</v-icon>
-              </v-btn>
+
+              <v-menu bottom left lazy transition="slide-x-transition">
+                <template v-slot:activator="{ on }">
+                  <v-btn dark icon v-on="on">
+                    <v-icon>more_vert</v-icon>
+                  </v-btn>
+                </template>
+
+                <v-list>
+                  <v-list-tile class="text--primary pa-0" @click="taskGroup.eventTaskDialog=true;">
+                    <v-list-tile-title class="caption py-0 my-0">Task group detail</v-list-tile-title>
+                  </v-list-tile>
+                  <v-divider></v-divider>
+                  <v-list-tile class="text--primary pa-0" @click="deleteTaskGroup(taskGroup)">
+                    <v-list-tile-title class="caption py-0 my-0">Delete task group</v-list-tile-title>
+                  </v-list-tile>
+                </v-list>
+              </v-menu>
             </v-toolbar>
-            <!-- <v-card-title primary-title>
-              <div>
-                <h5 class="mb-0">{{taskGroup.taskGroupName}}</h5>
-              </div>
-            </v-card-title>-->
-
-            <!-- <v-card-text>
-             
-            </v-card-text>-->
             <EventTaskLoops :eventTasks="taskGroup.eventTasks" :loadData="loadData"/>
-
-            <v-card-actions>
-              <v-dialog lazy v-model="taskGroup.eventTaskDialog" max-width="600px" persistent>
-                <EventTaskCreate
-                  v-if="taskGroup.eventTaskDialog"
-                  lazy
-                  :taskGroupId="taskGroup.id"
-                  @close="taskGroup.eventTaskDialog=false;loadData()"
-                />
-              </v-dialog>
-              <v-btn flat color="blue" @click="taskGroup.eventTaskDialog=true;">Add task</v-btn>
-              <v-btn flat color="green">Edit</v-btn>
-              <v-btn flat color="orange" @click="deleteTaskGroup(taskGroup)">Delete</v-btn>
+            <v-divider></v-divider>
+            <v-card-actions class="py-0">
+              <v-tooltip right>
+                <template v-slot:activator="{ on }">
+                  <v-btn fab flat small color="primary" v-on="on" @click=" taskGroupId=taskGroup.id;eventTaskDialog=true;">
+                    <v-icon dark>add</v-icon>
+                  </v-btn>
+                </template>
+                <span>Add task</span>
+              </v-tooltip>
             </v-card-actions>
           </v-card>
         </v-hover>
       </v-flex>
     </v-layout>
+    <v-dialog lazy v-model="eventTaskDialog" max-width="600px" persistent>
+      <EventTaskCreate v-if="eventTaskDialog" lazy :taskGroupId="taskGroupId" @close="eventTaskDialog=false;taskGroupId=null;loadData()"/>
+    </v-dialog>
   </div>
 </template>
 <script>
@@ -55,7 +58,7 @@ export default {
   // title: "",
   components: { EventTaskCreate, EventTaskLoops },
   props: ["taskGroups", "loadData"],
-  data: () => ({}),
+  data: () => ({ eventTaskDialog: false, taskGroupId: null }),
 
   computed: {},
 

@@ -25,7 +25,7 @@
       <v-btn color="red darken-1" flat @click.native="close()">Cancel</v-btn>
       <v-btn color="blue darken-1" flat @click.native="save">Save</v-btn>
     </v-card-actions>
-    <code>{{editedItem}}</code>
+    <!-- <code>{{editedItem}}</code> -->
   </v-card>
 </template>
 <script>
