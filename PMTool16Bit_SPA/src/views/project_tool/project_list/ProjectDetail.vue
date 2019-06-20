@@ -6,14 +6,41 @@
         <TaskGroupCreate v-if="taskGroupDialog" lazy :projectId="editedItem.id" @close="taskGroupDialog=false;loadData()"/>
       </v-dialog>
     </v-toolbar>
-    <div>
-      <h3 class="headline">{{editedItem.projectName}}</h3>
-      <v-btn color="deep-purple darken-1" flat class="pl-0" @click="taskGroupDialog=true;">
-        <v-icon left dark class>add_circle_outline</v-icon>Add Task group
-      </v-btn>
-    </div>
+    <h3 class="headline">{{editedItem.projectName}}</h3>
+    <v-tabs color="cyan" dark slider-color="yellow">
+      <v-tab :key="1" ripple>Board</v-tab>
+      <v-tab :key="2" ripple>Timeline</v-tab>
+      <v-tab :key="3" ripple>Members</v-tab>
+      <v-tab :key="4" ripple>Settings</v-tab>
 
-    <TaskGroupLoops :taskGroups.sync="editedItem.taskGroups" :loadData="loadData"/>
+      <v-tab-item :key="1">
+        <div>
+          <v-btn color="deep-purple darken-1" flat class="pl-0 ml-0" @click="taskGroupDialog=true;">
+            <v-icon left dark class="ml-3">add_circle_outline</v-icon>Add Task group
+          </v-btn>
+
+          <TaskGroupLoops :taskGroups.sync="editedItem.taskGroups" :loadData="loadData"/>
+        </div>
+      </v-tab-item>
+
+      <v-tab-item :key="2">
+        <v-card flat>
+          <v-card-text>time line</v-card-text>
+        </v-card>
+      </v-tab-item>
+
+      <v-tab-item :key="3">
+        <v-card flat>
+          <v-card-text>members</v-card-text>
+        </v-card>
+      </v-tab-item>
+
+       <v-tab-item :key="4">
+        <v-card flat>
+          <v-card-text>settings</v-card-text>
+        </v-card>
+      </v-tab-item>
+    </v-tabs>
 
     <!-- <code>{{editedItem}}</code> -->
   </v-container>
