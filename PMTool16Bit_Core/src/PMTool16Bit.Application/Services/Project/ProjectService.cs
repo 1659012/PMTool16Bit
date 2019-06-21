@@ -12,17 +12,15 @@ namespace PMTool16Bit.Services
     //[AbpAuthorize(PermissionNames.Pages_Users)]
     public class ProjectService : AsyncCrudAppService<Project, ProjectDto, int, ProjectFilter, ProjectCreateDto, ProjectUpdateDto>, IProjectService
     {
-        //private readonly IUserAppService userAppService;
-        //private readonly IRepository<EventTable> eventTableRepository;
+        private readonly IRepository<ProjectMember> projectMemberRepository;
 
         public ProjectService(
-             IRepository<Project> repository
-            //IUserAppService userAppService,
-            //IRepository<EventTable> eventTableRepository
+            IRepository<Project> repository,
+            IRepository<ProjectMember> projectMemberRepository
 
             ) : base(repository)
         {
-            //this.eventTableRepository = eventTableRepository;
+            this.projectMemberRepository = projectMemberRepository;
         }
 
         protected override IQueryable<Project> CreateFilteredQuery(ProjectFilter input)
@@ -35,6 +33,12 @@ namespace PMTool16Bit.Services
                 .WhereIf(input.Id != null, p => p.Id == input.Id)
                 .WhereIf(input.ProjectOwnerId != null, p => p.ProjectOwnerId == input.ProjectOwnerId)
                 .WhereIf(input.ProjectName.IsNotNullOrEmpty(), t => t.ProjectName.Contains(input.ProjectName));
+        }
+
+        public override Task<ProjectDto> Update(ProjectUpdateDto input)
+        {
+            projectMemberRepository.Delete(p => p.ProjectId == input.Id);
+            return base.Update(input);
         }
 
         public async Task<object> GetProjectDropdown(ProjectFilter input)
@@ -68,6 +72,6 @@ namespace PMTool16Bit.Services
             var result = query.FirstOrDefaultAsync();
 
             return base.Get(input);
-        }
+        }       
     }
 }

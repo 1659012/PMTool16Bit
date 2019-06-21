@@ -112,7 +112,6 @@ Vue.mixin({
       // });
     },
     updateItem(item, url, me, isCloseModal = true) {
-      me.saveLoading = true;
       Vue.axios
         .put(url, item)
         .then(response => {
@@ -125,7 +124,6 @@ Vue.mixin({
               title: "Update",
               text: "Data has been updated!"
             });
-            me.saveLoading = false;
             return response.data.result;
           } else {
             Vue.notify({
@@ -134,11 +132,9 @@ Vue.mixin({
               title: "Important message",
               text: "Hello user! This is a notification!"
             });
-            me.saveLoading = false;
           }
         })
         .catch(e => {
-          me.saveLoading = false;
           // this.errors.push(e);
         });
     },

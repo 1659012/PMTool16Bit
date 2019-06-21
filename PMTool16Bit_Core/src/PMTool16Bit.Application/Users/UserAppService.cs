@@ -239,30 +239,32 @@ namespace PMTool16Bit.Users
                 AvatarId = user.AvatarId,
             };
         }
-
-
-        //public async Task<UserDto> GetUserProfile(string userNameOrEmailAddress)
-        //{
-        //    var user = await GetEntityByUserName(userNameOrEmailAddress);
-        //    if (user == null)
-        //        return null;
-        //    //var userDto = MapToEntityDto(user);
-        //    //var permissionModelList = await _userManager.GetGrantedPermissionsAsync(user);
-        //    //return userDto;
-        //    return new UserDto
-        //    {
-        //        UserName = user.UserName,
-        //        Name = user.Name,
-        //        Surname = user.Surname,
-        //        FullName = user.Name + " " + user.Surname,
-        //        EmailAddress = user.EmailAddress,
-        //        AvatarId = user.AvatarId,
-        //    };
-        //}
+                       
         public async Task<List<UserDropdownDto>> GetDropdown()
         {
             return await Repository
                 .GetAll()               
+                .OrderBy(p => p.Name)
+                .Select(p => new UserDropdownDto
+                {
+                    Id = p.Id,
+                    FullName = p.FullName,
+                    EmailAddress = p.EmailAddress
+                })
+                .ToListAsync();
+        }
+
+        public async Task<List<UserDropdownDto>> GetDropdownByKeyword(string keyword = null, int maxResultCount = 50)
+        {
+            if (keyword == null)
+                return null;
+
+            return await Repository
+                .GetAll()
+                .Where(p=> p.FullName.Contains(keyword)
+                            ||p.UserName.Contains(keyword)
+                            ||p.EmailAddress.Contains(keyword)
+                      )
                 .OrderBy(p => p.Name)
                 .Select(p => new UserDropdownDto
                 {

@@ -15,11 +15,11 @@ namespace PMTool16Bit.Services
         public int ProjectId { get; set; }
 
         //[ForeignKey(nameof(ProjectId))]
-        public virtual ProjectDto Project { get; set; }
+        //public virtual ProjectDto Project { get; set; }
 
         public long MemberId { get; set; }
 
         //[ForeignKey(nameof(MemberId))]
-        public virtual UserDto Member { get; set; }
+        public virtual UserSimpleDto Member { get; set; }
     }
 }

@@ -5,6 +5,10 @@
       <v-dialog lazy v-model="taskGroupDialog" max-width="600px" persistent>
         <TaskGroupCreate v-if="taskGroupDialog" lazy :projectId="editedItem.id" @close="taskGroupDialog=false;loadData()"/>
       </v-dialog>
+
+      <v-dialog lazy v-model="memberDialog" max-width="600px" persistent>
+      <ProjectMemberDialog v-if="memberDialog" lazy v-model="editedItem" @close="memberDialog=false;loadData()"/>
+    </v-dialog>
     </v-toolbar>
     <h3 class="headline">{{editedItem.projectName}}</h3>
     <v-tabs color="cyan" dark slider-color="yellow">
@@ -15,9 +19,14 @@
 
       <v-tab-item :key="1">
         <div>
-          <v-btn color="deep-purple darken-1" flat class="pl-0 ml-0" @click="taskGroupDialog=true;">
-            <v-icon left dark class="ml-3">add_circle_outline</v-icon>Add Task group
+          <v-btn color="deep-purple darken-1" flat class="pl-0" @click="memberDialog=true;">
+            <v-icon left dark class="ml-3">add_circle_outline</v-icon>Add member
           </v-btn>
+
+          <v-btn color="deep-purple darken-1" flat class="pl-0 ml-0" 
+          @click="taskGroupDialog=true;">
+            <v-icon left dark class="ml-3">add_circle_outline</v-icon>Add Task group
+          </v-btn>         
 
           <TaskGroupLoops :taskGroups.sync="editedItem.taskGroups" :loadData="loadData"/>
         </div>
@@ -31,11 +40,13 @@
 
       <v-tab-item :key="3">
         <v-card flat>
-          <v-card-text>members</v-card-text>
+          <v-card-text>
+            <ProjectMemberList v-model="editedItem" :loadData="loadData"/>
+          </v-card-text>
         </v-card>
       </v-tab-item>
 
-       <v-tab-item :key="4">
+      <v-tab-item :key="4">
         <v-card flat>
           <v-card-text>settings</v-card-text>
         </v-card>
@@ -51,15 +62,23 @@
 // import DatePicker from "../basiccomponents/DatePicker";
 import TaskGroupCreate from "../task_group/TaskGroupCreate";
 import TaskGroupLoops from "../task_group/TaskGroupLoops";
+import ProjectMemberList from "./project_member/ProjectMemberList";
+import ProjectMemberDialog from "./project_member/ProjectMemberDialog";
 export default {
   title: "Project detail",
-  components: { TaskGroupCreate, TaskGroupLoops },
+  components: {
+    TaskGroupCreate,
+    TaskGroupLoops,
+    ProjectMemberList,
+    ProjectMemberDialog
+  },
   props: [],
   data: () => ({
     editedItem: {},
     taskGroups: [],
     projectId: null,
-    taskGroupDialog: false
+    taskGroupDialog: false,
+    memberDialog:false
   }),
 
   computed: {},
