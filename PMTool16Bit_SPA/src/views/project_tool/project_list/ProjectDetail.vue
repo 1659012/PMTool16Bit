@@ -20,12 +20,12 @@
       <v-tab-item :key="1">
         <div>
           <v-btn color="deep-purple darken-1" flat class="pl-0" @click="memberDialog=true;">
-            <v-icon left dark class="ml-3">add_circle_outline</v-icon>Add member
+            <v-icon left dark class="ml-2">add_circle_outline</v-icon>Add member
           </v-btn>
 
           <v-btn color="deep-purple darken-1" flat class="pl-0 ml-0" 
           @click="taskGroupDialog=true;">
-            <v-icon left dark class="ml-3">add_circle_outline</v-icon>Add Task group
+            <v-icon left dark class="ml-2">add_circle_outline</v-icon>Add Task group
           </v-btn>         
 
           <TaskGroupLoops :taskGroups.sync="editedItem.taskGroups" :loadData="loadData"/>
