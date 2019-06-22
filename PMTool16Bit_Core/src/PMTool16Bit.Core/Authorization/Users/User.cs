@@ -16,7 +16,7 @@ namespace PMTool16Bit.Authorization.Users
         }
 
         public override bool IsActive { get; set; } = true;
-        public int AvatarId { get; set; }
+        public int? AvatarId { get; set; }
         public bool IsPublishProfile { get; set; } = true;
 
         public static User CreateTenantAdminUser(int tenantId, string emailAddress)

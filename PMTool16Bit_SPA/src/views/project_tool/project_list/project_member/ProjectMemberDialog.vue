@@ -20,9 +20,7 @@
   </v-card>
 </template>
 <script>
-// import _ from "lodash";
-// import moment from "moment";
-// import DatePicker from "../basiccomponents/DatePicker";
+import _ from "lodash";
 import ProjectMemberCombobox from "./ProjectMemberCombobox";
 export default {
   // title: "",
@@ -37,7 +35,7 @@ export default {
   watch: {},
 
   mounted() {
-    this.editedItem = this.value;
+    this.editedItem =_.cloneDeep(this.value);
   },
 
   methods: {

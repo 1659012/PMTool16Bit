@@ -946,7 +946,7 @@ namespace PMTool16Bit.Migrations
                     b.Property<string>("AuthenticationSource")
                         .HasMaxLength(64);
 
-                    b.Property<int>("AvatarId");
+                    b.Property<int?>("AvatarId");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()

@@ -8,17 +8,19 @@
     <v-dialog lazy v-model="dialog" max-width="600px" persistent>
       <ProjectMemberDialog v-if="dialog" lazy v-model="editedItem" @close="dialog=false;loadData()"/>
     </v-dialog>
-    <!-- <code>{{editedItem}}</code> -->
+
+    <ProjectMemberLoop :projectMembers="editedItem.projectMembers"/>
   </div>
 </template>
 <script>
 // import _ from "lodash";
 // import moment from "moment";
 // import DatePicker from "../basiccomponents/DatePicker";
+import ProjectMemberLoop from "./ProjectMemberLoop";
 import ProjectMemberDialog from "./ProjectMemberDialog";
 export default {
   title: "Project member",
-  components: { ProjectMemberDialog },
+  components: { ProjectMemberDialog, ProjectMemberLoop },
   props: ["value", "loadData"],
   data: () => ({
     editedItem: {},

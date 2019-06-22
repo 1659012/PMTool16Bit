@@ -17,6 +17,10 @@
       <v-tab :key="3" ripple>Members</v-tab>
       <v-tab :key="4" ripple>Settings</v-tab>
 
+       <v-tab-item :key="3">
+        <ProjectMemberList v-model="editedItem" :loadData="loadData"/>
+      </v-tab-item>
+      
       <v-tab-item :key="1">
         <div>
           <v-btn color="deep-purple darken-1" flat class="pl-0" @click="memberDialog=true;">
@@ -38,13 +42,7 @@
         </v-card>
       </v-tab-item>
 
-      <v-tab-item :key="3">
-        <v-card flat>
-          <v-card-text>
-            <ProjectMemberList v-model="editedItem" :loadData="loadData"/>
-          </v-card-text>
-        </v-card>
-      </v-tab-item>
+     
 
       <v-tab-item :key="4">
         <v-card flat>

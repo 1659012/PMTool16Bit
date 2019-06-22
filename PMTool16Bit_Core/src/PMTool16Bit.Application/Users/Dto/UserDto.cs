@@ -40,7 +40,7 @@ namespace PMTool16Bit.Users
 
         public string[] RoleNames { get; set; }
 
-        public int AvatarId { get; set; }
+        public int? AvatarId { get; set; }
 
         public string AvatarUrl { get; set; }
 
