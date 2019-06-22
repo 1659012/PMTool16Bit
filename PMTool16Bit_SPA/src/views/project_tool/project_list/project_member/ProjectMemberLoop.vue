@@ -3,8 +3,8 @@
   <div>
     <v-layout row wrap>
       <v-flex lg12>
-         <v-card>
-           <!-- <v-toolbar color="cyan" dark>
+        <v-card>
+          <!-- <v-toolbar color="cyan" dark>
             <v-toolbar-side-icon></v-toolbar-side-icon>
   
             <v-toolbar-title>Inbox</v-toolbar-title>
@@ -14,35 +14,36 @@
             <v-btn icon>
               <v-icon>search</v-icon>
             </v-btn>
-          </v-toolbar> -->
+          </v-toolbar>-->
 
-          <v-list two-line>
-            <template v-for="(projectMember, index) in projectMembers">             
-
-  
-              <v-list-tile               
-                :key="index"
-                avatar
-                @click="hahah"
-              >
+          <v-list two-line class="py-0">
+            <template v-for="(projectMember, index) in projectMembers">
+              <v-list-tile :key="index" avatar>
                 <v-list-tile-avatar>
                   <img v-if="projectMember.member.avatarUrl" :src="projectMember.member.avatarUrl">
-                  <v-chip  v-else>
-                   {{ projectMember.member.fullName.slice(0, 1).toUpperCase() }}
-                  </v-chip>
+
+                 <v-avatar v-else class="grey lighten-2 teal--text pa-3">
+                      {{ projectMember.member.name.slice(0, 1).toUpperCase()+
+                      projectMember.member.surname.slice(0, 1).toUpperCase()}}
+                    </v-avatar>
+
+                  <!-- <v-chip>
+                    <v-avatar class="teal">A</v-avatar>ANZ Bank
+                  </v-chip> -->
                 </v-list-tile-avatar>
-  
+
                 <v-list-tile-content>
-                  <v-list-tile-title v-html="projectMember.member.fullName"></v-list-tile-title>
+                  <v-list-tile-title v-html="projectMember.member.fullName" @click="getProfile(projectMember.member.id)" style="cursor: pointer;"></v-list-tile-title>
                   <v-list-tile-sub-title v-html="projectMember.member.emailAddress"></v-list-tile-sub-title>
                 </v-list-tile-content>
               </v-list-tile>
+                <v-divider :key="`'divider'`+index"></v-divider>
             </template>
           </v-list>
         </v-card>
       </v-flex>
     </v-layout>
-    <code>{{projectMembers}}</code>
+    <!-- <code>{{projectMembers}}</code> -->
   </div>
 </template>
 <script>
@@ -51,7 +52,7 @@
 // import ProjectMemberDialog from "./ProjectMemberDialog";
 export default {
   // title: "Project member",
-  components: {  },
+  components: {},
   props: ["projectMembers"],
   data: () => ({
     dialog: false
@@ -61,12 +62,13 @@ export default {
 
   watch: {},
 
-  updated() {
-  },
+  updated() {},
 
-  mounted() {
-  },
+  mounted() {},
   methods: {
+    getProfile(userId){
+      console.log(userId);
+    },
     close(item) {
       this.$emit("close", item);
     },

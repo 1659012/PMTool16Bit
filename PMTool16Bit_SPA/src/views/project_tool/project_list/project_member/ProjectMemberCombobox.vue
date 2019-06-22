@@ -1,15 +1,28 @@
 
 <template>
   <div>
-    <v-combobox v-model="model" :items="items" label="Add member(s)" item-text="fullName" item-value="id" multiple chips clearable>
+    <v-combobox
+      v-model="model"
+      :items="items"
+      :loading="loading"
+      label="Add member(s)"
+      item-text="fullName"
+      item-value="id"
+      multiple
+      chips
+      cache-items
+      :search-input.sync="keyword"
+      clearable
+    >
       <template slot="selection" slot-scope="data">
         <v-chip :key="JSON.stringify(data.item)" :selected="data.selected" :disabled="data.disabled" class="v-chip--select-multi">
-          <v-avatar class="accent white--text">{{ data.item.fullName.slice(0, 1).toUpperCase() }}</v-avatar>
+          <v-avatar v-if="data.item.fullName" class="accent white--text">{{ data.item.fullName.slice(0, 1).toUpperCase() }}</v-avatar>
           {{ data.item.fullName }}
           <v-icon class="ml-3" color="blue-grey" title="Remove item" small @click.prevent="removeItem(data.index)">close</v-icon>
         </v-chip>
       </template>
     </v-combobox>
+    <!-- <code>{{model}}</code> -->
   </div>
 </template>
 <script>
@@ -20,18 +33,29 @@ export default {
   data() {
     return {
       items: [],
-      model: []
+      model: [],
+      keyword: "",
+      loading: false
     };
   },
   computed: {},
   watch: {
+    keyword: _.debounce(function(val) {
+      if (this.loading) return;
+      this.loadData();
+    }, 400),
+
     model(value) {
       if (Array.isArray(value)) {
         let result = [];
         value.forEach(user => {
-          let item = { memberId: null };
-          item.memberId = user.id;
-          result.push(item);
+          if (this.isObject(user)) {
+            let item = { memberId: null };
+            item.memberId = user.id;
+            result.push(item);
+          }else{
+            // delete user;
+          }
         });
 
         this.$emit("update:returnItems", result);
@@ -40,36 +64,62 @@ export default {
   },
 
   mounted() {
-    this.loadData();
+    // this.loadData();
+    this.loadDefaultItems();
   },
   methods: {
+    isObject(object) {
+      return object instanceof Object && object.constructor === Object;
+    },
+
     loadData() {
       let me = this;
       me.loading = true;
       this.axios
-        .get("User/GetDropdown", {})
+        .get("User/GetDropdownByKeyword", {
+          params: {
+            maxResultCount: 50,
+            keyword: me.keyword
+          }
+        })
         .then(response => {
           if (response.data.success) {
-            me.items = response.data.result;
+            if (response.data.result) {
+              me.items = response.data.result;
+            } else {
+              me.items = [];
+            }
+            me.loading = false;
           }
         })
-        .then(() => {
-          this.loadDefaultItems();
-        })
+        // .then(() => {
+        //   me.loadDefaultItems();
+        // })
         .catch(e => {
-          this.errors.push(e);
+          me.errors.push(e);
         });
     },
+    // loadDefaultItems() {
+    //   if (Array.isArray(this.defaultItems) && this.defaultItems.length > 0) {
+    //     this.defaultItems.forEach(taskMember => {
+    //       let foundItem = this.items.find(
+    //         item => item.id == taskMember.memberId
+    //       );
+    //       if (foundItem) {
+    //         this.model.push(foundItem);
+    //       }
+    //     });
+    //   }
+    // },
     loadDefaultItems() {
       if (Array.isArray(this.defaultItems) && this.defaultItems.length > 0) {
-        this.defaultItems.forEach(taskMember => {
-          let foundItem = this.items.find(
-            item => item.id == taskMember.memberId
-          );
-          if (foundItem) {
-            this.model.push(foundItem);
-          }
+        let memberList = [];
+        this.defaultItems.forEach(projectMember => {
+          let member = Object.assign({}, projectMember.member);
+          memberList.push(projectMember.member);
         });
+        this.model = _.cloneDeep(memberList);
+        this.items = _.cloneDeep(memberList);
       }
     },
     removeItem(index) {

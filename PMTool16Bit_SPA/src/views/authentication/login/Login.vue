@@ -16,7 +16,7 @@
                 </v-form>
               </v-card-text>
               <v-card-actions>
-                <v-btn icon>
+                <!-- <v-btn icon>
                   <v-icon color="blue">fa fa-facebook-square fa-lg</v-icon>
                 </v-btn>
                 <v-btn icon>
@@ -24,7 +24,11 @@
                 </v-btn>
                 <v-btn icon>
                   <v-icon color="light-blue">fa fa-twitter fa-lg</v-icon>
-                </v-btn>
+                </v-btn> -->
+                <v-card-text>
+                  <span>Don’t have an account?</span>
+                  <span class="primary--text ml-3" style="cursor: pointer;" @click="$router.push('/register');">Create Account</span>
+                </v-card-text>
                 <v-spacer></v-spacer>
                 <v-btn block color="primary" @click="login" :loading="loading">Login</v-btn>
               </v-card-actions>
@@ -44,15 +48,22 @@ export default {
     model: {
       username: "admin",
       password: ""
-    }
+    },
+    baseUrl: ""
   }),
-
+  mounted() {
+    // console.log(process.env.NODE_ENV);
+    this.baseUrl =
+      process.env.NODE_ENV !== "production"
+        ? "http://localhost:21021/api/"
+        : "http://api.pmtool16bit.vn/api/";
+  },
   methods: {
     login() {
       // this.loading = true;
       let me = this;
       this.axios
-        .post("http://localhost:21021/api/TokenAuth/Authenticate", this.model)
+        .post(me.baseUrl + "TokenAuth/Authenticate", this.model)
         .then(response => {
           // me.loading = false;
           if (response.data.success) {
@@ -63,7 +74,7 @@ export default {
             //   type: "success",
             //   title: "Login success",
             //   text: "Hi "+ response.data.result.profile.username
-            // });    
+            // });
             me.$store.commit(
               APP_MUTATIONS.SET_TOKEN,
               response.data.result.accessToken
@@ -92,7 +103,7 @@ export default {
               type: "error",
               title: response.data.error.message,
               text: response.data.error.details
-            });           
+            });
           }
         });
     }

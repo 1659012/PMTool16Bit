@@ -2,12 +2,12 @@
 <template>
   <v-card v-if="value">
     <v-card-title>
-      <h4 class="headline">Add project member</h4>
+      <h4 class="headline">Edit project member</h4>
     </v-card-title>
     <v-container grid-list-md px-3 py-2>
       <v-layout row wrap>
         <v-flex lg12>
-           <ProjectMemberCombobox :defaultItems="editedItem.projectMembers" :returnItems.sync="editedItem.projectMembers"/>
+           <ProjectMemberCombobox v-if="editedItem.projectMembers" :defaultItems="editedItem.projectMembers" :returnItems.sync="editedItem.projectMembers"/>
         </v-flex>
       </v-layout>
     </v-container>
@@ -16,7 +16,7 @@
       <v-btn color="red darken-1" flat @click.native="close()">Cancel</v-btn>
       <v-btn color="blue darken-1" flat @click.native="save">Save</v-btn>
     </v-card-actions>
-    <code>{{editedItem.projectMembers}}</code>
+    <!-- <code>{{editedItem.projectMembers}}</code> -->
   </v-card>
 </template>
 <script>

@@ -51,9 +51,10 @@ namespace PMTool16Bit.Users
             _logInManager = logInManager;
         }
 
+        [AbpAllowAnonymous]
         public override async Task<UserDto> Create(CreateUserDto input)
         {
-            CheckCreatePermission();
+            //CheckCreatePermission();
 
             var user = ObjectMapper.Map<User>(input);
 
@@ -187,6 +188,7 @@ namespace PMTool16Bit.Users
             return true;
         }
 
+        [AbpAllowAnonymous]
         public async Task<bool> ResetPassword(ResetPasswordDto input)
         {
             if (_abpSession.UserId == null)
@@ -257,13 +259,15 @@ namespace PMTool16Bit.Users
         public async Task<List<UserDropdownDto>> GetDropdownByKeyword(string keyword = null, int maxResultCount = 50)
         {
             if (keyword == null)
-                return null;
+                return new List<UserDropdownDto>();
+
+            keyword = keyword.ToLower();
 
             return await Repository
                 .GetAll()
-                .Where(p=> p.FullName.Contains(keyword)
-                            ||p.UserName.Contains(keyword)
-                            ||p.EmailAddress.Contains(keyword)
+                .Where(p=> p.FullName.ToLower().Contains(keyword)
+                            ||p.UserName.ToLower().Contains(keyword)
+                            ||p.EmailAddress.ToLower().Contains(keyword)
                       )
                 .OrderBy(p => p.Name)
                 .Select(p => new UserDropdownDto

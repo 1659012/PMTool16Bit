@@ -3,6 +3,7 @@ import Dashboard from "../views/dashboard/Dashboard.vue";
 import Login from "../views/authentication/login/Login.vue";
 import ProjectList from "../views/project_tool/project_list/ProjectList.vue";
 import ProjectDetail from "../views/project_tool/project_list/ProjectDetail.vue";
+import Register from "../views/register/Register.vue";
 export const AUTH_REQUIRED = {
   auth: true
 };
@@ -71,6 +72,14 @@ export default [
         /* webpackChunkName: "routes" */
         `@/views/Error.vue`
       )
+  },
+  {
+    path: "/register",
+    meta: {
+      public: true
+    },
+    name: "Register",
+    component: Register
   },
   {
     path: "/login",
