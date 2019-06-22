@@ -75,22 +75,25 @@ namespace PMTool16Bit.Users
             return MapToEntityDto(user);
         }
 
+        [AbpAllowAnonymous]       
         public override async Task<UserDto> Update(UserDto input)
         {
-            CheckUpdatePermission();
+            //CheckUpdatePermission();
 
             var user = await _userManager.GetUserByIdAsync(input.Id);
-
             MapToEntity(input, user);
+            var update =await Repository.UpdateAsync(user);
+            CurrentUnitOfWork.SaveChanges();
+            //MapToEntity(input, user);
 
-            CheckErrors(await _userManager.UpdateAsync(user));
+            //CheckErrors(await _userManager.UpdateAsync(user));
 
-            if (input.RoleNames != null)
-            {
-                CheckErrors(await _userManager.SetRoles(user, input.RoleNames));
-            }
-
+            //if (input.RoleNames != null)
+            //{
+            //    CheckErrors(await _userManager.SetRoles(user, input.RoleNames));
+            //}
             return await Get(input);
+            //return await base.Update(input);
         }
 
         public override async Task Delete(EntityDto<long> input)
@@ -129,9 +132,12 @@ namespace PMTool16Bit.Users
 
         protected override UserDto MapToEntityDto(User user)
         {
-            var roles = _roleManager.Roles.Where(r => user.Roles.Any(ur => ur.RoleId == r.Id)).Select(r => r.NormalizedName);
+            //var roles = _roleManager.Roles.Where(r => user.Roles.Any(ur => ur.RoleId == r.Id)).Select(r => r.NormalizedName);
             var userDto = base.MapToEntityDto(user);
-            userDto.RoleNames = roles.ToArray();
+            //if (roles.Any())
+            //{
+            //    userDto.RoleNames = roles.ToArray();
+            //}
             return userDto;
         }
 
@@ -224,9 +230,9 @@ namespace PMTool16Bit.Users
         #region Customize UserData
 
         [AbpAllowAnonymous]
-        public async Task<UserDto> GetUserProfile(long userId)
+        public async Task<UserDto> GetUserProfile(long id)
         {          
-            var user =await GetEntityByIdAsync(userId);
+            var user =await GetEntityByIdAsync(id);
             //var userDto = MapToEntityDto(user);
             //var permissionModelList = await _userManager.GetGrantedPermissionsAsync(user);
             //return userDto;
@@ -236,9 +242,9 @@ namespace PMTool16Bit.Users
                 UserName = user.UserName,
                 Name = user.Name,
                 Surname = user.Surname,
-                FullName = user.Name + " " + user.Surname,
+                FullName = user.FullName,
                 EmailAddress = user.EmailAddress,
-                AvatarId = user.AvatarId,
+                IsPublishProfile=user.IsPublishProfile
             };
         }
                        

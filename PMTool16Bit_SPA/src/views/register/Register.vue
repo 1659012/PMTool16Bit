@@ -21,6 +21,7 @@
                     :error-messages="errors.collect('Username')"
                     data-vv-name="Username"
                     required
+                    hint="Username must at least 4 characters"
                   ></v-text-field>
 
                   <v-text-field
@@ -33,6 +34,7 @@
                     :error-messages="errors.collect('password')"
                     data-vv-name="password"
                     required
+                    hint="Password must at least 4 characters"
                   ></v-text-field>
 
                   <v-text-field
@@ -43,6 +45,7 @@
                     label="E-mail"
                     data-vv-name="E-mail"
                     required
+                    hint="Email is required"
                   ></v-text-field>
 
                   <v-text-field
@@ -63,17 +66,17 @@
                     data-vv-name="surname"
                   ></v-text-field>
 
-                  <p>Full name: {{model.name+" "+model.surname}}</p>
+                  <v-text-field label="Full name" v-model="getFullName" disabled></v-text-field>
 
-                  <v-checkbox
+                  <v-switch
                     v-model="model.isPublishProfile"
                     v-validate="''"
                     :error-messages="errors.collect('checkbox')"
                     :value="true"
                     label="Allow others view profile"
                     data-vv-name="checkbox"
-                    type="checkbox"
-                  ></v-checkbox>
+                    type="switch"
+                  ></v-switch>
                 </v-form>
               </v-card-text>
               <v-card-actions>
@@ -103,6 +106,11 @@ export default {
     }
   }),
   mounted() {},
+  computed: {
+    getFullName() {
+      return this.model.name + " " + this.model.surname;
+    }
+  },
   methods: {
     register() {
       let me = this;

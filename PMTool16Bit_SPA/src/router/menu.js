@@ -13,33 +13,7 @@ const Menu = [
     name: "TestPage"
     // target: '_blank',
   },
-
   // { divider: true },
-
-  { header: "Test page header" },
-  {
-    title: "TestPageList",
-    group: "testPageList",
-    component: "testPageList 12",
-    icon: "widgets",
-    items: [
-      {
-        name: "testPage",
-        title: "Test page",
-        badge: "new",
-        component: "TestPage"
-      },
-      {
-        name: "statistic",
-        title: "Statistic",
-        badge: "new",
-        component: "components/statistic"
-      },
-      { name: "chart", title: "Chart", component: "components/chart" },
-      { name: "list", title: "List", component: "components/widget-list" }
-    ]
-  },
-
   { header: "Project Management Tool" },
   {
     title: "Project list",
@@ -55,6 +29,14 @@ const Menu = [
       },     
       { name: "ProjectList", title: "Project list", component: "ProjectList" },
     ]
+  },
+  { header: "User info" },
+  {
+    name: "profile",
+    title: "Profile",
+    group: "userInfo",
+    icon: "donut_small",
+    component: "UserProfile"
   },
   // { divider: true },
   { header: "UI Elements" },
