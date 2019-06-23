@@ -16,5 +16,6 @@
   <ItemGroup>
     <Folder Include="BaseModel\" />
     <Folder Include="BaseService\" />
+    <Folder Include="Services\Media\" />
   </ItemGroup>
 </Project>

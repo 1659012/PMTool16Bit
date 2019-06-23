@@ -6,8 +6,8 @@
       <v-flex lg4>
         <h5 class="body-2">Avatar here</h5>
         <v-spacer></v-spacer>        
-        <v-btn color="primary" block @click="save">Update info</v-btn>
-        <v-btn color="primary" block @click="logout(false)">Logout</v-btn>
+        <v-btn color="primary" block @click="update">Update info</v-btn>
+        <v-btn color="primary" block @click="logout(true)">Logout</v-btn>
       </v-flex>
       <v-flex lg8>
         <v-expansion-panel v-model="panel" expand>
@@ -68,6 +68,8 @@
                   <v-text-field label="Full name" v-model="getFullName" disabled></v-text-field>
 
                   <v-switch v-model="editedItem.isPublishProfile" label="Allow others view profile"></v-switch>
+
+                  <v-btn color="primary" @click="update">Update info</v-btn>
                 </v-form>
               </v-card-text>
             </v-card>
@@ -112,11 +114,29 @@
                     required
                     hint="Password must at least 4 characters"
                   ></v-text-field>
-                  <v-btn color="primary" block @click="changePassword">Update password</v-btn>
+                  <v-btn color="primary" @click="changePassword">Update password</v-btn>
                 </v-form>
               </v-card-text>
             </v-card>
           </v-expansion-panel-content>
+
+           <v-expansion-panel-content class="deep-purple darken-1" :disabled="$route.params.id">
+            <template v-slot:actions>
+              <v-icon color="white">$vuetify.icons.expand</v-icon>
+            </template>
+            <template v-slot:header>
+              <div>
+                <h5 class="subheading white--text">Theme settings</h5>
+              </div>
+            </template>
+            <v-card>
+              <v-card-text>
+                Comming soon
+              </v-card-text>
+            </v-card>
+          </v-expansion-panel-content>
+
+
         </v-expansion-panel>
       </v-flex>
     </v-layout>
@@ -136,7 +156,7 @@ export default {
     editedItem: { name: "", surname: "" },
     passwordModel: { userId: null, currentPassword: "", newPassword: "" },
     loading: false,
-    panel: [true, false, true],
+    panel: [true, false, false],
     showCurrentPassword:false,
     showNewPassword:false
   }),
@@ -195,20 +215,20 @@ export default {
           if (response.data.success) {
             me.$notify({
               group: "message",
-              duration: 3000,
+              duration: 5000,
               type: "success",
-              title: "Change password success",
+              title: "Change password success! You must login to continue",
               text: ""
             });
-            // console.log(me.items);
+           this.logout(true);
           }
         })
         .catch(e => {
           this.errors.push(e);
         });
     },
-    logout(confirm=false){      
-      this.$root.logout(confirm);
+    logout(checkLogout=false){      
+      this.$root.logout(checkLogout);
     },
     create() {
       this.$root.createItem(this.editedItem, "User/Create", this, false);

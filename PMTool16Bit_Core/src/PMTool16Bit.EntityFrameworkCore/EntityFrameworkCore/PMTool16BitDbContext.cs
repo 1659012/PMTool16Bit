@@ -16,6 +16,7 @@ namespace PMTool16Bit.EntityFrameworkCore
         public DbSet<Comment> Comments { get; set; }
         public DbSet<ProjectMember> ProjectMembers { get; set; }
         public DbSet<EventTaskMember> EventTaskMembers { get; set; }
+        public DbSet<FileEntity> Files { get; set; }
 
         public PMTool16BitDbContext(DbContextOptions<PMTool16BitDbContext> options)
             : base(options)

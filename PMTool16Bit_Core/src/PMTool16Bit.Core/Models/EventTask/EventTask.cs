@@ -8,17 +8,17 @@ namespace PMTool16Bit.Models
 {
     public class EventTask : BaseAuditEntity
     {
-        [StringLength(EnumLength.TaskName)]
+        [StringLength(EntityLength.TaskName)]
         public string TaskName { get; set; }
 
-        [StringLength(EnumLength.Description)]
+        [StringLength(EntityLength.Description)]
         public string Description { get; set; }
 
         public DateTime? DueDate { get; set; }
 
         public bool IsMarked { get; set; }
 
-        [StringLength(EnumLength.IdLimit)]
+        [StringLength(EntityLength.IdLimit)]
         public string FileIds { get; set; }
 
         public bool IsCompleted { get; set; }

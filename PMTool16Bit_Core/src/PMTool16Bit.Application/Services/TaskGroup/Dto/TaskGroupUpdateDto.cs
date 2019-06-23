@@ -7,7 +7,7 @@ namespace PMTool16Bit.Services
     {
         public int ProjectId { get; set; }
 
-        [StringLength(EnumLength.GroupTaskName)]
+        [StringLength(EntityLength.GroupTaskName)]
         public string TaskGroupName { get; set; }
     }
 }

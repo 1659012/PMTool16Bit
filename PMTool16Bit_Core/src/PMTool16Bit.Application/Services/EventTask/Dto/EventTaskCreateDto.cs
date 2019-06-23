@@ -7,16 +7,16 @@ namespace PMTool16Bit.Services
 {
     public class EventTaskCreateDto : BaseUpdateDto
     {
-        [StringLength(EnumLength.TaskName)]
+        [StringLength(EntityLength.TaskName)]
         public string TaskName { get; set; }
 
-        [StringLength(EnumLength.Description)]
+        [StringLength(EntityLength.Description)]
         public string Description { get; set; }
         public DateTime? DueDate { get; set; }
         public bool IsMarked { get; set; }
         public bool IsCompleted { get; set; }
 
-        [StringLength(EnumLength.IdLimit)]
+        [StringLength(EntityLength.IdLimit)]
         public string FileIds { get; set; }
 
         [Range(0, 3)]

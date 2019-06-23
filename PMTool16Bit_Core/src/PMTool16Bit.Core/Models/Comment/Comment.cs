@@ -8,10 +8,10 @@ namespace PMTool16Bit.Models
     {
         public int EventTaskId { get; set; }
 
-        [StringLength(EnumLength.CommentContent)]
+        [StringLength(EntityLength.CommentContent)]
         public string Content { get; set; }
 
-        [StringLength(EnumLength.IdLimit)]
+        [StringLength(EntityLength.IdLimit)]
         public string FileIds { get; set; }
         #region Reference
         [ForeignKey(nameof(EventTaskId))]

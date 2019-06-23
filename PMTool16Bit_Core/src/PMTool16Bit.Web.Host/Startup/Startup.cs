@@ -16,6 +16,7 @@ using PMTool16Bit.Configuration;
 using PMTool16Bit.Identity;
 
 using Abp.AspNetCore.SignalR.Hubs;
+using Y.Web.Host.Swagger;
 
 namespace PMTool16Bit.Web.Host.Startup
 {
@@ -74,6 +75,8 @@ namespace PMTool16Bit.Web.Host.Startup
                     In = "header",
                     Type = "apiKey"
                 });
+                //options.DescribeAllEnumsAsStrings();
+                options.OperationFilter<FileUploadOperation>(); //Register File Upload Operation Filter
             });
 
             //ignore cycles in objects

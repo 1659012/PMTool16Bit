@@ -166,8 +166,9 @@ Vue.mixin({
           });
       }
     },
-    logout(confirm=false) {
-      if (confirm ||confirm("Are you sure to logout?")) {
+    logout(checkLogout=false) {
+      
+      if (checkLogout||confirm("Are you sure to logout?")) {
         store.commit(APP_MUTATIONS.NOT_AUTH);
         store.commit(APP_MUTATIONS.SET_TOKEN, "");
       }

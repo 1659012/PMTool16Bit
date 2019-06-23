@@ -11,10 +11,10 @@ namespace PMTool16Bit.Models
     {
         public long ProjectOwnerId { get; set; }
 
-        [StringLength(EnumLength.ProjectName)]
+        [StringLength(EntityLength.ProjectName)]
         public string ProjectName { get; set; }
 
-        [StringLength(EnumLength.ShortDescription)]
+        [StringLength(EntityLength.ShortDescription)]
         public string ShortDescription { get; set; }
 
 

@@ -15,7 +15,7 @@ namespace PMTool16Bit.Services
     {
         public int EventTaskId { get; set; }
 
-        [StringLength(EnumLength.CommentContent)]
+        [StringLength(EntityLength.CommentContent)]
         public string Content { get; set; }
         public string FileIds { get; set; }
 

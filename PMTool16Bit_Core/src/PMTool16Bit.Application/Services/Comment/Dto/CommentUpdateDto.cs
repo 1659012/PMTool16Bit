@@ -14,10 +14,10 @@ namespace PMTool16Bit.Services{
     {
         public int EventTaskId { get; set; }
 
-        [StringLength(EnumLength.CommentContent)]
+        [StringLength(EntityLength.CommentContent)]
         public string Content { get; set; }
 
-        [StringLength(EnumLength.IdLimit)]
+        [StringLength(EntityLength.IdLimit)]
         public string FileIds { get; set; }
     }
 }
