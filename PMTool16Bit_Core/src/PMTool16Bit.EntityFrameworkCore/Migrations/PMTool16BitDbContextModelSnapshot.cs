@@ -1129,6 +1129,27 @@ namespace PMTool16Bit.Migrations
                     b.ToTable("EventTaskMembers");
                 });
 
+            modelBuilder.Entity("PMTool16Bit.Models.FileEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("Path")
+                        .IsRequired()
+                        .HasMaxLength(500);
+
+                    b.Property<string>("Type")
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Files");
+                });
+
             modelBuilder.Entity("PMTool16Bit.Models.Project", b =>
                 {
                     b.Property<int>("Id")

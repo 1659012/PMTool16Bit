@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PMTool16Bit.Services
 {
@@ -20,6 +21,11 @@ namespace PMTool16Bit.Services
         protected override IQueryable<FileEntity> CreateFilteredQuery(FileFilter input)
         {
             return base.CreateFilteredQuery(input);
+        }
+
+        public Task<FileEntity> GetFileById(int id)
+        {
+            return base.GetEntityByIdAsync(id);
         }
     }
 }
