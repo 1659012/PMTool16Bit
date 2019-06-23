@@ -7,8 +7,8 @@
       </v-dialog>
 
       <v-dialog lazy v-model="memberDialog" max-width="600px" persistent>
-      <ProjectMemberDialog v-if="memberDialog" lazy v-model="editedItem" @close="memberDialog=false;loadData()"/>
-    </v-dialog>
+        <ProjectMemberDialog v-if="memberDialog" lazy v-model="editedItem" @close="memberDialog=false;loadData()"/>
+      </v-dialog>
     </v-toolbar>
     <h3 class="headline">{{editedItem.projectName}}</h3>
     <v-tabs color="cyan" dark slider-color="yellow">
@@ -17,20 +17,19 @@
       <v-tab :key="3" ripple>Members</v-tab>
       <v-tab :key="4" ripple>Settings</v-tab>
 
-       <v-tab-item :key="3">
+      <v-tab-item :key="3">
         <ProjectMemberList v-model="editedItem" :loadData="loadData"/>
       </v-tab-item>
-      
+
       <v-tab-item :key="1">
         <div>
           <v-btn color="deep-purple darken-1" flat class="pl-0" @click="memberDialog=true;">
             <v-icon left dark class="ml-2">add_circle_outline</v-icon>Add member
           </v-btn>
 
-          <v-btn color="deep-purple darken-1" flat class="pl-0 ml-0" 
-          @click="taskGroupDialog=true;">
+          <v-btn color="deep-purple darken-1" flat class="pl-0 ml-0" @click="taskGroupDialog=true;">
             <v-icon left dark class="ml-2">add_circle_outline</v-icon>Add Task group
-          </v-btn>         
+          </v-btn>
 
           <TaskGroupLoops :taskGroups.sync="editedItem.taskGroups" :loadData="loadData"/>
         </div>
@@ -41,8 +40,6 @@
           <v-card-text>time line</v-card-text>
         </v-card>
       </v-tab-item>
-
-     
 
       <v-tab-item :key="4">
         <v-card flat>
@@ -76,7 +73,7 @@ export default {
     taskGroups: [],
     projectId: null,
     taskGroupDialog: false,
-    memberDialog:false
+    memberDialog: false
   }),
 
   computed: {},
@@ -109,6 +106,9 @@ export default {
         .catch(e => {
           this.errors.push(e);
         });
+    },
+    goBack() {
+      this.$router.go(-1);
     },
     create() {
       this.$root.createItem(this.editedItem, "ProjectService/Create", this);

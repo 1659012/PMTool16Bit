@@ -117,7 +117,7 @@ Vue.mixin({
         .then(response => {
           if (response.data.success) {
             if (isCloseModal) me.close(response.data.result);
-            else me.updateResult(response.data.result);
+            // else me.updateResult(response.data.result);
             Vue.notify({
               group: "message",
               type: "success",
@@ -129,8 +129,8 @@ Vue.mixin({
             Vue.notify({
               group: "message",
               type: "error",
-              title: "Important message",
-              text: "Hello user! This is a notification!"
+              title: "Error",
+              text: "error"
             });
           }
         })
@@ -164,6 +164,12 @@ Vue.mixin({
           .catch(e => {
             // this.errors.push(e);
           });
+      }
+    },
+    logout(confirm=false) {
+      if (confirm ||confirm("Are you sure to logout?")) {
+        store.commit(APP_MUTATIONS.NOT_AUTH);
+        store.commit(APP_MUTATIONS.SET_TOKEN, "");
       }
     },
     getFullPath(path) {
