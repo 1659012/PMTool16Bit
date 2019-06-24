@@ -3,23 +3,29 @@
   <v-container fluid grid-list-lg>
     <v-toolbar dense flat color="transparent">
       <v-dialog lazy v-model="taskGroupDialog" max-width="600px" persistent>
-        <TaskGroupCreate v-if="taskGroupDialog" lazy :projectId="editedItem.id" @close="taskGroupDialog=false;loadData()"/>
+        <TaskGroupCreate
+          v-if="taskGroupDialog"
+          lazy
+          :projectId="editedItem.id"
+          @close="taskGroupDialog=false;loadData()"
+        />
       </v-dialog>
 
       <v-dialog lazy v-model="memberDialog" max-width="600px" persistent>
-        <ProjectMemberDialog v-if="memberDialog" lazy v-model="editedItem" @close="memberDialog=false;loadData()"/>
+        <ProjectMemberDialog
+          v-if="memberDialog"
+          lazy
+          v-model="editedItem"
+          @close="memberDialog=false;loadData()"
+        />
       </v-dialog>
     </v-toolbar>
     <h3 class="headline">{{editedItem.projectName}}</h3>
     <v-tabs color="cyan" dark slider-color="yellow">
       <v-tab :key="1" ripple>Board</v-tab>
-      <v-tab :key="2" ripple>Timeline</v-tab>
-      <v-tab :key="3" ripple>Members</v-tab>
+      <v-tab :key="2" ripple>Members</v-tab>
+      <v-tab :key="3" ripple>Timeline</v-tab>
       <v-tab :key="4" ripple>Settings</v-tab>
-
-      <v-tab-item :key="3">
-        <ProjectMemberList v-model="editedItem" :loadData="loadData"/>
-      </v-tab-item>
 
       <v-tab-item :key="1">
         <div>
@@ -36,6 +42,10 @@
       </v-tab-item>
 
       <v-tab-item :key="2">
+        <ProjectMemberList v-model="editedItem" :loadData="loadData"/>
+      </v-tab-item>
+
+      <v-tab-item :key="3">
         <v-card flat>
           <v-card-text>time line</v-card-text>
         </v-card>

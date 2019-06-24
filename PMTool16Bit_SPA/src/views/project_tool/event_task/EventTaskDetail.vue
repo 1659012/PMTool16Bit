@@ -16,9 +16,19 @@
             :error-messages="errors.collect('Task name')"
           ></v-text-field>
 
-          <v-textarea name="Description" label="Description" v-model="editedItem.description" v-validate="{ max:256 }"></v-textarea>
+          <v-textarea
+            name="Description"
+            label="Description"
+            v-model="editedItem.description"
+            v-validate="{ max:256 }"
+          ></v-textarea>
 
-          <DateTimePicker :input="editedItem.dueDate" :output.sync="editedItem.dueDate" clearable :label="`Due date`"/>
+          <DateTimePicker
+            :input="editedItem.dueDate"
+            :output.sync="editedItem.dueDate"
+            clearable
+            :label="`Due date`"
+          />
 
           <v-switch v-model="editedItem.isCompleted" label="Check Complete"></v-switch>
 
@@ -33,11 +43,21 @@
               <v-subheader>{{priorityLevels[editedItem.priorityLevel].text}}</v-subheader>
             </v-flex>
             <v-flex lg4>
-              <v-slider v-model="editedItem.priorityLevel" :max="3" :min="0" :color="priorityLevels[editedItem.priorityLevel].color" thumb-label></v-slider>
+              <v-slider
+                v-model="editedItem.priorityLevel"
+                :max="3"
+                :min="0"
+                :color="priorityLevels[editedItem.priorityLevel].color"
+                thumb-label
+              ></v-slider>
+              <!-- <v-rating v-model="editedItem.priorityLevel" background-color="orange lighten-3" color="orange" medium></v-rating> -->
             </v-flex>
           </v-layout>
 
-          <TaskMemberCombobox :defaultItems="editedItem.eventTaskMembers" :returnItems.sync="editedItem.eventTaskMembers"/>
+          <TaskMemberCombobox
+            :defaultItems="editedItem.eventTaskMembers"
+            :returnItems.sync="editedItem.eventTaskMembers"
+          />
         </v-flex>
       </v-layout>
     </v-container>

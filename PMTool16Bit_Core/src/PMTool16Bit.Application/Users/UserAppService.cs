@@ -20,6 +20,7 @@ using PMTool16Bit.Authorization.Users;
 using PMTool16Bit.Roles.Dto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using PMTool16Bit.Services;
 
 namespace PMTool16Bit.Users
 {
@@ -32,6 +33,7 @@ namespace PMTool16Bit.Users
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
+        private readonly FileService fileService;
 
         public UserAppService(
             IRepository<User, long> repository,
@@ -40,7 +42,8 @@ namespace PMTool16Bit.Users
             IRepository<Role> roleRepository,
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
-            LogInManager logInManager)
+            LogInManager logInManager,
+            FileService fileService)
             : base(repository)
         {
             _userManager = userManager;
@@ -49,6 +52,7 @@ namespace PMTool16Bit.Users
             _passwordHasher = passwordHasher;
             _abpSession = abpSession;
             _logInManager = logInManager;
+            this.fileService = fileService;
         }
 
         [AbpAllowAnonymous]
@@ -249,7 +253,7 @@ namespace PMTool16Bit.Users
             //var userDto = MapToEntityDto(user);
             //var permissionModelList = await _userManager.GetGrantedPermissionsAsync(user);
             //return userDto;
-            return new UserDto
+            var userDto= new UserDto
             {
                 Id = user.Id,
                 UserName = user.UserName,
@@ -257,8 +261,17 @@ namespace PMTool16Bit.Users
                 Surname = user.Surname,
                 FullName = user.FullName,
                 EmailAddress = user.EmailAddress,
-                IsPublishProfile=user.IsPublishProfile
+                IsPublishProfile=user.IsPublishProfile,
+                AvatarId=user.AvatarId
             };
+
+            if (userDto.AvatarId != null)
+            {
+                var avatarId = userDto.AvatarId ?? default(int);
+                userDto.AvatarUrl = fileService.GetFileUrl(avatarId).Result;
+            }
+
+            return userDto;
         }
                        
         public async Task<List<UserDropdownDto>> GetDropdown()

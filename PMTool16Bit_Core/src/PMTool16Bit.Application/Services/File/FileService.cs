@@ -1,8 +1,10 @@
 ﻿using Abp.Application.Services;
 using Abp.Domain.Repositories;
 using PMTool16Bit.Models;
+using PMTool16Bit.Models.Enum;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +28,14 @@ namespace PMTool16Bit.Services
         public Task<FileEntity> GetFileById(int id)
         {
             return base.GetEntityByIdAsync(id);
+        }
+       
+        public async Task<string> GetFileUrl(int fileId)
+        {
+            var baseUrl = await SettingManager.GetSettingValueAsync(SettingKey.App_BaseUrl);
+            var file = GetFileById(fileId).Result;
+            var entityPath = Path.Combine(baseUrl, file.Path);
+            return entityPath;
         }
     }
 }

@@ -4,10 +4,42 @@
     <h3 class="headline">Profile</h3>
     <v-layout row wrap>
       <v-flex lg4>
-        <h5 class="body-2">Avatar here</h5>
-        <v-spacer></v-spacer>        
-        <v-btn color="primary" block @click="update">Update info</v-btn>
-        <v-btn color="primary" block @click="logout(true)">Logout</v-btn>
+        <div>
+          <v-img
+            v-if="editedItem.avatarUrl"
+            :src="editedItem.avatarUrl"
+            alt="profile_avatar"
+            height="300"
+            lazy-src
+          ></v-img>
+
+          <v-expansion-panel>
+            <v-expansion-panel-content class="deep-purple darken-1">
+              <template v-slot:actions>
+                <v-icon color="white">$vuetify.icons.expand</v-icon>
+              </template>
+              <template v-slot:header>
+                <div>
+                  <h5 class="subheading white--text">Change avatar</h5>
+                </div>
+              </template>
+              <v-card>
+                <v-card-text>
+                  <UploadAvatar
+                    :returnAvatarId.sync="editedItem.avatarId"
+                    :returnAvatarUrl.sync="editedItem.avatarUrl"
+                  />
+                </v-card-text>
+              </v-card>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </div>
+        <v-spacer></v-spacer>
+
+        <div>
+          <v-btn color="primary" block @click="update">Update info</v-btn>
+          <v-btn color="primary" block @click="logout(true)">Logout</v-btn>
+        </div>
       </v-flex>
       <v-flex lg8>
         <v-expansion-panel v-model="panel" expand>
@@ -91,7 +123,7 @@
                     :append-icon="showCurrentPassword ? 'visibility' : 'visibility_off'"
                     :type="showCurrentPassword ? 'text' : 'password'"
                     @click:append="showCurrentPassword = !showCurrentPassword"
-                    label="Current password"                    
+                    label="Current password"
                     id="currentPassword"
                     v-model="passwordModel.currentPassword"
                     v-validate="'required|min:4'"
@@ -102,10 +134,10 @@
                   ></v-text-field>
 
                   <v-text-field
-                   :append-icon="showNewPassword ? 'visibility' : 'visibility_off'"
+                    :append-icon="showNewPassword ? 'visibility' : 'visibility_off'"
                     :type="showNewPassword ? 'text' : 'password'"
                     @click:append="showNewPassword = !showNewPassword"
-                    label="New password"                    
+                    label="New password"
                     id="newPassword"
                     v-model="passwordModel.newPassword"
                     v-validate="'required|min:4'"
@@ -120,7 +152,7 @@
             </v-card>
           </v-expansion-panel-content>
 
-           <v-expansion-panel-content class="deep-purple darken-1" :disabled="$route.params.id">
+          <v-expansion-panel-content class="deep-purple darken-1" :disabled="$route.params.id">
             <template v-slot:actions>
               <v-icon color="white">$vuetify.icons.expand</v-icon>
             </template>
@@ -130,13 +162,9 @@
               </div>
             </template>
             <v-card>
-              <v-card-text>
-                Comming soon
-              </v-card-text>
+              <v-card-text>Comming soon</v-card-text>
             </v-card>
           </v-expansion-panel-content>
-
-
         </v-expansion-panel>
       </v-flex>
     </v-layout>
@@ -148,17 +176,18 @@
 // import _ from "lodash";
 // import moment from "moment";
 // import DatePicker from "../basiccomponents/DatePicker";
+import UploadAvatar from "./UploadAvatar";
 export default {
   title: "User profile",
-  components: {},
+  components: { UploadAvatar },
   props: [],
   data: () => ({
     editedItem: { name: "", surname: "" },
     passwordModel: { userId: null, currentPassword: "", newPassword: "" },
     loading: false,
     panel: [true, false, false],
-    showCurrentPassword:false,
-    showNewPassword:false
+    showCurrentPassword: false,
+    showNewPassword: false
   }),
 
   computed: {},
@@ -207,7 +236,7 @@ export default {
         });
     },
 
-    changePassword() {     
+    changePassword() {
       let me = this;
       this.axios
         .post("User/ChangePassword", me.passwordModel)
@@ -220,14 +249,14 @@ export default {
               title: "Change password success! You must login to continue",
               text: ""
             });
-           this.logout(true);
+            this.logout(true);
           }
         })
         .catch(e => {
           this.errors.push(e);
         });
     },
-    logout(checkLogout=false){      
+    logout(checkLogout = false) {
       this.$root.logout(checkLogout);
     },
     create() {
