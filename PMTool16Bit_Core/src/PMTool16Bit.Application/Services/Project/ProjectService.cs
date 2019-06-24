@@ -31,6 +31,9 @@ namespace PMTool16Bit.Services
                 //.ThenInclude(p => p.Member)
                 //.Include(p => p.GroupTasks)
                 .WhereIf(input.Id != null, p => p.Id == input.Id)
+                .WhereIf(input.MemberId != null, p => p.Id == input.MemberId
+                                                     ||p.ProjectMembers.Any(q=>q.MemberId==input.MemberId)
+                         )
                 .WhereIf(input.ProjectOwnerId != null, p => p.ProjectOwnerId == input.ProjectOwnerId)
                 .WhereIf(input.ProjectName.IsNotNullOrEmpty(), t => t.ProjectName.Contains(input.ProjectName));
         }

@@ -92,6 +92,8 @@ export default {
                 token: response.data.result.accessToken,
                 profile: response.data.result.profile,
                 // roles: response.data.result.roles
+                userId: response.data.result.userId,
+                userName: response.data.result.userName,
                 roles: null
               });
             }, 3000);

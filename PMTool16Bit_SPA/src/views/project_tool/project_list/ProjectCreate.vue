@@ -1,13 +1,13 @@
 
 <template>
   <v-card>
-     <v-card-title>
+    <v-card-title>
       <h3 class="headline">Create Project</h3>
     </v-card-title>
     <v-container grid-list-md px-3 py-2>
-    <v-layout row wrap>
-      <v-flex lg12>
-         <v-text-field
+      <v-layout row wrap>
+        <v-flex lg12>
+          <v-text-field
             v-model="editedItem.projectName"
             name="Project name"
             v-validate="{ required: true, max:256 }"
@@ -15,8 +15,17 @@
             label="Project name"
             :error-messages="errors.collect('Project name')"
           ></v-text-field>
-      </v-flex>
-    </v-layout>
+        </v-flex>
+        <v-flex lg12>
+          <v-textarea
+            name="Short description"
+            label="Short description"
+            v-model="editedItem.shortDescription"
+            v-validate="{ max:500 }"
+            :error-messages="errors.collect('Short description')"
+          ></v-textarea>
+        </v-flex>
+      </v-layout>
     </v-container>
     <v-card-actions>
       <v-spacer></v-spacer>
@@ -32,19 +41,23 @@
 // import DatePicker from "../basiccomponents/DatePicker";
 export default {
   // title: "",
-   components: {
-  
-  },
-   props: ["value"],
+  components: {},
+  props: [],
   data: () => ({
-   editedItem:{}
+    editedItem: {
+      projectName: "",
+      shortDescription: "",
+      projectOwnerId: null,
+      projectMembers: [{ memberId: null }]
+    }
   }),
- 
+
   computed: {},
- 
+
   watch: {},
   mounted() {
-    this.editedItem=this.value;
+    this.editedItem.projectOwnerId = this.$store.state.userId;
+    this.editedItem.projectMembers[0].memberId = this.$store.state.userId;
   },
   methods: {
     close(item) {

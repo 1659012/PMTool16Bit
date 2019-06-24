@@ -63,7 +63,7 @@
 // import NotificationList from "@/components/widgets/list/NotificationList";
 import NotificationList from "../../components/widgets/list/NotificationList";
 import Util from "@/util";
-import { APP_ACTIONS, APP_MUTATIONS } from "../../store/store";
+import {APP_MUTATIONS } from "../../store/store";
 export default {
   name: "app-toolbar",
   components: {
@@ -91,7 +91,7 @@ export default {
         icon: "fullscreen_exit",
         href: "#",
         title: "Logout",
-        click: e => {
+        click: () => {
           window.getApp.$emit("APP_LOGOUT");
         }
       }

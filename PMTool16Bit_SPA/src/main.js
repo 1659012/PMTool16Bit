@@ -16,7 +16,6 @@ import Notifications from "vue-notification";
 import VeeValidate from "vee-validate";
 import Vue2Filters from "vue2-filters";
 import moment from "moment";
-import uploader from 'vue-simple-uploader';
 import FileUpload from 'v-file-upload';
 
 // import paths from "./router/paths";
@@ -28,7 +27,6 @@ Vue.use(VueLocalStorage);
 Vue.use(Notifications);
 Vue.use(VeeValidate);
 Vue.use(Vue2Filters);
-Vue.use(uploader);
 Vue.use(FileUpload);
 
 // Vue.use(Breabcrumbs);
@@ -181,6 +179,9 @@ Vue.mixin({
     getFullPath(path) {
       path = path.replace(/\\/g, "/");
       return store.state.baseUrl + path;
+    },
+    isEmptyObject(obj) {
+      return Object.getOwnPropertyNames(obj).length === 0;
     }
   }
 });

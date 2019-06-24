@@ -28,7 +28,6 @@
     "vue-perfect-scrollbar": "^0.1.0",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.0.1",
-    "vue-simple-uploader": "^0.7.1",
     "vue2-filters": "^0.6.0",
     "vuetify": "^1.3.0",
     "vuex": "^3.0.1"

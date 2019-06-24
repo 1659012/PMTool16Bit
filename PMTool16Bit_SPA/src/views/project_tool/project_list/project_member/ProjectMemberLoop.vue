@@ -68,6 +68,8 @@ export default {
   methods: {
     getProfile(userId){
       console.log(userId);
+      let routeData = this.$router.resolve(`/Profile/${userId}`);
+       window.open(routeData.href, "_blank");
     },
     close(item) {
       this.$emit("close", item);

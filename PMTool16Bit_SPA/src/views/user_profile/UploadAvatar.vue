@@ -29,7 +29,7 @@ export default {
 
   watch: {
     file(val) {
-      if (!this.isEmptyObject(val)) {
+      if (!this.$root.isEmptyObject(val)) {
           this.$emit("update:returnAvatarId", val.id);
           this.$emit("update:returnAvatarUrl", val.path);
       }
@@ -51,14 +51,9 @@ export default {
     getResult(e) {
       // console.log(e);
       if (e.currentTarget.response.success) {
-        console.log(e.currentTarget.response.result);
+        // console.log(e.currentTarget.response.result);
         this.file = e.currentTarget.response.result;
-      }
-      // if (response.data.success) {
-      //   console.log(response.data.result);
-      // }else{
-      //   console.log(error);
-      // }
+      }    
     },
     mySaveMethod(file) {
       let fileUpload = new FileUploadService(
@@ -77,10 +72,7 @@ export default {
     },
     onProgress(event) {
       // Handdle the progress
-    },
-    isEmptyObject(obj) {
-      return Object.getOwnPropertyNames(obj).length === 0;
-    }
+    }    
   }
 };
 </script>

@@ -13,7 +13,7 @@
       <v-btn>filer sorting here</v-btn>
       <v-divider vertical></v-divider>
 
-       <v-tooltip bottom>
+      <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn :color="listView && !gridView ?'primary':'grey'" dark v-on="on" icon flat class="mx-1" @click="handleListView">
             <v-icon>format_list_bulleted</v-icon>
@@ -31,8 +31,6 @@
         <span>Grid View</span>
       </v-tooltip>
 
-     
-
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn :color="gridView && listView ?'primary':'grey'" dark v-on="on" icon flat class="ml-1" @click="handleAllView">
@@ -43,7 +41,7 @@
       </v-tooltip>
       <!-- fullscreen hide-overlay persistent -->
       <v-dialog lazy v-model="dialog" max-width="600px" persistent>
-        <ProjectCreate v-if="dialog" lazy v-model="editedItem" @close="close"/>
+        <ProjectCreate v-if="dialog" lazy @close="close"/>
       </v-dialog>
     </v-toolbar>
     <v-layout row wrap mx-3 v-show="listView">
@@ -61,9 +59,10 @@
           <template slot="items" slot-scope="props" class="list-item" transition="slide-y-transition">
             <tr class="tableRow">
               <td class="colMax150">{{ props.item.projectName }}</td>
+              <td class="colMax150">{{ props.item.shortDescription }}</td>
               <td class="colMax150">{{ props.item.projectOwner?props.item.projectOwner.fullName:"" }}</td>
               <td class="text-lg-center colMax120">
-                <v-btn flat icon  :to="`/ProjectDetail/${props.item.id}`">
+                <v-btn flat icon :to="`/ProjectDetail/${props.item.id}`">
                   <v-icon small>edit</v-icon>
                 </v-btn>
                 <v-tooltip bottom>
@@ -94,14 +93,14 @@
               </div>
             </v-card-title>
             <v-card-actions>
-              <v-btn flat color="green">Edit</v-btn>
-              <v-btn flat color="orange" @click="deleteItem(item)" :disabled="item.projectOwnerId==userId">Delete</v-btn>
+              <v-btn flat color="green" :to="`/ProjectDetail/${item.id}`">Edit</v-btn>
+              <v-btn flat color="orange" @click="deleteItem(item)" :disabled="item.projectOwnerId===userId">Delete</v-btn>
             </v-card-actions>
           </v-card>
         </v-hover>
       </v-flex>
     </v-layout>
-    <!-- <code>{{items[0]}}</code> -->
+    <code>{{userId}}</code>
   </v-container>
 </template>
 <script>
@@ -126,6 +125,10 @@ export default {
         value: "projectName"
       },
       {
+        text: "Short description",
+        value: "shortDescription"
+      },
+      {
         text: "Project owner",
         value: "projectOwner.fullName"
       },
@@ -137,8 +140,8 @@ export default {
       }
     ],
     items: [],
-    editedItem: {},
-    defaultItem: { projectName: "", projectOwnerId: null },
+    // editedItem: {},
+    // defaultItem: { projectName: "", projectOwnerId: null },
     userId: null,
     gridView: false,
     listView: true
@@ -173,7 +176,7 @@ export default {
   },
   methods: {
     initialize() {
-      this.defaultItem.projectOwnerId = this.userId = this.$store.state.userId;
+     this.userId = this.$store.state.userId;
     },
     handleListView() {
       this.listView = true;
@@ -196,7 +199,7 @@ export default {
       // }, 10);
     },
     createProject() {
-      this.editedItem = Object.assign({}, this.defaultItem);
+      // this.editedItem = Object.assign({}, this.defaultItem);
       this.dialog = true;
     },
     loadData() {
@@ -208,7 +211,8 @@ export default {
             skipCount: (me.pagination.page - 1) * me.pagination.rowsPerPage,
             maxResultCount: me.pagination.rowsPerPage,
             sorting: me.sortDirection,
-            projectName: me.filter.projectName
+            projectName: me.filter.projectName,
+            memberId: me.$store.state.userId
           }
         })
         .then(response => {
@@ -237,7 +241,7 @@ export default {
     close(item) {
       this.loadData();
       this.dialog = false;
-      this.editedItem = Object.assign({}, this.defaultItem);
+      // this.editedItem = Object.assign({}, this.defaultItem);
     }
   }
 };

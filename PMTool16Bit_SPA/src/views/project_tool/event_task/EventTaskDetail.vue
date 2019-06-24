@@ -20,7 +20,7 @@
             name="Description"
             label="Description"
             v-model="editedItem.description"
-            v-validate="{ max:256 }"
+            v-validate="{ max:500 }"
           ></v-textarea>
 
           <DateTimePicker

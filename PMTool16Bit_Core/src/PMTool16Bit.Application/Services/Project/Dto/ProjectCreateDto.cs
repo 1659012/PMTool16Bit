@@ -19,10 +19,8 @@ namespace PMTool16Bit.Services
         [StringLength(EntityLength.ShortDescription)]
         public string ShortDescription { get; set; }
 
-
         #region Reference
-
-        //public List<ProjectMemberDto> ProjectMembers { get; set; }
+        public List<ProjectMemberDto> ProjectMembers { get; set; }
         #endregion
     }
 }

@@ -3,24 +3,21 @@
   <v-container fluid grid-list-lg>
     <v-toolbar dense flat color="transparent">
       <v-dialog lazy v-model="taskGroupDialog" max-width="600px" persistent>
-        <TaskGroupCreate
-          v-if="taskGroupDialog"
-          lazy
-          :projectId="editedItem.id"
-          @close="taskGroupDialog=false;loadData()"
-        />
+        <TaskGroupCreate v-if="taskGroupDialog" lazy :projectId="editedItem.id" @close="taskGroupDialog=false;loadData()"/>
       </v-dialog>
 
       <v-dialog lazy v-model="memberDialog" max-width="600px" persistent>
-        <ProjectMemberDialog
-          v-if="memberDialog"
-          lazy
-          v-model="editedItem"
-          @close="memberDialog=false;loadData()"
-        />
+        <ProjectMemberDialog v-if="memberDialog" lazy v-model="editedItem" @close="memberDialog=false;loadData()"/>
       </v-dialog>
     </v-toolbar>
-    <h3 class="headline">{{editedItem.projectName}}</h3>
+
+    <div style="display:flex; align-items: center; justify-content: center;">
+      <span class="headline">{{editedItem.projectName}}</span>
+      <v-spacer></v-spacer>
+      <v-btn color="deep-purple darken-1" flat @click="goBack">
+        <v-icon left dark class="mr-0">arrow_back_ios</v-icon>Go back
+      </v-btn>
+    </div>
     <v-tabs color="cyan" dark slider-color="yellow">
       <v-tab :key="1" ripple>Board</v-tab>
       <v-tab :key="2" ripple>Members</v-tab>
