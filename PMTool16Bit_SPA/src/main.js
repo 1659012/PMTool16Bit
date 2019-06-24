@@ -16,6 +16,8 @@ import Notifications from "vue-notification";
 import VeeValidate from "vee-validate";
 import Vue2Filters from "vue2-filters";
 import moment from "moment";
+import uploader from 'vue-simple-uploader';
+import FileUpload from 'v-file-upload';
 
 // import paths from "./router/paths";
 // import Breabcrumbs from 'vue-2-breadcrumbs';
@@ -26,6 +28,9 @@ Vue.use(VueLocalStorage);
 Vue.use(Notifications);
 Vue.use(VeeValidate);
 Vue.use(Vue2Filters);
+Vue.use(uploader);
+Vue.use(FileUpload);
+
 // Vue.use(Breabcrumbs);
 
 Vue.use(require('vue-moment'), {

@@ -32,7 +32,8 @@
     <v-menu offset-y origin="center center" :nudge-bottom="10" transition="scale-transition">
       <v-btn icon large flat slot="activator">
         <v-avatar size="30px">
-          <img src="../../../public/static/avatar/man_4.jpg" alt="Michael Wang">
+          <img v-if="$store.state.profile.avatarUrl" :src="$store.state.profile.avatarUrl" alt="user_avatar">
+          <img v-else src="../../../public/static/avatar/default-avatar.png" alt="user_avatar">
         </v-avatar>
       </v-btn>
       <v-list class="pa-0">
@@ -96,6 +97,9 @@ export default {
       }
     ]
   }),
+  mounted(){
+    console.log(this.$store.state.profile);
+  },
   computed: {
     toolbarColor() {
       return this.$vuetify.options.extra.mainNav;
