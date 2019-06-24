@@ -79,7 +79,7 @@
       </div>
     </v-list>
 
-    <v-dialog lazy v-model="eventTaskDialog" max-width="600px" persistent>
+    <v-dialog lazy v-model="eventTaskDialog" max-width="800px" persistent>
       <EventTaskDetail v-if="eventTaskDialog" lazy :editedItem="editedItem" @close="closeEventTaskDetail"/>
     </v-dialog>
   </div>
