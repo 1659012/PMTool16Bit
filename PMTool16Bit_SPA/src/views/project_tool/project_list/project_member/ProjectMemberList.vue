@@ -9,8 +9,8 @@
       <ProjectMemberDialog v-if="dialog" lazy v-model="editedItem" @close="dialog=false;loadData()"/>
     </v-dialog>
 
-    <ProjectMemberLoop :projectMembers="editedItem.projectMembers"/>
-    <code>{{editedItem}}</code>
+    <ProjectMemberLoop :projectMembers="editedItem.projectMembers" :loadData="loadData"/>
+    <!-- <code>{{editedItem}}</code> -->
   </div>
 </template>
 <script>

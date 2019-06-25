@@ -19,5 +19,8 @@ namespace PMTool16Bit.Models
         [ForeignKey(nameof(MemberId))]
         public virtual User Member { get; set; }
 
+        [StringLength(EntityLength.ProjectRole)]
+        public string ProjectRole { get; set; }
+
     }
 }

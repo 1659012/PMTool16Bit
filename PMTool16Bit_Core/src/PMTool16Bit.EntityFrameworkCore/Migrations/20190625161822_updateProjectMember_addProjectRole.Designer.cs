@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PMTool16Bit.EntityFrameworkCore;
 
 namespace PMTool16Bit.Migrations
 {
     [DbContext(typeof(PMTool16BitDbContext))]
-    partial class PMTool16BitDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190625161822_updateProjectMember_addProjectRole")]
+    partial class updateProjectMember_addProjectRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

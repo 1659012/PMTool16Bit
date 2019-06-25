@@ -12,6 +12,7 @@ namespace PMTool16Bit.Models.Enum
         public const int Description = 500;
         public const int ShortDescription = 256;
         public const int CommentContent = 500;
+        public const int ProjectRole = 100;
         public const int IdLimit = 128;
         public const int FileName = 256;
         public const int FileType = 256;

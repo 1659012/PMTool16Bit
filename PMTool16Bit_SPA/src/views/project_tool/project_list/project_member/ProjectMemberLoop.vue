@@ -4,46 +4,46 @@
     <v-layout row wrap>
       <v-flex lg12>
         <v-card>
-          <!-- <v-toolbar color="cyan" dark>
-            <v-toolbar-side-icon></v-toolbar-side-icon>
-  
-            <v-toolbar-title>Inbox</v-toolbar-title>
-  
-            <v-spacer></v-spacer>
-  
-            <v-btn icon>
-              <v-icon>search</v-icon>
-            </v-btn>
-          </v-toolbar>-->
-
           <v-list two-line class="py-0">
             <template v-for="(projectMember, index) in projectMembers">
               <v-list-tile :key="index" avatar>
                 <v-list-tile-avatar>
-                  <img v-if="projectMember.member.avatarUrl" :src="projectMember.member.avatarUrl">
+                  <!-- <img v-if="projectMember.member.avatarUrl" :src="projectMember.member.avatarUrl"> -->
 
-                 <v-avatar v-else class="grey lighten-2 teal--text pa-3">
-                      {{ projectMember.member.name.slice(0, 1).toUpperCase()+
-                      projectMember.member.surname.slice(0, 1).toUpperCase()}}
-                    </v-avatar>
-
-                  <!-- <v-chip>
-                    <v-avatar class="teal">A</v-avatar>ANZ Bank
-                  </v-chip> -->
+                  <v-avatar class="grey lighten-2 teal--text pa-3">
+                    {{ projectMember.member.name.slice(0, 1).toUpperCase()+
+                    projectMember.member.surname.slice(0, 1).toUpperCase()}}
+                  </v-avatar>
                 </v-list-tile-avatar>
 
                 <v-list-tile-content>
                   <v-list-tile-title v-html="projectMember.member.fullName" @click="getProfile(projectMember.member.id)" style="cursor: pointer;"></v-list-tile-title>
                   <v-list-tile-sub-title v-html="projectMember.member.emailAddress"></v-list-tile-sub-title>
                 </v-list-tile-content>
+
+                <v-list-tile-action>
+                  <v-select :items="roles" v-model="projectMember.projectRole" :label="projectMember.projectRole?'':'Unassign role'" flat></v-select>
+                </v-list-tile-action>
               </v-list-tile>
-                <v-divider :key="`'divider'`+index"></v-divider>
+              <v-divider :key="`'divider'`+index"></v-divider>
             </template>
           </v-list>
         </v-card>
       </v-flex>
     </v-layout>
-    <!-- <code>{{projectMembers}}</code> -->
+    <v-dialog lazy v-model="taskGroupDialog" max-width="600px" persistent>
+      <TaskGroupCreate v-if="taskGroupDialog" lazy :projectId="editedItem.id" @close="taskGroupDialog=false;loadData()"/>
+      <v-card>
+        <v-card-actions>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="red darken-1" flat @click.native="close()">Cancel</v-btn>
+            <v-btn color="blue darken-1" flat @click.native="save">Save</v-btn>
+          </v-card-actions>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <code>{{projectMembers}}</code>
   </div>
 </template>
 <script>
@@ -53,9 +53,10 @@
 export default {
   // title: "Project member",
   components: {},
-  props: ["projectMembers"],
+  props: ["projectMembers", "loadData"],
   data: () => ({
-    dialog: false
+    roles: ["Project owner", "Admin", "Member"],
+    memberItem: {}
   }),
 
   computed: {},
@@ -66,10 +67,9 @@ export default {
 
   mounted() {},
   methods: {
-    getProfile(userId){
-      console.log(userId);
+    getProfile(userId) {
       let routeData = this.$router.resolve(`/Profile/${userId}`);
-       window.open(routeData.href, "_blank");
+      window.open(routeData.href, "_blank");
     },
     close(item) {
       this.$emit("close", item);

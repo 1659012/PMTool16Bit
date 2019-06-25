@@ -48,7 +48,7 @@ export default {
       projectName: "",
       shortDescription: "",
       projectOwnerId: null,
-      projectMembers: [{ memberId: null }]
+      projectMembers: [{ memberId: null, projectRole:"Project owner" }]
     }
   }),
 
