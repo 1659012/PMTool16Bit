@@ -4,15 +4,23 @@
     <v-layout row wrap>
       <v-flex lg3 v-for="(taskGroup, taskGroupIndex) in taskGroups" :key="taskGroupIndex">
         <v-hover>
-          <v-card class="rounded-card" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
+          <v-card
+            class="rounded-card"
+            slot-scope="{ hover }"
+            :class="`elevation-${hover ? 12 : 2}`"
+          >
             <v-toolbar flat px-1>
-              <v-toolbar-title class="subheading">{{taskGroup.taskGroupName}}</v-toolbar-title>
+              <v-toolbar-title
+                class="subheading"
+                style="cursor: pointer;"
+                @click="openTaskGroupDetail(taskGroup)"
+              >{{taskGroup.taskGroupName}}</v-toolbar-title>
               <v-spacer></v-spacer>
 
               <v-menu bottom left lazy transition="slide-x-transition">
                 <template v-slot:activator="{ on }">
-                  <v-btn dark icon v-on="on">
-                    <v-icon>more_vert</v-icon>
+                  <v-btn icon v-on="on" class="mr-0">
+                    <v-icon color="blue-grey darken-1">arrow_right</v-icon>
                   </v-btn>
                 </template>
 
@@ -27,12 +35,19 @@
                 </v-list>
               </v-menu>
             </v-toolbar>
-            <EventTaskLoops :eventTasks="taskGroup.eventTasks" :loadData="loadData"/>
+            <EventTaskLoops :eventTasks="taskGroup.eventTasks" :projectId="taskGroup.projectId" :loadData="loadData"/>
             <v-divider></v-divider>
             <v-card-actions class="py-0">
               <v-tooltip right>
                 <template v-slot:activator="{ on }">
-                  <v-btn fab flat small color="primary" v-on="on" @click=" taskGroupId=taskGroup.id;eventTaskDialog=true;">
+                  <v-btn
+                    fab
+                    flat
+                    small
+                    color="primary"
+                    v-on="on"
+                    @click="taskGroupId=taskGroup.id;eventTaskDialog=true;"
+                  >
                     <v-icon dark>add</v-icon>
                   </v-btn>
                 </template>
@@ -44,7 +59,20 @@
       </v-flex>
     </v-layout>
     <v-dialog lazy v-model="eventTaskDialog" max-width="600px" persistent>
-      <EventTaskCreate v-if="eventTaskDialog" lazy :taskGroupId="taskGroupId" @close="eventTaskDialog=false;taskGroupId=null;loadData()"/>
+      <EventTaskCreate
+        v-if="eventTaskDialog"
+        lazy
+        :taskGroupId="taskGroupId"
+        @close="eventTaskDialog=false;taskGroupId=null;loadData()"
+      />
+    </v-dialog>
+    <v-dialog lazy v-model="taskGroupDetailDialog" max-width="600px" persistent>
+      <TaskGroupDetail
+        v-if="taskGroupDetailDialog"
+        lazy
+        v-model="taskGroup"
+        @close="taskGroupDetailDialog=false;loadData()"
+      />
     </v-dialog>
   </div>
 </template>
@@ -54,11 +82,17 @@
 // import DatePicker from "../basiccomponents/DatePicker";
 import EventTaskCreate from "../event_task/EventTaskCreate";
 import EventTaskLoops from "../event_task/EventTaskLoops";
+import TaskGroupDetail from "./TaskGroupDetail";
 export default {
   // title: "",
-  components: { EventTaskCreate, EventTaskLoops },
+  components: { EventTaskCreate, EventTaskLoops, TaskGroupDetail },
   props: ["taskGroups", "loadData"],
-  data: () => ({ eventTaskDialog: false, taskGroupId: null }),
+  data: () => ({
+    eventTaskDialog: false,
+    taskGroupId: null,
+    taskGroupDetailDialog: false,
+    taskGroup:{}
+  }),
 
   computed: {},
 
@@ -67,6 +101,10 @@ export default {
     this.taskGroups = this.value;
   },
   methods: {
+    openTaskGroupDetail(taskGroup){
+      this.taskGroupDetailDialog=true;
+      this.taskGroup=taskGroup;
+    },
     deleteTaskGroup(item) {
       this.$root.deleteItem(item, "TaskGroupService/Delete", this);
     },

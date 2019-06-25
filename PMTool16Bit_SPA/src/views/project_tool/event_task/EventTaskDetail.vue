@@ -55,6 +55,8 @@
           </v-layout>
 
           <TaskMemberCombobox
+          
+            :projectId="projectId"
             :defaultItems="editedItem.eventTaskMembers"
             :returnItems.sync="editedItem.eventTaskMembers"
           />
@@ -67,6 +69,7 @@
       <v-btn color="blue darken-1" flat @click.native="save">Save</v-btn>
     </v-card-actions>
     <!-- <code>{{editedItem.priorityLevel}}</code> -->
+    <code>{{projectId}}</code>
   </v-card>
 </template>
 <script>
@@ -78,7 +81,7 @@ import Enums from "../../../enum/enums";
 export default {
   // title: "",
   components: { DateTimePicker, TaskMemberCombobox },
-  props: ["editedItem"],
+  props: ["editedItem","projectId"],
   data: () => ({
     priorityLevels: Enums.PriorityLevels
   }),

@@ -2,25 +2,26 @@
 <template>
   <v-card>
     <v-card-title>
-      <h4 class="headline">Create Event Task</h4>
+      <h4 class="headline">Update task group</h4>
     </v-card-title>
-    <v-container grid-list-md px-3 py-2>
-      <v-layout row wrap>
-        <v-flex lg12>
-          <v-text-field
-            v-model="editedItem.taskName"
-            name="Task name"
-            v-validate="{ required: true, max:256 }"
-            type="text"
-            label="Task name"
-            :error-messages="errors.collect('Task name')"
-          ></v-text-field>
+    <v-card-text>
+      <v-text-field
+        v-model="editedItem.taskGroupName"
+        name="Task name"
+        v-validate="{ required: true, max:256 }"
+        type="text"
+        label="Task name"
+        :error-messages="errors.collect('Task name')"
+      ></v-text-field>
 
-          <v-textarea name="Description" label="Description" v-model="editedItem.description" v-validate="{ max:256 }"></v-textarea>
-          <code>{{taskGroupId}}</code>
-        </v-flex>
-      </v-layout>
-    </v-container>
+      <v-textarea
+        name="Short description"
+        label="Short description"
+        v-model="editedItem.shortDescription"
+        v-validate="{ max:256 }"
+        :error-messages="errors.collect('Short description')"
+      ></v-textarea>
+    </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
       <v-btn color="red darken-1" flat @click.native="close()">Cancel</v-btn>
@@ -36,13 +37,13 @@
 export default {
   // title: "",
   components: {},
-  props: ["taskGroupId"],
+  props: ["value"],
   data: () => ({
     editedItem: {
-      taskName: "",
+      taskGroupName: "",
       taskGroupId: null,
       eventTaskMembers: [],
-      description: ""
+      shortDescription: ""
     }
   }),
 
@@ -50,17 +51,17 @@ export default {
 
   watch: {},
   mounted() {
-    this.editedItem.taskGroupId = this.taskGroupId;
+    this.editedItem = this.value;
   },
   methods: {
     close(item) {
       this.$emit("close", item);
     },
     create() {
-      this.$root.createItem(this.editedItem, "EventTaskService/Create", this);
+      this.$root.createItem(this.editedItem, "TaskGroupService/Create", this);
     },
     update() {
-      this.$root.updateItem(this.editedItem, "EventTaskService/Update", this);
+      this.$root.updateItem(this.editedItem, "TaskGroupService/Update", this);
     },
     save() {
       this.$validator.validateAll().then(result => {

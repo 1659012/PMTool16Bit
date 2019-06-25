@@ -11,11 +11,15 @@
     <RootNamespace>PMTool16Bit</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Services\Media\**" />
+    <EmbeddedResource Remove="Services\Media\**" />
+    <None Remove="Services\Media\**" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\PMTool16Bit.Core\PMTool16Bit.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseModel\" />
     <Folder Include="BaseService\" />
-    <Folder Include="Services\Media\" />
   </ItemGroup>
 </Project>

@@ -44,6 +44,7 @@ export const store = new Vuex.Store({
   mutations: {
     [APP_MUTATIONS.SET_TOKEN]: (state, token) => {
       state.token = token;
+      
       if (!token) {
         localStorage.clear();
       }

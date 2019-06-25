@@ -10,6 +10,7 @@
     </v-dialog>
 
     <ProjectMemberLoop :projectMembers="editedItem.projectMembers"/>
+    <code>{{editedItem}}</code>
   </div>
 </template>
 <script>
@@ -37,6 +38,7 @@ export default {
 
   mounted() {
     this.editedItem = this.value;
+    console.log( this.$store.state.userId);
   },
   methods: {
     close(item) {

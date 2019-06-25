@@ -16,7 +16,7 @@
 import _ from "lodash";
 export default {
   components: {},
-  props: ["defaultItems", "returnItems"],
+  props: ["defaultItems", "returnItems","projectId"],
   data() {
     return {
       items: [],

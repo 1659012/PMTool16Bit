@@ -13,6 +13,9 @@ namespace PMTool16Bit.Models
         [StringLength(EntityLength.GroupTaskName)]
         public string TaskGroupName { get; set; }
 
+        [StringLength(EntityLength.ShortDescription)]
+        public string ShortDescription { get; set; }
+
         #region Reference
 
         [ForeignKey(nameof(ProjectId))]

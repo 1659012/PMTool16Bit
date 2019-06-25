@@ -9,5 +9,8 @@ namespace PMTool16Bit.Services
 
         [StringLength(EntityLength.GroupTaskName)]
         public string TaskGroupName { get; set; }
+
+        [StringLength(EntityLength.ShortDescription)]
+        public string ShortDescription { get; set; }
     }
 }

@@ -5,12 +5,12 @@
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4 lg4>
             <v-card class="elevation-1 pa-3">
-              <v-card-text>
+              <v-card-text class="py-0">
                 <div class="layout column align-center">
-                  <img src="/static/m.png" alt="Vue Material Admin" width="120" height="120">
+                  <!-- <img src="/static/m.png" alt="Vue Material Admin" width="120" height="120"> -->
                   <h1 class="flex my-4 primary--text">PMTool16Bit</h1>
                 </div>
-                <v-form>
+                <v-form class="py-0">
                   <v-text-field
                     append-icon="person"
                     type="text"
@@ -67,7 +67,7 @@
                   ></v-text-field>
 
                   <v-text-field label="Full name" v-model="getFullName" disabled></v-text-field>
-
+                  
                   <v-switch
                     v-model="model.isPublishProfile"
                     v-validate="''"
@@ -76,10 +76,20 @@
                     label="Allow others view profile"
                     data-vv-name="checkbox"
                     type="switch"
+                    class="py-0 my-0"
                   ></v-switch>
                 </v-form>
               </v-card-text>
-              <v-card-actions>
+              <v-card-actions class="py-0">
+                <v-card-text>
+                  <span class="caption">Already have an account?</span>
+                  <span
+                    class="primary--text caption ml-3"
+                    style="cursor: pointer;"
+                    @click="$router.push('/login');"
+                  >Login here</span>
+                </v-card-text>
+
                 <v-spacer></v-spacer>
                 <v-btn color="primary" @click="register">Create New Account</v-btn>
               </v-card-actions>
@@ -103,6 +113,14 @@ export default {
       surname: "",
       emailAddress: "",
       isPublishProfile: true
+    },
+    defaultModel: {
+      username: "admin",
+      password: "",
+      name: "",
+      surname: "",
+      emailAddress: "",
+      isPublishProfile: true
     }
   }),
   mounted() {},
@@ -112,6 +130,9 @@ export default {
     }
   },
   methods: {
+    refreshForm() {
+      this.model = Object.assign({}, this.defaultModel);
+    },
     register() {
       let me = this;
       this.axios

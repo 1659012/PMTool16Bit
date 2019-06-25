@@ -46,7 +46,7 @@ export default {
   data: () => ({
     loading: false,
     model: {
-      username: "admin",
+      userNameOrEmailAddress: "",
       password: ""
     },
     baseUrl: ""
@@ -88,6 +88,7 @@ export default {
             window.location.reload();
             setTimeout(() => {
               me.$store.commit(APP_MUTATIONS.LOGIN_SUCCESS);
+               
               me.$store.dispatch(APP_ACTIONS.LOGIN, {
                 token: response.data.result.accessToken,
                 profile: response.data.result.profile,
@@ -97,6 +98,7 @@ export default {
                 roles: null
               });
             }, 3000);
+            // console.log(response.data.result.accessToken);            
           } else {
             // me.loading = false;
             me.$notify({

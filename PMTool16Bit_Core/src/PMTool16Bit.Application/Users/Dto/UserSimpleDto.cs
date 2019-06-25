@@ -21,9 +21,7 @@ namespace PMTool16Bit.Users
 
         public string FullName { get; set; }
 
-        public string EmailAddress { get; set; }
-        
-        public string AvatarUrl { get; set; }
+        public string EmailAddress { get; set; }      
 
     }
 }

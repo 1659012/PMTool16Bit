@@ -7,5 +7,8 @@ namespace PMTool16Bit.Services
         public int? ProjectId { get; set; }
     
         public string TaskGroupName { get; set; }
+
+        public string ShortDescription { get; set; }
+
     }
 }

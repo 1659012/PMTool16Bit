@@ -4,6 +4,8 @@ using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Models;
+using PMTool16Bit.Users;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -75,6 +77,25 @@ namespace PMTool16Bit.Services
             var result = query.FirstOrDefaultAsync();
 
             return base.Get(input);
-        }       
+        }
+
+        public List<UserSimpleDto> GetProjectMembers(int projectId)
+        {            
+            return Repository
+                    .GetAll()
+                    .Include(p => p.ProjectMembers)
+                    .ThenInclude(q => q.Member)
+                    .FirstOrDefault(p => p.Id == projectId)
+                    .ProjectMembers
+                    .Select(p => new UserSimpleDto
+                    {
+                        Id = p.Member.Id,
+                        Name = p.Member.Name,
+                        Surname = p.Member.Surname,                        
+                        FullName = p.Member.FullName,
+                        EmailAddress = p.Member.EmailAddress
+                    })
+                    .ToList();
+        }
     }
 }

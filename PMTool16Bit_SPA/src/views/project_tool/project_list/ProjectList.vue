@@ -67,7 +67,7 @@
                 </v-btn>
                 <v-tooltip bottom>
                   <template v-slot:activator="{ on }">
-                    <v-btn flat icon v-on="on" @click="deleteItem(props.item)" :disabled="props.item.projectOwnerId==userId">
+                    <v-btn flat icon v-on="on" @click="deleteItem(props.item)" :disabled="props.item.projectOwnerId!=userId">
                       <v-icon small>delete</v-icon>
                     </v-btn>
                   </template>
@@ -100,7 +100,7 @@
         </v-hover>
       </v-flex>
     </v-layout>
-    <code>{{userId}}</code>
+    <code>{{$store.state}}</code>
   </v-container>
 </template>
 <script>
@@ -172,7 +172,7 @@ export default {
   mounted() {
     this.initialize();
     console.log(this.$store.state);
-    console.log(this.$router.currentRoute);
+  
   },
   methods: {
     initialize() {

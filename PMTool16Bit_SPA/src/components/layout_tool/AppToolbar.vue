@@ -98,7 +98,7 @@ export default {
     ]
   }),
   mounted(){
-    console.log(this.$store.state.profile);
+    // console.log(this.$store.state.profile);
   },
   computed: {
     toolbarColor() {
