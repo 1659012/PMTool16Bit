@@ -1,4 +1,4 @@
-const PriorityLevels = [
+export const PriorityLevels = [
   {
     value: 0,
     text: "Low",
@@ -24,6 +24,14 @@ const PriorityLevels = [
     icon: "alarm"
   }
 ];
-const Roles = ["Project owner", "Admin", "Member"];
+export const Roles = {
+  projectOwner: { label: "Project owner", value: "Project_Owner" },
+  admin: {
+    label: "Admin",
+    value: "Admin",
+    description: "View-Edit-Create-Delete Tasks; Add-Remove Members"
+  },
+  member: { label: "Member", value: "Member", description: "View-Edit Tasks" }
+};
 
-export default { PriorityLevels: PriorityLevels, Roles: Roles };
+export default { PriorityLevels, Roles };

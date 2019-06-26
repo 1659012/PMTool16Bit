@@ -77,13 +77,13 @@
 // import moment from "moment";
 import DateTimePicker from "../../../components/basic/DateTimePicker";
 import TaskMemberCombobox from "./TaskMemberCombobox";
-import Enums from "../../../enum/enums";
+import {PriorityLevels} from "../../../enum/enums";
 export default {
   // title: "",
   components: { DateTimePicker, TaskMemberCombobox },
   props: ["editedItem","projectId"],
   data: () => ({
-    priorityLevels: Enums.PriorityLevels
+    priorityLevels: PriorityLevels
   }),
 
   computed: {},

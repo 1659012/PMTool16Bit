@@ -61,10 +61,10 @@ namespace PMTool16Bit.Controllers
                 model.Password,
                 GetTenancyNameOrNull()
             );
-            
+            DateTime? now = DateTime.Now;
             var accessToken = CreateAccessToken(CreateJwtClaims(loginResult.Identity));
             var profile = _userAppService.GetUserProfile(loginResult.User.Id).Result;
-
+            await _userAppService.UpdateLastLoginTime(loginResult.User.Id, now);
             return new AuthenticateResultModel
             {
                 AccessToken = accessToken,

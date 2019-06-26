@@ -37,8 +37,7 @@
 </template>
 <script>
 // import _ from "lodash";
-// import moment from "moment";
-// import DatePicker from "../basiccomponents/DatePicker";
+import {Roles} from "../../../enum/enums.js";
 export default {
   // title: "",
   components: {},
@@ -48,7 +47,9 @@ export default {
       projectName: "",
       shortDescription: "",
       projectOwnerId: null,
-      projectMembers: [{ memberId: null, projectRole:"Project owner" }]
+      projectMembers: [
+        { memberId: null, projectRole: "" }
+      ]
     }
   }),
 
@@ -56,8 +57,9 @@ export default {
 
   watch: {},
   mounted() {
-    this.editedItem.projectOwnerId = this.$store.state.userId;
+    this.editedItem.projectOwnerId = this.$store.state.userId;    
     this.editedItem.projectMembers[0].memberId = this.$store.state.userId;
+    this.editedItem.projectMembers[0].projectRole = Roles.projectOwner.value;
   },
   methods: {
     close(item) {

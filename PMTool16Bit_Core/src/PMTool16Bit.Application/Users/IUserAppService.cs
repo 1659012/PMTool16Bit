@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
@@ -14,6 +15,9 @@ namespace PMTool16Bit.Users
 
         [AbpAllowAnonymous]
         Task<UserDto> GetUserProfile(long userId);
+
+        [AbpAllowAnonymous]
+        Task UpdateLastLoginTime(long id, DateTime? date);
     }
 
 }

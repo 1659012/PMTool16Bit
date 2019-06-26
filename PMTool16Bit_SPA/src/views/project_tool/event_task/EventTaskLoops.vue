@@ -109,7 +109,7 @@
 </template>
 <script>
 import EventTaskDetail from "./EventTaskDetail";
-import Enums from "../../../enum/enums";
+import {PriorityLevels} from "../../../enum/enums";
 export default {
   components: { EventTaskDetail },
   props: ["eventTasks", "loadData", "projectId"],
@@ -117,7 +117,7 @@ export default {
     eventTaskDialog: false,
     editedItem: {},
     render: false,
-    priorityLevels: Enums.PriorityLevels
+    priorityLevels: PriorityLevels
   }),
 
   computed: {},

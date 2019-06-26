@@ -21,6 +21,7 @@ using PMTool16Bit.Roles.Dto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Services;
+using System;
 
 namespace PMTool16Bit.Users
 {
@@ -273,7 +274,14 @@ namespace PMTool16Bit.Users
 
             return userDto;
         }
-                       
+
+        [AbpAllowAnonymous]
+        public async Task UpdateLastLoginTime(long id, DateTime? date)
+        {
+            var user = await GetEntityByIdAsync(id);
+            user.LastLoginTime = date;
+            CurrentUnitOfWork.SaveChanges();
+        }
         public async Task<List<UserDropdownDto>> GetDropdown()
         {
             return await Repository
