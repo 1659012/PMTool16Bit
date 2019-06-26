@@ -2,6 +2,7 @@ using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
+using Abp.UI;
 using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Models;
 using PMTool16Bit.Users;
@@ -33,6 +34,16 @@ namespace PMTool16Bit.Services
                 return null;
             projectMember.ProjectRole = input.ProjectRole;
             return Repository.Update(projectMember);
-        } 
+        }
+
+        public void Delete(int projectId, int memberId)
+        {
+            var projectMember = repository.FirstOrDefault(p => p.ProjectId == projectId
+                                                           && p.MemberId == memberId);
+            if (projectMember == null)
+                throw new UserFriendlyException("Can not delete this item");
+
+            Repository.Delete(projectMember);
+        }
     }
 }
