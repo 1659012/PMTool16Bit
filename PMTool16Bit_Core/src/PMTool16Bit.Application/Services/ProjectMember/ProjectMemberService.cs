@@ -25,8 +25,10 @@ namespace PMTool16Bit.Services
 
         public ProjectMember Update(ProjectMemberDto input)
         {
-            var projectMember = repository.FirstOrDefault(p => p.MemberId == input.MemberId
-                                                             && p.ProjectId == input.ProjectId);
+            var projectMember = repository
+                                .FirstOrDefault(
+                                    p => p.MemberId == input.MemberId
+                                    && p.ProjectId == input.ProjectId);
             if (projectMember == null)
                 return null;
             projectMember.ProjectRole = input.ProjectRole;
