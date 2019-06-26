@@ -23,9 +23,11 @@
       <v-tab :key="2" ripple>Members</v-tab>
       <v-tab :key="3" ripple>Timeline</v-tab>
       <v-tab :key="4" ripple>Settings</v-tab>
-        <v-tab-item :key="2">
+
+      <v-tab-item :key="2">
         <ProjectMemberList v-model="editedItem" :loadData="loadData"/>
       </v-tab-item>
+
       <v-tab-item :key="1">
         <div>
           <v-btn color="deep-purple darken-1" flat class="pl-0" @click="memberDialog=true;">
@@ -39,11 +41,7 @@
           <TaskGroupLoops :taskGroups.sync="editedItem.taskGroups" :loadData="loadData"/>
         </div>
       </v-tab-item>
-
-      <v-tab-item :key="2">
-        <ProjectMemberList v-model="editedItem" :loadData="loadData"/>
-      </v-tab-item>
-
+      
       <v-tab-item :key="3">
         <v-card flat>
           <v-card-text>time line</v-card-text>

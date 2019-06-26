@@ -25,20 +25,45 @@
                   <v-list-tile-sub-title v-html="projectMember.member.emailAddress"></v-list-tile-sub-title>
                 </v-list-tile-content>
 
-                <v-list-tile-action>                 
-                  <v-layout row wrap pa-0 ma-0  style="width:600px!important;">
-                    <v-flex lg4></v-flex>
-                    <v-flex lg4></v-flex>
-                    <v-flex lg4 pa-0 ma-0>
-                      <v-select
-                        :items="roles"
-                        v-model="projectMember.projectRole"
-                        :label="projectMember.projectRole?'':'Unassign role'"
-                        flat
-                       
-                      ></v-select>
-                    </v-flex>
-                  </v-layout>
+                <v-list-tile-action>
+                  <v-menu bottom left lazy transition="slide-x-transition">
+                    <template #activator="{ on: menu }">
+                      <v-tooltip left>
+                        <template #activator="{ on: tooltip }">
+                          <v-btn icon v-on="{ ...menu,...tooltip }" class="mr-0">
+                            <v-icon color="blue-grey darken-1">more_vert</v-icon>
+                          </v-btn>
+                        </template>
+                        <span>Member settings</span>
+                      </v-tooltip>
+                    </template>
+
+                    <v-list>
+                      <v-list-tile class="text--primary pa-0" @click="memberRoleDialog=true;">
+                        <v-list-tile-title class="py-0 my-0">
+                          <!-- Authorize member -->
+                          <v-menu offset-y>
+                            <template v-slot:activator="{ on }">
+                              <v-btn color="primary" dark v-on="on">Dropdown</v-btn>
+                            </template>
+                            <v-list>
+                              <v-list-tile
+                                v-for="(role, index) in roles"
+                                :key="index"
+                                @click="1221"
+                              >
+                                <v-list-tile-title>{{ role }}</v-list-tile-title>
+                              </v-list-tile>
+                            </v-list>
+                          </v-menu>
+                        </v-list-tile-title>
+                      </v-list-tile>
+                      <v-divider></v-divider>
+                      <v-list-tile class="text--primary pa-0" @click="deleteItem(projectMember)">
+                        <v-list-tile-title class="py-0 my-0">Remove member</v-list-tile-title>
+                      </v-list-tile>
+                    </v-list>
+                  </v-menu>
                 </v-list-tile-action>
               </v-list-tile>
               <v-divider :key="`'divider'`+index"></v-divider>
@@ -47,7 +72,7 @@
         </v-card>
       </v-flex>
     </v-layout>
-    <v-dialog lazy v-model="taskGroupDialog" max-width="600px" persistent>
+    <!-- <v-dialog lazy v-model="taskGroupDialog" max-width="600px" persistent>
       <TaskGroupCreate
         v-if="taskGroupDialog"
         lazy
@@ -63,8 +88,8 @@
           </v-card-actions>
         </v-card-actions>
       </v-card>
-    </v-dialog>
-    <code>{{projectMembers}}</code>
+    </v-dialog>-->
+    <!-- <code>{{projectMembers}}</code> -->
   </div>
 </template>
 <script>
@@ -78,7 +103,8 @@ export default {
   props: ["projectMembers", "loadData"],
   data: () => ({
     roles: Enums.Roles,
-    memberItem: {}
+    memberItem: {},
+    memberRoleDialog: false
   }),
 
   computed: {},
@@ -95,25 +121,33 @@ export default {
       let routeData = this.$router.resolve(`/Profile/${userId}`);
       window.open(routeData.href, "_blank");
     },
+
     close(item) {
       this.$emit("close", item);
     },
-    create() {
-      this.$root.createItem(this.editedItem, "ProjectService/Create", this);
+
+    updateItem(item) {
+      this.$root.updateItem(item, "ProjectMemberService/Update", this);
     },
-    update() {
-      this.$root.updateItem(this.editedItem, "ProjectService/Update", this);
-    },
-    save() {
-      this.$validator.validateAll().then(result => {
-        if (result) {
-          if (this.editedItem.id) {
-            this.update();
-          } else {
-            this.create();
+
+    deleteItem(item) {
+      console.log(item);
+      let me = this;
+      this.axios
+        .delete("ProjectMemberService/Delete", {
+          params: { projectId: item.projectId, memberId: item.memberId }
+        })
+        .then(response => {
+          if (response.data.success) {
+            me.loadData();
+            me.$notify({
+              group: "message",
+              type: "success",
+              title: "Delete",
+              text: "Data has been deleted!"
+            });
           }
-        }
-      });
+        });
     }
   }
 };
