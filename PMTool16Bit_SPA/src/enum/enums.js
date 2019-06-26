@@ -24,5 +24,6 @@ const PriorityLevels = [
     icon: "alarm"
   }
 ];
+const Roles = ["Project owner", "Admin", "Member"];
 
-export default { PriorityLevels: PriorityLevels };
+export default { PriorityLevels: PriorityLevels, Roles: Roles };
