@@ -25,7 +25,7 @@ export const PriorityLevels = [
   }
 ];
 export const Roles = {
-  projectOwner: { label: "Project owner", value: "Project_Owner" },
+  projectOwner: { label: "Project owner", value: "Project_Owner",description:"Full authorizes" },
   admin: {
     label: "Admin",
     value: "Admin",

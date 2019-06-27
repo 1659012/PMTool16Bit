@@ -17,18 +17,30 @@
                 </v-list-tile-avatar>
 
                 <v-list-tile-content>
-                  <v-list-tile-title v-html="projectMember.member.fullName" @click="getProfile(projectMember.member.id)" style="cursor: pointer;"></v-list-tile-title>
+                  <v-list-tile-title
+                    v-html="projectMember.member.fullName"
+                    @click="getProfile(projectMember.member.id)"
+                    style="cursor: pointer;"
+                  ></v-list-tile-title>
                   <v-list-tile-sub-title v-html="projectMember.member.emailAddress"></v-list-tile-sub-title>
                 </v-list-tile-content>
 
                 <v-list-tile-action style="width:300px">
                   <v-list-tile-sub-title>{{projectMember.projectRole?projectMember.projectRole:"Unassign role"}}</v-list-tile-sub-title>
 
-                  <v-list-tile-sub-title v-if="projectMember.member.lastLoginTime">Last active: {{momentFromNow(projectMember.member.lastLoginTime)}}</v-list-tile-sub-title>
+                  <v-list-tile-sub-title
+                    v-if="projectMember.member.lastLoginTime"
+                  >Last active: {{momentFromNow(projectMember.member.lastLoginTime)}}</v-list-tile-sub-title>
                 </v-list-tile-action>
 
                 <v-list-tile-action>
-                  <v-menu bottom left lazy transition="slide-x-transition">
+                  <v-menu
+                    bottom
+                    left
+                    lazy
+                    transition="slide-x-transition"
+                    v-if="roles.projectOwner.value!=projectMember.projectRole"
+                  >
                     <template #activator="{ on: menu }">
                       <v-tooltip top>
                         <template #activator="{ on: tooltip }">
@@ -41,7 +53,10 @@
                     </template>
 
                     <v-list class="pa-0">
-                      <v-list-tile class="text--primary pa-0" @click="openMemberRoleDialog(projectMember)">
+                      <v-list-tile
+                        class="text--primary pa-0"
+                        @click="openMemberRoleDialog(projectMember)"
+                      >
                         <v-list-tile-title class="py-0 my-0">Authorize member</v-list-tile-title>
                       </v-list-tile>
                       <v-divider></v-divider>
@@ -50,6 +65,8 @@
                       </v-list-tile>
                     </v-list>
                   </v-menu>
+
+                  <v-icon class="ml-3" color="green accent-4" title="Project owner" v-else>stars</v-icon>
                 </v-list-tile-action>
               </v-list-tile>
               <v-divider :key="`'divider'`+index"></v-divider>
@@ -59,7 +76,12 @@
       </v-flex>
     </v-layout>
     <v-dialog lazy v-model="memberRoleDialog" max-width="600px" persistent>
-      <ProjectMemberRoleUpdate v-if="memberRoleDialog" lazy v-model="memberItem" @close="memberRoleDialog=false; memberItem={};loadData()"/>
+      <ProjectMemberRoleUpdate
+        v-if="memberRoleDialog"
+        lazy
+        v-model="memberItem"
+        @close="memberRoleDialog=false; memberItem={};loadData()"
+      />
     </v-dialog>
     <!-- <code>{{projectMembers}}</code> -->
   </div>

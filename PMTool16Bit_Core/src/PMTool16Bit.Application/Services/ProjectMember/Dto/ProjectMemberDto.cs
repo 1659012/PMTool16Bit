@@ -21,6 +21,6 @@ namespace PMTool16Bit.Services
         public virtual UserSimpleDto Member { get; set; }
 
         [StringLength(EntityLength.ProjectRole)]
-        public string ProjectRole { get; set; } = "Member";
+        public string ProjectRole { get; set; }
     }
 }
