@@ -5,15 +5,15 @@
     </v-card-title>
     <v-card-text class="py-0">
       <v-radio-group v-model="editedItem.projectRole" :mandatory="false">
-        <!-- <v-radio :value="roles.projectOwner.value" color="primary">
+        <v-radio :value="roles.projectOwner.value" color="primary" v-if="checkCurrentProjectOwner(projectOwnerId)">
           <template v-slot:label>
             <div>
               <h5 class="font-weight-medium">{{roles.projectOwner.label}}</h5>
               <p class="caption ma-0 pa-0">{{roles.projectOwner.description}}</p>
             </div>
           </template>
-        </v-radio> -->
-        <v-radio :value="roles.admin.value" color="primary">
+        </v-radio>
+        <v-radio :value="roles.admin.value" color="primary" class="my-2">
           <template v-slot:label>
             <div>
               <h5 class="font-weight-medium">{{roles.admin.label}}</h5>
@@ -21,7 +21,7 @@
             </div>
           </template>
         </v-radio>
-        <v-radio :value="roles.member.value" color="primary" class="mt-3">
+        <v-radio :value="roles.member.value" color="primary">
           <template v-slot:label>
             <div>
               <h5 class="font-weight-medium">{{roles.member.label}}</h5>
@@ -40,13 +40,12 @@
   </v-card>
 </template>
 <script>
-import { Roles } from "../../../../enum/enums.js";
+
 export default {
   components: {},
-  props: ["value"],
+  props: ["value", "projectOwnerId"],
   data: () => ({
-    editedItem: {},
-    roles: Roles
+    editedItem: {},   
   }),
 
   computed: {},

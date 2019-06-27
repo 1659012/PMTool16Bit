@@ -17,20 +17,22 @@
                 </v-list-tile-avatar>
 
                 <v-list-tile-content>
-                  <v-list-tile-title
-                    v-html="projectMember.member.fullName"
-                    @click="getProfile(projectMember.member.id)"
-                    style="cursor: pointer;"
-                  ></v-list-tile-title>
+                  <v-list-tile-title v-html="projectMember.member.fullName" @click="getProfile(projectMember.member.id)" style="cursor: pointer;"></v-list-tile-title>
                   <v-list-tile-sub-title v-html="projectMember.member.emailAddress"></v-list-tile-sub-title>
                 </v-list-tile-content>
 
                 <v-list-tile-action style="width:300px">
                   <v-list-tile-sub-title>{{projectMember.projectRole?projectMember.projectRole:"Unassign role"}}</v-list-tile-sub-title>
 
-                  <v-list-tile-sub-title
-                    v-if="projectMember.member.lastLoginTime"
-                  >Last active: {{momentFromNow(projectMember.member.lastLoginTime)}}</v-list-tile-sub-title>
+                  <v-list-tile-sub-title v-if="projectMember.member.lastLoginTime">Last active: {{momentFromNow(projectMember.member.lastLoginTime)}}</v-list-tile-sub-title>
+                </v-list-tile-action>
+
+                <v-list-tile-action style="width:300px">
+                  <v-btn
+                    color="success"
+                    v-if="projectMember.memberId==$store.state.userId &&$store.state.userId!=projectOwnerId"
+                    @click="leaveProject(projectMember)"
+                  >Leave</v-btn>
                 </v-list-tile-action>
 
                 <v-list-tile-action>
@@ -39,7 +41,8 @@
                     left
                     lazy
                     transition="slide-x-transition"
-                    v-if="roles.projectOwner.value!=projectMember.projectRole"
+                    v-if="!checkProjectOwner(projectMember.projectRole)"
+                    :disabled="!isAdmin(projectMembers)"
                   >
                     <template #activator="{ on: menu }">
                       <v-tooltip top>
@@ -53,15 +56,12 @@
                     </template>
 
                     <v-list class="pa-0">
-                      <v-list-tile
-                        class="text--primary pa-0"
-                        @click="openMemberRoleDialog(projectMember)"
-                      >
+                      <v-list-tile class="text--primary pa-0" @click="openMemberRoleDialog(projectMember)">
                         <v-list-tile-title class="py-0 my-0">Authorize member</v-list-tile-title>
                       </v-list-tile>
                       <v-divider></v-divider>
                       <v-list-tile class="text--primary pa-0" @click="deleteItem(projectMember)">
-                        <v-list-tile-title class="py-0 my-0">Leave project</v-list-tile-title>
+                        <v-list-tile-title class="py-0 my-0">Remove member</v-list-tile-title>
                       </v-list-tile>
                     </v-list>
                   </v-menu>
@@ -80,24 +80,22 @@
         v-if="memberRoleDialog"
         lazy
         v-model="memberItem"
+        :projectOwnerId="projectOwnerId"
         @close="memberRoleDialog=false; memberItem={};loadData()"
       />
     </v-dialog>
     <!-- <code>{{projectMembers}}</code> -->
+    <!-- <code>{{projectOwnerId}}</code> -->
   </div>
 </template>
 <script>
-// import _ from "lodash";
-// import moment from "moment";
-// import ProjectMemberDialog from "./ProjectMemberDialog";
 import ProjectMemberRoleUpdate from "./ProjectMemberRoleUpdate";
-import { Roles } from "../../../../enum/enums";
+
 export default {
   // title: "Project member",
   components: { ProjectMemberRoleUpdate },
-  props: ["projectMembers", "loadData"],
+  props: ["projectMembers", "loadData", "projectOwnerId"],
   data: () => ({
-    roles: Roles,
     memberItem: {},
     memberRoleDialog: false
   }),
@@ -108,9 +106,7 @@ export default {
 
   updated() {},
 
-  mounted() {
-    console.log(this.roles);
-  },
+  mounted() {},
   methods: {
     getProfile(userId) {
       let routeData = this.$router.resolve(`/Profile/${userId}`);
@@ -127,7 +123,13 @@ export default {
     updateItem(item) {
       this.$root.updateItem(item, "ProjectMemberService/Update", this);
     },
-
+    leaveProject(item) {
+      this.deleteItem(item);
+      this.$router.push("/projectlist");
+      // let routeData = this.$router.resolve("/projectlist");
+      // window.close();
+      // window.open(routeData.href, "_blank");
+    },
     deleteItem(item) {
       console.log(item);
       let me = this;

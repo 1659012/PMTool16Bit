@@ -8,6 +8,7 @@ import "roboto-fontface/css/roboto/roboto-fontface.css";
 import "font-awesome/css/font-awesome.css";
 import interceptor from "./store/interceptor";
 import titleMixin from "./mixin/titleMixin";
+import projectMixin from "./mixin/projectMixin";
 
 import axios from "axios";
 import VueAxios from "vue-axios";
@@ -37,6 +38,7 @@ Vue.use(require('vue-moment'), {
 
 //
 Vue.mixin(titleMixin);
+Vue.mixin(projectMixin);
 
 interceptor();
 

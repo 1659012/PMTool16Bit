@@ -11,8 +11,7 @@
       multiple
       chips
       cache-items
-      :search-input.sync="keyword"
-      clearable
+      :search-input.sync="keyword"      
     >
       <template slot="selection" slot-scope="data">
         <v-chip
@@ -58,8 +57,7 @@ export default {
       items: [],
       model: [],
       keyword: "",
-      loading: false,
-      roles: Roles
+      loading: false     
     };
   },
   computed: {},
