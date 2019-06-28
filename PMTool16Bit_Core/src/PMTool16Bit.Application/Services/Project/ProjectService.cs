@@ -4,6 +4,7 @@ using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Models;
+using PMTool16Bit.Models.Enum;
 using PMTool16Bit.Users;
 using System.Collections.Generic;
 using System.Linq;
@@ -96,6 +97,57 @@ namespace PMTool16Bit.Services
                         EmailAddress = p.Member.EmailAddress
                     })
                     .ToList();
+        }
+
+        public List<EventTaskExcelDto> GetTaskListInProject(int projectId)
+        {
+            var project = Repository
+                    .GetAll()
+                    .Include(p => p.TaskGroups)
+                    .ThenInclude(p => p.EventTasks)
+                    .ThenInclude(q => q.EventTaskMembers)
+                    .ThenInclude(m => m.Member)
+                    .FirstOrDefault(p => p.Id == projectId);  
+            if(project== null)
+            {
+                return new List<EventTaskExcelDto>();
+            }
+
+            var taskList = new List<EventTaskExcelDto>();
+
+            foreach (var taskGroup in project.TaskGroups)
+            {
+                foreach (var eventTask in taskGroup.EventTasks)
+                {
+                    var eventTaskDto = new EventTaskExcelDto
+                    {
+                        ProjectName = project.ProjectName,
+                        TaskGroupName = taskGroup.TaskGroupName,
+                        TaskName= eventTask.TaskName,
+                        Description = eventTask.Description,
+                        DueDate =eventTask.DueDate,
+                        IsMarked =eventTask.IsMarked,
+                        IsCompleted=eventTask.IsCompleted,
+                        PriorityLevel= PriorityLevels.EnumToString(eventTask.PriorityLevel),
+                        MemberNames= GetEventTaskMemberNames(eventTask.EventTaskMembers.ToList())
+                    };
+                    taskList.Add(eventTaskDto);
+                }
+
+            }
+
+            return taskList;
+        }
+
+        private string GetEventTaskMemberNames(List<EventTaskMember> eventTaskMembers)
+        {
+            var result = "";
+            foreach (var eventTask in eventTaskMembers)
+            {
+                result += eventTask.Member.Name + ", ";
+            }
+
+            return result;
         }
     }
 }
