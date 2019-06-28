@@ -22,13 +22,16 @@ namespace PMTool16Bit.Controllers
     {        
         private readonly FileService fileService;
         private IHostingEnvironment hostingEnvironment;
+        private ProjectService projectService;
         public FileServiceController(
             FileService fileService,
-            IHostingEnvironment hostingEnvironment
+            IHostingEnvironment hostingEnvironment,
+            ProjectService projectService
             )
         {
             this.fileService = fileService;
             this.hostingEnvironment = hostingEnvironment;
+            this.projectService = projectService;
         }
 
         #region Upload/download file
@@ -124,7 +127,32 @@ namespace PMTool16Bit.Controllers
         #endregion
 
         #region Export excel
+        [HttpGet]
+        public async Task<IActionResult> Export<T>(string fileName, List<T> list)
+        {
+            var abstractDataExport = new AbstractDataExportBridge();
+            var workbook = abstractDataExport.Export(list, "sheet1");
+            const string serverFolder = ".\\Download\\";
+            foreach (var file in Directory.GetFiles(Path.Combine(serverFolder)))
+                System.IO.File.Delete(file);
+            Directory.CreateDirectory(Path.Combine(serverFolder));
+            var xfile = new FileStream(Path.Combine(serverFolder, fileName), FileMode.Create, System.IO.FileAccess.Write);
+            workbook.Write(xfile);
+            xfile.Close();
+            var net = new System.Net.WebClient();
+            var data = net.DownloadData(Path.Combine(serverFolder, fileName));
+            var content = new System.IO.MemoryStream(data);
+            var contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            return File(content, contentType, fileName);
+        }
 
+        [HttpGet]
+        public async Task<IActionResult> ExportTasksInProject(int projectId)
+        {
+            var fileName = $"ProjectTasks.xlsx";
+            var listExportExcel = projectService.GetTaskListInProject(projectId);
+            return await Export(fileName, listExportExcel);
+        }
         #endregion
     }
 }

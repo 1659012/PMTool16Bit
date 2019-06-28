@@ -21,5 +21,9 @@
   <ItemGroup>
     <Folder Include="BaseModel\" />
     <Folder Include="BaseService\" />
+    <Folder Include="Services\ExportDocument\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NPOI" Version="2.4.1" />
   </ItemGroup>
 </Project>
