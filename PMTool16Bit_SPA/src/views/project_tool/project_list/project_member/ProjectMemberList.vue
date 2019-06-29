@@ -1,6 +1,6 @@
 
 <template>
-  <div v-if="value">
+  <div>
     <v-btn color="deep-purple darken-1" flat class="pl-0" @click="dialog=true;" v-if="isAdmin(editedItem.projectMembers)">
       <v-icon left dark class="ml-2">add_circle_outline</v-icon>Add member
     </v-btn>
@@ -9,16 +9,18 @@
       <ProjectMemberDialog v-if="dialog" lazy v-model="editedItem" @close="dialog=false;loadData()"/>
     </v-dialog>
 
-    <ProjectMemberLoop :projectMembers="editedItem.projectMembers" :loadData="loadData" :projectOwnerId="editedItem.projectOwnerId"/>
+    <ProjectMemberLoop :loadData="loadData" v-model="editedItem"/>
     <!-- <code>{{editedItem}}</code> -->
   </div>
 </template>
 <script>
-
 import ProjectMemberLoop from "./ProjectMemberLoop";
 import ProjectMemberDialog from "./ProjectMemberDialog";
+import projectMixin from "../../../../mixin/projectMixin.js";
+
 export default {
   title: "Project member",
+  mixins: [projectMixin],
   components: { ProjectMemberDialog, ProjectMemberLoop },
   props: ["value", "loadData"],
   data: () => ({

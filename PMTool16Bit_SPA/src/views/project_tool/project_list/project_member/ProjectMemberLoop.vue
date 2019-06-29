@@ -90,23 +90,31 @@
 </template>
 <script>
 import ProjectMemberRoleUpdate from "./ProjectMemberRoleUpdate";
-
+import projectMixin from "../../../../mixin/projectMixin.js";
 export default {
   // title: "Project member",
+  mixins: [projectMixin],
   components: { ProjectMemberRoleUpdate },
-  props: ["projectMembers", "loadData", "projectOwnerId"],
+  props: [ "value","loadData" ],
   data: () => ({
+    editedItem: {},
+    projectMembers:{},
     memberItem: {},
+    projectOwnerId:null,
     memberRoleDialog: false
   }),
-
   computed: {},
-
   watch: {},
-
-  updated() {},
-
-  mounted() {},
+  mounted() {
+    this.editedItem = this.value;
+    this.projectMembers = this.editedItem.projectMembers;
+    this.projectOwnerId= this.editedItem.projectOwnerId;
+  },
+  updated(){
+    this.editedItem = this.value;
+    this.projectMembers = this.editedItem.projectMembers;
+    this.projectOwnerId= this.editedItem.projectOwnerId;
+  },
   methods: {
     getProfile(userId) {
       let routeData = this.$router.resolve(`/Profile/${userId}`);

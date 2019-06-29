@@ -11,19 +11,11 @@
       multiple
       chips
       cache-items
-      :search-input.sync="keyword"      
+      :search-input.sync="keyword"
     >
       <template slot="selection" slot-scope="data">
-        <v-chip
-          :key="JSON.stringify(data.item)"
-          :selected="data.selected"
-          :disabled="data.disabled"
-          class="v-chip--select-multi"
-        >
-          <v-avatar
-            v-if="data.item.fullName"
-            class="accent white--text"
-          >{{ data.item.fullName.slice(0, 1).toUpperCase() }}</v-avatar>
+        <v-chip :key="JSON.stringify(data.item)" :selected="data.selected" :disabled="data.disabled" class="v-chip--select-multi">
+          <v-avatar v-if="data.item.fullName" class="accent white--text">{{ data.item.fullName.slice(0, 1).toUpperCase() }}</v-avatar>
           {{ data.item.fullName }}
           <v-icon
             class="ml-3"
@@ -33,14 +25,8 @@
             @click.prevent="removeItem(data.index)"
             v-if="roles.projectOwner.value!=data.item.projectRole"
           >close</v-icon>
-          
-           <v-icon
-            class="ml-3"
-            color="green accent-4"
-            title="Project owner"
-            small           
-            v-else
-          >stars</v-icon>
+
+          <v-icon class="ml-3" color="green accent-4" title="Project owner" small v-else>stars</v-icon>
         </v-chip>
       </template>
     </v-combobox>
@@ -57,7 +43,8 @@ export default {
       items: [],
       model: [],
       keyword: "",
-      loading: false     
+      loading: false,
+      roles: Roles
     };
   },
   computed: {},

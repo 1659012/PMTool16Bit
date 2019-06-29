@@ -15,11 +15,11 @@ namespace PMTool16Bit.Services
         [DisplayName("Task name")]
         public string TaskName { get; set; }
 
-        [DisplayName("DueDate")]
+        [DisplayName("Due date")]
         public DateTime? DueDate { get; set; }
 
-        [DisplayName("Member names")]
-        public string MemberNames { get; set; }
+        [DisplayName("Assigned members")]
+        public string AssignedMembers { get; set; }
 
         [DisplayName("Description")]
         public string Description { get; set; }       

@@ -129,7 +129,7 @@ namespace PMTool16Bit.Services
                         IsMarked =eventTask.IsMarked,
                         IsCompleted=eventTask.IsCompleted,
                         PriorityLevel= PriorityLevels.EnumToString(eventTask.PriorityLevel),
-                        MemberNames= GetEventTaskMemberNames(eventTask.EventTaskMembers.ToList())
+                        AssignedMembers= GetEventTaskMemberNames(eventTask.EventTaskMembers.ToList())
                     };
                     taskList.Add(eventTaskDto);
                 }

@@ -25,7 +25,7 @@
       <v-tab :key="4" ripple>Settings</v-tab>
 
       <v-tab-item :key="2">
-        <ProjectMemberList v-model="editedItem" :loadData="loadData"/>
+        <ProjectMemberList v-if="editedItem.id" v-model="editedItem" :loadData="loadData"/>
       </v-tab-item>
 
       <v-tab-item :key="1">
@@ -36,6 +36,10 @@
 
           <v-btn color="deep-purple darken-1" flat class="pl-0 ml-0" @click="taskGroupDialog=true;">
             <v-icon left dark class="ml-2">add_circle_outline</v-icon>Add Task group
+          </v-btn>
+
+           <v-btn color="deep-purple darken-1" flat class="pl-0 ml-0" @click="downloadTaskListExcel(projectId)">
+            <v-icon left dark class="ml-2">cloud_download</v-icon>Down Task List
           </v-btn>
 
           <TaskGroupLoops :taskGroups.sync="editedItem.taskGroups" :loadData="loadData"/>
@@ -66,8 +70,10 @@ import TaskGroupCreate from "../task_group/TaskGroupCreate";
 import TaskGroupLoops from "../task_group/TaskGroupLoops";
 import ProjectMemberList from "./project_member/ProjectMemberList";
 import ProjectMemberDialog from "./project_member/ProjectMemberDialog";
+import projectMixin from "../../../mixin/projectMixin.js";
 export default {
   title: "Project detail",
+  mixins: [projectMixin],
   components: {
     TaskGroupCreate,
     TaskGroupLoops,
@@ -113,10 +119,13 @@ export default {
         .catch(e => {
           this.errors.push(e);
         });
-    },
-    goBack() {
-      this.$router.go(-1);
-    },
+    }, 
+    downloadTaskListExcel(projectId){
+      window.location =
+        this.$store.state.baseUrl +
+        "/api/services/app/FileService/ExportTasksInProject?projectId=" +
+        projectId;
+    },   
     create() {
       this.$root.createItem(this.editedItem, "ProjectService/Create", this);
     },

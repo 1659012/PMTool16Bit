@@ -263,7 +263,8 @@ namespace PMTool16Bit.Users
                 FullName = user.FullName,
                 EmailAddress = user.EmailAddress,
                 IsPublishProfile=user.IsPublishProfile,
-                AvatarId=user.AvatarId
+                AvatarId=user.AvatarId,
+                LastLoginTime= user.LastLoginTime
             };
 
             if (userDto.AvatarId != null)
