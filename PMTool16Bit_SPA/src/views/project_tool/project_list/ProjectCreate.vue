@@ -29,7 +29,7 @@
     </v-container>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn color="red darken-1" flat @click.native="close()">Cancel</v-btn>
+      <v-btn color="red darken-1" flat @click.native="cancel">Cancel</v-btn>
       <v-btn color="blue darken-1" flat @click.native="save">Save</v-btn>
     </v-card-actions>
     <!-- <code>{{editedItem}}</code> -->
@@ -37,7 +37,7 @@
 </template>
 <script>
 // import _ from "lodash";
-import {Roles} from "../../../enum/enums.js";
+import { Roles } from "../../../enum/enums.js";
 export default {
   // title: "",
   components: {},
@@ -47,9 +47,7 @@ export default {
       projectName: "",
       shortDescription: "",
       projectOwnerId: null,
-      projectMembers: [
-        { memberId: null, projectRole: "" }
-      ]
+      projectMembers: [{ memberId: null, projectRole: "" }]
     }
   }),
 
@@ -57,13 +55,16 @@ export default {
 
   watch: {},
   mounted() {
-    this.editedItem.projectOwnerId = this.$store.state.userId;    
+    this.editedItem.projectOwnerId = this.$store.state.userId;
     this.editedItem.projectMembers[0].memberId = this.$store.state.userId;
     this.editedItem.projectMembers[0].projectRole = Roles.projectOwner.value;
   },
   methods: {
-    close(item) {
-      this.$emit("close", item);
+    close() {
+      this.$emit("close");
+    },
+    cancel() {
+      this.$emit("cancel");
     },
     create() {
       this.$root.createItem(this.editedItem, "ProjectService/Create", this);

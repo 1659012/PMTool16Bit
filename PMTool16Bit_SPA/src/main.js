@@ -17,7 +17,7 @@ import Notifications from "vue-notification";
 import VeeValidate from "vee-validate";
 import Vue2Filters from "vue2-filters";
 import moment from "moment";
-import FileUpload from 'v-file-upload';
+import FileUpload from "v-file-upload";
 
 // import paths from "./router/paths";
 // import Breabcrumbs from 'vue-2-breadcrumbs';
@@ -32,9 +32,9 @@ Vue.use(FileUpload);
 
 // Vue.use(Breabcrumbs);
 
-Vue.use(require('vue-moment'), {
+Vue.use(require("vue-moment"), {
   moment
-})
+});
 
 //
 Vue.mixin(titleMixin);
@@ -68,14 +68,14 @@ Vue.filter("dateTime", function(value) {
 });
 
 //Filter datetime
-Vue.filter('truncate', function (value, limit) {
-  if(!value) return "";
+Vue.filter("truncate", function(value, limit) {
+  if (!value) return "";
 
   if (value.length > limit) {
-      value = value.substring(0, (limit - 3)) + '...';
+    value = value.substring(0, limit - 3) + "...";
   }
 
-  return value
+  return value;
 });
 Vue.mixin({
   methods: {
@@ -87,15 +87,16 @@ Vue.mixin({
       if (date) return moment(date).format("YYYY-MM");
       return "";
     },
-    momentFromNow(date) {      
+    momentFromNow(date) {
       if (date) return moment(date).fromNow();
       return "";
     },
     createItem(item, url, me, isCloseModal = true) {
       Vue.axios.post(url, item).then(response => {
         if (response.data.success) {
-          if (isCloseModal) me.close(response.data.result);
-          else me.updateResult(response.data.result);
+          if (isCloseModal) {
+            me.close();
+          }
           Vue.notify({
             group: "message",
             type: "success",
@@ -121,8 +122,9 @@ Vue.mixin({
         .put(url, item)
         .then(response => {
           if (response.data.success) {
-            if (isCloseModal) me.close(response.data.result);
-            // else me.updateResult(response.data.result);
+            if (isCloseModal) {
+              me.close();
+            }
             Vue.notify({
               group: "message",
               type: "success",
@@ -171,9 +173,8 @@ Vue.mixin({
           });
       }
     },
-    logout(checkLogout=false) {
-      
-      if (checkLogout||confirm("Are you sure to logout?")) {
+    logout(checkLogout = false) {
+      if (checkLogout || confirm("Are you sure to logout?")) {
         store.commit(APP_MUTATIONS.NOT_AUTH);
         store.commit(APP_MUTATIONS.SET_TOKEN, "");
       }
@@ -187,7 +188,7 @@ Vue.mixin({
     },
     goBack() {
       this.$router.go(-1);
-    },
+    }
   }
 });
 

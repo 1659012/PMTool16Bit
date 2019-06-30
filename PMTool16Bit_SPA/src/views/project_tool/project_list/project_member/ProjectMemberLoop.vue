@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div  v-if="value">
     <v-layout row wrap>
       <v-flex lg12>
         <v-card>
@@ -82,6 +82,7 @@
         v-model="memberItem"
         :projectOwnerId="projectOwnerId"
         @close="memberRoleDialog=false; memberItem={};loadData()"
+        @cancel="memberRoleDialog=false; memberItem={};"
       />
     </v-dialog>
     <!-- <code>{{projectMembers}}</code> -->
@@ -133,13 +134,9 @@ export default {
     },
     leaveProject(item) {
       this.deleteItem(item);
-      this.$router.push("/projectlist");
-      // let routeData = this.$router.resolve("/projectlist");
-      // window.close();
-      // window.open(routeData.href, "_blank");
+      this.$router.push("/projectlist");    
     },
     deleteItem(item) {
-      console.log(item);
       let me = this;
       this.axios
         .delete("ProjectMemberService/Delete", {

@@ -33,19 +33,20 @@
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn color="red darken-1" flat @click.native="close()">Cancel</v-btn>
+      <v-btn color="red darken-1" flat @click.native="cancel()">Cancel</v-btn>
       <v-btn color="blue darken-1" flat @click.native="update">Save</v-btn>
     </v-card-actions>
     <!-- <code>{{editedItem}}</code> -->
   </v-card>
 </template>
 <script>
-
+import projectMixin from "../../../../mixin/projectMixin.js";
 export default {
   components: {},
   props: ["value", "projectOwnerId"],
+  mixins:[projectMixin],
   data: () => ({
-    editedItem: {},   
+    editedItem: {}
   }),
 
   computed: {},
@@ -55,8 +56,11 @@ export default {
     this.editedItem = this.value;
   },
   methods: {
-    close(item) {
-      this.$emit("close", item);
+    close() {
+      this.$emit("close");
+    },
+    cancel() {
+      this.$emit("cancel");
     },
     create() {
       this.$root.createItem(

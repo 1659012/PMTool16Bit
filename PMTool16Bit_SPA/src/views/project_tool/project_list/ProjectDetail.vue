@@ -1,20 +1,10 @@
 
 <template>
   <v-container fluid grid-list-lg>
-    <v-toolbar dense flat color="transparent">
-      <v-dialog lazy v-model="taskGroupDialog" max-width="600px" persistent>
-        <TaskGroupCreate v-if="taskGroupDialog" lazy :projectId="editedItem.id" @close="taskGroupDialog=false;loadData()"/>
-      </v-dialog>
-
-      <v-dialog lazy v-model="memberDialog" max-width="600px" persistent>
-        <ProjectMemberDialog v-if="memberDialog" lazy v-model="editedItem" @close="memberDialog=false;loadData()"/>
-      </v-dialog>
-    </v-toolbar>
-
     <div style="display:flex; align-items: center; justify-content: center;">
       <span class="headline">{{editedItem.projectName}}</span>
       <v-spacer></v-spacer>
-      <v-btn color="deep-purple darken-1" flat @click="goBack">
+      <v-btn color="deep-purple darken-1 mr-0" flat @click="goBack">
         <v-icon left dark class="mr-0">arrow_back_ios</v-icon>Go back
       </v-btn>
     </div>
@@ -24,28 +14,14 @@
       <v-tab :key="3" ripple>Timeline</v-tab>
       <v-tab :key="4" ripple>Settings</v-tab>
 
-      <v-tab-item :key="2">
-        <ProjectMemberList v-if="editedItem.id" v-model="editedItem" :loadData="loadData"/>
-      </v-tab-item>
-
       <v-tab-item :key="1">
-        <div>
-          <v-btn color="deep-purple darken-1" flat class="pl-0" @click="memberDialog=true;">
-            <v-icon left dark class="ml-2">add_circle_outline</v-icon>Add member
-          </v-btn>
-
-          <v-btn color="deep-purple darken-1" flat class="pl-0 ml-0" @click="taskGroupDialog=true;">
-            <v-icon left dark class="ml-2">add_circle_outline</v-icon>Add Task group
-          </v-btn>
-
-           <v-btn color="deep-purple darken-1" flat class="pl-0 ml-0" @click="downloadTaskListExcel(projectId)">
-            <v-icon left dark class="ml-2">cloud_download</v-icon>Down Task List
-          </v-btn>
-
-          <TaskGroupLoops :taskGroups.sync="editedItem.taskGroups" :loadData="loadData"/>
-        </div>
+        <ProjectTaskList v-model="editedItem" :loadData="loadData" />
       </v-tab-item>
-      
+
+      <v-tab-item :key="2">
+        <ProjectMemberList v-model="editedItem" :loadData="loadData" />
+      </v-tab-item>
+
       <v-tab-item :key="3">
         <v-card flat>
           <v-card-text>time line</v-card-text>
@@ -64,10 +40,7 @@
 </template>
 <script>
 // import _ from "lodash";
-// import moment from "moment";
-// import DatePicker from "../basiccomponents/DatePicker";
-import TaskGroupCreate from "../task_group/TaskGroupCreate";
-import TaskGroupLoops from "../task_group/TaskGroupLoops";
+import ProjectTaskList from "./project_task_list/ProjectTaskList";
 import ProjectMemberList from "./project_member/ProjectMemberList";
 import ProjectMemberDialog from "./project_member/ProjectMemberDialog";
 import projectMixin from "../../../mixin/projectMixin.js";
@@ -75,10 +48,8 @@ export default {
   title: "Project detail",
   mixins: [projectMixin],
   components: {
-    TaskGroupCreate,
-    TaskGroupLoops,
-    ProjectMemberList,
-    ProjectMemberDialog
+    ProjectTaskList,
+    ProjectMemberList
   },
   props: [],
   data: () => ({
@@ -101,8 +72,8 @@ export default {
       this.loadData();
     },
     loadData() {
+      this.loading = true;
       var me = this;
-      me.loading = true;
       this.axios
         .get("ProjectService/GetProjectDetailById", {
           params: {
@@ -119,13 +90,7 @@ export default {
         .catch(e => {
           this.errors.push(e);
         });
-    }, 
-    downloadTaskListExcel(projectId){
-      window.location =
-        this.$store.state.baseUrl +
-        "/api/services/app/FileService/ExportTasksInProject?projectId=" +
-        projectId;
-    },   
+    },
     create() {
       this.$root.createItem(this.editedItem, "ProjectService/Create", this);
     },

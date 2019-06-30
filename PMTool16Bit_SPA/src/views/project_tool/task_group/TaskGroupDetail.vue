@@ -7,10 +7,10 @@
     <v-card-text>
       <v-text-field
         v-model="editedItem.taskGroupName"
-        name="Task name"
+        name="Task group name"
         v-validate="{ required: true, max:256 }"
         type="text"
-        label="Task name"
+        label="Task group name"
         :error-messages="errors.collect('Task name')"
       ></v-text-field>
 
@@ -24,7 +24,7 @@
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn color="red darken-1" flat @click.native="close()">Cancel</v-btn>
+      <v-btn color="red darken-1" flat @click.native="cancel()">Cancel</v-btn>
       <v-btn color="blue darken-1" flat @click.native="save">Save</v-btn>
     </v-card-actions>
     <!-- <code>{{editedItem}}</code> -->
@@ -54,8 +54,11 @@ export default {
     this.editedItem = this.value;
   },
   methods: {
-    close(item) {
-      this.$emit("close", item);
+    close() {
+      this.$emit("close");
+    },
+    cancel() {
+      this.$emit("cancel");
     },
     create() {
       this.$root.createItem(this.editedItem, "TaskGroupService/Create", this);

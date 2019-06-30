@@ -1,12 +1,12 @@
 
 <template>
-  <div>
+  <div v-if="value">
     <v-btn color="deep-purple darken-1" flat class="pl-0" @click="dialog=true;" v-if="isAdmin(editedItem.projectMembers)">
       <v-icon left dark class="ml-2">add_circle_outline</v-icon>Add member
     </v-btn>
 
     <v-dialog lazy v-model="dialog" max-width="600px" persistent>
-      <ProjectMemberDialog v-if="dialog" lazy v-model="editedItem" @close="dialog=false;loadData()"/>
+      <ProjectMemberDialog v-if="dialog" lazy v-model="editedItem" @close="dialog=false;loadData()" @cancel="dialog=false;"/>
     </v-dialog>
 
     <ProjectMemberLoop :loadData="loadData" v-model="editedItem"/>

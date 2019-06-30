@@ -2,7 +2,6 @@
 <template>
   <v-container fluid grid-list-lg>
     <v-toolbar dense flat color="transparent">
-     
       <v-btn color="deep-purple darken-1" flat class="pl-0" @click="createProject">
         <v-icon left dark class>add_circle_outline</v-icon>New Project
       </v-btn>
@@ -39,7 +38,7 @@
       </v-tooltip>
       <!-- fullscreen hide-overlay persistent -->
       <v-dialog lazy v-model="dialog" max-width="600px" persistent>
-        <ProjectCreate v-if="dialog" lazy @close="close"/>
+        <ProjectCreate v-if="dialog" lazy @close="closeDialog" @cancel="cancelDialog" />
       </v-dialog>
     </v-toolbar>
     <v-layout row wrap mx-3 v-show="listView">
@@ -98,7 +97,7 @@
         </v-hover>
       </v-flex>
     </v-layout>
-    <code>{{$store.state}}</code>
+    <!-- <code>{{$store.state}}</code> -->
   </v-container>
 </template>
 <script>
@@ -169,12 +168,10 @@ export default {
   },
   mounted() {
     this.initialize();
-    console.log(this.$store.state);
-  
   },
   methods: {
     initialize() {
-     this.userId = this.$store.state.userId;
+      this.userId = this.$store.state.userId;
     },
     handleListView() {
       this.listView = true;
@@ -197,7 +194,6 @@ export default {
       // }, 10);
     },
     createProject() {
-      // this.editedItem = Object.assign({}, this.defaultItem);
       this.dialog = true;
     },
     loadData() {
@@ -236,10 +232,12 @@ export default {
     deleteItem(item) {
       this.$root.deleteItem(item, "ProjectService/Delete", this);
     },
-    close(item) {
+    closeDialog() {
       this.loadData();
       this.dialog = false;
-      // this.editedItem = Object.assign({}, this.defaultItem);
+    },
+    cancelDialog() {
+      this.dialog = false;
     }
   }
 };
