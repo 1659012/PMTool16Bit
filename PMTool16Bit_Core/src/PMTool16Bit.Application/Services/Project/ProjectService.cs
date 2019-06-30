@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Models;
 using PMTool16Bit.Models.Enum;
 using PMTool16Bit.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -146,8 +147,74 @@ namespace PMTool16Bit.Services
             {
                 result += eventTask.Member.Name + ", ";
             }
-
+            if(result.Length>2)
+            result = result.Remove(result.Length - 2);
             return result;
+        }
+        private double? ConvertDateTimeToUTC(DateTime? date)
+        {
+            if (date == null)
+                return null;
+
+            DateTime dt1970 = new DateTime(1970, 1, 1);            
+            TimeSpan span = DateTime.Parse(date.ToDateString())- dt1970;
+            return span.TotalMilliseconds;
+        }
+
+        public List<EventTaskGanttDto> GetGanttChartData(int projectId)
+        {
+            var project = Repository
+                    .GetAll()
+                    .Include(p => p.TaskGroups)
+                    .ThenInclude(p => p.EventTasks)
+                    .ThenInclude(q => q.EventTaskMembers)
+                    .ThenInclude(m => m.Member)
+                    .FirstOrDefault(p => p.Id == projectId);
+            if (project == null)
+            {
+                return new List<EventTaskGanttDto>();
+            }
+
+            var taskList = new List<EventTaskGanttDto>();
+            int pointWidth = 3;//
+            foreach (var taskGroup in project.TaskGroups)
+            {
+                var parentTask = new EventTaskGanttDto
+                {
+                    Id = "Parent" + taskGroup.Id.ToString(),
+                    Name = taskGroup.TaskGroupName,
+                    Start = null,
+                    End = null,
+                    Assignee = "",
+                    Parent = "",
+                    Dependency = "",
+                    Completed = "",
+                    PointWidth = pointWidth.ToString()
+                };
+
+                taskList.Add(parentTask);
+
+                foreach (var eventTask in taskGroup.EventTasks)
+                {
+                    var eventTaskDto = new EventTaskGanttDto
+                    {
+                        Id=eventTask.Id.ToString(),
+                        Name= eventTask.TaskName,
+                        Start = ConvertDateTimeToUTC(eventTask.StartDate),
+                        End = ConvertDateTimeToUTC(eventTask.DueDate),                        
+                        Assignee = GetEventTaskMemberNames(eventTask.EventTaskMembers.ToList()),
+                        Parent = parentTask.Id,
+                        Dependency = "",
+                        Completed = "",
+                        PointWidth = ""
+
+                    };
+                    taskList.Add(eventTaskDto);
+                }
+
+            }
+
+            return taskList;
         }
     }
 }

@@ -19,8 +19,15 @@ import Vue2Filters from "vue2-filters";
 import moment from "moment";
 import FileUpload from "v-file-upload";
 
+import VueHighcharts from 'vue-highcharts';
+import Highcharts from 'highcharts';
+import loadGantt from "highcharts/modules/gantt";
+
 // import paths from "./router/paths";
 // import Breabcrumbs from 'vue-2-breadcrumbs';
+
+loadGantt(Highcharts);
+Vue.use(VueHighcharts, { Highcharts });
 
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
@@ -29,6 +36,7 @@ Vue.use(Notifications);
 Vue.use(VeeValidate);
 Vue.use(Vue2Filters);
 Vue.use(FileUpload);
+
 
 // Vue.use(Breabcrumbs);
 

@@ -14,18 +14,16 @@
       <v-tab :key="3" ripple>Timeline</v-tab>
       <v-tab :key="4" ripple>Settings</v-tab>
 
+      <v-tab-item :key="3">
+        <ProjectTimeLine />
+      </v-tab-item>
+
       <v-tab-item :key="1">
         <ProjectTaskList v-model="editedItem" :loadData="loadData" />
       </v-tab-item>
 
       <v-tab-item :key="2">
         <ProjectMemberList v-model="editedItem" :loadData="loadData" />
-      </v-tab-item>
-
-      <v-tab-item :key="3">
-        <v-card flat>
-          <v-card-text>time line</v-card-text>
-        </v-card>
       </v-tab-item>
 
       <v-tab-item :key="4">
@@ -42,6 +40,7 @@
 // import _ from "lodash";
 import ProjectTaskList from "./project_task_list/ProjectTaskList";
 import ProjectMemberList from "./project_member/ProjectMemberList";
+import ProjectTimeLine from "./project_timeline/ProjectTimeLine";
 import ProjectMemberDialog from "./project_member/ProjectMemberDialog";
 import projectMixin from "../../../mixin/projectMixin.js";
 export default {
@@ -49,7 +48,8 @@ export default {
   mixins: [projectMixin],
   components: {
     ProjectTaskList,
-    ProjectMemberList
+    ProjectMemberList,
+    ProjectTimeLine
   },
   props: [],
   data: () => ({

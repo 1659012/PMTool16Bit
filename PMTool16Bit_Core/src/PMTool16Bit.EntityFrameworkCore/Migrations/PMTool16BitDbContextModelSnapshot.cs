@@ -1104,6 +1104,8 @@ namespace PMTool16Bit.Migrations
 
                     b.Property<int>("PriorityLevel");
 
+                    b.Property<DateTime?>("StartDate");
+
                     b.Property<int>("TaskGroupId");
 
                     b.Property<string>("TaskName")
