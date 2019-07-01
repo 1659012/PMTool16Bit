@@ -17,21 +17,24 @@ namespace PMTool16Bit.Services
     {
         //private readonly IUserAppService userAppService;
         private readonly IRepository<EventTaskMember> eventTaskMemberRepository;
+        private readonly IRepository<Todo> todoRepository;
 
         public EventTaskService(
-             IRepository<EventTask> repository,
             //IUserAppService userAppService,
-            IRepository<EventTaskMember> eventTaskMemberRepository
-
+            IRepository<EventTask> repository,            
+            IRepository<EventTaskMember> eventTaskMemberRepository,
+            IRepository<Todo> todoRepository
             ) : base(repository)
         {
             //this.eventTableRepository = eventTableRepository;
             this.eventTaskMemberRepository = eventTaskMemberRepository;
+            this.todoRepository = todoRepository;
         }
 
         public override Task<EventTaskDto> Update(EventTaskUpdateDto input)
         {
             eventTaskMemberRepository.Delete(p => p.EventTaskId == input.Id);
+            todoRepository.Delete(p => p.EventTaskId == input.Id);
             return base.Update(input);
         }
 

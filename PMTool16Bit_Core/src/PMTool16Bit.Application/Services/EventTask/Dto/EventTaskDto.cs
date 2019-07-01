@@ -19,6 +19,8 @@ namespace PMTool16Bit.Services
         //[StringLength(EnumLength.Description)]
         public string Description { get; set; }
 
+        public DateTime? StartDate { get; set; }
+
         public DateTime? DueDate { get; set; }
 
         public bool IsMarked { get; set; }
@@ -38,6 +40,7 @@ namespace PMTool16Bit.Services
         public virtual TaskGroupDto GroupTask { get; set; }
         public virtual ICollection<EventTaskMemberDto> EventTaskMembers { get; set; }
         public virtual ICollection<CommentDto> Comments { get; set; }
+        public virtual ICollection<TodoDto> Todos { get; set; }
 
 
         #endregion

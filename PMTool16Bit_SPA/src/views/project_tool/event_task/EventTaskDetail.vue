@@ -38,30 +38,33 @@
             label="Task name"
             :error-messages="errors.collect('Task name')"
           ></v-text-field>
-
+        </v-flex>
+        <v-flex lg6>
+          <DateTimePicker :input="editedItem.startDate" :output.sync="editedItem.startDate" clearable label="Start date" />
+        </v-flex>
+        <v-flex lg6>
+          <DateTimePicker :input="editedItem.dueDate" :output.sync="editedItem.dueDate" clearable label="Due date" />
+        </v-flex>
+        <v-flex lg3>
+          <v-checkbox v-model="editedItem.isCompleted" label="Check Complete" color="success"></v-checkbox>
+        </v-flex>
+        <v-flex lg3>
+          <v-checkbox v-model="editedItem.isMarked" label="BookMark" color="orange"></v-checkbox>
+        </v-flex>
+        <v-flex lg3>
+          <p class="subheading text--lighten-3 mt-3">Priority level: {{priorityLevels[editedItem.priorityLevel].text}}</p>
+        </v-flex>
+        <v-flex lg3 class="pr-3">
+          <v-slider v-model="editedItem.priorityLevel" :max="3" :min="0" :color="priorityLevels[editedItem.priorityLevel].color" thumb-label></v-slider>
+        </v-flex>
+        <v-flex lg12>
           <v-textarea name="Description" label="Description" v-model="editedItem.description" v-validate="{ max:500 }"></v-textarea>
-
-          <DateTimePicker :input="editedItem.dueDate" :output.sync="editedItem.dueDate" clearable :label="`Due date`" />
-
-          <v-switch v-model="editedItem.isCompleted" label="Check Complete"></v-switch>
-
-          <v-switch v-model="editedItem.isMarked" label="BookMark"></v-switch>
-          <v-layout row wrap>
-            <v-flex lg4>
-              <v-subheader>Priority level</v-subheader>
-            </v-flex>
-            <v-flex lg4>
-              <!-- :class="priorityLevels[editedItem.priorityLevel].color"
-              class="white--text"-->
-              <v-subheader>{{priorityLevels[editedItem.priorityLevel].text}}</v-subheader>
-            </v-flex>
-            <v-flex lg4>
-              <v-slider v-model="editedItem.priorityLevel" :max="3" :min="0" :color="priorityLevels[editedItem.priorityLevel].color" thumb-label></v-slider>
-              <!-- <v-rating v-model="editedItem.priorityLevel" background-color="orange lighten-3" color="orange" medium></v-rating> -->
-            </v-flex>
-          </v-layout>
-
+        </v-flex>
+        <v-flex lg12>
           <TaskMemberCombobox :projectId="projectId" :defaultItems="editedItem.eventTaskMembers" :returnItems.sync="editedItem.eventTaskMembers" />
+        </v-flex>
+        <v-flex lg12>
+          <TodoLoops v-model="editedItem.todos" />
         </v-flex>
       </v-layout>
     </v-container>
@@ -82,6 +85,7 @@
         @cancel="changeGroupdialog=false;"
       />
     </v-dialog>
+    <!-- <code>{{editedItem}}</code> -->
   </v-card>
 </template>
 <script>
@@ -90,10 +94,16 @@
 import DateTimePicker from "../../../components/basic/DateTimePicker";
 import TaskMemberCombobox from "./TaskMemberCombobox";
 import ChangeTaskGroupDialog from "../event_task/ChangeTaskGroupDialog";
+import TodoLoops from "../todo_list/TodoLoops";
 import { PriorityLevels } from "../../../enum/enums";
 export default {
   // title: "",
-  components: { DateTimePicker, TaskMemberCombobox, ChangeTaskGroupDialog },
+  components: {
+    DateTimePicker,
+    TaskMemberCombobox,
+    ChangeTaskGroupDialog,
+    TodoLoops
+  },
   props: ["editedItem", "projectId", "loadData"],
   data: () => ({
     priorityLevels: PriorityLevels,
@@ -114,12 +124,6 @@ export default {
     moveEventTask(eventTask) {},
     deleteItem(item) {
       this.$root.deleteItem(item, "EventTaskService/Delete", this);
-      this.$notify({
-        group: "message",
-        type: "success",
-        title: "Delete",
-        text: "Data has been deleted!"
-      }); //Fix dont show note in main
       this.close();
     },
     create() {
@@ -143,3 +147,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+.v-input--slider {
+  margin-top: 8px;
+}
+</style>

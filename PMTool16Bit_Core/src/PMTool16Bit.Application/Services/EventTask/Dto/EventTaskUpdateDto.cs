@@ -12,6 +12,7 @@ namespace PMTool16Bit.Services
 
         [StringLength(EntityLength.Description)]
         public string Description { get; set; }
+        public DateTime? StartDate { get; set; }
         public DateTime? DueDate { get; set; }
         public bool IsMarked { get; set; }
         public bool IsCompleted { get; set; }
@@ -28,6 +29,7 @@ namespace PMTool16Bit.Services
 
         public virtual List<EventTaskMemberDto> EventTaskMembers { get; set; }
         public virtual ICollection<CommentDto> Comments { get; set; }
+        public virtual ICollection<TodoDto> Todos { get; set; }
 
         #endregion
     }

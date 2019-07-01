@@ -70,6 +70,10 @@ namespace PMTool16Bit
                     .ForMember(x => x.Id, opt => opt.Ignore())
                     ;
 
+                    cfg.CreateMap<TodoDto, Todo>()
+                   .ForMember(x => x.EventTask, opt => opt.Ignore())
+                   ;
+
                 }
             );
         }

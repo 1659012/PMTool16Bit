@@ -16,6 +16,7 @@ namespace PMTool16Bit.EntityFrameworkCore
         public DbSet<Comment> Comments { get; set; }
         public DbSet<ProjectMember> ProjectMembers { get; set; }
         public DbSet<EventTaskMember> EventTaskMembers { get; set; }
+        public DbSet<Todo> Todos { get; set; }
         public DbSet<FileEntity> Files { get; set; }
 
         public PMTool16BitDbContext(DbContextOptions<PMTool16BitDbContext> options)
@@ -38,7 +39,12 @@ namespace PMTool16Bit.EntityFrameworkCore
             modelBuilder.Entity<EventTask>()
               .HasMany(c => c.Comments)
               .WithOne(e => e.EventTask)
-              .OnDelete(DeleteBehavior.Cascade); 
+              .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<EventTask>()
+              .HasMany(c => c.Todos)
+              .WithOne(e => e.EventTask)
+              .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<ProjectMember>()
                 .HasKey(bc => new { bc.ProjectId, bc.MemberId });

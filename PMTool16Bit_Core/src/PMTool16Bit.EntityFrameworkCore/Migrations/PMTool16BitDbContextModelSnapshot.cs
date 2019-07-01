@@ -1238,6 +1238,26 @@ namespace PMTool16Bit.Migrations
                     b.ToTable("TaskGroups");
                 });
 
+            modelBuilder.Entity("PMTool16Bit.Models.Todo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EventTaskId");
+
+                    b.Property<bool>("IsCompleted");
+
+                    b.Property<string>("TodoName")
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventTaskId");
+
+                    b.ToTable("Todos");
+                });
+
             modelBuilder.Entity("PMTool16Bit.MultiTenancy.Tenant", b =>
                 {
                     b.Property<int>("Id")
@@ -1493,6 +1513,14 @@ namespace PMTool16Bit.Migrations
                     b.HasOne("PMTool16Bit.Models.Project", "Project")
                         .WithMany("TaskGroups")
                         .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PMTool16Bit.Models.Todo", b =>
+                {
+                    b.HasOne("PMTool16Bit.Models.EventTask", "EventTask")
+                        .WithMany("Todos")
+                        .HasForeignKey("EventTaskId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

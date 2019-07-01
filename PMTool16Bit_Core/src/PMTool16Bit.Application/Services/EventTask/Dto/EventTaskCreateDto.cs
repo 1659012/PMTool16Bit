@@ -12,6 +12,7 @@ namespace PMTool16Bit.Services
 
         [StringLength(EntityLength.Description)]
         public string Description { get; set; }
+        public DateTime? StartDate { get; set; }
         public DateTime? DueDate { get; set; }
         public bool IsMarked { get; set; }
         public bool IsCompleted { get; set; }

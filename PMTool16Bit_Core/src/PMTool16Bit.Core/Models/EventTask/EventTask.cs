@@ -37,7 +37,7 @@ namespace PMTool16Bit.Models
 
         public virtual ICollection<EventTaskMember> EventTaskMembers { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
-
+        public virtual ICollection<Todo> Todos { get; set; }
         #endregion
     }
 }
