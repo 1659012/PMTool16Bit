@@ -156,7 +156,7 @@ Vue.mixin({
     deleteItem(item, url, me) {
       if (confirm("Are you sure you want to delete this item?")) {
         Vue.axios
-          .delete(url, { params: { Id: item.id } })
+          .delete(url, { params: { id: item.id } })
           .then(response => {
             if (response.data.success) {
               me.loadData();

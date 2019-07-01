@@ -81,7 +81,7 @@ namespace PMTool16Bit.Services
             return base.Get(input);
         }
 
-        public List<UserSimpleDto> GetProjectMembers(int projectId)
+        public List<UserDropdownDto> GetProjectMembers(int projectId)
         {            
             return Repository
                     .GetAll()
@@ -89,11 +89,9 @@ namespace PMTool16Bit.Services
                     .ThenInclude(q => q.Member)
                     .FirstOrDefault(p => p.Id == projectId)
                     .ProjectMembers
-                    .Select(p => new UserSimpleDto
+                    .Select(p => new UserDropdownDto
                     {
-                        Id = p.Member.Id,
-                        Name = p.Member.Name,
-                        Surname = p.Member.Surname,                        
+                        Id = p.Member.Id,                                             
                         FullName = p.Member.FullName,
                         EmailAddress = p.Member.EmailAddress
                     })
@@ -215,6 +213,6 @@ namespace PMTool16Bit.Services
             }
 
             return taskList;
-        }
+        }       
     }
 }

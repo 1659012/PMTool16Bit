@@ -221,14 +221,6 @@ export default {
           this.errors.push(e);
         });
     },
-
-    exportExcel() {
-      // this.$root.exportExcel("FileService/ExportAbSheet");
-    },
-    editItem(item) {
-      // this.editedItem = item;
-      // this.dialog = true;
-    },
     deleteItem(item) {
       this.$root.deleteItem(item, "ProjectService/Delete", this);
     },

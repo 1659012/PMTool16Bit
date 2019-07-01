@@ -3,45 +3,28 @@
   <div>
     <v-divider></v-divider>
     <v-list class="py-0">
-      <div
-        v-for="(eventTask, eventTaskIndex) in eventTasks"
-        :key="eventTaskIndex"
-        @click="openEventTaskDetail(eventTask)"
-        class="customeList pt-1"
-      >
+      <div v-for="(eventTask, eventTaskIndex) in eventTasks" :key="eventTaskIndex" @click="openEventTaskDetail(eventTask)" class="customeList pt-1">
         <v-list-tile avatar ripple>
           <v-list-tile-content>
-            <v-list-tile-sub-title
-              class="text--primary"
-              style="display: flex;
-              align-items: center;"
-            >
+            <v-list-tile-sub-title class="text--primary" style="display: flex;
+              align-items: center;">
               <v-tooltip left>
                 <template v-slot:activator="{ on }">
-                  <v-icon
-                    :color="eventTask.isCompleted? 'teal accent-3': 'grey lighten-2'"
-                    v-on="on"
-                  >check_circle</v-icon>
+                  <v-icon :color="eventTask.isCompleted? 'teal accent-3': 'grey lighten-2'" v-on="on">check_circle</v-icon>
                 </template>
                 <span>{{eventTask.isCompleted?'Comleted':'Incomplete'}}</span>
               </v-tooltip>
               <span class="ml-1">{{ eventTask.taskName }}</span>
             </v-list-tile-sub-title>
 
-            <v-list-tile-sub-title
-              class="text--primary"
-              style="display: flex;
-              align-items: center;"
-            >
+            <v-list-tile-sub-title class="text--primary" style="display: flex;
+              align-items: center;">
               <v-layout row wrap>
                 <v-flex xs6 style="display: flex;
               align-items: center;">
                   <v-tooltip left>
                     <template v-slot:activator="{ on }">
-                      <v-icon
-                        :color="eventTask.dueDate?'light-blue accent-1':'grey lighten-2'"
-                        v-on="on"
-                      >event</v-icon>
+                      <v-icon :color="eventTask.dueDate?'light-blue accent-1':'grey lighten-2'" v-on="on">event</v-icon>
                     </template>
                     <span>{{eventTask.dueDate? 'Due date': 'Unassign due date'}}</span>
                   </v-tooltip>
@@ -51,7 +34,7 @@
 
                 <v-flex xs6 style="display: flex;
               align-items: center;">
-                  <v-tooltip left v-if="eventTask.eventTaskMembers.length==0">                  
+                  <v-tooltip left v-if="eventTask.eventTaskMembers.length==0">
                     <template v-slot:activator="{ on }">
                       <v-icon color="grey lighten-2" v-on="on">assignment_ind</v-icon>
                     </template>
@@ -73,10 +56,7 @@
             <div>
               <v-tooltip left>
                 <template v-slot:activator="{ on }">
-                  <v-icon
-                    :color="priorityLevels[eventTask.priorityLevel].color"
-                    v-on="on"
-                  >{{priorityLevels[eventTask.priorityLevel].icon}}</v-icon>
+                  <v-icon :color="priorityLevels[eventTask.priorityLevel].color" v-on="on">{{priorityLevels[eventTask.priorityLevel].icon}}</v-icon>
                 </template>
                 <span>Priority level: {{priorityLevels[eventTask.priorityLevel].text}}</span>
               </v-tooltip>
@@ -102,14 +82,16 @@
         lazy
         :editedItem="editedItem"
         :projectId="projectId"
+        :loadData="loadData"
         @close="closeEventTaskDetail"
+        @cancel="cancelEventTaskDetail"
       />
     </v-dialog>
   </div>
 </template>
 <script>
 import EventTaskDetail from "./EventTaskDetail";
-import {PriorityLevels} from "../../../enum/enums";
+import { PriorityLevels } from "../../../enum/enums";
 export default {
   components: { EventTaskDetail },
   props: ["eventTasks", "loadData", "projectId"],
@@ -133,6 +115,10 @@ export default {
       this.editedItem = {};
       this.eventTaskDialog = false;
       this.loadData();
+    },
+    cancelEventTaskDetail() {
+      this.editedItem = {};
+      this.eventTaskDialog = false;
     },
     getMemberNames(eventTaskMembers) {
       if (Array.isArray(eventTaskMembers) && eventTaskMembers.length > 0) {

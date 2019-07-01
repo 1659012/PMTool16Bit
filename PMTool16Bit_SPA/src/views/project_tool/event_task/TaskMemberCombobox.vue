@@ -2,11 +2,13 @@
 <template>
   <div>
     <v-combobox v-model="model" :items="items" label="Assign member(s)" item-text="fullName" item-value="id" multiple chips clearable>
-      <template slot="selection" slot-scope="data">
+      <template slot="selection" slot-scope="data">        
         <v-chip :key="JSON.stringify(data.item)" :selected="data.selected" :disabled="data.disabled" class="v-chip--select-multi">
+         
           <v-avatar class="accent white--text">{{ data.item.fullName.slice(0, 1).toUpperCase() }}</v-avatar>
           {{ data.item.fullName }}
-          <v-icon class="ml-3" color="blue-grey" title="Remove item" small @click.prevent="removeItem(data.index)">close</v-icon>
+
+          <v-icon class="ml-3" color="blue-grey" title="Remove member from task" small @click.prevent="removeItem(data.index)">close</v-icon>
         </v-chip>
       </template>
     </v-combobox>
@@ -16,7 +18,7 @@
 import _ from "lodash";
 export default {
   components: {},
-  props: ["defaultItems", "returnItems","projectId"],
+  props: ["defaultItems", "returnItems", "projectId"],
   data() {
     return {
       items: [],
@@ -47,7 +49,9 @@ export default {
       let me = this;
       me.loading = true;
       this.axios
-        .get("User/GetDropdown", {})
+        .get("ProjectService/GetProjectMembers", {
+          params: { projectId: this.projectId }
+        })
         .then(response => {
           if (response.data.success) {
             me.items = response.data.result;
