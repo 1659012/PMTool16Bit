@@ -46,7 +46,7 @@ export default {
       let me = this;
 
       this.axios
-        .get("AddressBookService/GetDropdown", {
+        .get("TaskGroupService/GetTaskGroupDropdown", {
           params: {
             projectId: me.projectId
           }

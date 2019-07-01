@@ -13,10 +13,10 @@
     </v-container>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn color="red darken-1" flat @click.native="cancel()">Cancel</v-btn>
+      <v-btn color="red darken-1" flat @click.native="cancel">Cancel</v-btn>
       <v-btn color="blue darken-1" flat @click.native="save">Save</v-btn>
     </v-card-actions>
-    <!-- <code>{{editedItem.projectMembers}}</code> -->
+    <!-- <code>{{editedItem}}</code> -->
   </v-card>
 </template>
 <script>
@@ -35,7 +35,7 @@ export default {
   watch: {},
 
   mounted() {
-    this.editedItem = _.cloneDeep(this.value);
+    this.editedItem = this.value;
   },
 
   methods: {

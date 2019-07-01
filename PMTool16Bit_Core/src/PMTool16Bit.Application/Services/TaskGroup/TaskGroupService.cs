@@ -34,7 +34,20 @@ namespace PMTool16Bit.Services
                 //.Include(p => p.Project)
                 .WhereIf (input.ProjectId!=null, p=> p.ProjectId==input.ProjectId)
                 ;
-        }  
-    
+        }
+
+
+        public List<TaskGroupDropdownDto> GetTaskGroupDropdown(int projectId)
+        {
+            return Repository
+                    .GetAll()                   
+                    .Where(p => p.ProjectId == projectId)                    
+                    .Select(p => new TaskGroupDropdownDto
+                    {
+                        Id = p.Id,
+                        TaskGroupName = p.TaskGroupName
+                    })
+                    .ToList();
+        }
     }
 }
