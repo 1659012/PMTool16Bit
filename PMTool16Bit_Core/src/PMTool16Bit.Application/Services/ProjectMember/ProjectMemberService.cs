@@ -1,20 +1,13 @@
-using Abp.Application.Services;
-using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
-using Abp.Linq.Extensions;
 using Abp.UI;
-using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Models;
-using PMTool16Bit.Users;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PMTool16Bit.Services
 {
-    public class ProjectMemberService :  IProjectService
+    public class ProjectMemberService : IProjectService
     {
         private readonly IRepository<ProjectMember> repository;
+
         public ProjectMemberService(
             IRepository<ProjectMember> repository
             )

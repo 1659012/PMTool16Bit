@@ -1,8 +1,8 @@
-﻿using System.Linq;
+﻿using Abp.MultiTenancy;
 using Microsoft.EntityFrameworkCore;
-using Abp.MultiTenancy;
 using PMTool16Bit.Editions;
 using PMTool16Bit.MultiTenancy;
+using System.Linq;
 
 namespace PMTool16Bit.EntityFrameworkCore.Seed.Tenants
 {

@@ -1,10 +1,8 @@
 ﻿using Abp.AutoMapper;
 using PMTool16Bit.Models;
 using PMTool16Bit.Models.Enum;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace PMTool16Bit.Services
 {
@@ -20,7 +18,9 @@ namespace PMTool16Bit.Services
         public string ShortDescription { get; set; }
 
         #region Reference
+
         public List<ProjectMemberDto> ProjectMembers { get; set; }
-        #endregion
+
+        #endregion Reference
     }
 }

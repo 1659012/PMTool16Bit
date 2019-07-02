@@ -7,4 +7,3 @@ namespace PMTool16Bit.Roles.Dto
         public string Keyword { get; set; }
     }
 }
-

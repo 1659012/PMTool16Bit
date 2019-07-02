@@ -1,21 +1,20 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
+﻿using Abp.AspNetCore;
+using Abp.AspNetCore.SignalR.Hubs;
+using Abp.Castle.Logging.Log4Net;
+using Abp.Extensions;
+using Castle.Facilities.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Castle.Facilities.Logging;
-using Swashbuckle.AspNetCore.Swagger;
-using Abp.AspNetCore;
-using Abp.Castle.Logging.Log4Net;
-using Abp.Extensions;
 using PMTool16Bit.Configuration;
 using PMTool16Bit.Identity;
-
-using Abp.AspNetCore.SignalR.Hubs;
+using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.Linq;
+using System.Reflection;
 using Y.Web.Host.Swagger;
 
 namespace PMTool16Bit.Web.Host.Startup
@@ -99,14 +98,13 @@ namespace PMTool16Bit.Web.Host.Startup
         {
             app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework.
 
-            app.UseCors(_defaultCorsPolicyName); // Enable CORS!            
+            app.UseCors(_defaultCorsPolicyName); // Enable CORS!
 
             app.UseStaticFiles();
 
             app.UseAuthentication();
 
             app.UseAbpRequestLocalization();
-
 
             app.UseSignalR(routes =>
             {

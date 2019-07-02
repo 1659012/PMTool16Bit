@@ -30,14 +30,17 @@ namespace PMTool16Bit.Models
 
         public int TaskGroupId { get; set; }
 
+        public int? TaskDependencyId { get; set; }
+
         #region Reference
 
         [ForeignKey(nameof(TaskGroupId))]
-        public virtual TaskGroup GroupTask { get; set; }
+        public virtual TaskGroup TaskGroup { get; set; }
 
         public virtual ICollection<EventTaskMember> EventTaskMembers { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Todo> Todos { get; set; }
-        #endregion
+
+        #endregion Reference
     }
 }

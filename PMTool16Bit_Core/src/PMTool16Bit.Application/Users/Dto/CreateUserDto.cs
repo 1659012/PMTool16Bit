@@ -1,9 +1,9 @@
-using System.ComponentModel.DataAnnotations;
 using Abp.Auditing;
 using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.Runtime.Validation;
 using PMTool16Bit.Authorization.Users;
+using System.ComponentModel.DataAnnotations;
 
 namespace PMTool16Bit.Users
 {

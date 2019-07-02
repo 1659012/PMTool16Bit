@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PMTool16Bit.Models.Enum
+﻿namespace PMTool16Bit.Models.Enum
 {
-   public static class EntityLength
+    public static class EntityLength
     {
         public const int ProjectName = 256;
         public const int GroupTaskName = 256;

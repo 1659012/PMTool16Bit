@@ -1,11 +1,7 @@
 ﻿using Abp.AutoMapper;
 using PMTool16Bit.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using PMTool16Bit.Services;
-using System.ComponentModel.DataAnnotations.Schema;
 using PMTool16Bit.Users;
+using System.Collections.Generic;
 
 namespace PMTool16Bit.Services
 {
@@ -16,14 +12,17 @@ namespace PMTool16Bit.Services
 
         //[StringLength(EnumLength.ProjectName)]
         public string ProjectName { get; set; }
-        
+
         public string ShortDescription { get; set; }
 
-        #region Reference  
+        #region Reference
+
         //[ForeignKey(nameof(ProjectOwnerId))]
         public virtual UserSimpleDto ProjectOwner { get; set; }
+
         public virtual ICollection<TaskGroupDto> TaskGroups { get; set; }
         public ICollection<ProjectMemberDto> ProjectMembers { get; set; }
-        #endregion
+
+        #endregion Reference
     }
 }

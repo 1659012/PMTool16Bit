@@ -1,8 +1,6 @@
 ﻿using PMTool16Bit.Models.Enum;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace PMTool16Bit.Services
 {
@@ -16,11 +14,12 @@ namespace PMTool16Bit.Services
         [StringLength(EntityLength.ShortDescription)]
         public string ShortDescription { get; set; }
 
-
         #region Reference
+
         public virtual List<TaskGroupDto> TaskGroups { get; set; }
 
         public List<ProjectMemberDto> ProjectMembers { get; set; }
-        #endregion
+
+        #endregion Reference
     }
 }

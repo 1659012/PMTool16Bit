@@ -1,16 +1,16 @@
-using System;
-using Castle.MicroKernel.Registration;
-using NSubstitute;
 using Abp.AutoMapper;
+using Abp.Configuration.Startup;
 using Abp.Dependency;
 using Abp.Modules;
-using Abp.Configuration.Startup;
 using Abp.Net.Mail;
 using Abp.TestBase;
 using Abp.Zero.Configuration;
 using Abp.Zero.EntityFrameworkCore;
+using Castle.MicroKernel.Registration;
+using NSubstitute;
 using PMTool16Bit.EntityFrameworkCore;
 using PMTool16Bit.Tests.DependencyInjection;
+using System;
 
 namespace PMTool16Bit.Tests
 {

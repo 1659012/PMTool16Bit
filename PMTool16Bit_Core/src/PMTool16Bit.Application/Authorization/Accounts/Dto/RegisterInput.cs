@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Abp.Auditing;
+﻿using Abp.Auditing;
 using Abp.Authorization.Users;
 using Abp.Extensions;
 using PMTool16Bit.Validation;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PMTool16Bit.Authorization.Accounts.Dto
 {

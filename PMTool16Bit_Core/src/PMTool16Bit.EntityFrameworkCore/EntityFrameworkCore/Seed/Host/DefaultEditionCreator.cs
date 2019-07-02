@@ -1,8 +1,8 @@
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using Abp.Application.Editions;
 using Abp.Application.Features;
+using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Editions;
+using System.Linq;
 
 namespace PMTool16Bit.EntityFrameworkCore.Seed.Host
 {

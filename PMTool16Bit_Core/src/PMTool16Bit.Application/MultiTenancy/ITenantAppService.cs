@@ -1,5 +1,4 @@
 ﻿using Abp.Application.Services;
-using Abp.Application.Services.Dto;
 using PMTool16Bit.MultiTenancy.Dto;
 
 namespace PMTool16Bit.MultiTenancy
@@ -8,4 +7,3 @@ namespace PMTool16Bit.MultiTenancy
     {
     }
 }
-

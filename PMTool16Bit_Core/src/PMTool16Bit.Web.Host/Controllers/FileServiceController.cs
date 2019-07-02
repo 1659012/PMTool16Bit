@@ -1,28 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Abp.Configuration;
-using Abp.Domain.Entities;
+﻿using Abp.Domain.Entities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using PMTool16Bit.EntityFrameworkCore;
-using PMTool16Bit.Models;
 using PMTool16Bit.Models.Enum;
 using PMTool16Bit.Services;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace PMTool16Bit.Controllers
 {
-    [Route("api/services/app/[controller]/[action]")]   
+    [Route("api/services/app/[controller]/[action]")]
     public class FileServiceController : PMTool16BitControllerBase
 
-    {        
+    {
         private readonly FileService fileService;
         private IHostingEnvironment hostingEnvironment;
         private ProjectService projectService;
+
         public FileServiceController(
             FileService fileService,
             IHostingEnvironment hostingEnvironment,
@@ -55,21 +51,21 @@ namespace PMTool16Bit.Controllers
                 }
 
                 var fileDto = new FileEntityCreateDto
-                {                    
+                {
                     Name = fileName,
                     Path = path,
                     Type = file.ContentType,
                 };
 
                 var fileEntity = await fileService.Create(fileDto);
-                var baseUrl = await SettingManager.GetSettingValueAsync(SettingKey.App_BaseUrl);                
+                var baseUrl = await SettingManager.GetSettingValueAsync(SettingKey.App_BaseUrl);
                 var entityPath = baseUrl + fileEntity.Path;
                 return new { Path = entityPath, fileEntity.Id, name = fileName, fileEntity.Type };
             }
             return null;
         }
 
-        [HttpPost]       
+        [HttpPost]
         [RequestSizeLimit(100_000_000)]
         public async Task<object> UploadImage(IFormFile file, string name)
         {
@@ -89,7 +85,7 @@ namespace PMTool16Bit.Controllers
                 }
 
                 var fileDto = new FileEntityCreateDto
-                {                   
+                {
                     Name = fileName,
                     Path = path,
                     Type = file.ContentType
@@ -124,9 +120,10 @@ namespace PMTool16Bit.Controllers
             return File(content, contentType, fileName);
         }
 
-        #endregion
+        #endregion Upload/download file
 
         #region Export excel
+
         [HttpGet]
         public async Task<IActionResult> Export<T>(string fileName, List<T> list)
         {
@@ -153,6 +150,7 @@ namespace PMTool16Bit.Controllers
             var listExportExcel = projectService.GetTaskListInProject(projectId);
             return await Export(fileName, listExportExcel);
         }
-        #endregion
+
+        #endregion Export excel
     }
 }

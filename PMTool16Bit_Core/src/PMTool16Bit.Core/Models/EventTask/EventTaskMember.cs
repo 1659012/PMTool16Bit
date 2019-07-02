@@ -1,13 +1,9 @@
-﻿
-using PMTool16Bit.Authorization.Users;
-using PMTool16Bit.Models.Enum;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using PMTool16Bit.Authorization.Users;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PMTool16Bit.Models
 {
-    public  class EventTaskMember: BaseEntity
+    public class EventTaskMember : BaseEntity
     {
         public int EventTaskId { get; set; }
 
@@ -20,6 +16,5 @@ namespace PMTool16Bit.Models
 
         [ForeignKey(nameof(MemberId))]
         public virtual User Member { get; set; }
-
     }
 }

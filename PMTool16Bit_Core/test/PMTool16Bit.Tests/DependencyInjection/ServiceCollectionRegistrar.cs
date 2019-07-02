@@ -1,11 +1,11 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Abp.Dependency;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor.MsDependencyInjection;
-using Abp.Dependency;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using PMTool16Bit.EntityFrameworkCore;
 using PMTool16Bit.Identity;
+using System;
 
 namespace PMTool16Bit.Tests.DependencyInjection
 {

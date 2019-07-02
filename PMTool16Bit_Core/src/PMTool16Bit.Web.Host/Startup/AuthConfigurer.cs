@@ -1,12 +1,12 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Abp.Runtime.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using Abp.Runtime.Security;
+using System;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace PMTool16Bit.Web.Host.Startup
 {
@@ -16,7 +16,8 @@ namespace PMTool16Bit.Web.Host.Startup
         {
             if (bool.Parse(configuration["Authentication:JwtBearer:IsEnabled"]))
             {
-                services.AddAuthentication(options => {
+                services.AddAuthentication(options =>
+                {
                     options.DefaultAuthenticateScheme = "JwtBearer";
                     options.DefaultChallengeScheme = "JwtBearer";
                 }).AddJwtBearer("JwtBearer", options =>
@@ -54,6 +55,7 @@ namespace PMTool16Bit.Web.Host.Startup
 
         /* This method is needed to authorize SignalR javascript client.
          * SignalR can not send authorization header. So, we are getting it from query string as an encrypted text. */
+
         private static Task QueryStringTokenResolver(MessageReceivedContext context)
         {
             if (!context.HttpContext.Request.Path.HasValue ||

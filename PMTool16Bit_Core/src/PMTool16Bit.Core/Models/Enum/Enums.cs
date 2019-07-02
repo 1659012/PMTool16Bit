@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PMTool16Bit.Models.Enum
+﻿namespace PMTool16Bit.Models.Enum
 {
     public enum PriorityLevelEnum
     {
@@ -11,6 +7,7 @@ namespace PMTool16Bit.Models.Enum
         High,
         Critical
     }
+
     public static class PriorityLevels
     {
         public static string EnumToString(int priorityLevel)

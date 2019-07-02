@@ -1,17 +1,17 @@
-﻿using System;
-using System.Text;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using Abp.AspNetCore;
+﻿using Abp.AspNetCore;
 using Abp.AspNetCore.Configuration;
 using Abp.AspNetCore.SignalR;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Zero.Configuration;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using PMTool16Bit.Authentication.JwtBearer;
 using PMTool16Bit.Configuration;
 using PMTool16Bit.EntityFrameworkCore;
+using System;
+using System.Text;
 
 namespace PMTool16Bit
 {
@@ -19,7 +19,7 @@ namespace PMTool16Bit
          typeof(PMTool16BitApplicationModule),
          typeof(PMTool16BitEntityFrameworkModule),
          typeof(AbpAspNetCoreModule)
-        ,typeof(AbpAspNetCoreSignalRModule)
+        , typeof(AbpAspNetCoreSignalRModule)
      )]
     public class PMTool16BitWebCoreModule : AbpModule
     {

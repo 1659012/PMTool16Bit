@@ -1,14 +1,14 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Abp.Authorization;
+﻿using Abp.Authorization;
 using Abp.Authorization.Roles;
 using Abp.Authorization.Users;
 using Abp.MultiTenancy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using PMTool16Bit.Authorization;
 using PMTool16Bit.Authorization.Roles;
 using PMTool16Bit.Authorization.Users;
+using System.Linq;
 
 namespace PMTool16Bit.EntityFrameworkCore.Seed.Tenants
 {

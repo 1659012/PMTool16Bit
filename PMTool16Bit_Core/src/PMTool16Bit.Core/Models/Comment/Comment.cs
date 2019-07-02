@@ -13,9 +13,12 @@ namespace PMTool16Bit.Models
 
         [StringLength(EntityLength.IdLimit)]
         public string FileIds { get; set; }
+
         #region Reference
+
         [ForeignKey(nameof(EventTaskId))]
         public virtual EventTask EventTask { get; set; }
-        #endregion
+
+        #endregion Reference
     }
 }

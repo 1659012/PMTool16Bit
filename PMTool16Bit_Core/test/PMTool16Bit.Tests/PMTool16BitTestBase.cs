@@ -1,19 +1,19 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Abp;
+﻿using Abp;
 using Abp.Authorization.Users;
 using Abp.Events.Bus;
 using Abp.Events.Bus.Entities;
 using Abp.MultiTenancy;
 using Abp.Runtime.Session;
 using Abp.TestBase;
+using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Authorization.Users;
 using PMTool16Bit.EntityFrameworkCore;
 using PMTool16Bit.EntityFrameworkCore.Seed.Host;
 using PMTool16Bit.EntityFrameworkCore.Seed.Tenants;
 using PMTool16Bit.MultiTenancy;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PMTool16Bit.Tests
 {
@@ -133,7 +133,7 @@ namespace PMTool16Bit.Tests
             return result;
         }
 
-        #endregion
+        #endregion UsingDbContext
 
         #region Login
 
@@ -185,7 +185,7 @@ namespace PMTool16Bit.Tests
             AbpSession.UserId = user.Id;
         }
 
-        #endregion
+        #endregion Login
 
         /// <summary>
         /// Gets current user if <see cref="IAbpSession.UserId"/> is not null.

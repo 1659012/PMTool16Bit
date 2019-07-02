@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Abp.Application.Services;
+﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
@@ -9,12 +7,14 @@ using Abp.IdentityFramework;
 using Abp.Linq.Extensions;
 using Abp.MultiTenancy;
 using Abp.Runtime.Security;
+using Microsoft.AspNetCore.Identity;
 using PMTool16Bit.Authorization;
 using PMTool16Bit.Authorization.Roles;
 using PMTool16Bit.Authorization.Users;
 using PMTool16Bit.Editions;
 using PMTool16Bit.MultiTenancy.Dto;
-using Microsoft.AspNetCore.Identity;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PMTool16Bit.MultiTenancy
 {
@@ -120,4 +120,3 @@ namespace PMTool16Bit.MultiTenancy
         }
     }
 }
-

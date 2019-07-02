@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Text.RegularExpressions;
 
-
 namespace PMTool16Bit.Services
 {
     public class AbstractDataExportBridge : AbstractDataExport<string>
@@ -27,7 +26,7 @@ namespace PMTool16Bit.Services
                 _type.Add(type.Name);
                 table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ??
                                   prop.PropertyType);
-                //string name = Regex.Replace(prop.Text, "([A-Z])", " $1").Trim(); //space separated 
+                //string name = Regex.Replace(prop.Text, "([A-Z])", " $1").Trim(); //space separated
                 var name = prop.DisplayName ?? Regex.Replace(prop.Name, "([A-Z])", " $1").Trim(); //space separated ;
                 _headers.Add(name);
             }
@@ -58,16 +57,20 @@ namespace PMTool16Bit.Services
                             case "string":
                                 row1.SetCellValue(Convert.ToString(currentCellValue));
                                 break;
+
                             case "boolean":
                                 row1.SetCellValue(Convert.ToString(currentCellValue));
                                 break;
+
                             case "int32":
                                 row1.SetCellValue(Convert.ToInt32(currentCellValue));
                                 break;
+
                             case "double":
                             case "decimal":
                                 row1.SetCellValue(Convert.ToDouble(currentCellValue));
                                 break;
+
                             case "datetime":
                                 row1.SetCellValue(((DateTime)currentCellValue).ToString("dddd, dd MMMM yyyy"));
                                 break;

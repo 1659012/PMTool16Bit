@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Abp.Zero.EntityFrameworkCore;
+﻿using Abp.Zero.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Authorization.Roles;
 using PMTool16Bit.Authorization.Users;
-using PMTool16Bit.MultiTenancy;
 using PMTool16Bit.Models;
+using PMTool16Bit.MultiTenancy;
 
 namespace PMTool16Bit.EntityFrameworkCore
 {
@@ -29,11 +29,11 @@ namespace PMTool16Bit.EntityFrameworkCore
             modelBuilder.Entity<Project>()
                 .HasMany(c => c.TaskGroups)
                 .WithOne(e => e.Project)
-                /*.OnDelete(DeleteBehavior.Cascade); */; 
+                /*.OnDelete(DeleteBehavior.Cascade); */;
 
             modelBuilder.Entity<TaskGroup>()
                .HasMany(c => c.EventTasks)
-               .WithOne(e => e.GroupTask)
+               .WithOne(e => e.TaskGroup)
                /*.OnDelete(DeleteBehavior.Cascade); */;
 
             modelBuilder.Entity<EventTask>()
@@ -58,7 +58,6 @@ namespace PMTool16Bit.EntityFrameworkCore
                 .HasOne(bc => bc.Project)
                 .WithMany(c => c.ProjectMembers)
                 .HasForeignKey(bc => bc.ProjectId);
-            
 
             modelBuilder.Entity<EventTaskMember>()
              .HasKey(bc => new { bc.EventTaskId, bc.MemberId });

@@ -1,14 +1,10 @@
 using Abp.Application.Services;
-using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
-using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Models;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-
 
 namespace PMTool16Bit.Services
 {
@@ -17,11 +13,12 @@ namespace PMTool16Bit.Services
     {
         //private readonly IUserAppService userAppService;
         private readonly IRepository<EventTaskMember> eventTaskMemberRepository;
+
         private readonly IRepository<Todo> todoRepository;
 
         public EventTaskService(
             //IUserAppService userAppService,
-            IRepository<EventTask> repository,            
+            IRepository<EventTask> repository,
             IRepository<EventTaskMember> eventTaskMemberRepository,
             IRepository<Todo> todoRepository
             ) : base(repository)
@@ -40,14 +37,22 @@ namespace PMTool16Bit.Services
 
         protected override IQueryable<EventTask> CreateFilteredQuery(EventTaskFilter input)
         {
+            return base.CreateFilteredQuery(input);
+        }
 
-            return base.CreateFilteredQuery(input);              
-        }  
-        //private string GetMemberNames(EventTaskDto eventTaskDto)
-        //{
-        //    string result = "";
-        //    return result;
-        //}
-    
+        public List<EventTaskDropdownDto> GetEventTaskDropdown(int? taskGroupId)
+        {
+            return Repository
+                   .GetAllIncluding(p => p.TaskGroup)
+                    .WhereIf(taskGroupId != null, p => p.TaskGroupId == taskGroupId)
+                    .Select(p => new EventTaskDropdownDto
+                    {
+                        Id = p.Id,
+                        TaskName = p.TaskName,
+                        TaskGroupId = p.TaskGroupId,
+                        TaskGroupName = p.TaskGroup.TaskGroupName
+                    })
+                    .ToList();
+        }
     }
 }

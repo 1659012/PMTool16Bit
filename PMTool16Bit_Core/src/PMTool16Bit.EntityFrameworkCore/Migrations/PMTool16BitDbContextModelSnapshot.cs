@@ -1106,6 +1106,8 @@ namespace PMTool16Bit.Migrations
 
                     b.Property<DateTime?>("StartDate");
 
+                    b.Property<int?>("TaskDependencyId");
+
                     b.Property<int>("TaskGroupId");
 
                     b.Property<string>("TaskName")
@@ -1468,7 +1470,7 @@ namespace PMTool16Bit.Migrations
 
             modelBuilder.Entity("PMTool16Bit.Models.EventTask", b =>
                 {
-                    b.HasOne("PMTool16Bit.Models.TaskGroup", "GroupTask")
+                    b.HasOne("PMTool16Bit.Models.TaskGroup", "TaskGroup")
                         .WithMany("EventTasks")
                         .HasForeignKey("TaskGroupId")
                         .OnDelete(DeleteBehavior.Cascade);

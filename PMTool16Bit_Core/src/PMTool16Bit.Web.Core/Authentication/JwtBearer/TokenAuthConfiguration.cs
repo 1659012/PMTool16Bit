@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
+using System;
 
 namespace PMTool16Bit.Authentication.JwtBearer
 {

@@ -1,11 +1,8 @@
-﻿using System;
-using Abp.Domain.Entities;
-using Abp.Domain.Entities.Auditing;
-using Abp.Timing;
+﻿using Abp.Domain.Entities;
 
 namespace PMTool16Bit.Models
 {
-   public class BaseEntity : Entity
+    public class BaseEntity : Entity
     {
     }
 }

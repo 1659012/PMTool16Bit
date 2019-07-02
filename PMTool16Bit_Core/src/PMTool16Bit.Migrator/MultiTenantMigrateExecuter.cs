@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Data.Common;
 using Abp.Data;
 using Abp.Dependency;
 using Abp.Domain.Repositories;
@@ -11,6 +8,9 @@ using Abp.Runtime.Security;
 using PMTool16Bit.EntityFrameworkCore;
 using PMTool16Bit.EntityFrameworkCore.Seed;
 using PMTool16Bit.MultiTenancy;
+using System;
+using System.Collections.Generic;
+using System.Data.Common;
 
 namespace PMTool16Bit.Migrator
 {

@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-using PMTool16Bit.Configuration.Dto;
+﻿using PMTool16Bit.Configuration.Dto;
+using System.Threading.Tasks;
 
 namespace PMTool16Bit.Configuration
 {

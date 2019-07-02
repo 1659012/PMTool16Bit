@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace PMTool16Bit.Controllers
 {
-    public abstract class PMTool16BitControllerBase: AbpController
+    public abstract class PMTool16BitControllerBase : AbpController
     {
         protected PMTool16BitControllerBase()
         {

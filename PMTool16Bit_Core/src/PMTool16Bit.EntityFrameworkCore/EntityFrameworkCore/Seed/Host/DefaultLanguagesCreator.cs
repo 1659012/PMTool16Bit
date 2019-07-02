@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using Abp.Localization;
 using Microsoft.EntityFrameworkCore;
-using Abp.Localization;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PMTool16Bit.EntityFrameworkCore.Seed.Host
 {

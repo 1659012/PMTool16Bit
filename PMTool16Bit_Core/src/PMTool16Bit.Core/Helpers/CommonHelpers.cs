@@ -1,15 +1,14 @@
 ﻿using Abp.Extensions;
+using Microsoft.EntityFrameworkCore.Query;
+using Microsoft.EntityFrameworkCore.Query.Internal;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Text.RegularExpressions;
-using Microsoft.EntityFrameworkCore.Query;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using Microsoft.EntityFrameworkCore.Storage;
-using System.ComponentModel.DataAnnotations;
+
 namespace PMTool16Bit
 {
     public static class CommonHelpers
@@ -18,6 +17,7 @@ namespace PMTool16Bit
         {
             return !string.IsNullOrEmpty(model);
         }
+
         //public static bool IsNullOrEmpty(this string model)
         //{
         //    return string.IsNullOrEmpty(model);
@@ -34,6 +34,7 @@ namespace PMTool16Bit
         {
             return model == null ? "" : model.Value.ToString(format);
         }
+
         public static string ToDateString(this DateTime model)
         {
             return model == null ? "" : string.Format("{0:dd/MMM/yyyy}", model);
@@ -111,6 +112,7 @@ namespace PMTool16Bit
                 .Select(x => (string)x.GetRawConstantValue())
                 .ToList();
         }
+
         public static string ToHumanString(this string input)
         {
             return System.Text.RegularExpressions.Regex.Replace(
@@ -119,7 +121,7 @@ namespace PMTool16Bit
                 "$1 $2"
             );
         }
-        
+
         public static string Join(this IEnumerable<string> model, string separator)
         {
             if (model == null)

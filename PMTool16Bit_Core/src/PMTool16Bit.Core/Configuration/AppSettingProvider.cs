@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Abp.Configuration;
+﻿using Abp.Configuration;
 using PMTool16Bit.Models.Enum;
+using System.Collections.Generic;
 
 namespace PMTool16Bit.Configuration
 {

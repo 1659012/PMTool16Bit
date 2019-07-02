@@ -7,7 +7,7 @@ using PMTool16Bit.EntityFrameworkCore.Seed;
 namespace PMTool16Bit.EntityFrameworkCore
 {
     [DependsOn(
-        typeof(PMTool16BitCoreModule), 
+        typeof(PMTool16BitCoreModule),
         typeof(AbpZeroCoreEntityFrameworkCoreModule))]
     public class PMTool16BitEntityFrameworkModule : AbpModule
     {

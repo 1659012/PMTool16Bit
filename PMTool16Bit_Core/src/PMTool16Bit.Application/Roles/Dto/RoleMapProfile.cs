@@ -1,6 +1,6 @@
-﻿using AutoMapper;
-using Abp.Authorization;
+﻿using Abp.Authorization;
 using Abp.Authorization.Roles;
+using AutoMapper;
 using PMTool16Bit.Authorization.Roles;
 
 namespace PMTool16Bit.Roles.Dto

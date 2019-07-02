@@ -1,11 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Abp.Application.Services;
+﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
-using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.IdentityFramework;
@@ -13,15 +8,17 @@ using Abp.Linq.Extensions;
 using Abp.Localization;
 using Abp.Runtime.Session;
 using Abp.UI;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Authorization;
-using PMTool16Bit.Authorization.Accounts;
 using PMTool16Bit.Authorization.Roles;
 using PMTool16Bit.Authorization.Users;
 using PMTool16Bit.Roles.Dto;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Services;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PMTool16Bit.Users
 {
@@ -80,14 +77,14 @@ namespace PMTool16Bit.Users
             return MapToEntityDto(user);
         }
 
-        //[AbpAllowAnonymous]       
+        //[AbpAllowAnonymous]
         public override async Task<UserDto> Update(UserDto input)
         {
             //CheckUpdatePermission();
 
             var user = await _userManager.GetUserByIdAsync(input.Id);
             MapToEntity(input, user);
-            var update =await Repository.UpdateAsync(user);
+            var update = await Repository.UpdateAsync(user);
             CurrentUnitOfWork.SaveChanges();
             //MapToEntity(input, user);
 
@@ -245,16 +242,17 @@ namespace PMTool16Bit.Users
 
             return true;
         }
+
         #region Customize UserData
 
         [AbpAllowAnonymous]
         public async Task<UserDto> GetUserProfile(long id)
-        {          
-            var user =await GetEntityByIdAsync(id);
+        {
+            var user = await GetEntityByIdAsync(id);
             //var userDto = MapToEntityDto(user);
             //var permissionModelList = await _userManager.GetGrantedPermissionsAsync(user);
             //return userDto;
-            var userDto= new UserDto
+            var userDto = new UserDto
             {
                 Id = user.Id,
                 UserName = user.UserName,
@@ -262,9 +260,9 @@ namespace PMTool16Bit.Users
                 Surname = user.Surname,
                 FullName = user.FullName,
                 EmailAddress = user.EmailAddress,
-                IsPublishProfile=user.IsPublishProfile,
-                AvatarId=user.AvatarId,
-                LastLoginTime= user.LastLoginTime
+                IsPublishProfile = user.IsPublishProfile,
+                AvatarId = user.AvatarId,
+                LastLoginTime = user.LastLoginTime
             };
 
             if (userDto.AvatarId != null)
@@ -283,10 +281,11 @@ namespace PMTool16Bit.Users
             user.LastLoginTime = date;
             CurrentUnitOfWork.SaveChanges();
         }
+
         public async Task<List<UserDropdownDto>> GetDropdown()
         {
             return await Repository
-                .GetAll()               
+                .GetAll()
                 .OrderBy(p => p.Name)
                 .Select(p => new UserDropdownDto
                 {
@@ -306,9 +305,9 @@ namespace PMTool16Bit.Users
 
             return await Repository
                 .GetAll()
-                .Where(p=> p.FullName.ToLower().Contains(keyword)
-                            ||p.UserName.ToLower().Contains(keyword)
-                            ||p.EmailAddress.ToLower().Contains(keyword)
+                .Where(p => p.FullName.ToLower().Contains(keyword)
+                            || p.UserName.ToLower().Contains(keyword)
+                            || p.EmailAddress.ToLower().Contains(keyword)
                       )
                 .OrderBy(p => p.Name)
                 .Select(p => new UserDropdownDto
@@ -320,8 +319,6 @@ namespace PMTool16Bit.Users
                 .ToListAsync();
         }
 
-        #endregion
-
+        #endregion Customize UserData
     }
 }
-

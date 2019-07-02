@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-
-namespace PMTool16Bit.Services
-{   
+﻿namespace PMTool16Bit.Services
+{
     public class EventTaskGanttDto
     {
         public string Id { get; set; }
-        public string Name { get; set; }      
+        public string Name { get; set; }
         public double? Start { get; set; }
         public double? End { get; set; }
         public string Assignee { get; set; }

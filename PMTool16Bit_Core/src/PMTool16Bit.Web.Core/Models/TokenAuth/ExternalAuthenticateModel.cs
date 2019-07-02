@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Abp.Authorization.Users;
+﻿using Abp.Authorization.Users;
+using System.ComponentModel.DataAnnotations;
 
 namespace PMTool16Bit.Models.TokenAuth
 {

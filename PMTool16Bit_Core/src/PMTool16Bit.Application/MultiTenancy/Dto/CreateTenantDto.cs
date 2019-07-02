@@ -1,7 +1,7 @@
-using System.ComponentModel.DataAnnotations;
 using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.MultiTenancy;
+using System.ComponentModel.DataAnnotations;
 
 namespace PMTool16Bit.MultiTenancy.Dto
 {
@@ -24,6 +24,6 @@ namespace PMTool16Bit.MultiTenancy.Dto
         [StringLength(AbpTenantBase.MaxConnectionStringLength)]
         public string ConnectionString { get; set; }
 
-        public bool IsActive {get; set;}
+        public bool IsActive { get; set; }
     }
 }

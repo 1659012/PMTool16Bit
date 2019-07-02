@@ -1,9 +1,9 @@
-using System;
-using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using PMTool16Bit.Roles.Dto;
+using System;
+using System.Threading.Tasks;
 
 namespace PMTool16Bit.Users
 {
@@ -19,5 +19,4 @@ namespace PMTool16Bit.Users
         [AbpAllowAnonymous]
         Task UpdateLastLoginTime(long id, DateTime? date);
     }
-
 }

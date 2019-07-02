@@ -1,14 +1,6 @@
 using Abp.Application.Services;
-using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
-using Abp.Linq.Extensions;
-using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Models;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-
 
 namespace PMTool16Bit.Services
 {
@@ -24,9 +16,8 @@ namespace PMTool16Bit.Services
             //IRepository<EventTable> eventTableRepository
 
             ) : base(repository)
-        {           
+        {
             //this.eventTableRepository = eventTableRepository;
         }
-
     }
 }

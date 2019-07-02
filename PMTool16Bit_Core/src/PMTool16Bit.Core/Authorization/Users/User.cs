@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Abp.Authorization.Users;
+﻿using Abp.Authorization.Users;
 using Abp.Extensions;
 using PMTool16Bit.Models;
+using System;
+using System.Collections.Generic;
 
 namespace PMTool16Bit.Authorization.Users
 {
@@ -19,6 +19,7 @@ namespace PMTool16Bit.Authorization.Users
         public int? AvatarId { get; set; }
         public bool IsPublishProfile { get; set; } = true;
         public DateTime? LastLoginTime { get; set; }
+
         public static User CreateTenantAdminUser(int tenantId, string emailAddress)
         {
             var user = new User
@@ -37,9 +38,10 @@ namespace PMTool16Bit.Authorization.Users
         }
 
         #region reference
+
         public virtual ICollection<ProjectMember> ProjectMembers { get; set; }
         public virtual ICollection<EventTaskMember> EventTaskMembers { get; set; }
 
-        #endregion
+        #endregion reference
     }
 }

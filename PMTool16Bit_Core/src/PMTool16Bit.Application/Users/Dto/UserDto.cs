@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using PMTool16Bit.Authorization.Users;
-using PMTool16Bit.Models;
 using PMTool16Bit.Services;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PMTool16Bit.Users
 {
@@ -47,9 +46,10 @@ namespace PMTool16Bit.Users
         public bool IsPublishProfile { get; set; }
 
         #region reference
+
         public virtual ICollection<ProjectMemberDto> ProjectMembers { get; set; }
         public virtual ICollection<EventTaskMemberDto> EventTaskMembers { get; set; }
 
-        #endregion
+        #endregion reference
     }
 }

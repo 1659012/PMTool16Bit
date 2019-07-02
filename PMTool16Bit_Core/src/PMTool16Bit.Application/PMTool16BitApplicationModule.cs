@@ -2,19 +2,19 @@
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using PMTool16Bit.Authorization;
-using PMTool16Bit.Services;
 using PMTool16Bit.Models;
+using PMTool16Bit.Services;
+
 namespace PMTool16Bit
 {
     [DependsOn(
-        typeof(PMTool16BitCoreModule), 
+        typeof(PMTool16BitCoreModule),
         typeof(AbpAutoMapperModule))]
     public class PMTool16BitApplicationModule : AbpModule
     {
         public override void PreInitialize()
         {
             Configuration.Authorization.Providers.Add<PMTool16BitAuthorizationProvider>();
-
         }
 
         public override void Initialize()
@@ -25,7 +25,8 @@ namespace PMTool16Bit
 
             Configuration.Modules.AbpAutoMapper().Configurators.Add(
                 // Scan the assembly for classes which inherit from AutoMapper.Profile
-                cfg => {
+                cfg =>
+                {
                     cfg.AddProfiles(thisAssembly);
 
                     //cfg.CreateMap<Foo, FooCopy>()
@@ -59,11 +60,11 @@ namespace PMTool16Bit
                      ;
 
                     cfg.CreateMap<EventTaskCreateDto, EventTask>()
-                    .ForMember(x => x.GroupTask, opt => opt.Ignore())
+                    .ForMember(x => x.TaskGroup, opt => opt.Ignore())
                     ;
 
                     cfg.CreateMap<EventTaskUpdateDto, EventTask>()
-                   .ForMember(x => x.GroupTask, opt => opt.Ignore())
+                   .ForMember(x => x.TaskGroup, opt => opt.Ignore())
                    ;
 
                     cfg.CreateMap<EventTaskMemberDto, EventTaskMember>()
@@ -73,10 +74,8 @@ namespace PMTool16Bit
                     cfg.CreateMap<TodoDto, Todo>()
                    .ForMember(x => x.EventTask, opt => opt.Ignore())
                    ;
-
                 }
             );
         }
-       
     }
 }

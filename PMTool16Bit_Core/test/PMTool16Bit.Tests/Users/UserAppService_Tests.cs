@@ -1,9 +1,8 @@
-﻿using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Shouldly;
-using Xunit;
-using Abp.Application.Services.Dto;
+﻿using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Users;
+using Shouldly;
+using System.Threading.Tasks;
+using Xunit;
 
 namespace PMTool16Bit.Tests.Users
 {
@@ -20,7 +19,7 @@ namespace PMTool16Bit.Tests.Users
         public async Task GetUsers_Test()
         {
             // Act
-            var output = await _userAppService.GetAll(new PagedUserResultRequestDto{MaxResultCount=20, SkipCount=0} );
+            var output = await _userAppService.GetAll(new PagedUserResultRequestDto { MaxResultCount = 20, SkipCount = 0 });
 
             // Assert
             output.Items.Count.ShouldBeGreaterThan(0);

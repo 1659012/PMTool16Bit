@@ -1,10 +1,7 @@
 ﻿using Abp.AutoMapper;
 using PMTool16Bit.Models;
 using PMTool16Bit.Models.Enum;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace PMTool16Bit.Services
 {
@@ -13,7 +10,7 @@ namespace PMTool16Bit.Services
     {
         [StringLength(EntityLength.FileName)]
         public string Name { get; set; }
-        
+
         [StringLength(EntityLength.FileType)]
         public string Type { get; set; }
 

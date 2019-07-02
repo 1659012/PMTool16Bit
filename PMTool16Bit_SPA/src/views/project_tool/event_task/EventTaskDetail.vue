@@ -40,10 +40,20 @@
           ></v-text-field>
         </v-flex>
         <v-flex lg6>
-          <DateTimePicker :input="editedItem.startDate" :output.sync="editedItem.startDate" clearable label="Start date" />
+          <DateTimePicker
+            :input="editedItem.startDate"
+            :output.sync="editedItem.startDate"
+            clearable
+            label="Start date"
+          />
         </v-flex>
         <v-flex lg6>
-          <DateTimePicker :input="editedItem.dueDate" :output.sync="editedItem.dueDate" clearable label="Due date" />
+          <DateTimePicker
+            :input="editedItem.dueDate"
+            :output.sync="editedItem.dueDate"
+            clearable
+            label="Due date"
+          />
         </v-flex>
         <v-flex lg3>
           <v-checkbox v-model="editedItem.isCompleted" label="Check Complete" color="success"></v-checkbox>
@@ -52,16 +62,47 @@
           <v-checkbox v-model="editedItem.isMarked" label="BookMark" color="orange"></v-checkbox>
         </v-flex>
         <v-flex lg3>
-          <p class="subheading text--lighten-3 mt-3">Priority level: {{priorityLevels[editedItem.priorityLevel].text}}</p>
+          <p
+            class="subheading text--lighten-3 mt-3"
+          >Priority level: {{priorityLevels[editedItem.priorityLevel].text}}</p>
         </v-flex>
         <v-flex lg3 class="pr-3">
-          <v-slider v-model="editedItem.priorityLevel" :max="3" :min="0" :color="priorityLevels[editedItem.priorityLevel].color" thumb-label></v-slider>
+          <v-slider
+            v-model="editedItem.priorityLevel"
+            :max="3"
+            :min="0"
+            :color="priorityLevels[editedItem.priorityLevel].color"
+            thumb-label
+          ></v-slider>
         </v-flex>
         <v-flex lg12>
-          <v-textarea name="Description" label="Description" v-model="editedItem.description" v-validate="{ max:500 }"></v-textarea>
+          <v-textarea
+            name="Description"
+            label="Description"
+            v-model="editedItem.description"
+            v-validate="{ max:500 }"
+          ></v-textarea>
         </v-flex>
         <v-flex lg12>
-          <TaskMemberCombobox :projectId="projectId" :defaultItems="editedItem.eventTaskMembers" :returnItems.sync="editedItem.eventTaskMembers" />
+          <TaskMemberCombobox
+            :projectId="projectId"
+            :defaultItems="editedItem.eventTaskMembers"
+            :returnItems.sync="editedItem.eventTaskMembers"
+          />
+        </v-flex>
+        <v-flex lg12>
+          Add task depedency
+          <TaskGroupDropdown
+            :defaultId="editedItem.taskGroupId"
+            :returnId.sync="taskGroupId"
+            :projectId="projectId"
+          />
+          <EventTaskDropdown
+            v-if="taskGroupId"
+            :defaultId="editedItem.taskDependencyId"
+            :returnId.sync="editedItem.taskDependencyId"
+            :taskGroupId="taskGroupId"
+          />
         </v-flex>
         <v-flex lg12>
           <TodoLoops v-model="editedItem.todos" />
@@ -85,7 +126,8 @@
         @cancel="changeGroupdialog=false;"
       />
     </v-dialog>
-    <!-- <code>{{editedItem}}</code> -->
+    <code>{{editedItem}}</code>
+    <code>{{taskGroupId}}</code>
   </v-card>
 </template>
 <script>
@@ -95,6 +137,8 @@ import DateTimePicker from "../../../components/basic/DateTimePicker";
 import TaskMemberCombobox from "./TaskMemberCombobox";
 import ChangeTaskGroupDialog from "../event_task/ChangeTaskGroupDialog";
 import TodoLoops from "../todo_list/TodoLoops";
+import TaskGroupDropdown from "../task_group/TaskGroupDropdown";
+import EventTaskDropdown from "./EventTaskDropdown";
 import { PriorityLevels } from "../../../enum/enums";
 export default {
   // title: "",
@@ -102,12 +146,15 @@ export default {
     DateTimePicker,
     TaskMemberCombobox,
     ChangeTaskGroupDialog,
-    TodoLoops
+    TodoLoops,
+    TaskGroupDropdown,
+    EventTaskDropdown
   },
   props: ["editedItem", "projectId", "loadData"],
   data: () => ({
     priorityLevels: PriorityLevels,
-    changeGroupdialog: false
+    changeGroupdialog: false,
+    taskGroupId: null
   }),
 
   computed: {},

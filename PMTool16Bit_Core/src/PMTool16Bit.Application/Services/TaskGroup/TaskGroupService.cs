@@ -1,14 +1,9 @@
 using Abp.Application.Services;
-using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
-using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Models;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
-
 
 namespace PMTool16Bit.Services
 {
@@ -24,7 +19,7 @@ namespace PMTool16Bit.Services
             //IRepository<EventTable> eventTableRepository
 
             ) : base(repository)
-        {           
+        {
             //this.eventTableRepository = eventTableRepository;
         }
 
@@ -32,16 +27,15 @@ namespace PMTool16Bit.Services
         {
             return base.CreateFilteredQuery(input)
                 //.Include(p => p.Project)
-                .WhereIf (input.ProjectId!=null, p=> p.ProjectId==input.ProjectId)
+                .WhereIf(input.ProjectId != null, p => p.ProjectId == input.ProjectId)
                 ;
         }
-
 
         public List<TaskGroupDropdownDto> GetTaskGroupDropdown(int projectId)
         {
             return Repository
-                    .GetAll()                   
-                    .Where(p => p.ProjectId == projectId)                    
+                    .GetAll()
+                    .Where(p => p.ProjectId == projectId)
                     .Select(p => new TaskGroupDropdownDto
                     {
                         Id = p.Id,

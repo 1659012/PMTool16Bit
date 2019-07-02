@@ -3,6 +3,6 @@
 namespace PMTool16Bit.Services
 {
     public class CommentFilter : PagedAndSortedResultRequestDto
-    {       
+    {
     }
 }

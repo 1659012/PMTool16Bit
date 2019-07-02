@@ -8,4 +8,3 @@ namespace PMTool16Bit.MultiTenancy.Dto
         public bool? IsActive { get; set; }
     }
 }
-

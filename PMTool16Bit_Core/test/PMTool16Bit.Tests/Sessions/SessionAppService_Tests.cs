@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using PMTool16Bit.Sessions;
 using Shouldly;
+using System.Threading.Tasks;
 using Xunit;
-using PMTool16Bit.Sessions;
 
 namespace PMTool16Bit.Tests.Sessions
 {

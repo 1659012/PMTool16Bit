@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PMTool16Bit.Models.Enum
+﻿namespace PMTool16Bit.Models.Enum
 {
     public static class SettingKey
     {

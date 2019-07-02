@@ -4,8 +4,8 @@ using System;
 namespace PMTool16Bit.Services
 {
     public class EventTaskFilter : PagedAndSortedResultRequestDto
-    {        
-        public string TaskName { get; set; }       
+    {
+        public string TaskName { get; set; }
         public string Description { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? DueDate { get; set; }

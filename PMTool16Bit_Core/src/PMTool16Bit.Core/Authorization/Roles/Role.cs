@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Abp.Authorization.Roles;
+﻿using Abp.Authorization.Roles;
 using PMTool16Bit.Authorization.Users;
+using System.ComponentModel.DataAnnotations;
 
 namespace PMTool16Bit.Authorization.Roles
 {
@@ -23,6 +23,6 @@ namespace PMTool16Bit.Authorization.Roles
         }
 
         [StringLength(MaxDescriptionLength)]
-        public string Description {get; set;}
+        public string Description { get; set; }
     }
 }

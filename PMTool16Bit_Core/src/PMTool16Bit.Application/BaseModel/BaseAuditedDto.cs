@@ -1,5 +1,5 @@
-using System;
 using Abp.Domain.Entities.Auditing;
+using System;
 
 namespace PMTool16Bit.Services
 {
@@ -10,6 +10,5 @@ namespace PMTool16Bit.Services
         public DateTime? LastModificationTime { get; set; }
         public long? LastModifierUserId { get; set; }
         public bool IsActive { get; set; } = true;
-
     }
 }

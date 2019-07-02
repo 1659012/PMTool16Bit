@@ -1,11 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Abp.Application.Services.Dto;
+﻿using Abp.Application.Services.Dto;
 using Abp.Authorization.Roles;
 using PMTool16Bit.Authorization.Roles;
+using System.ComponentModel.DataAnnotations;
 
 namespace PMTool16Bit.Roles.Dto
 {
-    public class RoleEditDto: EntityDto<int>
+    public class RoleEditDto : EntityDto<int>
     {
         [Required]
         [StringLength(AbpRoleBase.MaxNameLength)]

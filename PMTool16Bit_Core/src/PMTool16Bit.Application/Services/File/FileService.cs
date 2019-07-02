@@ -2,24 +2,21 @@
 using Abp.Domain.Repositories;
 using PMTool16Bit.Models;
 using PMTool16Bit.Models.Enum;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PMTool16Bit.Services
 {
-    public class FileService : AsyncCrudAppService<FileEntity, FileEntityDto, int,FileFilter, FileEntityCreateDto, FileEntityCreateDto>, IFileService
+    public class FileService : AsyncCrudAppService<FileEntity, FileEntityDto, int, FileFilter, FileEntityCreateDto, FileEntityCreateDto>, IFileService
     {
         public FileService(
            IRepository<FileEntity> repository
 
            ) : base(repository)
         {
-          
         }
+
         protected override IQueryable<FileEntity> CreateFilteredQuery(FileFilter input)
         {
             return base.CreateFilteredQuery(input);
@@ -29,7 +26,7 @@ namespace PMTool16Bit.Services
         {
             return base.GetEntityByIdAsync(id);
         }
-       
+
         public async Task<string> GetFileUrl(int fileId)
         {
             var baseUrl = await SettingManager.GetSettingValueAsync(SettingKey.App_BaseUrl);

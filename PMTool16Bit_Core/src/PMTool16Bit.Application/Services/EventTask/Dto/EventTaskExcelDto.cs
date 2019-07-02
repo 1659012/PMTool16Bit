@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace PMTool16Bit.Services
-{   
+{
     public class EventTaskExcelDto
     {
         [DisplayName("Project name")]
-        public string ProjectName { get; set; }        
+        public string ProjectName { get; set; }
 
         [DisplayName("Task Group name")]
         public string TaskGroupName { get; set; }
@@ -22,13 +21,13 @@ namespace PMTool16Bit.Services
         public string AssignedMembers { get; set; }
 
         [DisplayName("Description")]
-        public string Description { get; set; }       
+        public string Description { get; set; }
 
         [DisplayName("Marked")]
         public bool IsMarked { get; set; }
 
         [DisplayName("Completed")]
-        public bool IsCompleted { get; set; }       
+        public bool IsCompleted { get; set; }
 
         [DisplayName("Priority level")]
         public string PriorityLevel { get; set; }

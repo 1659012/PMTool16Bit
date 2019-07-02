@@ -7,6 +7,7 @@ using PMTool16Bit.Web;
 namespace PMTool16Bit.EntityFrameworkCore
 {
     /* This class is needed to run "dotnet ef ..." commands from command line on development. Not used anywhere else */
+
     public class PMTool16BitDbContextFactory : IDesignTimeDbContextFactory<PMTool16BitDbContext>
     {
         public PMTool16BitDbContext CreateDbContext(string[] args)

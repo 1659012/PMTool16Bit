@@ -36,7 +36,7 @@ namespace PMTool16Bit.Services
                 //.Include(p => p.GroupTasks)
                 .WhereIf(input.Id != null, p => p.Id == input.Id)
                 .WhereIf(input.MemberId != null, p => p.Id == input.MemberId
-                                                     ||p.ProjectMembers.Any(q=>q.MemberId==input.MemberId)
+                                                     || p.ProjectMembers.Any(q => q.MemberId == input.MemberId)
                          )
                 .WhereIf(input.ProjectOwnerId != null, p => p.ProjectOwnerId == input.ProjectOwnerId)
                 .WhereIf(input.ProjectName.IsNotNullOrEmpty(), t => t.ProjectName.Contains(input.ProjectName));
@@ -79,7 +79,7 @@ namespace PMTool16Bit.Services
 
                 .Include(p => p.TaskGroups)
                 .ThenInclude(p => p.EventTasks)
-                .ThenInclude(m=> m.Todos)
+                .ThenInclude(m => m.Todos)
 
                 .Where(p => p.Id == input.Id);
             var result = query.FirstOrDefaultAsync();
@@ -88,7 +88,7 @@ namespace PMTool16Bit.Services
         }
 
         public List<UserDropdownDto> GetProjectMembers(int projectId)
-        {            
+        {
             return Repository
                     .GetAll()
                     .Include(p => p.ProjectMembers)
@@ -97,7 +97,7 @@ namespace PMTool16Bit.Services
                     .ProjectMembers
                     .Select(p => new UserDropdownDto
                     {
-                        Id = p.Member.Id,                                             
+                        Id = p.Member.Id,
                         FullName = p.Member.FullName,
                         EmailAddress = p.Member.EmailAddress
                     })
@@ -112,8 +112,8 @@ namespace PMTool16Bit.Services
                     .ThenInclude(p => p.EventTasks)
                     .ThenInclude(q => q.EventTaskMembers)
                     .ThenInclude(m => m.Member)
-                    .FirstOrDefault(p => p.Id == projectId);  
-            if(project== null)
+                    .FirstOrDefault(p => p.Id == projectId);
+            if (project == null)
             {
                 return new List<EventTaskExcelDto>();
             }
@@ -128,17 +128,16 @@ namespace PMTool16Bit.Services
                     {
                         ProjectName = project.ProjectName,
                         TaskGroupName = taskGroup.TaskGroupName,
-                        TaskName= eventTask.TaskName,
+                        TaskName = eventTask.TaskName,
                         Description = eventTask.Description,
-                        DueDate =eventTask.DueDate,
-                        IsMarked =eventTask.IsMarked,
-                        IsCompleted=eventTask.IsCompleted,
-                        PriorityLevel= PriorityLevels.EnumToString(eventTask.PriorityLevel),
-                        AssignedMembers= GetEventTaskMemberNames(eventTask.EventTaskMembers.ToList())
+                        DueDate = eventTask.DueDate,
+                        IsMarked = eventTask.IsMarked,
+                        IsCompleted = eventTask.IsCompleted,
+                        PriorityLevel = PriorityLevels.EnumToString(eventTask.PriorityLevel),
+                        AssignedMembers = GetEventTaskMemberNames(eventTask.EventTaskMembers.ToList())
                     };
                     taskList.Add(eventTaskDto);
                 }
-
             }
 
             return taskList;
@@ -151,17 +150,18 @@ namespace PMTool16Bit.Services
             {
                 result += eventTask.Member.Name + ", ";
             }
-            if(result.Length>2)
-            result = result.Remove(result.Length - 2);
+            if (result.Length > 2)
+                result = result.Remove(result.Length - 2);
             return result;
         }
+
         private double? ConvertDateTimeToUTC(DateTime? date)
         {
             if (date == null)
                 return null;
 
-            DateTime dt1970 = new DateTime(1970, 1, 1);            
-            TimeSpan span = DateTime.Parse(date.ToDateString())- dt1970;
+            DateTime dt1970 = new DateTime(1970, 1, 1);
+            TimeSpan span = DateTime.Parse(date.ToDateString()) - dt1970;
             return span.TotalMilliseconds;
         }
 
@@ -202,23 +202,21 @@ namespace PMTool16Bit.Services
                 {
                     var eventTaskDto = new EventTaskGanttDto
                     {
-                        Id=eventTask.Id.ToString(),
-                        Name= eventTask.TaskName,
+                        Id = eventTask.Id.ToString(),
+                        Name = eventTask.TaskName,
                         Start = ConvertDateTimeToUTC(eventTask.StartDate),
-                        End = ConvertDateTimeToUTC(eventTask.DueDate),                        
+                        End = ConvertDateTimeToUTC(eventTask.DueDate),
                         Assignee = GetEventTaskMemberNames(eventTask.EventTaskMembers.ToList()),
                         Parent = parentTask.Id,
                         Dependency = "",
                         Completed = "",
                         PointWidth = ""
-
                     };
                     taskList.Add(eventTaskDto);
                 }
-
             }
 
             return taskList;
-        }       
+        }
     }
 }

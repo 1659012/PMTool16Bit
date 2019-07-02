@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Antiforgery;
-using PMTool16Bit.Controllers;
 
 namespace PMTool16Bit.Web.Host.Controllers
 {
 #pragma warning disable CS0436 // Type conflicts with imported type
+
     public class AntiForgeryController : PMTool16BitControllerBase
 #pragma warning restore CS0436 // Type conflicts with imported type
     {

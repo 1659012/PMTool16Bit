@@ -1,7 +1,3 @@
-using System;
-using Abp.Application.Services.Dto;
-using Abp.Domain.Entities.Auditing;
-
 namespace PMTool16Bit.Services
 {
     public class BaseDropdownDto : BaseDropdownDto<string>

@@ -1,7 +1,7 @@
-﻿using System;
-using Abp.Domain.Entities;
+﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 using Abp.Timing;
+using System;
 
 namespace PMTool16Bit.Models
 {

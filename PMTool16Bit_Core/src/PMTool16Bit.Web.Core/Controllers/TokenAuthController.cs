@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Abp.Authorization;
+﻿using Abp.Authorization;
 using Abp.Authorization.Users;
 using Abp.MultiTenancy;
 using Abp.Runtime.Security;
 using Abp.UI;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using PMTool16Bit.Authentication.External;
 using PMTool16Bit.Authentication.JwtBearer;
 using PMTool16Bit.Authorization;
@@ -18,6 +12,12 @@ using PMTool16Bit.Authorization.Users;
 using PMTool16Bit.Models.TokenAuth;
 using PMTool16Bit.MultiTenancy;
 using PMTool16Bit.Users;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace PMTool16Bit.Controllers
 {
@@ -74,7 +74,7 @@ namespace PMTool16Bit.Controllers
                 UserName = loginResult.User.UserName,
                 Profile = profile
             };
-        }        
+        }
 
         [HttpGet]
         public List<ExternalLoginProviderInfoModel> GetExternalAuthenticationProviders()
@@ -195,6 +195,7 @@ namespace PMTool16Bit.Controllers
             {
                 case AbpLoginResultType.Success:
                     return loginResult;
+
                 default:
                     throw _abpLoginResultTypeHelper.CreateExceptionForFailedLoginAttempt(loginResult.Result, usernameOrEmailAddress, tenancyName);
             }

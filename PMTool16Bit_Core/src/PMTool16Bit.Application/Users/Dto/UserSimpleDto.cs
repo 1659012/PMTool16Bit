@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Abp.Application.Services.Dto;
-using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using PMTool16Bit.Authorization.Users;
-using PMTool16Bit.Models;
-using PMTool16Bit.Services;
+using System;
 
 namespace PMTool16Bit.Users
 {
@@ -24,6 +18,5 @@ namespace PMTool16Bit.Users
         public string EmailAddress { get; set; }
 
         public DateTime? LastLoginTime { get; set; }
-
     }
 }

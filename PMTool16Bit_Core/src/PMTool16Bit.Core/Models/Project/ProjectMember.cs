@@ -1,13 +1,11 @@
-﻿
-using PMTool16Bit.Authorization.Users;
+﻿using PMTool16Bit.Authorization.Users;
 using PMTool16Bit.Models.Enum;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PMTool16Bit.Models
 {
-  public  class ProjectMember: BaseEntity
+    public class ProjectMember : BaseEntity
     {
         public int ProjectId { get; set; }
 
@@ -21,6 +19,5 @@ namespace PMTool16Bit.Models
 
         [StringLength(EntityLength.ProjectRole)]
         public string ProjectRole { get; set; }
-
     }
 }

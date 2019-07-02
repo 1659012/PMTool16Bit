@@ -84,7 +84,7 @@
     <text name="EditUser">Keisti vartotoją</text>
     <text name="TenantIdIsNotActive{0}">Savininkas su Id {0} yra neaktyvus</text>
     <text name="UnknownTenantId{0}">Nežinomas savininko Id {0}</text>
-	
+
 	<text name="ThisFieldIsRequired">Šis laukas yra privalomas</text>
     <text name="PleaseWait">Prašome palaukti...</text>
     <text name="Administration">Administration</text>
