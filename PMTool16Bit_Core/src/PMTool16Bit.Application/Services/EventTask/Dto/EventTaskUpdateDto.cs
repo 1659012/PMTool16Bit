@@ -26,6 +26,8 @@ namespace PMTool16Bit.Services
 
         public int TaskGroupId { get; set; }
 
+        public int? TaskDependencyId { get; set; }
+
         #region Reference
 
         public virtual List<EventTaskMemberDto> EventTaskMembers { get; set; }

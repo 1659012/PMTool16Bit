@@ -208,7 +208,7 @@ namespace PMTool16Bit.Services
                         End = ConvertDateTimeToUTC(eventTask.DueDate),
                         Assignee = GetEventTaskMemberNames(eventTask.EventTaskMembers.ToList()),
                         Parent = parentTask.Id,
-                        Dependency = "",
+                        Dependency = eventTask.TaskDependencyId.ToString(),
                         Completed = "",
                         PointWidth = ""
                     };

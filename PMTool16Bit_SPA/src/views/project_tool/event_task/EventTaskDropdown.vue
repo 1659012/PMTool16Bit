@@ -2,7 +2,7 @@
 <template>
   <div>
     <v-autocomplete
-      label="Event task"
+      :label="newLabel?newLabel:'Event task'"
       hide-no-data
       hint="Choose Event task"
       :loading="loading"
@@ -11,6 +11,7 @@
       item-value="id"
       return-object
       v-model="model"
+      clearable
     ></v-autocomplete>
   </div>
 </template>
@@ -26,7 +27,8 @@ export default {
   computed: {},
   watch: {
     model(val) {
-      this.$emit("update:returnId", val ? val.id : "");
+      console.log(val);
+      this.$emit("update:returnId", val ? val.id : null);
       this.$emit("update:returnObject", val);
     }
   },
@@ -35,7 +37,8 @@ export default {
     "defaultObject",
     "returnId",
     "returnObject",
-    "taskGroupId"
+    "taskGroupId",
+    "newLabel"
   ],
   mounted() {
     this.loadData();
@@ -48,7 +51,7 @@ export default {
       this.axios
         .get("EventTaskService/GetEventTaskDropdown", {
           params: {
-            taskGroupId: me.defaultId ? null : me.taskGroupId
+            taskGroupId: me.taskGroupId
           }
         })
         .then(response => {

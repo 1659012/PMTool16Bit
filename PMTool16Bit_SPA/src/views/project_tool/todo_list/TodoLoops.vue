@@ -1,18 +1,26 @@
 
 <template>
   <div v-if="value">
-    <v-text-field v-model="todo.todoName" label="Add new todo" solo @keydown.enter="create" hint="Press enter to add">
-      <v-fade-transition v-slot:append>
-        <v-icon v-if="task" @click="create">add_circle</v-icon>
-      </v-fade-transition>
-    </v-text-field>
-
-    <h2 class="display-1 success--text pl-3">
-      Total todo:&nbsp;
-      <v-fade-transition leave-absolute>
-        <span :key="`todos-${todoItems.length}`">{{ todoItems.length }}</span>
-      </v-fade-transition>
-    </h2>
+    <v-layout row wrap>
+      <v-flex lg2>
+        <strong class="subheading success--text pt-5">
+          Total todo:&nbsp;
+          <v-fade-transition leave-absolute>
+            <span :key="`todos-${todoItems.length}`">{{ todoItems.length }}</span>
+          </v-fade-transition>
+        </strong>
+      </v-flex>
+      <v-flex lg10>
+        <v-text-field
+          v-model="todo.todoName"
+          label="Add new todo (Press enter to add)"
+          solo
+          :append-outer-icon="todo.todoName?'add_circle_outline':''"
+          @click:append-outer="create"
+          @keydown.enter="create"
+        ></v-text-field>
+      </v-flex>
+    </v-layout>
 
     <v-divider class="mt-3"></v-divider>
 
@@ -89,7 +97,7 @@ export default {
       this.todoItems.push(this.todo);
       this.todo = Object.assign({}, this.defaultTodo);
     },
-    remove(index){
+    remove(index) {
       this.todoItems.splice(index, 1);
     }
   }

@@ -80,7 +80,7 @@
       <EventTaskDetail
         v-if="eventTaskDialog"
         lazy
-        :editedItem="editedItem"
+        v-model="editedItem"
         :projectId="projectId"
         :loadData="loadData"
         @close="closeEventTaskDetail"
