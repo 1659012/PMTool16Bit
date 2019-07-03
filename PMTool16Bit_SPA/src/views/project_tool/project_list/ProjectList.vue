@@ -7,12 +7,30 @@
       </v-btn>
 
       <v-spacer></v-spacer>
-      <v-btn>filer sorting here</v-btn>
+      <v-select
+        :items="projectOptions"
+        v-model="filter.projectType"
+        label="Chose project type"
+        item-text="text"
+        item-value="value"
+        clearable
+        style="width:250px!important;
+        max-width:250px !important;"
+      ></v-select>
+
       <v-divider vertical></v-divider>
 
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
-          <v-btn :color="listView && !gridView ?'primary':'grey'" dark v-on="on" icon flat class="mx-1" @click="handleListView">
+          <v-btn
+            :color="listView && !gridView ?'primary':'grey'"
+            dark
+            v-on="on"
+            icon
+            flat
+            class="mx-1"
+            @click="handleListView"
+          >
             <v-icon>format_list_bulleted</v-icon>
           </v-btn>
         </template>
@@ -21,7 +39,15 @@
 
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
-          <v-btn :color="!listView && gridView ?'primary':'grey'" dark v-on="on" icon flat class="mr-1" @click="handleGridView">
+          <v-btn
+            :color="!listView && gridView ?'primary':'grey'"
+            dark
+            v-on="on"
+            icon
+            flat
+            class="mr-1"
+            @click="handleGridView"
+          >
             <v-icon>apps</v-icon>
           </v-btn>
         </template>
@@ -30,7 +56,15 @@
 
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
-          <v-btn :color="gridView && listView ?'primary':'grey'" dark v-on="on" icon flat class="ml-1" @click="handleAllView">
+          <v-btn
+            :color="gridView && listView ?'primary':'grey'"
+            dark
+            v-on="on"
+            icon
+            flat
+            class="ml-1"
+            @click="handleAllView"
+          >
             <v-icon>vertical_split</v-icon>
           </v-btn>
         </template>
@@ -53,18 +87,31 @@
           :pagination.sync="pagination"
           :total-items="totalItems"
         >
-          <template slot="items" slot-scope="props" class="list-item" transition="slide-y-transition">
+          <template
+            slot="items"
+            slot-scope="props"
+            class="list-item"
+            transition="slide-y-transition"
+          >
             <tr class="tableRow">
               <td class="colMax150">{{ props.item.projectName }}</td>
               <td class="colMax150">{{ props.item.shortDescription }}</td>
-              <td class="colMax150">{{ props.item.projectOwner?props.item.projectOwner.fullName:"" }}</td>
+              <td
+                class="colMax150"
+              >{{ props.item.projectOwner?props.item.projectOwner.fullName:"" }}</td>
               <td class="text-lg-center colMax120">
                 <v-btn flat icon :to="`/ProjectDetail/${props.item.id}`">
                   <v-icon small>edit</v-icon>
                 </v-btn>
                 <v-tooltip bottom>
                   <template v-slot:activator="{ on }">
-                    <v-btn flat icon v-on="on" @click="deleteItem(props.item)" :disabled="props.item.projectOwnerId!=userId">
+                    <v-btn
+                      flat
+                      icon
+                      v-on="on"
+                      @click="deleteItem(props.item)"
+                      :disabled="props.item.projectOwnerId!=userId"
+                    >
                       <v-icon small>delete</v-icon>
                     </v-btn>
                   </template>
@@ -91,13 +138,19 @@
             </v-card-title>
             <v-card-actions>
               <v-btn flat color="green" :to="`/ProjectDetail/${item.id}`">Edit</v-btn>
-              <v-btn flat color="orange" @click="deleteItem(item)" :disabled="item.projectOwnerId===userId">Delete</v-btn>
+              <v-btn
+                flat
+                color="orange"
+                @click="deleteItem(item)"
+                :disabled="item.projectOwnerId===userId"
+              >Delete</v-btn>
             </v-card-actions>
           </v-card>
         </v-hover>
       </v-flex>
     </v-layout>
     <!-- <code>{{$store.state}}</code> -->
+    <code>{{filter}}</code>
   </v-container>
 </template>
 <script>
@@ -116,6 +169,11 @@ export default {
     totalItems: 0,
     filter: {},
     pagination: {},
+    projectOptions: [
+      { text: "All projects", value: "all" },
+      { text: "My own projects", value: "own" },
+      { text: "Participated projects", value: "participated" }
+    ],
     headers: [
       {
         text: "Project name",
