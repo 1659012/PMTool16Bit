@@ -28,6 +28,18 @@
         <v-icon left dark class="ml-2">cloud_download</v-icon>Down Task List
       </v-btn>
       <v-spacer></v-spacer>
+
+       <v-select
+        :items="taskOptions"
+        v-model="filter.taskType"
+        label="Chose project type"
+        item-text="text"
+        item-value="value"
+        clearable
+        style="width:250px!important;
+        max-width:250px !important;"
+      ></v-select>
+
       <v-divider vertical></v-divider>
 
       <v-tooltip bottom>
@@ -49,10 +61,11 @@
       </v-tooltip>
     </div>
     <TaskGroupLoops v-model="editedItem" :loadData="loadData" :changeView="gridView" />
+    <code>{{editedItem.taskGroups}}</code>
   </div>
 </template>
 <script>
-// import _ from "lodash";
+import _ from "lodash";
 import TaskGroupLoops from "../task_group/TaskGroupLoops";
 import TaskGroupCreate from "../task_group/TaskGroupCreate";
 import ProjectMemberDialog from "../project_member/ProjectMemberDialog";
@@ -68,18 +81,44 @@ export default {
   props: ["value", "loadData"],
   data: () => ({
     editedItem: {},
+    taskGroups:{},
     taskGroups: [],
     projectId: null,
     taskGroupDialog: false,
     memberDialog: false,
-    gridView: true
+    gridView: true,
+    filter:{taskType:"", taskPriorityLevel:""},
+    taskOptions: [
+      { text: "All tasks", value: "all" },
+      { text: "Just my task", value: "only" },
+      { text: "Not Assigned", value: "noAssigned" },
+      { text: "Already assigned", value: "assigned" }
+    ]
   }),
 
   computed: {},
 
-  watch: {},
+  watch: {
+    "filter.taskType"(val){
+      if(!val) return;
+      this.loadData();
+      
+      switch(val){
+        case '':
+
+          break;
+        case '':
+          break;
+        case '':
+          break;
+        default:
+
+      }
+    }
+  },
   mounted() {
     this.editedItem = this.value;
+    this.taskGroups = _.cloneDeep(this.editedItem.taskGroups);
   },
   updated() {
     this.editedItem = this.value;
@@ -111,3 +150,14 @@ export default {
   }
 };
 </script>
+<style lang="css" scoped>
+.v-text-field__details{
+  display: none !important;
+}
+.v-messages.theme--light{
+display: none !important;
+}
+.v-messages__wrapper{
+  display: none !important;
+}
+</style>

@@ -150,7 +150,7 @@
       </v-flex>
     </v-layout>
     <!-- <code>{{$store.state}}</code> -->
-    <code>{{filter}}</code>
+    <!-- <code>{{filter}}</code> -->
   </v-container>
 </template>
 <script>

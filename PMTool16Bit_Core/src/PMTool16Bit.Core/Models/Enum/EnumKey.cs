@@ -9,5 +9,7 @@
     {
         public const string Owner = "owner";
         public const string All = "all";
+        public const string Participated = "participated";
+
     }
 }
