@@ -1,6 +1,6 @@
 
 <template>
-  <v-card>
+  <v-card v-if="render">
     <v-card-title class="grey lighten-4 py-2" style="display:flex;">
       <span class="headline">Update Event Task</span>
       <v-spacer></v-spacer>
@@ -52,7 +52,7 @@
           <v-checkbox v-model="editedItem.isMarked" label="BookMark" color="orange"></v-checkbox>
         </v-flex>
         <v-flex lg3>
-          <p class="subheading text--lighten-3 mt-3">Priority level: {{priorityLevels[editedItem.priorityLevel].text}}</p>
+          <!-- <p class="subheading text--lighten-3 mt-3">Priority level: {{priorityLevels[editedItem.priorityLevel].text}}</p> -->
         </v-flex>
         <v-flex lg3 class="pr-3">
           <v-slider v-model="editedItem.priorityLevel" :max="3" :min="0" :color="priorityLevels[editedItem.priorityLevel].color" thumb-label></v-slider>
@@ -72,8 +72,8 @@
           />
         </v-flex>
         <v-flex lg6>
-          <label v-if="eventTask">Task group:</label>
-          <p v-if="eventTask">{{eventTask.taskGroupName}}</p>
+          <label v-if="eventTask.taskGroupName">Task group:</label>
+          <p v-if="eventTask.taskGroupName">{{eventTask.taskGroupName}}</p>
         </v-flex>
         <v-flex lg12>
           <TodoLoops v-model="editedItem.todos" />
@@ -124,16 +124,23 @@ export default {
   data: () => ({
     priorityLevels: PriorityLevels,
     changeGroupdialog: false,
-    eventTask: null,
-    editedItem: {}
+    editedItem: {},
+    eventTask: {},
+    render: false
   }),
 
   computed: {},
 
   watch: {},
   mounted() {
-    this.editedItem = _.cloneDeep(this.value);
+    new Promise(resolve => {
+      this.editedItem = _.cloneDeep(this.value);
+      resolve();
+    }).then(() => {
+      this.render = true;
+    });
   },
+
   methods: {
     close() {
       this.$emit("close");

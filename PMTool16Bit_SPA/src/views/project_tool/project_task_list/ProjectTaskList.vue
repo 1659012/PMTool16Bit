@@ -32,7 +32,7 @@
       <v-select
         :items="taskOptions"
         v-model="filter.taskType"
-        label="Chose project type"
+        label="Chose tasks"
         item-text="text"
         item-value="value"
         clearable
@@ -61,7 +61,7 @@
       </v-tooltip>
     </div>
     <TaskGroupLoops v-model="editedItem" :loadData="loadData" :changeView="gridView" />
-    <code>{{editedItem.taskGroups}}</code>
+    <!-- <code>{{editedItem.taskGroups}}</code> -->
   </div>
 </template>
 <script>
@@ -99,15 +99,13 @@ export default {
   computed: {},
 
   watch: {
-    "filter.taskType"(val) {     
+    "filter.taskType"(val) {
       switch (val) {
         case "only":
-        
           this.taskGroups.forEach(taskGroup => {
-            let eventTasks = taskGroup.eventTasks;
-            eventTasks = eventTasks.filter(eventTask => eventTask.isCompleted);
-            console.log(eventTasks);
-            taskGroup.eventTasks = eventTasks;
+            taskGroup.eventTasks = taskGroup.eventTasks.filter(
+              eventTask => eventTask.isCompleted
+            );
           });
           break;
         case "":
@@ -115,6 +113,7 @@ export default {
         case "":
           break;
         default:
+          this.loadData();
       }
     }
   },
@@ -124,8 +123,7 @@ export default {
   },
   updated() {
     this.editedItem = this.value;
-    this.taskGroups = this.value.taskGroups;
-    console.log(this.taskGroups);
+    this.taskGroups = this.value.taskGroups;   
   },
   methods: {
     downloadTaskListExcel(projectId) {

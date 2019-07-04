@@ -27,7 +27,6 @@ export default {
   computed: {},
   watch: {
     model(val) {
-      console.log(val);
       this.$emit("update:returnId", val ? val.id : null);
       this.$emit("update:returnObject", val);
     }

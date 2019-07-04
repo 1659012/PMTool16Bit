@@ -107,14 +107,13 @@ export default {
   watch: {},
   mounted() {},
   methods: {
-    openEventTaskDetail(item) {
-      this.editedItem = Object.assign({}, item);
+    openEventTaskDetail(item) {      
+      this.editedItem = _.cloneDeep(item);
       this.eventTaskDialog = true;
     },
     closeEventTaskDetail() {
       this.editedItem = {};
       this.eventTaskDialog = false;
-      this.loadData();
     },
     cancelEventTaskDetail() {
       this.editedItem = {};
