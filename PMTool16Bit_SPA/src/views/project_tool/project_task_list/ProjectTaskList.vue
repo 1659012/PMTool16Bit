@@ -29,7 +29,7 @@
       </v-btn>
       <v-spacer></v-spacer>
 
-       <v-select
+      <v-select
         :items="taskOptions"
         v-model="filter.taskType"
         label="Chose project type"
@@ -81,13 +81,13 @@ export default {
   props: ["value", "loadData"],
   data: () => ({
     editedItem: {},
-    taskGroups:{},
     taskGroups: [],
+    eventTasks: [],
     projectId: null,
     taskGroupDialog: false,
     memberDialog: false,
     gridView: true,
-    filter:{taskType:"", taskPriorityLevel:""},
+    filter: { taskType: "", taskPriorityLevel: "" },
     taskOptions: [
       { text: "All tasks", value: "all" },
       { text: "Just my task", value: "only" },
@@ -99,29 +99,33 @@ export default {
   computed: {},
 
   watch: {
-    "filter.taskType"(val){
-      if(!val) return;
-      this.loadData();
-      
-      switch(val){
-        case '':
-
+    "filter.taskType"(val) {     
+      switch (val) {
+        case "only":
+        
+          this.taskGroups.forEach(taskGroup => {
+            let eventTasks = taskGroup.eventTasks;
+            eventTasks = eventTasks.filter(eventTask => eventTask.isCompleted);
+            console.log(eventTasks);
+            taskGroup.eventTasks = eventTasks;
+          });
           break;
-        case '':
+        case "":
           break;
-        case '':
+        case "":
           break;
         default:
-
       }
     }
   },
   mounted() {
     this.editedItem = this.value;
-    this.taskGroups = _.cloneDeep(this.editedItem.taskGroups);
+    this.taskGroups = this.value.taskGroups;
   },
   updated() {
     this.editedItem = this.value;
+    this.taskGroups = this.value.taskGroups;
+    console.log(this.taskGroups);
   },
   methods: {
     downloadTaskListExcel(projectId) {
@@ -151,13 +155,13 @@ export default {
 };
 </script>
 <style lang="css" scoped>
-.v-text-field__details{
+.v-text-field__details {
   display: none !important;
 }
-.v-messages.theme--light{
-display: none !important;
+.v-messages.theme--light {
+  display: none !important;
 }
-.v-messages__wrapper{
+.v-messages__wrapper {
   display: none !important;
 }
 </style>

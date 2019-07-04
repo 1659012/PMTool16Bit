@@ -2,9 +2,12 @@ import { Roles } from "../enum/enums";
 
 export default {
   data: () => ({
-    roles: Roles
+    roles: Roles,
+    userId: null
   }),
-  mounted() {},
+  mounted() {
+    this.userId = this.$store.state.userId;
+  },
   methods: {
     checkAdmin(projectRole) {
       return Roles.admin.value == projectRole ||
@@ -17,9 +20,8 @@ export default {
     },
     isProjectOwner(projectMembers) {
       if (Array.isArray(projectMembers)) {
-        let userId = this.$store.state.userId;
         let projectMember = projectMembers.find(
-          item => item.memberId == userId
+          item => item.memberId == this.userId
         );
         if (projectMember) {
           return Roles.projectOwner.value == projectMember.projectRole
