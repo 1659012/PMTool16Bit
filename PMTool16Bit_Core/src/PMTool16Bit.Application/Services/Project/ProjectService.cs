@@ -130,8 +130,8 @@ namespace PMTool16Bit.Services
                         TaskGroupName = taskGroup.TaskGroupName,
                         TaskName = eventTask.TaskName,
                         Description = eventTask.Description,
+                        StartDate = eventTask.StartDate,
                         DueDate = eventTask.DueDate,
-                        IsMarked = eventTask.IsMarked,
                         IsCompleted = eventTask.IsCompleted,
                         PriorityLevel = PriorityLevels.EnumToString(eventTask.PriorityLevel),
                         AssignedMembers = GetEventTaskMemberNames(eventTask.EventTaskMembers.ToList())

@@ -5,14 +5,14 @@
     </v-card-title>
     <v-card-text class="py-0">
       <v-radio-group v-model="editedItem.projectRole" :mandatory="false">
-        <v-radio :value="roles.projectOwner.value" color="primary" v-if="checkCurrentProjectOwner(projectOwnerId)">
+        <!-- <v-radio :value="roles.projectOwner.value" color="primary" v-if="checkCurrentProjectOwner(projectOwnerId)">
           <template v-slot:label>
             <div>
               <h5 class="font-weight-medium">{{roles.projectOwner.label}}</h5>
               <p class="caption ma-0 pa-0">{{roles.projectOwner.description}}</p>
             </div>
           </template>
-        </v-radio>
+        </v-radio> -->
         <v-radio :value="roles.admin.value" color="primary" class="my-2">
           <template v-slot:label>
             <div>

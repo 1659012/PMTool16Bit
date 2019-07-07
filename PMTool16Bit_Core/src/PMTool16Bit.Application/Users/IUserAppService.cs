@@ -18,5 +18,7 @@ namespace PMTool16Bit.Users
 
         [AbpAllowAnonymous]
         Task UpdateLastLoginTime(long id, DateTime? date);
+        
+        string GetCurrentUserName();
     }
 }

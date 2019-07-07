@@ -1,35 +1,26 @@
 const Menu = [
-  { header: "Apps" },
+  { header: "Project Management Tool" },
   {
     title: "Dashboard",
-    group: "apps",
+    group: "projectTool",
     icon: "dashboard",
     name: "Dashboard"
   },
   {
-    title: "TestPage",
-    group: "apps",
-    icon: "donut_small",
-    name: "TestPage"
-    // target: '_blank',
-  },
-  // { divider: true },
-  { header: "Project Management Tool" },
-  {
     title: "Project list",
-    group: "testPageList",
-    component: "testPageList",
+    group: "projectTool",
     icon: "widgets",
-    items: [
-      {
-        name: "testPage",
-        title: "Test page",
-        // badge: "new",
-        component: "TestPage"
-      },     
-      { name: "ProjectList", title: "Project list", component: "ProjectList" },
-    ]
+    name: "ProjectList"
   },
+  // {
+  //   title: "Project list",
+  //   group: "projectTool",
+  //   component: "testPageList",
+  //   icon: "widgets",
+  //   items: [
+  //     { name: "ProjectList", title: "Project list", component: "ProjectList" }
+  //   ]
+  // },
   { header: "User info" },
   {
     name: "profile",
@@ -39,82 +30,82 @@ const Menu = [
     component: "UserProfile"
   },
   // { divider: true },
-  { header: "UI Elements" },
-  {
-    title: "Pickers",
-    group: "pickers",
-    component: "picker",
-    icon: "filter_vintage",
-    items: [
-      {
-        name: "timepicker",
-        title: "Timepicker",
-        component: "pickers/timepicker"
-      },
-      {
-        name: "datepicker",
-        title: "Datepicker",
-        component: "pickers/datepicker"
-      }
-    ]
-  },
-  {
-    title: "Layout",
-    group: "layout",
-    component: "layout",
-    icon: "view_compact",
-    items: [
-      {
-        name: "bottom-sheets",
-        title: "Bottom panels",
-        component: "components/bottom-sheets"
-      },
-      {
-        name: "expansion-panels",
-        title: "Expansion panels",
-        component: "components/expansion-panels"
-      },
-      { name: "footer", title: "Footer", component: "components/footer" },
-      { name: "lists", title: "Lists", component: "components/lists" },
-      {
-        name: "jumbotrons",
-        title: "Jumbotrons",
-        badge: "new",
-        component: "components/jumbotrons"
-      },
-      { name: "menus", title: "Menus", component: "components/menus" },
-      { name: "tabs", title: "Tabs", component: "components/tabs" },
-      { name: "toolbar", title: "Toolbars", component: "components/toolbar" },
-      { name: "timeline", title: "Timeline", component: "components/timeline" }
-    ]
-  },
-  {
-    title: "Forms & Controls",
-    group: "forms",
-    component: "forms",
-    icon: "edit",
-    items: [
-      { name: "basic", title: "General", component: "components/basic-forms" },
-      {
-        name: "selects",
-        title: "Selects",
-        badge: "new",
-        component: "components/selects"
-      },
-      {
-        name: "selection-controls",
-        title: "Selection Controls",
-        component: "components/selection-controls"
-      },
-      {
-        name: "text-fields",
-        title: "Text Fields",
-        component: "components/text-fields"
-      },
-      { name: "steppers", title: "Steppers", component: "components/steppers" },
-      { name: "editors", title: "Editors", component: "components/editors" }
-    ]
-  },
+  // { header: "UI Elements" },
+  // {
+  //   title: "Pickers",
+  //   group: "pickers",
+  //   component: "picker",
+  //   icon: "filter_vintage",
+  //   items: [
+  //     {
+  //       name: "timepicker",
+  //       title: "Timepicker",
+  //       component: "pickers/timepicker"
+  //     },
+  //     {
+  //       name: "datepicker",
+  //       title: "Datepicker",
+  //       component: "pickers/datepicker"
+  //     }
+  //   ]
+  // },
+  // {
+  //   title: "Layout",
+  //   group: "layout",
+  //   component: "layout",
+  //   icon: "view_compact",
+  //   items: [
+  //     {
+  //       name: "bottom-sheets",
+  //       title: "Bottom panels",
+  //       component: "components/bottom-sheets"
+  //     },
+  //     {
+  //       name: "expansion-panels",
+  //       title: "Expansion panels",
+  //       component: "components/expansion-panels"
+  //     },
+  //     { name: "footer", title: "Footer", component: "components/footer" },
+  //     { name: "lists", title: "Lists", component: "components/lists" },
+  //     {
+  //       name: "jumbotrons",
+  //       title: "Jumbotrons",
+  //       badge: "new",
+  //       component: "components/jumbotrons"
+  //     },
+  //     { name: "menus", title: "Menus", component: "components/menus" },
+  //     { name: "tabs", title: "Tabs", component: "components/tabs" },
+  //     { name: "toolbar", title: "Toolbars", component: "components/toolbar" },
+  //     { name: "timeline", title: "Timeline", component: "components/timeline" }
+  //   ]
+  // },
+  // {
+  //   title: "Forms & Controls",
+  //   group: "forms",
+  //   component: "forms",
+  //   icon: "edit",
+  //   items: [
+  //     { name: "basic", title: "General", component: "components/basic-forms" },
+  //     {
+  //       name: "selects",
+  //       title: "Selects",
+  //       badge: "new",
+  //       component: "components/selects"
+  //     },
+  //     {
+  //       name: "selection-controls",
+  //       title: "Selection Controls",
+  //       component: "components/selection-controls"
+  //     },
+  //     {
+  //       name: "text-fields",
+  //       title: "Text Fields",
+  //       component: "components/text-fields"
+  //     },
+  //     { name: "steppers", title: "Steppers", component: "components/steppers" },
+  //     { name: "editors", title: "Editors", component: "components/editors" }
+  //   ]
+  // },
 
   { divider: true },
 

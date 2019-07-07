@@ -114,6 +114,7 @@ export default {
     closeEventTaskDetail() {
       this.editedItem = {};
       this.eventTaskDialog = false;
+      this.loadData();
     },
     cancelEventTaskDetail() {
       this.editedItem = {};

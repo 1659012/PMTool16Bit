@@ -2,7 +2,7 @@
 <template>
   <v-container fluid grid-list-lg>
     <v-toolbar dense flat color="transparent">
-      <v-btn color="deep-purple darken-1" flat class="ml-2" @click="createProject">
+      <v-btn color="deep-purple darken-1" flat class="pl-0" @click="createProject">
         <v-icon left dark class>add_circle_outline</v-icon>New Project
       </v-btn>
 

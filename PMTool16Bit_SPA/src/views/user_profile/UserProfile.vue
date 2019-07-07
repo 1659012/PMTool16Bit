@@ -5,13 +5,7 @@
     <v-layout row wrap>
       <v-flex lg4>
         <div>
-          <v-img
-            v-if="editedItem.avatarUrl"
-            :src="editedItem.avatarUrl"
-            alt="profile_avatar"
-            height="300"
-            lazy-src
-          ></v-img>
+          <v-img v-if="editedItem.avatarUrl" :src="editedItem.avatarUrl" alt="profile_avatar" height="300" lazy-src></v-img>
 
           <v-expansion-panel>
             <v-expansion-panel-content class="deep-purple darken-1">
@@ -25,10 +19,7 @@
               </template>
               <v-card>
                 <v-card-text>
-                  <UploadAvatar
-                    :returnAvatarId.sync="editedItem.avatarId"
-                    :returnAvatarUrl.sync="editedItem.avatarUrl"
-                  />
+                  <UploadAvatar :returnAvatarId.sync="editedItem.avatarId" :returnAvatarUrl.sync="editedItem.avatarUrl" />
                 </v-card-text>
               </v-card>
             </v-expansion-panel-content>
@@ -195,6 +186,7 @@ export default {
   watch: {},
   mounted() {
     this.initialize();
+    // this.getUser();
   },
   computed: {
     getFullName() {
@@ -233,6 +225,15 @@ export default {
         })
         .catch(e => {
           this.errors.push(e);
+        });
+    },
+    getUser() {
+      this.axios
+        .get("User/GetCurrentUserName")
+        .then(response => {
+          if (response.data.success) {
+            console.log(response.data.result);
+          }
         });
     },
 

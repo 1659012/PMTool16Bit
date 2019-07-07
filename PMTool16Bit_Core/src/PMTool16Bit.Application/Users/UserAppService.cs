@@ -41,6 +41,7 @@ namespace PMTool16Bit.Users
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
             LogInManager logInManager,
+            IAbpSession session,
             FileService fileService)
             : base(repository)
         {
@@ -320,5 +321,18 @@ namespace PMTool16Bit.Users
         }
 
         #endregion Customize UserData
+        public long? GetCurrentUserId()
+        {            
+            return _abpSession.UserId;
+        }
+        
+        public string GetCurrentUserName()
+        {
+            var userId = _abpSession.UserId ?? default(int);
+            if (userId == default(int))
+                return "";
+            var user = Repository.FirstOrDefault(userId);
+            return user.Name;
+        }
     }
 }

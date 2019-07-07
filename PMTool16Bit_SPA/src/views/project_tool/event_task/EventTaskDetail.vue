@@ -21,6 +21,10 @@
             <v-list-tile-title class="caption py-0 my-0">Move to other Task group</v-list-tile-title>
           </v-list-tile>
           <v-divider></v-divider>
+          <v-list-tile class="text--primary pa-0" @click="changeGroupdialog=true; isDuplicated=true">
+            <v-list-tile-title class="caption py-0 my-0">Duplicate and move to other Task group</v-list-tile-title>
+          </v-list-tile>
+          <v-divider></v-divider>
           <v-list-tile class="text--primary pa-0" @click="deleteItem(editedItem)">
             <v-list-tile-title class="caption py-0 my-0">Delete task</v-list-tile-title>
           </v-list-tile>
@@ -52,7 +56,7 @@
           <v-checkbox v-model="editedItem.isMarked" label="BookMark" color="orange"></v-checkbox>
         </v-flex>
         <v-flex lg3>
-          <!-- <p class="subheading text--lighten-3 mt-3">Priority level: {{priorityLevels[editedItem.priorityLevel].text}}</p> -->
+          <p class="subheading text--lighten-3 mt-3">Priority level: {{priorityLevels[editedItem.priorityLevel].text}}</p>
         </v-flex>
         <v-flex lg3 class="pr-3">
           <v-slider v-model="editedItem.priorityLevel" :max="3" :min="0" :color="priorityLevels[editedItem.priorityLevel].color" thumb-label></v-slider>
@@ -93,7 +97,8 @@
         v-model="editedItem"
         :projectId="projectId"
         :loadData="loadData"
-        @close="changeGroupdialog=false;loadData()"
+        :duplicate="isDuplicated"
+        @close="changeGroupdialog=false;isDuplicated=false;loadData()"
         @cancel="changeGroupdialog=false;"
       />
     </v-dialog>
@@ -126,7 +131,8 @@ export default {
     changeGroupdialog: false,
     editedItem: {},
     eventTask: {},
-    render: false
+    render: false,
+    isDuplicated: false
   }),
 
   computed: {},
@@ -148,7 +154,6 @@ export default {
     cancel() {
       this.$emit("cancel");
     },
-    moveEventTask(eventTask) {},
     deleteItem(item) {
       this.$root.deleteItem(item, "EventTaskService/Delete", this);
       this.close();

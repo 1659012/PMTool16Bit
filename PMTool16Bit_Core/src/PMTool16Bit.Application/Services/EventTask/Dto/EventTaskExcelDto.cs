@@ -14,6 +14,9 @@ namespace PMTool16Bit.Services
         [DisplayName("Task name")]
         public string TaskName { get; set; }
 
+        [DisplayName("Start date")]
+        public DateTime? StartDate { get; set; }
+
         [DisplayName("Due date")]
         public DateTime? DueDate { get; set; }
 
@@ -22,9 +25,6 @@ namespace PMTool16Bit.Services
 
         [DisplayName("Description")]
         public string Description { get; set; }
-
-        [DisplayName("Marked")]
-        public bool IsMarked { get; set; }
 
         [DisplayName("Completed")]
         public bool IsCompleted { get; set; }

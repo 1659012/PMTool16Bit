@@ -29,7 +29,7 @@
       </v-btn>
       <v-spacer></v-spacer>
 
-      <v-select
+      <!-- <v-select
         :items="taskOptions"
         v-model="filter.taskType"
         label="Chose tasks"
@@ -38,7 +38,7 @@
         clearable
         style="width:250px!important;
         max-width:250px !important;"
-      ></v-select>
+      ></v-select> -->
 
       <v-divider vertical></v-divider>
 
@@ -90,32 +90,45 @@ export default {
     filter: { taskType: "", taskPriorityLevel: "" },
     taskOptions: [
       { text: "All tasks", value: "all" },
-      { text: "Just my task", value: "only" },
-      { text: "Not Assigned", value: "noAssigned" },
-      { text: "Already assigned", value: "assigned" }
+      { text: "Incomplete tasks", value: "incomplete" },
+      { text: "Completed tasks", value: "completed" },
+      // { text: "Just my task", value: "only" },
+      // { text: "Not Assigned", value: "noAssigned" },
+      // { text: "Already assigned", value: "assigned" }
     ]
   }),
 
   computed: {},
 
   watch: {
-    "filter.taskType"(val) {
-      switch (val) {
-        case "only":
-          this.taskGroups.forEach(taskGroup => {
-            taskGroup.eventTasks = taskGroup.eventTasks.filter(
-              eventTask => eventTask.isCompleted
-            );
-          });
-          break;
-        case "":
-          break;
-        case "":
-          break;
-        default:
-          this.loadData();
-      }
-    }
+    // "filter.taskType"(val) {
+    //   switch (val) {
+    //     case "incomplete":    
+    //        new Promise(resolve => {
+    //        this.loadData();
+    //         resolve();
+    //     }).then(() => {
+    //    this.taskGroups.forEach(taskGroup => {
+    //         taskGroup.eventTasks = taskGroup.eventTasks.filter(
+    //           eventTask => !eventTask.isCompleted
+    //         );
+    //       });
+    // });
+    //       break;
+    //     case "completed":
+    //       this.loadData();
+    //        this.taskGroups.forEach(taskGroup => {
+    //         taskGroup.eventTasks = taskGroup.eventTasks.filter(
+    //           eventTask => eventTask.isCompleted
+    //         );
+    //       });
+    //       break;
+    //     case "":
+    //       break;
+    //     default:
+    //       this.loadData();
+    //   }
+    // }
   },
   mounted() {
     this.editedItem = this.value;
