@@ -20,5 +20,7 @@ namespace PMTool16Bit.Users
         Task UpdateLastLoginTime(long id, DateTime? date);
         
         string GetCurrentUserName();
+
+        long? GetCurrentUserId();
     }
 }

@@ -74,7 +74,7 @@ namespace PMTool16Bit.Services
         {
             var project = GetProject(input.TaskGroupId);
             var userName = userAppService.GetCurrentUserName();
-            var description = userName + " created task "+" in project "+ project.ProjectName;
+            var description = userName + " created task "+input.TaskName+" in project "+ project.ProjectName;
             var projectActivity = new ProjectActivity
             {
                 ProjectId = project.Id,

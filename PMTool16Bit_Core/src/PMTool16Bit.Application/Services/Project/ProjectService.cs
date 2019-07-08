@@ -17,14 +17,16 @@ namespace PMTool16Bit.Services
     public class ProjectService : AsyncCrudAppService<Project, ProjectDto, int, ProjectFilter, ProjectCreateDto, ProjectUpdateDto>, IProjectService
     {
         private readonly IRepository<ProjectMember> projectMemberRepository;
-
+        readonly IUserAppService userAppService;
         public ProjectService(
             IRepository<Project> repository,
-            IRepository<ProjectMember> projectMemberRepository
+            IRepository<ProjectMember> projectMemberRepository,
+            IUserAppService userAppService
 
             ) : base(repository)
         {
             this.projectMemberRepository = projectMemberRepository;
+            this.userAppService = userAppService;
         }
 
         protected override IQueryable<Project> CreateFilteredQuery(ProjectFilter input)
@@ -217,6 +219,18 @@ namespace PMTool16Bit.Services
             }
 
             return taskList;
+        }
+
+        public List<int> GetProjectIdListByCurrentUser()
+        {
+            var userId =userAppService.GetCurrentUserId() ?? default(long);
+            if(userId == default(long))
+                return new List<int>();
+            return Repository.GetAll()
+                    .Include(p => p.ProjectMembers)
+                    .Where(p => p.ProjectMembers.Any(q => q.MemberId == userId))
+                    .Select(p => p.Id)                   
+                    .ToList();            
         }
     }
 }

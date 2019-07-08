@@ -4,7 +4,7 @@ using PMTool16Bit.Models;
 
 namespace PMTool16Bit.Services
 {
-    public class ProjectMemberService : IProjectService
+    public class ProjectMemberService : IProjectMemberService
     {
         private readonly IRepository<ProjectMember> repository;
 

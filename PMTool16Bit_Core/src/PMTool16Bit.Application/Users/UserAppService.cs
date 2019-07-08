@@ -18,6 +18,7 @@ using PMTool16Bit.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 
 namespace PMTool16Bit.Users
@@ -328,11 +329,25 @@ namespace PMTool16Bit.Users
         
         public string GetCurrentUserName()
         {
-            var userId = _abpSession.UserId ?? default(int);
-            if (userId == default(int))
+            var userId = _abpSession.UserId ?? default(long);
+            if (userId == default(long))
                 return "";
             var user = Repository.FirstOrDefault(userId);
             return user.Name;
         }
+
+        //public List<int> GetRelatedProjectList()
+        //{
+        //    var userId = _abpSession.UserId ?? default(int);
+        //    if (userId == default(int))
+        //        return new List<int>();
+        //    var list = Repository
+        //        .GetAll()
+        //        .Where(p => p.Id == userId)
+        //        .Include(p => p.ProjectMembers)
+        //        .Select(p => p.Id)
+        //        .ToListAsync();
+        //    return list;
+        //}
     }
 }
