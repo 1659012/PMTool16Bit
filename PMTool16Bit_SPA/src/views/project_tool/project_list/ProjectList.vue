@@ -146,7 +146,7 @@
                 <h5>
                   <v-tooltip bottom>
                     <template v-slot:activator="{ on }">
-                      <v-icon color="grey" dark v-on="on">home</v-icon>
+                      <v-icon color="grey" dark v-on="on">person</v-icon>
                     </template>
                     <span>Project owner</span>
                   </v-tooltip>

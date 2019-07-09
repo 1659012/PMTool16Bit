@@ -13,6 +13,8 @@ namespace PMTool16Bit.Services
     public class EventTaskService : AsyncCrudAppService<EventTask, EventTaskDto, int, EventTaskFilter, EventTaskCreateDto, EventTaskUpdateDto>, IEventTaskService
     {
         private readonly IUserAppService userAppService;
+        private readonly IProjectService projectService;
+
         private readonly IRepository<EventTaskMember> eventTaskMemberRepository;        
         private readonly IRepository<Todo> todoRepository;
         private readonly IRepository<TaskGroup> taskGroupRepository;
@@ -21,6 +23,8 @@ namespace PMTool16Bit.Services
 
         public EventTaskService(
             IUserAppService userAppService,
+            IProjectService projectService,
+
             IRepository<EventTask> repository,
             IRepository<EventTaskMember> eventTaskMemberRepository,
             IRepository<Todo> todoRepository,
@@ -41,6 +45,18 @@ namespace PMTool16Bit.Services
         {
             eventTaskMemberRepository.Delete(p => p.EventTaskId == input.Id);
             todoRepository.Delete(p => p.EventTaskId == input.Id);
+
+            var project = GetProject(input.TaskGroupId);
+            var userName = userAppService.GetCurrentUserName();
+            var description = userName + " updated task " + input.TaskName + " in project " + project.ProjectName;
+            var projectActivity = new ProjectActivity
+            {
+                ProjectId = project.Id,
+                Description = description
+            };
+            projectActivityRepository.InsertAsync(projectActivity);
+            //CurrentUnitOfWork.SaveChanges();
+
             return base.Update(input);
         }
 
@@ -83,6 +99,11 @@ namespace PMTool16Bit.Services
             projectActivityRepository.InsertAsync(projectActivity);
             CurrentUnitOfWork.SaveChanges();
             return base.Create(input);
+        }
+
+        public List<EventTaskSimpleDto> GetEventTaskCalendar()
+        {
+            return new List<EventTaskSimpleDto>();
         }
     }
 }
