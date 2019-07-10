@@ -37,7 +37,17 @@
                   v-for="activity in activities"
                   :key="activity.id"
                 >
-                  <label>{{momentFromNow(activity.creationTime)}}</label>
+                  <label>
+                    {{momentFromNow(activity.creationTime)}}
+                    <v-tooltip bottom>
+                      <template v-slot:activator="{ on }">
+                        <v-btn flat icon v-on="on" :to="`/ProjectDetail/${activity.projectId}`">
+                          <v-icon >arrow_right</v-icon>
+                        </v-btn>
+                      </template>
+                      <span>To project detail</span>
+                    </v-tooltip>
+                  </label>
                   <p class="body-1 font-weight-light">{{activity.description}}</p>
                 </v-timeline-item>
               </v-timeline>

@@ -21,7 +21,10 @@
             <v-list-tile-title class="caption py-0 my-0">Move to other Task group</v-list-tile-title>
           </v-list-tile>
           <v-divider></v-divider>
-          <v-list-tile class="text--primary pa-0" @click="changeGroupdialog=true; isDuplicated=true">
+          <v-list-tile
+            class="text--primary pa-0"
+            @click="changeGroupdialog=true; isDuplicated=true"
+          >
             <v-list-tile-title class="caption py-0 my-0">Duplicate and move to other Task group</v-list-tile-title>
           </v-list-tile>
           <v-divider></v-divider>
@@ -44,10 +47,20 @@
           ></v-text-field>
         </v-flex>
         <v-flex lg6>
-          <DateTimePicker :input="editedItem.startDate" :output.sync="editedItem.startDate" clearable label="Start date" />
+          <DateTimePicker
+            :input="editedItem.startDate"
+            :output.sync="editedItem.startDate"
+            clearable
+            label="Start date"
+          />
         </v-flex>
         <v-flex lg6>
-          <DateTimePicker :input="editedItem.dueDate" :output.sync="editedItem.dueDate" clearable label="Due date" />
+          <DateTimePicker
+            :input="editedItem.dueDate"
+            :output.sync="editedItem.dueDate"
+            clearable
+            label="Due date"
+          />
         </v-flex>
         <v-flex lg3>
           <v-checkbox v-model="editedItem.isCompleted" label="Check Complete" color="success"></v-checkbox>
@@ -56,16 +69,33 @@
           <v-checkbox v-model="editedItem.isMarked" label="BookMark" color="orange"></v-checkbox>
         </v-flex>
         <v-flex lg3>
-          <p class="subheading text--lighten-3 mt-3">Priority level: {{priorityLevels[editedItem.priorityLevel].text}}</p>
+          <p
+            class="subheading text--lighten-3 mt-3"
+          >Priority level: {{priorityLevels[editedItem.priorityLevel].text}}</p>
         </v-flex>
         <v-flex lg3 class="pr-3">
-          <v-slider v-model="editedItem.priorityLevel" :max="3" :min="0" :color="priorityLevels[editedItem.priorityLevel].color" thumb-label></v-slider>
+          <v-slider
+            v-model="editedItem.priorityLevel"
+            :max="3"
+            :min="0"
+            :color="priorityLevels[editedItem.priorityLevel].color"
+            thumb-label
+          ></v-slider>
         </v-flex>
         <v-flex lg12>
-          <v-textarea name="Description" label="Description" v-model="editedItem.description" v-validate="{ max:500 }"></v-textarea>
+          <v-textarea
+            name="Description"
+            label="Description"
+            v-model="editedItem.description"
+            v-validate="{ max:500 }"
+          ></v-textarea>
         </v-flex>
         <v-flex lg12>
-          <TaskMemberCombobox :projectId="projectId" :defaultItems="editedItem.eventTaskMembers" :returnItems.sync="editedItem.eventTaskMembers" />
+          <TaskMemberCombobox
+            :projectId="projectId"
+            :defaultItems="editedItem.eventTaskMembers"
+            :returnItems.sync="editedItem.eventTaskMembers"
+          />
         </v-flex>
         <v-flex lg6>
           <EventTaskDropdown
@@ -87,7 +117,7 @@
     <v-card-actions>
       <v-spacer></v-spacer>
       <v-btn color="red darken-1" flat @click.native="cancel">Cancel</v-btn>
-      <v-btn color="blue darken-1" flat @click.native="save">Save</v-btn>
+      <v-btn color="blue darken-1" flat @click.native="isSimilar?cancel():save()">Save</v-btn>
     </v-card-actions>
 
     <v-dialog lazy v-model="changeGroupdialog" max-width="600px" persistent>
@@ -102,7 +132,7 @@
         @cancel="changeGroupdialog=false;"
       />
     </v-dialog>
-    <!-- <code>{{editedItem}}</code> -->
+    <code>{{isSimilar}}</code>
   </v-card>
 </template>
 <script>
@@ -130,21 +160,33 @@ export default {
     priorityLevels: PriorityLevels,
     changeGroupdialog: false,
     editedItem: {},
+    duplicatedItem: {},
     eventTask: {},
     render: false,
     isDuplicated: false
   }),
 
-  computed: {},
+  computed: {
+    isSimilar() {
+      return _.isEqual(this.editedItem, this.duplicatedItem);
+    }
+  },
 
   watch: {},
   mounted() {
     new Promise(resolve => {
       this.editedItem = _.cloneDeep(this.value);
       resolve();
-    }).then(() => {
-      this.render = true;
-    });
+    })
+      .then(() => {
+        this.render = true;
+      })
+      .then(() => {
+        let me = this;
+        _.delay(() => {
+          me.duplicatedItem = _.cloneDeep(me.editedItem);
+        }, 100);
+      });
   },
 
   methods: {
@@ -164,7 +206,7 @@ export default {
     update() {
       this.$root.updateItem(this.editedItem, "EventTaskService/Update", this);
     },
-    save() {
+    save() {     
       this.$validator.validateAll().then(result => {
         if (result) {
           this.editedItem.lastModificationTime = new Date();

@@ -36,15 +36,16 @@ namespace PMTool16Bit.Services
 
             return Repository.GetAll()
                     .Where(p => projectIdList.Any(q => q == p.ProjectId))
+                    .OrderByDescending(p => p.Id)
+                    .Take(maxResultCount)
                     .Select(p => new ProjectActivityDto
                     {
                         Id = p.Id,
                         ProjectId = p.ProjectId,
                         Description = p.Description,
                         CreationTime = p.CreationTime
-                    })
-                    .Take(maxResultCount)
-                    .OrderByDescending(p => p.CreationTime)
+                    })                   
+                   
                     .ToList();
         }
 

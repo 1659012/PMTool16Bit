@@ -15488,3 +15488,19 @@ INFO  2019-07-10 22:51:12,428 [47   ] ore.Mvc.Internal.ControllerActionInvoker -
 INFO  2019-07-10 22:51:12,438 [41   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
 INFO  2019-07-10 22:51:12,440 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application) in 385.2114ms
 INFO  2019-07-10 22:51:12,440 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 466.0583ms 200 application/json; charset=utf-8
+INFO  2019-07-10 22:52:11,525 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectActivityService/GetAllRecentActivities?maxResultCount=5  
+WARN  2019-07-10 22:52:11,525 [47   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-07-10 22:52:11,525 [47   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-07-10 22:52:11,525 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2623ms 204 
+INFO  2019-07-10 22:52:11,545 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectActivityService/GetAllRecentActivities?maxResultCount=5  
+WARN  2019-07-10 22:52:11,545 [47   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-07-10 22:52:11,545 [47   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-07-10 22:52:11,546 [47   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-07-10 22:52:11,552 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAllRecentActivities", controller = "ProjectActivityService"}. Executing action PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application)
+WARN  2019-07-10 22:52:11,552 [47   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-07-10 22:52:11,552 [47   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-07-10 22:52:11,556 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application) with arguments (5) - Validation state: Valid
+INFO  2019-07-10 22:52:11,575 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 18.4843ms.
+INFO  2019-07-10 22:52:11,579 [47   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-07-10 22:52:11,580 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application) in 27.6443ms
+INFO  2019-07-10 22:52:11,580 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 34.6364ms 200 application/json; charset=utf-8
