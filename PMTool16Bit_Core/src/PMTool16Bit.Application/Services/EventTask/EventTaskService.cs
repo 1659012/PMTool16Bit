@@ -41,6 +41,26 @@ namespace PMTool16Bit.Services
             this.projectActivityRepository = projectActivityRepository;
         }
 
+        protected override IQueryable<EventTask> CreateFilteredQuery(EventTaskFilter input)
+        {
+            return base.CreateFilteredQuery(input);
+        }
+
+        public override Task<EventTaskDto> Create(EventTaskCreateDto input)
+        {
+            var project = GetProject(input.TaskGroupId);
+            var userName = userAppService.GetCurrentUserName();
+            var description = userName + " created task " + input.TaskName + " in project " + project.ProjectName;
+            var projectActivity = new ProjectActivity
+            {
+                ProjectId = project.Id,
+                Description = description
+            };
+            projectActivityRepository.InsertAsync(projectActivity);
+            CurrentUnitOfWork.SaveChanges();
+            return base.Create(input);
+        }
+
         public override Task<EventTaskDto> Update(EventTaskUpdateDto input)
         {
             eventTaskMemberRepository.Delete(p => p.EventTaskId == input.Id);
@@ -58,12 +78,7 @@ namespace PMTool16Bit.Services
             //CurrentUnitOfWork.SaveChanges();
 
             return base.Update(input);
-        }
-
-        protected override IQueryable<EventTask> CreateFilteredQuery(EventTaskFilter input)
-        {
-            return base.CreateFilteredQuery(input);
-        }
+        }       
 
         public List<EventTaskDropdownDto> GetEventTaskDropdown(int? taskGroupId)
         {
@@ -86,24 +101,11 @@ namespace PMTool16Bit.Services
             return project;
         }
 
-        public override Task<EventTaskDto> Create(EventTaskCreateDto input)
-        {
-            var project = GetProject(input.TaskGroupId);
-            var userName = userAppService.GetCurrentUserName();
-            var description = userName + " created task "+input.TaskName+" in project "+ project.ProjectName;
-            var projectActivity = new ProjectActivity
-            {
-                ProjectId = project.Id,
-                Description = description             
-            };
-            projectActivityRepository.InsertAsync(projectActivity);
-            CurrentUnitOfWork.SaveChanges();
-            return base.Create(input);
-        }
+        
 
-        public List<EventTaskSimpleDto> GetEventTaskCalendar()
-        {
-            return new List<EventTaskSimpleDto>();
-        }
+        //public List<EventTaskSimpleDto> GetEventTaskCalendar()
+        //{
+        //    return new List<EventTaskSimpleDto>();
+        //}
     }
 }

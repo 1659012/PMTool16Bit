@@ -17,7 +17,8 @@ namespace PMTool16Bit.Services
     public class ProjectService : AsyncCrudAppService<Project, ProjectDto, int, ProjectFilter, ProjectCreateDto, ProjectUpdateDto>, IProjectService
     {
         private readonly IRepository<ProjectMember> projectMemberRepository;
-        readonly IUserAppService userAppService;
+        private readonly IUserAppService userAppService;
+
         public ProjectService(
             IRepository<Project> repository,
             IRepository<ProjectMember> projectMemberRepository,
@@ -167,6 +168,18 @@ namespace PMTool16Bit.Services
             return span.TotalMilliseconds;
         }
 
+        public List<int> GetProjectIdListByCurrentUser()
+        {
+            var userId = userAppService.GetCurrentUserId() ?? default(long);
+            if (userId == default(long))
+                return new List<int>();
+            return Repository.GetAll()
+                    .Include(p => p.ProjectMembers)
+                    .Where(p => p.ProjectMembers.Any(q => q.MemberId == userId))
+                    .Select(p => p.Id)
+                    .ToList();
+        }
+
         public List<EventTaskGanttDto> GetGanttChartData(int projectId)
         {
             var project = Repository
@@ -221,16 +234,14 @@ namespace PMTool16Bit.Services
             return taskList;
         }
 
-        public List<int> GetProjectIdListByCurrentUser()
-        {
-            var userId =userAppService.GetCurrentUserId() ?? default(long);
-            if(userId == default(long))
-                return new List<int>();
-            return Repository.GetAll()
-                    .Include(p => p.ProjectMembers)
-                    .Where(p => p.ProjectMembers.Any(q => q.MemberId == userId))
-                    .Select(p => p.Id)                   
-                    .ToList();            
-        }
+        //public List<EventTaskSimpleDto> GetEventTaskCalendar()
+        //{
+        //    var projectIdList = GetProjectIdListByCurrentUser();
+        //    if (projectIdList.Count == 0)
+        //        return new List<EventTaskSimpleDto>();
+        //    var  taskList= Repository.GetAll()
+        //        .Where(p => projectIdList.Any(q => q == p.Id))
+        //        .Include(p=>p.TaskGroups)
+        //}
     }
 }

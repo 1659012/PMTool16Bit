@@ -3,7 +3,13 @@
     <v-container grid-list-xl fluid>
       <v-layout row wrap>
         <v-flex lg6>
-          <v-calendar ref="calendar" v-model="start" :type="type" :end="end" color="primary"></v-calendar>
+          <v-calendar
+            ref="calendar"
+            v-model="startDate"
+            :type="type"
+            :end="endDate"
+            color="primary"
+          ></v-calendar>
           <v-layout row wrap>
             <v-flex lg4 class="text-sm-left text-xs-center">
               <v-btn @click="$refs.calendar.prev()">
@@ -36,13 +42,14 @@
                   fill-dot
                   v-for="activity in activities"
                   :key="activity.id"
+                  class="py-0"
                 >
                   <label>
                     {{momentFromNow(activity.creationTime)}}
                     <v-tooltip bottom>
                       <template v-slot:activator="{ on }">
                         <v-btn flat icon v-on="on" :to="`/ProjectDetail/${activity.projectId}`">
-                          <v-icon >arrow_right</v-icon>
+                          <v-icon>arrow_right</v-icon>
                         </v-btn>
                       </template>
                       <span>To project detail</span>
@@ -54,6 +61,7 @@
             </v-card-text>
           </v-card>
           <!-- <code>{{activities}}</code> -->
+          <code>{{getToday}}</code>
         </v-flex>
       </v-layout>
     </v-container>
@@ -68,8 +76,8 @@ export default {
   data: () => ({
     activities: [],
     type: "month",
-    start: "2019-07-01",
-    end: "2019-07-31",
+    startDate: "2019-07-01",
+    endDate: "2019-07-31",
     typeOptions: [
       { text: "Day", value: "day" },
       { text: "4 Day", value: "4day" },
@@ -79,10 +87,15 @@ export default {
       { text: "Custom Weekly", value: "custom-weekly" }
     ]
   }),
-  computed: {},
+  computed: {
+    getToday() {
+      return this.toDateString(new Date());
+    }
+  },
   watch: {},
   mounted() {
     this.loadActivities();
+    this.startDate = this.getToday;
   },
   methods: {
     randomColor(index = 0) {
