@@ -237,11 +237,26 @@ namespace PMTool16Bit.Services
         //public List<EventTaskSimpleDto> GetEventTaskCalendar()
         //{
         //    var projectIdList = GetProjectIdListByCurrentUser();
+        //    var taskList = new List<EventTaskSimpleDto>();
         //    if (projectIdList.Count == 0)
-        //        return new List<EventTaskSimpleDto>();
-        //    var  taskList= Repository.GetAll()
+        //        return taskList;
+
+        //    var projectList = Repository.GetAll()
         //        .Where(p => projectIdList.Any(q => q == p.Id))
-        //        .Include(p=>p.TaskGroups)
+        //        .Include(p => p.TaskGroups)
+        //        .ThenInclude(p => p.EventTasks)
+        //        .ThenInclude(p => p.EventTaskMembers)
+        //        .ThenInclude(m => m.Member)
+        //        .ToList();
+           
+        //    foreach (var project in projectList)
+        //    {
+        //        foreach (var taskGroup in project.TaskGroups)
+        //        {
+
+        //        }
+
+        //    }
         //}
     }
 }
