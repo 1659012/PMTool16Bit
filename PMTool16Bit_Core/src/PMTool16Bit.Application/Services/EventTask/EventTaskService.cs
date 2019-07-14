@@ -120,6 +120,7 @@ namespace PMTool16Bit.Services
                         .Include(p => p.TaskGroup)
                         .ThenInclude(p => p.Project)
                         .Where(p => p.IsCompleted == false)
+                        .Where(p=> p.DueDate != null)
                         .Where(p => projectIdList.Any(q => q == p.TaskGroup.Project.Id))
                         .Select(p=> new EventTaskSimpleDto
                         {
