@@ -1,6 +1,7 @@
 using Abp.Application.Services;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
+using Microsoft.EntityFrameworkCore;
 using PMTool16Bit.Models;
 using PMTool16Bit.Users;
 using System.Collections.Generic;
@@ -34,6 +35,7 @@ namespace PMTool16Bit.Services
             ) : base(repository)
         {
             this.userAppService = userAppService;
+            this.projectService = projectService;
             this.eventTaskMemberRepository = eventTaskMemberRepository;
             this.todoRepository = todoRepository;
             this.taskGroupRepository = taskGroupRepository;
@@ -101,11 +103,37 @@ namespace PMTool16Bit.Services
             return project;
         }
 
-        
 
-        //public List<EventTaskSimpleDto> GetEventTaskCalendar()
-        //{
-        //    return new List<EventTaskSimpleDto>();
-        //}
+
+        public List<EventTaskSimpleDto> GetEventTaskCalendar()
+        {
+            var projectIdList = projectService.GetProjectIdListByCurrentUser();
+            var taskList = new List<EventTaskSimpleDto>();
+            if (projectIdList.Count == 0)
+            {
+                return taskList;
+            }
+            var result = Repository
+                        .GetAll()
+                        .Include(p => p.EventTaskMembers)
+                        .ThenInclude(p => p.Member)
+                        .Include(p => p.TaskGroup)
+                        .ThenInclude(p => p.Project)
+                        .Where(p => p.IsCompleted == false)
+                        .Where(p=> p.DueDate != null)
+                        .Where(p => projectIdList.Any(q => q == p.TaskGroup.Project.Id))
+                        .Select(p=> new EventTaskSimpleDto
+                        {
+                            Id = p.Id,
+                            ProjectId = p.TaskGroup.ProjectId,
+                            ProjectName = p.TaskGroup.Project.ProjectName,
+                            TaskGroupName = p.TaskGroup.TaskGroupName,
+                            TaskName = p.TaskName,
+                            StartDate = p.StartDate,
+                            DueDate = p.DueDate                           
+                        })
+                        .ToList();
+            return result;
+        }
     }
 }
