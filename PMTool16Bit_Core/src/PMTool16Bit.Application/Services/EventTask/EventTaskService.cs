@@ -1,4 +1,5 @@
 using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -80,7 +81,7 @@ namespace PMTool16Bit.Services
             //CurrentUnitOfWork.SaveChanges();
 
             return base.Update(input);
-        }       
+        }        
 
         public List<EventTaskDropdownDto> GetEventTaskDropdown(int? taskGroupId)
         {
@@ -96,14 +97,13 @@ namespace PMTool16Bit.Services
                     })
                     .ToList();
         }
+
         private Project GetProject(int taskGroupId)
         {
             var taskGroup = taskGroupRepository.FirstOrDefault(taskGroupId);
             var project = projectRepository.FirstOrDefault(taskGroup.ProjectId);
             return project;
         }
-
-
 
         public List<EventTaskSimpleDto> GetEventTaskCalendar()
         {
@@ -134,6 +134,18 @@ namespace PMTool16Bit.Services
                         })
                         .ToList();
             return result;
+        }
+
+        public override Task<EventTaskDto> Get(EntityDto<int> input)
+        {
+            var result = Repository
+                        .GetAll()
+                        .Include(p => p.EventTaskMembers)
+                        .ThenInclude(p => p.Member)
+                        .Include(p => p.Todos)
+                        .FirstOrDefaultAsync(p => p.Id == input.Id);
+
+            return base.Get(input);
         }
     }
 }

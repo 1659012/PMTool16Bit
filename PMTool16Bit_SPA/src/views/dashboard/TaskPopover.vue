@@ -4,8 +4,7 @@
     max-width="500px"
     offset-x
     :close-on-content-click="false"
-    open-on-click
-    class
+    open-on-click    
   >
     <template v-slot:activator="{ on }">
       <div v-ripple class="myEvent" v-on="on" v-html="event.taskName"></div>
@@ -84,7 +83,6 @@
             <span class="body-1">{{event.dueDate|date}}</span>
           </v-flex>
         </v-layout>
-
         <!-- <code>{{event}}</code> -->
       </v-card-text>
       <v-card-actions>
@@ -112,13 +110,17 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   /* border-radius: 2px; */
-  background-color: #1867c0;
+  background-color: #0277BD;
   color: #ffffff;
-  border: 1px solid #1867c0;
+  /* border: 1px solid #1867c0; */
   width: 100%;
   font-size: 12px;
-  padding: 3px;
+  padding: 3px 5px;
   cursor: pointer;
   margin: 1px 0px;
+}
+
+.myEvent:hover{
+  background-color: #039BE5;
 }
 </style>

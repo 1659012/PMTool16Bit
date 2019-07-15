@@ -11,13 +11,16 @@
         <div v-else-if="eventsMap[date] && eventsMap[date].length>3">
           <v-menu offset-x :close-on-content-click="false">
             <template v-slot:activator="{ on }">
-              <v-btn color="primary" flat dark v-on="on" class="text-capitalize ml-0">{{eventsMap[date].length}} tasks
-                 <v-icon>arrow_right</v-icon>
+              <v-btn color="primary" flat dark v-on="on" class="text-capitalize ml-0">
+                {{eventsMap[date].length}} tasks
+                <v-icon>arrow_right</v-icon>
               </v-btn>
             </template>
-            <template v-for="event in eventsMap[date]">
-              <TaskPopover :key="event.title" :event="event" />
-            </template>
+            <div color="red" style="background-color:white">
+              <template v-for="event in eventsMap[date]">
+                <TaskPopover :key="event.title" :event="event" />
+              </template>
+            </div>
           </v-menu>
         </div>
       </template>
