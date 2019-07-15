@@ -1,6 +1,6 @@
 
 <template>
-  <v-card v-if="render">
+  <v-card>
     <v-card-title class="grey lighten-4 py-2" style="display:flex;">
       <span class="headline">Update Event Task</span>
       <v-spacer></v-spacer>
@@ -34,7 +34,7 @@
         </v-list>
       </v-menu>
     </v-card-title>
-    <v-container grid-list-md px-3 py-2>
+    <v-container grid-list-md px-3 py-2 style="max-height: 75vh; overflow-y: scroll;">
       <v-layout row wrap>
         <v-flex lg12>
           <v-text-field
@@ -88,6 +88,7 @@
             label="Description"
             v-model="editedItem.description"
             v-validate="{ max:500 }"
+            rows="2"
           ></v-textarea>
         </v-flex>
         <v-flex lg12>
@@ -106,7 +107,7 @@
           />
         </v-flex>
         <v-flex lg6>
-          <label v-if="eventTask.taskGroupName">Task group:</label>
+          <label v-if="eventTask.taskGroupName" class="caption">Task group</label>
           <p v-if="eventTask.taskGroupName">{{eventTask.taskGroupName}}</p>
         </v-flex>
         <v-flex lg12>
@@ -117,7 +118,7 @@
     <v-card-actions>
       <v-spacer></v-spacer>
       <v-btn color="red darken-1" flat @click.native="cancel">Cancel</v-btn>
-      <v-btn color="blue darken-1" flat @click.native="isSimilar?cancel():save()">Save</v-btn>
+      <v-btn color="blue darken-1" flat @click.native="save">Save</v-btn>
     </v-card-actions>
 
     <v-dialog lazy v-model="changeGroupdialog" max-width="600px" persistent>
@@ -132,7 +133,6 @@
         @cancel="changeGroupdialog=false;"
       />
     </v-dialog>
-    <code>{{isSimilar}}</code>
   </v-card>
 </template>
 <script>
@@ -155,7 +155,7 @@ export default {
     TaskGroupDropdown,
     EventTaskDropdown
   },
-  props: ["value", "projectId", "loadData"],
+  props: ["value", "taskId", "projectId", "loadData"],
   data: () => ({
     priorityLevels: PriorityLevels,
     changeGroupdialog: false,
@@ -167,26 +167,28 @@ export default {
   }),
 
   computed: {
-    isSimilar() {
-      return _.isEqual(this.editedItem, this.duplicatedItem);
-    }
+    // isSimilar() {
+    //   return _.isEqual(this.editedItem, this.duplicatedItem);
+    // }
   },
 
   watch: {},
   mounted() {
-    new Promise(resolve => {
-      this.editedItem = _.cloneDeep(this.value);
-      resolve();
-    })
-      .then(() => {
-        this.render = true;
-      })
-      .then(() => {
-        let me = this;
-        _.delay(() => {
-          me.duplicatedItem = _.cloneDeep(me.editedItem);
-        }, 100);
-      });
+    // new Promise(resolve => {
+    //   this.editedItem = _.cloneDeep(this.value);
+    //   resolve();
+    // })
+    //   .then(() => {
+    //     this.render = true;
+    //   })
+    //   .then(() => {
+    //     let me = this;
+    //     _.delay(() => {
+    //       me.duplicatedItem = _.cloneDeep(me.editedItem);
+    //     }, 100);
+    //   });
+
+    this.editedItem = _.cloneDeep(this.value);
   },
 
   methods: {
@@ -206,7 +208,7 @@ export default {
     update() {
       this.$root.updateItem(this.editedItem, "EventTaskService/Update", this);
     },
-    save() {     
+    save() {
       this.$validator.validateAll().then(result => {
         if (result) {
           this.editedItem.lastModificationTime = new Date();

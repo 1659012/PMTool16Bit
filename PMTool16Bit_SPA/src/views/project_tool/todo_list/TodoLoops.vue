@@ -1,38 +1,24 @@
 
 <template>
   <div v-if="value">
-    <v-layout row wrap>
-      <v-flex lg2>
-        <strong class="subheading success--text pt-5">
-          Total todo:&nbsp;
-          <v-fade-transition leave-absolute>
-            <span :key="`todos-${todoItems.length}`">{{ todoItems.length }}</span>
-          </v-fade-transition>
-        </strong>
-      </v-flex>
-      <v-flex lg10>
-        <v-text-field
-          v-model="todo.todoName"
-          label="Add new todo (Press enter to add)"
-          solo
-          :append-outer-icon="todo.todoName?'add_circle_outline':''"
-          @click:append-outer="create"
-          @keydown.enter="create"
-        ></v-text-field>
-      </v-flex>
-    </v-layout>
+    <v-text-field
+      v-model="todo.todoName"
+      label="Add new todo (Press enter to add)"
+      solo
+      :append-outer-icon="todo.todoName?'add_circle_outline':''"
+      @click:append-outer="create"
+      @keydown.enter="create"
+    ></v-text-field>
 
-    <v-divider class="mt-3"></v-divider>
+    <v-divider></v-divider>
 
     <v-layout my-1 align-center>
-      <strong class="mx-3 info--text text--darken-3">Remaining: {{ remainingTodos }}</strong>
-
+      <strong class="mx-3 subheading success--text">Total todo: {{ todoItems.length }}</strong>
       <v-divider vertical></v-divider>
-
+      <strong class="mx-3 info--text text--darken-3">Remaining: {{ remainingTodos }}</strong>
+      <v-divider vertical></v-divider>
       <strong class="mx-3 black--text">Completed: {{ completedTodos }}</strong>
-
       <v-spacer></v-spacer>
-
       <v-progress-circular :value="progress" class="mr-2"></v-progress-circular>
     </v-layout>
 
@@ -47,7 +33,11 @@
             <v-list-tile-action class="pt-2">
               <v-checkbox v-model="todo.isCompleted" color="info darken-3">
                 <template v-slot:label>
-                  <div :class="todo.isCompleted && 'grey--text' || 'text--primary'" class="ml-3" v-text="todo.todoName"></div>
+                  <div
+                    :class="todo.isCompleted && 'grey--text' || 'text--primary'"
+                    class="ml-3"
+                    v-text="todo.todoName"
+                  ></div>
                 </template>
               </v-checkbox>
             </v-list-tile-action>
@@ -75,7 +65,8 @@ export default {
   data: () => ({
     todoItems: [],
     todo: { todoName: "", isCompleted: false },
-    defaultTodo: { todoName: "", isCompleted: false }
+    defaultTodo: { todoName: "", isCompleted: false },
+    showAddTodo: false
   }),
   computed: {
     completedTodos() {
