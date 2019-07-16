@@ -64,7 +64,7 @@ namespace PMTool16Bit.Services
                 .ToListAsync();
         }
 
-        public Task<ProjectDto> GetProjectDetailById(EntityDto<int> input)
+        public override Task<ProjectDto> Get(EntityDto<int> input)
         {
             var filter = new ProjectFilter()
             {

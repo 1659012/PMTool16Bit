@@ -74,7 +74,7 @@ export default {
       this.loading = true;
       var me = this;
       this.axios
-        .get("ProjectService/GetProjectDetailById", {
+        .get("ProjectService/Get", {
           params: {
             id: this.$route.params.id
           }
