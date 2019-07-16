@@ -1,11 +1,5 @@
 <template>
-  <v-menu
-    v-model="event.open"
-    max-width="500px"
-    offset-x
-    :close-on-content-click="false"
-    open-on-click    
-  >
+  <v-menu v-model="event.open" max-width="500px" offset-x :close-on-content-click="false" open-on-click>
     <template v-slot:activator="{ on }">
       <div v-ripple class="myEvent" v-on="on" v-html="event.taskName"></div>
       <!-- <v-btn color="primary" flat dark v-on="on" class="text-capitalize" v-html="event.taskName"></v-btn> -->
@@ -22,14 +16,7 @@
           <v-flex xs1>
             <v-tooltip bottom>
               <template v-slot:activator="{ on }">
-                <v-btn
-                  flat
-                  icon
-                  v-on="on"
-                  :to="`/ProjectDetail/${event.projectId}`"
-                  target="_blank"
-                  class="mt-0"
-                >
+                <v-btn flat icon v-on="on" :to="`/ProjectDetail/${event.projectId}`" target="_blank" class="mt-0">
                   <v-icon>arrow_right</v-icon>
                 </v-btn>
               </template>
@@ -54,14 +41,7 @@
           <v-flex xs1>
             <v-tooltip bottom>
               <template v-slot:activator="{ on }">
-                <v-btn
-                  flat
-                  icon
-                  v-on="on"
-                  :to="`/ProjectDetail/${event.projectId}`"
-                  target="_blank"
-                  class="mt-0"
-                >
+                <v-btn flat icon v-on="on" @click="openEventTaskDetail">
                   <v-icon>arrow_right</v-icon>
                 </v-btn>
               </template>
@@ -83,25 +63,46 @@
             <span class="body-1">{{event.dueDate|date}}</span>
           </v-flex>
         </v-layout>
-        <!-- <code>{{event}}</code> -->
       </v-card-text>
-      <v-card-actions>
+      <v-card-actions class="pt-0 pb-3">
         <v-spacer></v-spacer>
         <v-btn color="blue darken-1" flat @click.native="event.open = false">Close</v-btn>
+        <v-dialog lazy v-model="taskDialog" max-width="700px" persistent>
+          <EventTaskDetail
+            v-if="taskDialog"
+            lazy
+            :eventTaskId="event.id"
+            :projectId="event.projectId"
+            :setReadonly="true"
+            @close="closeEventTaskDetail"
+            @cancel="cancelEventTaskDetail"
+          />
+        </v-dialog>
       </v-card-actions>
     </v-card>
   </v-menu>
 </template>
 
 <script>
+import EventTaskDetail from "../project_tool/event_task/EventTaskDetail";
 export default {
-  components: {},
+  components: { EventTaskDetail },
   props: ["event"],
-  data: () => ({}),
+  data: () => ({ taskDialog: false }),
   computed: {},
   watch: {},
   mounted() {},
-  methods: {}
+  methods: {
+    openEventTaskDetail(){
+      this.taskDialog=true;
+    },
+    closeEventTaskDetail() {
+      this.taskDialog=false;
+    },
+    cancelEventTaskDetail() {
+       this.taskDialog=false;
+    }
+  }
 };
 </script>
 <style>
@@ -110,7 +111,7 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   /* border-radius: 2px; */
-  background-color: #0277BD;
+  background-color: #0277bd;
   color: #ffffff;
   /* border: 1px solid #1867c0; */
   width: 100%;
@@ -120,7 +121,7 @@ export default {
   margin: 1px 0px;
 }
 
-.myEvent:hover{
-  background-color: #039BE5;
+.myEvent:hover {
+  background-color: #039be5;
 }
 </style>

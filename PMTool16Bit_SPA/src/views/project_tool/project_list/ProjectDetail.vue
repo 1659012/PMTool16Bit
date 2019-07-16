@@ -76,7 +76,7 @@ export default {
       this.axios
         .get("ProjectService/Get", {
           params: {
-            id: this.$route.params.id
+            id: me.$route.params.id
           }
         })
         .then(response => {
