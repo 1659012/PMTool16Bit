@@ -10,7 +10,6 @@
     </v-dialog>
 
     <ProjectMemberLoop :loadData="loadData" v-model="editedItem"/>
-    <!-- <code>{{editedItem}}</code> -->
   </div>
 </template>
 <script>
@@ -19,7 +18,6 @@ import ProjectMemberDialog from "./ProjectMemberDialog";
 import projectMixin from "../../../mixin/projectMixin.js";
 
 export default {
-  title: "Project member",
   mixins: [projectMixin],
   components: { ProjectMemberDialog, ProjectMemberLoop },
   props: ["value", "loadData"],

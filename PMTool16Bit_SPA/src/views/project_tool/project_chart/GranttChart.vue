@@ -18,10 +18,10 @@ export default {
   data: () => ({
     chartOptions: {
       title: {
-        text: "Gantt Chart with Progress Indicators"
+        text: "Project Progress"
       },
       subtitle: {
-        text: "Purely CSS-driven design"
+        // text: "Purely CSS-driven design"
       },
 
       series: [
@@ -117,3 +117,9 @@ export default {
   methods: {}
 };
 </script>
+<style>
+.highcharts-credits{
+  display: none!important;
+}
+</style>
+

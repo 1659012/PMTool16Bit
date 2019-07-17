@@ -20,14 +20,12 @@
       <v-btn color="red darken-1" flat @click.native="cancel()">Cancel</v-btn>
       <v-btn color="blue darken-1" flat @click.native="save">Save</v-btn>
     </v-card-actions>
-    <!-- <code>{{editedItem.projectMembers}}</code> -->
   </v-card>
 </template>
 <script>
 import _ from "lodash";
 import ProjectMemberCombobox from "./ProjectMemberCombobox";
 export default {
-  // title: "",
   components: { ProjectMemberCombobox },
   props: ["value"],
   data: () => ({
