@@ -2,7 +2,7 @@
 <template>
   <v-card>
     <v-card-title>
-      <h3 class="headline">Create Project</h3>
+      <h3 class="headline">{{editedItem.id?'Update Project':'Create Project'}}</h3>
     </v-card-title>
     <v-container grid-list-md px-3 py-2>
       <v-layout row wrap>
@@ -36,12 +36,12 @@
   </v-card>
 </template>
 <script>
-// import _ from "lodash";
+import _ from "lodash";
 import { Roles } from "../../../enum/enums.js";
 export default {
   // title: "",
   components: {},
-  props: [],
+  props: ["value"],
   data: () => ({
     editedItem: {
       projectName: "",
@@ -55,9 +55,13 @@ export default {
 
   watch: {},
   mounted() {
-    this.editedItem.projectOwnerId = this.$store.state.userId;
-    this.editedItem.projectMembers[0].memberId = this.$store.state.userId;
-    this.editedItem.projectMembers[0].projectRole = Roles.projectOwner.value;
+    if (this.value) {
+      this.editedItem = _.cloneDeep(this.value);
+    } else {
+      this.editedItem.projectOwnerId = this.$store.state.userId;
+      this.editedItem.projectMembers[0].memberId = this.$store.state.userId;
+      this.editedItem.projectMembers[0].projectRole = Roles.projectOwner.value;
+    }
   },
   methods: {
     close() {

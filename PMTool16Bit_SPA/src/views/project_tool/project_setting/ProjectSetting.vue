@@ -10,6 +10,7 @@
           type="text"
           label="Project name"
           :error-messages="errors.collect('Project name')"
+          readonly
         ></v-text-field>
         <v-textarea
           name="Short description"
@@ -17,29 +18,43 @@
           v-model="editedItem.shortDescription"
           v-validate="{ max:500 }"
           :error-messages="errors.collect('Short description')"
+          readonly
         ></v-textarea>
-        <v-btn color="blue darken-1" block dark @click.native="save">Update</v-btn>
+        <v-btn color="blue darken-1" block dark @click="projectDialog=true;">Update</v-btn>
       </v-flex>
     </v-layout>
     <!-- <code>{{value}}</code> -->
+    <v-dialog lazy v-model="projectDialog" max-width="600px" persistent>
+      <ProjectCreate v-if="projectDialog" v-model="editedItem" lazy @close="closeProjectDialog" @cancel="cancelProjectDialog" />
+    </v-dialog>
   </div>
 </template>
 <script>
 import _ from "lodash";
+import ProjectCreate from "../project_list/ProjectCreate";
 export default {
   props: ["value", "loadData"],
+  components: { ProjectCreate },
   data: () => ({
-    editedItem: {}
+    editedItem: { projectName: "", shortDescription: "", id: null },
+    projectDialog: false
   }),
   computed: {},
   watch: {},
-  // updated() {
-  //   this.editedItem = _.cloneDeep(this.value);
-  // },
+  updated() {
+    this.editedItem = this.value;
+  },
   mounted() {
-    this.editedItem = _.cloneDeep(this.value);
+    this.editedItem = this.value;
   },
   methods: {
+    closeProjectDialog() {
+      this.projectDialog = false;
+      this.loadData();
+    },
+    cancelProjectDialog() {
+      this.projectDialog = false;
+    },
     create() {
       this.$root.createItem(this.editedItem, "ProjectService/Create", this);
     },
