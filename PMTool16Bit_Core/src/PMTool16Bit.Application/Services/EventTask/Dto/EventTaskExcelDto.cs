@@ -21,15 +21,15 @@ namespace PMTool16Bit.Services
         public DateTime? DueDate { get; set; }
 
         [DisplayName("Assigned members")]
-        public string AssignedMembers { get; set; }
-
-        [DisplayName("Description")]
-        public string Description { get; set; }
+        public string AssignedMembers { get; set; }       
 
         [DisplayName("Completed")]
         public bool IsCompleted { get; set; }
 
         [DisplayName("Priority level")]
         public string PriorityLevel { get; set; }
+
+        [DisplayName("Description")]
+        public string Description { get; set; }
     }
 }

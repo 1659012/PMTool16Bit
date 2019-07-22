@@ -153,12 +153,21 @@
               </div>
             </template>
             <v-card>
-              <v-card-text>Comming soon</v-card-text>
+              <v-card-text>
+                comming soon
+                <!-- theme setting -->
+                <v-btn small fab dark class="setting-fab" color="green" @click="openThemeSettings">
+                  <v-icon>settings</v-icon>
+                </v-btn>
+              </v-card-text>
             </v-card>
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-flex>
     </v-layout>
+    <v-navigation-drawer class="settingDrawer" temporary right v-model="rightDrawer" hide-overlay fixed>
+      <theme-settings></theme-settings>
+    </v-navigation-drawer>
     <!-- <code>{{editedItem}}</code> -->
     <!-- <code>{{passwordModel.userId}}</code> -->
   </v-container>
@@ -168,9 +177,10 @@
 // import moment from "moment";
 // import DatePicker from "../basiccomponents/DatePicker";
 import UploadAvatar from "./UploadAvatar";
+import ThemeSettings from "../../components/layout_tool/ThemeSettings";
 export default {
   title: "User profile",
-  components: { UploadAvatar },
+  components: { UploadAvatar, ThemeSettings },
   props: [],
   data: () => ({
     editedItem: { name: "", surname: "" },
@@ -178,7 +188,8 @@ export default {
     loading: false,
     panel: [true, false, false],
     showCurrentPassword: false,
-    showNewPassword: false
+    showNewPassword: false,
+    rightDrawer: false
   }),
 
   computed: {},
@@ -228,13 +239,11 @@ export default {
         });
     },
     getUser() {
-      this.axios
-        .get("User/GetCurrentUserName")
-        .then(response => {
-          if (response.data.success) {
-            console.log(response.data.result);
-          }
-        });
+      this.axios.get("User/GetCurrentUserName").then(response => {
+        if (response.data.success) {
+          console.log(response.data.result);
+        }
+      });
     },
 
     changePassword() {
@@ -259,6 +268,10 @@ export default {
     },
     logout(checkLogout = false) {
       this.$root.logout(checkLogout);
+    },
+    openThemeSettings() {
+      this.$vuetify.goTo(0);
+      this.rightDrawer = !this.rightDrawer;
     },
     create() {
       this.$root.createItem(this.editedItem, "User/Create", this, false);

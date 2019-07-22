@@ -28,22 +28,11 @@
                 </v-list-tile-action>
 
                 <v-list-tile-action style="width:300px">
-                  <v-btn
-                    color="success"
-                    v-if="projectMember.memberId==$store.state.userId &&$store.state.userId!=projectOwnerId"
-                    @click="leaveProject(projectMember)"
-                  >Leave</v-btn>
+                  <v-btn color="success" v-if="projectMember.memberId==userId &&userId != projectOwnerId" @click="leaveProject(projectMember)">Leave</v-btn>
                 </v-list-tile-action>
 
                 <v-list-tile-action>
-                  <v-menu
-                    bottom
-                    left
-                    lazy
-                    transition="slide-x-transition"
-                    v-if="!checkProjectOwner(projectMember.projectRole)"
-                    :disabled="!isAdmin(projectMembers)"
-                  >
+                  <v-menu bottom left lazy transition="slide-x-transition" v-if="!checkProjectOwner(projectMember.projectRole)" :disabled="!isAdmin">
                     <template #activator="{ on: menu }">
                       <v-tooltip top>
                         <template #activator="{ on: tooltip }">
@@ -65,7 +54,7 @@
                       </v-list-tile>
                     </v-list>
                   </v-menu>
-
+                  <!-- if is ProjectOwner -->
                   <v-icon v-else class="ml-3" color="green accent-4" title="Project owner">stars</v-icon>
                 </v-list-tile-action>
               </v-list-tile>
@@ -86,25 +75,31 @@
       />
     </v-dialog>
     <!-- <code>{{projectMembers}}</code> -->
-    <!-- <code>{{projectOwnerId}}</code> -->
+    <!-- <code>{{isProjectOwner}}</code> -->
   </div>
 </template>
 <script>
 import ProjectMemberRoleUpdate from "./ProjectMemberRoleUpdate";
 import projectMixin from "../../../mixin/projectMixin.js";
 export default {
-  // title: "Project member",
   mixins: [projectMixin],
   components: { ProjectMemberRoleUpdate },
   props: ["value", "loadData"],
   data: () => ({
-    editedItem: {},
+    editedItem: { projectMembers: null },
     projectMembers: {},
     memberItem: {},
     projectOwnerId: null,
     memberRoleDialog: false
   }),
-  computed: {},
+  computed: {
+    isAdmin() {
+      return this.isAdminRole(this.editedItem.projectMembers);
+    },
+    isProjectOwner() {
+      return this.isProjectOwnerRole(this.editedItem.projectMembers);
+    }
+  },
   watch: {},
   mounted() {
     this.editedItem = this.value;

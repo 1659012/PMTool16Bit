@@ -18,7 +18,7 @@ export default {
     checkProjectOwner(projectRole) {
       return Roles.projectOwner.value == projectRole ? true : false;
     },
-    isProjectOwner(projectMembers) {
+    isProjectOwnerRole(projectMembers) {
       if (Array.isArray(projectMembers)) {
         let projectMember = projectMembers.find(
           item => item.memberId == this.userId
@@ -31,7 +31,7 @@ export default {
       }
       return false;
     },
-    isAdmin(projectMembers) {
+    isAdminRole(projectMembers) {
       if (Array.isArray(projectMembers)) {
         let userId = this.$store.state.userId;
         let projectMember = projectMembers.find(

@@ -12,11 +12,17 @@
     </v-dialog>
 
     <v-dialog lazy v-model="memberDialog" max-width="600px" persistent>
-      <ProjectMemberDialog v-if="memberDialog" lazy v-model="editedItem" @close="memberDialog=false;loadData()" @cancel="memberDialog=false;" />
+      <ProjectMemberDialog
+        v-if="memberDialog"
+        lazy
+        v-model="editedItem"
+        @close="memberDialog=false;loadData()"
+        @cancel="memberDialog=false;"       
+      />
     </v-dialog>
 
     <div style="display:flex;">
-      <v-btn color="deep-purple darken-1" flat class="pl-0" @click="memberDialog=true;">
+      <v-btn color="deep-purple darken-1" flat class="pl-0" @click="memberDialog=true;" :disabled="!isAdmin">
         <v-icon left dark class="ml-2">add_circle_outline</v-icon>Add member
       </v-btn>
 
@@ -38,7 +44,7 @@
         clearable
         style="width:250px!important;
         max-width:250px !important;"
-      ></v-select> -->
+      ></v-select>-->
 
       <v-divider vertical></v-divider>
 
@@ -60,7 +66,7 @@
         <span>List View</span>
       </v-tooltip>
     </div>
-    <TaskGroupLoops v-model="editedItem" :loadData="loadData" :changeView="gridView" />
+    <TaskGroupLoops v-model="editedItem" :loadData="loadData" :isAdmin="isAdmin" :changeView="gridView" />
     <!-- <code>{{editedItem.taskGroups}}</code> -->
   </div>
 </template>
@@ -69,16 +75,13 @@ import _ from "lodash";
 import TaskGroupLoops from "../task_group/TaskGroupLoops";
 import TaskGroupCreate from "../task_group/TaskGroupCreate";
 import ProjectMemberDialog from "../project_member/ProjectMemberDialog";
-import projectMixin from "../../../mixin/projectMixin.js";
 export default {
-  // title: "Project detail",
-  mixins: [projectMixin],
   components: {
     TaskGroupCreate,
     TaskGroupLoops,
     ProjectMemberDialog
   },
-  props: ["value", "loadData"],
+  props: ["value", "loadData", "isAdmin"],
   data: () => ({
     editedItem: {},
     taskGroups: [],
@@ -91,7 +94,7 @@ export default {
     taskOptions: [
       { text: "All tasks", value: "all" },
       { text: "Incomplete tasks", value: "incomplete" },
-      { text: "Completed tasks", value: "completed" },
+      { text: "Completed tasks", value: "completed" }
       // { text: "Just my task", value: "only" },
       // { text: "Not Assigned", value: "noAssigned" },
       // { text: "Already assigned", value: "assigned" }
@@ -100,43 +103,14 @@ export default {
 
   computed: {},
 
-  watch: {
-    // "filter.taskType"(val) {
-    //   switch (val) {
-    //     case "incomplete":    
-    //        new Promise(resolve => {
-    //        this.loadData();
-    //         resolve();
-    //     }).then(() => {
-    //    this.taskGroups.forEach(taskGroup => {
-    //         taskGroup.eventTasks = taskGroup.eventTasks.filter(
-    //           eventTask => !eventTask.isCompleted
-    //         );
-    //       });
-    // });
-    //       break;
-    //     case "completed":
-    //       this.loadData();
-    //        this.taskGroups.forEach(taskGroup => {
-    //         taskGroup.eventTasks = taskGroup.eventTasks.filter(
-    //           eventTask => eventTask.isCompleted
-    //         );
-    //       });
-    //       break;
-    //     case "":
-    //       break;
-    //     default:
-    //       this.loadData();
-    //   }
-    // }
-  },
+  watch: {},
   mounted() {
     this.editedItem = this.value;
     this.taskGroups = this.value.taskGroups;
   },
   updated() {
     this.editedItem = this.value;
-    this.taskGroups = this.value.taskGroups;   
+    this.taskGroups = this.value.taskGroups;
   },
   methods: {
     downloadTaskListExcel(projectId) {

@@ -9,6 +9,7 @@
         <v-flex lg12>
           <ProjectMemberCombobox
             v-if="editedItem.projectMembers"
+            :isAdmin="isAdmin"
             :defaultItems="editedItem.projectMembers"
             :returnItems.sync="editedItem.projectMembers"
           />
@@ -27,7 +28,7 @@ import _ from "lodash";
 import ProjectMemberCombobox from "./ProjectMemberCombobox";
 export default {
   components: { ProjectMemberCombobox },
-  props: ["value"],
+  props: ["value", "isAdmin"],
   data: () => ({
     editedItem: {}
   }),

@@ -57,7 +57,10 @@
             <v-checkbox v-model="editedItem.isMarked" label="BookMark" color="orange"></v-checkbox>
           </v-flex>
           <v-flex lg3>
-            <p class="subheading text--lighten-3 mt-3"><span class="font-weight-light">Priority level:</span> {{priorityLevels[editedItem.priorityLevel].text}}</p>
+            <p class="subheading text--lighten-3 mt-3">
+              <span class="font-weight-light">Priority level:</span>
+              {{priorityLevels[editedItem.priorityLevel].text}}
+            </p>
           </v-flex>
           <v-flex lg3 class="pr-3">
             <v-slider v-model="editedItem.priorityLevel" :max="3" :min="0" :color="priorityLevels[editedItem.priorityLevel].color" thumb-label></v-slider>
@@ -127,7 +130,14 @@ export default {
     TaskGroupDropdown,
     EventTaskDropdown
   },
-  props: ["value", "eventTaskId", "projectId", "loadData", "setReadonly"],
+  props: [
+    "value",
+    "eventTaskId",
+    "projectId",
+    "loadData",
+    "setReadonly",
+    "isAdmin"
+  ],
   data: () => ({
     priorityLevels: PriorityLevels,
     changeGroupdialog: false,
@@ -215,6 +225,6 @@ export default {
 }
 
 #eventTaskBody::-webkit-scrollbar-thumb {
-  background-color: #BDBDBD;
+  background-color: #bdbdbd;
 }
 </style>

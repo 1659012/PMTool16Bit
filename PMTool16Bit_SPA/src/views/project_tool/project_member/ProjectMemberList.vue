@@ -1,26 +1,24 @@
 
 <template>
   <div v-if="value">
-    <v-btn color="deep-purple darken-1" flat class="pl-0" @click="dialog=true;" v-if="isAdmin(editedItem.projectMembers)">
+    <v-btn color="deep-purple darken-1" flat class="pl-0" @click="dialog=true;" :disabled="!isAdmin">
       <v-icon left dark class="ml-2">add_circle_outline</v-icon>Add member
     </v-btn>
 
     <v-dialog lazy v-model="dialog" max-width="600px" persistent>
-      <ProjectMemberDialog v-if="dialog" lazy v-model="editedItem" @close="dialog=false;loadData()" @cancel="dialog=false;"/>
+      <ProjectMemberDialog v-if="dialog" lazy v-model="editedItem" @close="dialog=false;loadData()" @cancel="dialog=false;" />
     </v-dialog>
 
-    <ProjectMemberLoop :loadData="loadData" v-model="editedItem"/>
+    <ProjectMemberLoop :loadData="loadData" v-model="editedItem" />
   </div>
 </template>
 <script>
 import ProjectMemberLoop from "./ProjectMemberLoop";
 import ProjectMemberDialog from "./ProjectMemberDialog";
-import projectMixin from "../../../mixin/projectMixin.js";
 
 export default {
-  mixins: [projectMixin],
   components: { ProjectMemberDialog, ProjectMemberLoop },
-  props: ["value", "loadData"],
+  props: ["value", "loadData", "isAdmin"],
   data: () => ({
     editedItem: {},
     dialog: false
@@ -36,7 +34,6 @@ export default {
 
   mounted() {
     this.editedItem = this.value;
-    this.isAdmin();
   },
   methods: {
     close(item) {

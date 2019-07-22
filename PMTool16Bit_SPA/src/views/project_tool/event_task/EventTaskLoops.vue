@@ -82,6 +82,7 @@
         lazy
         v-model="editedItem"
         :projectId="projectId"
+        :isAdmin="isAdmin"
         :loadData="loadData"
         @close="closeEventTaskDetail"
         @cancel="cancelEventTaskDetail"
@@ -94,7 +95,7 @@ import EventTaskDetail from "./EventTaskDetail";
 import { PriorityLevels } from "../../../enum/enums";
 export default {
   components: { EventTaskDetail },
-  props: ["eventTasks", "loadData", "projectId"],
+  props: ["eventTasks", "loadData", "projectId", "isAdmin"],
   data: () => ({
     eventTaskDialog: false,
     editedItem: {},
@@ -107,7 +108,7 @@ export default {
   watch: {},
   mounted() {},
   methods: {
-    openEventTaskDetail(item) {      
+    openEventTaskDetail(item) {
       this.editedItem = _.cloneDeep(item);
       this.eventTaskDialog = true;
     },

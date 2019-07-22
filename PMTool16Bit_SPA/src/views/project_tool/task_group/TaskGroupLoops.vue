@@ -27,7 +27,7 @@
                 </v-list>
               </v-menu>
             </v-toolbar>
-            <EventTaskLoops :eventTasks="taskGroup.eventTasks" :projectId="taskGroup.projectId" :loadData="loadData" />
+            <EventTaskLoops :eventTasks="taskGroup.eventTasks" :projectId="taskGroup.projectId" :loadData="loadData" :isAdmin="isAdmin"/>
             <v-divider></v-divider>
             <v-card-actions class="py-0">
               <v-tooltip right>
@@ -127,7 +127,7 @@ import TaskGroupDetail from "./TaskGroupDetail";
 export default {
   // title: "",
   components: { EventTaskCreate, EventTaskLoops, TaskGroupDetail },
-  props: ["value", "loadData", "changeView"],
+  props: ["value", "loadData", "changeView", "isAdmin"],
   data: () => ({
     editedItem: {},
     taskGroups: {},

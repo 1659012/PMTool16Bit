@@ -20,12 +20,11 @@
           <v-icon
             class="ml-3"
             color="blue-grey"
-            title="Remove item"
+            title="Remove member"
             small
             @click.prevent="removeItem(data.index)"
             v-if="roles.projectOwner.value!=data.item.projectRole"
           >close</v-icon>
-
           <v-icon class="ml-3" color="green accent-4" title="Project owner" small v-else>stars</v-icon>
         </v-chip>
       </template>
