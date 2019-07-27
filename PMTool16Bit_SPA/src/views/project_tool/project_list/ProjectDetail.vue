@@ -25,17 +25,13 @@
       </v-tab-item>
 
       <v-tab-item :key="3">
-        <ProjectTimeLine />
+        <ProjectTimeLine v-if="reset" />
       </v-tab-item>
 
       <v-tab-item :key="4">
-        <ProjectSetting v-model="editedItem" :loadData="loadData" />
+        <ProjectSetting v-model="editedItem" :loadData="loadData" :isProjectOwner="isProjectOwner" />
       </v-tab-item>
     </v-tabs>
-    <!-- <code>{{editedItem}}</code> -->
-    <!-- <code>{{roles}}</code> -->
-    <!-- <code>{{userId}}</code> -->
-    <!-- <code>{{isAdmin}}</code> -->
   </v-container>
 </template>
 <script>
@@ -59,7 +55,8 @@ export default {
     editedItem: { projectMembers: null },
     taskGroups: [],
     taskGroupDialog: false,
-    memberDialog: false
+    memberDialog: false,
+    reset: true
   }),
   mounted() {
     this.initialize();
@@ -80,6 +77,7 @@ export default {
     },
     loadData() {
       this.loading = true;
+      this.reset = false;
       var me = this;
       this.axios
         .get("ProjectService/Get", {
@@ -93,6 +91,7 @@ export default {
             this.taskGroups = this.editedItem.taskGroups;
           }
         })
+        .then(() => (me.reset = true))
         .catch(e => {
           this.errors.push(e);
         });
