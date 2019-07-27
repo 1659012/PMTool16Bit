@@ -52,7 +52,7 @@
         </v-layout>
 
         <div class="text-xs-right">
-          <v-btn color="blue darken-1" dark @click="projectDialog=true;">Update</v-btn>
+          <v-btn v-if="isProjectOwner" color="blue darken-1" dark @click="projectDialog=true;">Update</v-btn>
         </div>
       </v-flex>
     </v-layout>
@@ -65,7 +65,7 @@
 import _ from "lodash";
 import ProjectCreate from "../project_list/ProjectCreate";
 export default {
-  props: ["value", "loadData"],
+  props: ["value", "loadData", "isProjectOwner"],
   components: { ProjectCreate },
   data: () => ({
     editedItem: { projectName: "", shortDescription: "", id: null },
