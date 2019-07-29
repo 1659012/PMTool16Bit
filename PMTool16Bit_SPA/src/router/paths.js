@@ -25,6 +25,12 @@ export default [
     meta: { ...AUTH_REQUIRED }
   },
   {
+    path: "/projectdetail/:id?",
+    name: "ProjectDetail",
+    component: ProjectDetail,
+    meta: { ...AUTH_REQUIRED }
+  },
+  {
     path: "/aboutus",
     name: "AboutUs",
     component: AboutUs,
