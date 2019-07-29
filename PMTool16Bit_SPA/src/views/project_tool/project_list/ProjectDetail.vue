@@ -7,6 +7,9 @@
       <v-btn color="deep-purple darken-1 mr-0" flat @click="goBack">
         <v-icon left dark class="mr-0">arrow_back_ios</v-icon>Go back
       </v-btn>
+      <v-btn color="deep-purple darken-1 mr-0" flat @click="loadData">
+        <v-icon left dark class="mr-0">refresh</v-icon>Refresh
+      </v-btn>
     </div>
     <v-tabs color="cyan" dark slider-color="yellow">
       <v-tab :key="1" ripple>Board</v-tab>
@@ -14,23 +17,21 @@
       <v-tab :key="3" ripple>Timeline</v-tab>
       <v-tab :key="4" ripple>Settings</v-tab>
       <v-tab-item :key="1">
-        <ProjectTaskList v-model="editedItem" :loadData="loadData" />
+        <ProjectTaskList v-model="editedItem" :loadData="loadData" :isAdmin="isAdmin" />
       </v-tab-item>
 
       <v-tab-item :key="2">
-        <ProjectMemberList v-model="editedItem" :loadData="loadData" />
+        <ProjectMemberList v-model="editedItem" :loadData="loadData" :isAdmin="isAdmin" />
       </v-tab-item>
 
       <v-tab-item :key="3">
-        <ProjectTimeLine />
+        <ProjectTimeLine v-if="reset" />
       </v-tab-item>
 
       <v-tab-item :key="4">
-        <ProjectSetting v-model="editedItem" :loadData="loadData" />
+        <ProjectSetting v-model="editedItem" :loadData="loadData" :isProjectOwner="isProjectOwner" />
       </v-tab-item>
     </v-tabs>
-
-    <!-- <code>{{editedItem}}</code> -->
   </v-container>
 </template>
 <script>
@@ -51,26 +52,32 @@ export default {
   },
   props: [],
   data: () => ({
-    editedItem: {},
+    editedItem: { projectMembers: null },
     taskGroups: [],
-    projectId: null,
     taskGroupDialog: false,
-    memberDialog: false
+    memberDialog: false,
+    reset: true
   }),
-
-  computed: {},
-
-  watch: {},
   mounted() {
     this.initialize();
   },
+  computed: {
+    isAdmin() {
+      return this.isAdminRole(this.editedItem.projectMembers);
+    },
+    isProjectOwner() {
+      return this.isProjectOwnerRole(this.editedItem.projectMembers);
+    }
+  },
+  watch: {},
+
   methods: {
     initialize() {
-      this.projectId = this.$route.params.id;
       this.loadData();
     },
     loadData() {
       this.loading = true;
+      this.reset = false;
       var me = this;
       this.axios
         .get("ProjectService/Get", {
@@ -82,9 +89,9 @@ export default {
           if (response.data.success) {
             this.editedItem = response.data.result;
             this.taskGroups = this.editedItem.taskGroups;
-          } else {
           }
         })
+        .then(() => (me.reset = true))
         .catch(e => {
           this.errors.push(e);
         });

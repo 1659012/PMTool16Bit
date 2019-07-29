@@ -109,29 +109,36 @@ const Menu = [
 
   { divider: true },
 
-  { header: "About this PM tool" },
+  { header: "PMTool16Bit info" },
   {
+    name: "AboutUs",
     title: "About us",
-    group: "aboutus",
-    icon: "list",
-    items: [
-      { name: "Login", title: "Login", component: "Login" },
-      { name: "404", title: "404", component: "NotFound" },
-      { name: "403", title: "403", component: "AccessDenied" },
-      { name: "500", title: "500", component: "ServerError" }
-    ]
+    group: "projectInfo",
+    icon: "donut_small",
+    component: "AboutUs"
   },
-  {
-    title: "Contact us",
-    group: "contact",
-    icon: "list",
-    items: [
-      { name: "Login", title: "Login", component: "Login" },
-      { name: "404", title: "404", component: "NotFound" },
-      { name: "403", title: "403", component: "AccessDenied" },
-      { name: "500", title: "500", component: "ServerError" }
-    ]
-  }
+  // {
+  //   title: "About us",
+  //   group: "aboutus",
+  //   icon: "list",
+  //   items: [
+  //     { name: "Login", title: "Login", component: "Login" },
+  //     { name: "404", title: "404", component: "NotFound" },
+  //     { name: "403", title: "403", component: "AccessDenied" },
+  //     { name: "500", title: "500", component: "ServerError" }
+  //   ]
+  // },
+  // {
+  //   title: "Contact us",
+  //   group: "contact",
+  //   icon: "list",
+  //   items: [
+  //     { name: "Login", title: "Login", component: "Login" },
+  //     { name: "404", title: "404", component: "NotFound" },
+  //     { name: "403", title: "403", component: "AccessDenied" },
+  //     { name: "500", title: "500", component: "ServerError" }
+  //   ]
+  // }
 ];
 
 // reorder menu

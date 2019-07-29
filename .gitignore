@@ -10,5 +10,8 @@ aspnet-core/src/PMTool16Bit.Migrator/Logs/Logs.txt
 Database/PMTool16BitDb_log.ldf
 Database/PMTool16BitDb.mdf
 PMTool16Bit_Core/src/PMTool16Bit.Web.Host/App_Data/Logs/Logs.txt
-/PMTool16Bit_Core/src/PMTool16Bit.Web.Host/wwwroot/images
+# /PMTool16Bit_Core/src/PMTool16Bit.Web.Host/wwwroot/images
 PMTool16Bit_Core/src/PMTool16Bit.Web.Host/App_Data/Logs/Logs.txt
+/src/Y.Web.Host/App_Data/Logs/
+/src/Y.Web.Host/App_Data/Logs/Logs.txt
+/src/Y.Web.Mvc/App_Data/Logs/
