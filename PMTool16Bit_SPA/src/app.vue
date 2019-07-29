@@ -10,7 +10,7 @@
           <div class="page-wrapper">
             <router-view></router-view>
           </div>
-          <PageFooter/>
+          <PageFooter id="pageFooter"/>
         </v-content>
         <!-- Go to top -->
         <app-fab></app-fab>
@@ -94,5 +94,13 @@ export default {
 
 .page-wrapper {
   min-height: calc(100vh - 64px - 50px - 81px);
+}
+
+#pageFooter{
+  padding-top: 30px;
+  position: absolute;
+  bottom:0;
+  right:0;
+  width: 100% !important;
 }
 </style>

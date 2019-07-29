@@ -6,6 +6,7 @@ import ProjectDetail from "../views/project_tool/project_list/ProjectDetail.vue"
 import Register from "../views/register/Register.vue";
 import UserProfile from "../views/user_profile/UserProfile.vue";
 import AboutUs from "../views/about/AboutUs.vue";
+import AboutProject from "../views/about/AboutProject.vue";
 export const AUTH_REQUIRED = {
   auth: true
 };
@@ -37,9 +38,9 @@ export default [
     meta: { ...AUTH_REQUIRED }
   },
   {
-    path: "/profile/:id?",
-    name: "profile",
-    component: UserProfile,
+    path: "/aboutproject",
+    name: "AboutProject",
+    component: AboutProject,
     meta: { ...AUTH_REQUIRED }
   },
   {
