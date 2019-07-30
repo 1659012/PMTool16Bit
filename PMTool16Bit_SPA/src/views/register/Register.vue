@@ -112,7 +112,8 @@ export default {
       name: "",
       surname: "",
       emailAddress: "",
-      isPublishProfile: true
+      isPublishProfile: true,
+      roleNames: ["admin"]
     },
     defaultModel: {
       username: "admin",
@@ -120,7 +121,8 @@ export default {
       name: "",
       surname: "",
       emailAddress: "",
-      isPublishProfile: true
+      isPublishProfile: true,
+      roleNames: ["admin"]
     }
   }),
   mounted() {},

@@ -9,7 +9,7 @@ const Menu = [
   {
     title: "Project list",
     group: "projectTool",
-    icon: "widgets",
+    icon: "assignment",
     name: "ProjectList"
   },
   // {
@@ -26,7 +26,7 @@ const Menu = [
     name: "profile",
     title: "Profile",
     group: "userInfo",
-    icon: "donut_small",
+    icon: "account_circle",
     component: "UserProfile"
   },
   // { divider: true },
@@ -114,14 +114,14 @@ const Menu = [
     name: "AboutUs",
     title: "About us",
     group: "projectInfo",
-    icon: "donut_small",
+    icon: "group_work",
     component: "AboutUs"
   },
   {
     name: "AboutProject",
     title: "About tools",
     group: "projectInfo",
-    icon: "donut_small",
+    icon: "settings",
     component: "AboutProject"
   },
   // {
