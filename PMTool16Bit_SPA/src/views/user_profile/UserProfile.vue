@@ -1,7 +1,7 @@
 
 <template>
   <v-container fluid grid-list-lg>
-    <h3 class="headline">Profile</h3>
+    <h3>Profile</h3>
     <v-layout row wrap>
       <v-flex lg4>
         <div>

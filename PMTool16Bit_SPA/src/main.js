@@ -1,6 +1,6 @@
 import Vue from "vue";
 import "./plugins/vuetify";
-import App from "./app.vue";
+import App from "./App.vue";
 import router from "./router/router";
 import { store, APP_ACTIONS, APP_MUTATIONS } from "./store/store";
 import "./registerServiceWorker";

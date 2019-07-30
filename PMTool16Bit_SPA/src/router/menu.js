@@ -117,6 +117,13 @@ const Menu = [
     icon: "donut_small",
     component: "AboutUs"
   },
+  {
+    name: "AboutProject",
+    title: "About tools",
+    group: "projectInfo",
+    icon: "donut_small",
+    component: "AboutProject"
+  },
   // {
   //   title: "About us",
   //   group: "aboutus",
