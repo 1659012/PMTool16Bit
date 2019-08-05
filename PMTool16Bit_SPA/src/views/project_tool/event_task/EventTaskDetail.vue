@@ -86,6 +86,10 @@
             </div>
           </v-flex>
           <v-flex lg12>
+            <h5>Documents</h5>
+            <MultiUploader v-model="editedItem.fileIds" />
+          </v-flex>
+          <v-flex lg12>
             <TodoLoops v-model="editedItem.todos" />
           </v-flex>
         </v-layout>
@@ -119,6 +123,7 @@ import ChangeTaskGroupDialog from "../event_task/ChangeTaskGroupDialog";
 import TodoLoops from "../todo_list/TodoLoops";
 import TaskGroupDropdown from "../task_group/TaskGroupDropdown";
 import EventTaskDropdown from "./EventTaskDropdown";
+import MultiUploader from "../../../components/upload_file/MultiUploader";
 import { PriorityLevels } from "../../../enum/enums";
 export default {
   // title: "",
@@ -128,7 +133,8 @@ export default {
     ChangeTaskGroupDialog,
     TodoLoops,
     TaskGroupDropdown,
-    EventTaskDropdown
+    EventTaskDropdown,
+    MultiUploader
   },
   props: [
     "value",
