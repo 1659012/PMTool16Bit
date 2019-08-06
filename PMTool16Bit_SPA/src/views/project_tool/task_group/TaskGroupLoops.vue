@@ -4,9 +4,17 @@
     <v-layout row wrap v-show="gridView">
       <v-flex lg3 v-for="(taskGroup, taskGroupIndex) in taskGroups" :key="taskGroupIndex">
         <v-hover>
-          <v-card class="rounded-card" slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
+          <v-card
+            class="rounded-card"
+            slot-scope="{ hover }"
+            :class="`elevation-${hover ? 12 : 2}`"
+          >
             <v-toolbar flat px-1>
-              <v-toolbar-title class="subheading" style="cursor: pointer;" @click="openTaskGroupDetail(taskGroup)">{{taskGroup.taskGroupName}}</v-toolbar-title>
+              <v-toolbar-title
+                class="subheading"
+                style="cursor: pointer;"
+                @click="openTaskGroupDetail(taskGroup)"
+              >{{taskGroup.taskGroupName}}</v-toolbar-title>
               <v-spacer></v-spacer>
 
               <v-menu bottom left lazy transition="slide-x-transition">
@@ -27,12 +35,25 @@
                 </v-list>
               </v-menu>
             </v-toolbar>
-            <EventTaskLoops :eventTasks="taskGroup.eventTasks" :projectId="taskGroup.projectId" :loadData="loadData" :isAdmin="isAdmin"/>
+            <EventTaskLoops
+              :eventTasks="taskGroup.eventTasks"
+              :projectId="taskGroup.projectId"
+              :taskGroupId="taskGroup.id"
+              :loadData="loadData"
+              :isAdmin="isAdmin"
+            />
             <v-divider></v-divider>
             <v-card-actions class="py-0">
               <v-tooltip right>
                 <template v-slot:activator="{ on }">
-                  <v-btn fab flat small color="primary" v-on="on" @click="taskGroupId=taskGroup.id;eventTaskDialog=true;">
+                  <v-btn
+                    fab
+                    flat
+                    small
+                    color="primary"
+                    v-on="on"
+                    @click="taskGroupId=taskGroup.id;eventTaskDialog=true;"
+                  >
                     <v-icon dark>add</v-icon>
                   </v-btn>
                 </template>
@@ -61,20 +82,32 @@
           >
             <template v-slot:header>
               <div>
-                <h5 class="subheading" v-html="taskGroup.taskGroupName"></h5>
+                <h5 class="subheading" v-html="taskGroup.taskGroupName"></h5>               
               </div>
             </template>
 
             <v-card>
               <v-card-text class="pa-0">
-                <EventTaskLoops :eventTasks="taskGroup.eventTasks" :projectId="taskGroup.projectId" :loadData="loadData" />
+                <EventTaskLoops
+                  :eventTasks="taskGroup.eventTasks"
+                  :taskGroupId="taskGroup.id"
+                  :projectId="taskGroup.projectId"
+                  :loadData="loadData"
+                />
                 <v-divider></v-divider>
               </v-card-text>
 
               <v-card-actions>
                 <v-tooltip right>
                   <template v-slot:activator="{ on }">
-                    <v-btn fab flat small color="primary" v-on="on" @click="taskGroupId=taskGroup.id;eventTaskDialog=true;">
+                    <v-btn
+                      fab
+                      flat
+                      small
+                      color="primary"
+                      v-on="on"
+                      @click="taskGroupId=taskGroup.id;eventTaskDialog=true;"
+                    >
                       <v-icon dark>add</v-icon>
                     </v-btn>
                   </template>
@@ -106,7 +139,12 @@
     </v-layout>
 
     <v-dialog lazy v-model="eventTaskDialog" max-width="600px" persistent>
-      <EventTaskCreate v-if="eventTaskDialog" lazy :taskGroupId="taskGroupId" @close="eventTaskDialog=false;taskGroupId=null;loadData()" />
+      <EventTaskCreate
+        v-if="eventTaskDialog"
+        lazy
+        :taskGroupId="taskGroupId"
+        @close="eventTaskDialog=false;taskGroupId=null;loadData()"
+      />
     </v-dialog>
     <v-dialog lazy v-model="taskGroupDetailDialog" max-width="600px" persistent>
       <TaskGroupDetail

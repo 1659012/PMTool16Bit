@@ -1,30 +1,58 @@
 
 <template>
-  <div>
+  <div v-if="eventTasks.length>0">
     <v-divider></v-divider>
     <v-list class="py-0">
-      <div v-for="(eventTask, eventTaskIndex) in eventTasks" :key="eventTaskIndex" @click="openEventTaskDetail(eventTask)" class="customeList pt-1">
+      <draggable v-model="eventTaskItems" :group="taskGroupId" @start="drag=true" @end="drag=false">
+        <div
+          v-for="eventTask in eventTaskItems"
+          :key="eventTask.id"
+          @click.native="openEventTaskDetail(eventTask)"
+        >
+          <h5>{{eventTask.taskName}}</h5>
+        </div>
+      </draggable>
+      <code>{{taskGroupId}}</code>
+      <code>{{eventTaskItems}}</code>
+      <!-- <div
+        v-for="(eventTask, eventTaskIndex) in eventTasks"
+        :key="eventTaskIndex"
+        @click="openEventTaskDetail(eventTask)"
+        class="customeList pt-1"
+      >
         <v-list-tile avatar ripple>
           <v-list-tile-content>
-            <v-list-tile-sub-title class="text--primary" style="display: flex;
-              align-items: center;">
+            <v-list-tile-sub-title
+              class="text--primary"
+              style="display: flex;
+              align-items: center;"
+            >
               <v-tooltip left>
                 <template v-slot:activator="{ on }">
-                  <v-icon :color="eventTask.isCompleted? 'teal accent-3': 'grey lighten-2'" v-on="on">check_circle</v-icon>
+                  <v-icon
+                    :color="eventTask.isCompleted? 'teal accent-3': 'grey lighten-2'"
+                    v-on="on"
+                  >check_circle</v-icon>
                 </template>
                 <span>{{eventTask.isCompleted?'Comleted':'Incomplete'}}</span>
               </v-tooltip>
               <span class="ml-1">{{ eventTask.taskName }}</span>
             </v-list-tile-sub-title>
 
-            <v-list-tile-sub-title class="text--primary" style="display: flex;
-              align-items: center;">
+            <v-list-tile-sub-title
+              class="text--primary"
+              style="display: flex;
+              align-items: center;"
+            >
               <v-layout row wrap>
                 <v-flex xs6 style="display: flex;
               align-items: center;">
                   <v-tooltip left>
                     <template v-slot:activator="{ on }">
-                      <v-icon :color="eventTask.dueDate?'light-blue accent-1':'grey lighten-2'" v-on="on">event</v-icon>
+                      <v-icon
+                        :color="eventTask.dueDate?'light-blue accent-1':'grey lighten-2'"
+                        v-on="on"
+                      >event</v-icon>
                     </template>
                     <span>{{eventTask.dueDate? 'Due date': 'Unassign due date'}}</span>
                   </v-tooltip>
@@ -56,7 +84,10 @@
             <div>
               <v-tooltip left>
                 <template v-slot:activator="{ on }">
-                  <v-icon :color="priorityLevels[eventTask.priorityLevel].color" v-on="on">{{priorityLevels[eventTask.priorityLevel].icon}}</v-icon>
+                  <v-icon
+                    :color="priorityLevels[eventTask.priorityLevel].color"
+                    v-on="on"
+                  >{{priorityLevels[eventTask.priorityLevel].icon}}</v-icon>
                 </template>
                 <span>Priority level: {{priorityLevels[eventTask.priorityLevel].text}}</span>
               </v-tooltip>
@@ -72,8 +103,7 @@
         </v-list-tile>
 
         <v-divider v-if="eventTaskIndex + 1 < eventTasks.length" :key="`divider-${eventTaskIndex}`"></v-divider>
-        <!-- <code>{{eventTask.eventTaskMembers}}</code> -->
-      </div>
+      </div>-->
     </v-list>
 
     <v-dialog lazy v-model="eventTaskDialog" max-width="800px" persistent>
@@ -93,20 +123,24 @@
 <script>
 import EventTaskDetail from "./EventTaskDetail";
 import { PriorityLevels } from "../../../enum/enums";
+import draggable from "vuedraggable";
 export default {
-  components: { EventTaskDetail },
-  props: ["eventTasks", "loadData", "projectId", "isAdmin"],
+  components: { EventTaskDetail, draggable },
+  props: ["eventTasks", "loadData", "taskGroupId", "projectId", "isAdmin"],
   data: () => ({
     eventTaskDialog: false,
     editedItem: {},
     render: false,
-    priorityLevels: PriorityLevels
+    priorityLevels: PriorityLevels,
+    eventTaskItems: []
   }),
 
   computed: {},
 
   watch: {},
-  mounted() {},
+  mounted() {
+    this.eventTaskItems = _.cloneDeep(this.eventTasks);
+  },
   methods: {
     openEventTaskDetail(item) {
       this.editedItem = _.cloneDeep(item);
