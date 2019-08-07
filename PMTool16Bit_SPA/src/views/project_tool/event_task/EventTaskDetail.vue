@@ -108,7 +108,7 @@
         :projectId="projectId"
         :loadData="loadData"
         :duplicate="isDuplicated"
-        @close="changeGroupdialog=false;isDuplicated=false;loadData()"
+        @close="changeGroupdialog=false;isDuplicated=false;loadData();"
         @cancel="changeGroupdialog=false;"
       />
     </v-dialog>
