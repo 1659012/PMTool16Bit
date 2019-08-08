@@ -29,6 +29,8 @@ namespace PMTool16Bit.Services
         public int TaskGroupId { get; set; }
 
         public int? TaskDependencyId { get; set; }
+        
+        public int TaskOrder { get; set; }
 
         #region Reference
 

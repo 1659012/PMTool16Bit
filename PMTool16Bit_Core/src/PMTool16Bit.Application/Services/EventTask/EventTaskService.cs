@@ -149,59 +149,15 @@ namespace PMTool16Bit.Services
             return base.Get(input);
         }
 
-        //public List<ProjectActivityDto> GetAllRecentActivities(int maxResultCount = 5)
-        //{
-        //    var projectIdList = projectService.GetProjectIdListByCurrentUser();
-        //    if (projectIdList.Count == 0)
-        //        return new List<ProjectActivityDto>();
-
-        //    return Repository.GetAll()
-        //            .Include(p => p.TaskGroup)
-        //            .ThenInclude(p=> p.Project)
-        //            .Where(p => projectIdList.Any(q => q == p.TaskGroup.ProjectId))
-        //            .OrderByDescending(p => p.LastModificationTime)
-        //            .Take(maxResultCount)
-        //            .Select(p => new ProjectActivityDto
-        //            {
-        //                Id = p.Id,
-        //                ProjectId = p.TaskGroup.ProjectId,
-        //                Description = GetActivityDescription p.Description,
-        //                CreationTime = p.CreationTime,                       
-        //            })
-        //            .ToList();
-        //}
-
-        //private bool CompareDateApproximately(DateTime dateFirst, DateTime dateSecond)
-        //{
-        //    DateTime date1 = new DateTime
-        //                        (dateFirst.Year,
-        //                        dateFirst.Month,
-        //                        dateFirst.Day, 
-        //                        dateFirst.Hour, 
-        //                        dateFirst.Minute, 
-        //                        dateFirst.Second, 
-        //                        dateFirst.Kind);
-
-        //    DateTime date2 = new DateTime
-        //                        (dateSecond.Year,
-        //                        dateSecond.Month,
-        //                        dateSecond.Day,
-        //                        dateSecond.Hour,
-        //                        dateSecond.Minute,
-        //                        dateSecond.Second,
-        //                        dateSecond.Kind);
-        //    return date1 == date2; 
-        //}
-
-        //private string GetActivityDescription
-        //    (long userId,
-        //    DateTime CreationTime,
-        //    DateTime? LastModificationTime,
-        //    string TaskName,
-        //    string ProjectName)
-        //{
-           
-        //    return "";
-        //}
+        public async Task UpdateTaskOrder(List<EventTaskOrderDto> eventTaskOrders)
+        {
+            foreach (var item in eventTaskOrders)
+            {
+                var eventTask = Repository.FirstOrDefault(item.Id);
+                eventTask.TaskOrder = item.TaskOrder;
+                var result = await Repository.UpdateAsync(eventTask);
+                await CurrentUnitOfWork.SaveChangesAsync();
+            }
+        }
     }
 }

@@ -32,6 +32,9 @@ namespace PMTool16Bit.Models
 
         public int? TaskDependencyId { get; set; }
 
+        [Range(0, 20)]
+        public int TaskOrder { get; set; }
+
         #region Reference
 
         [ForeignKey(nameof(TaskGroupId))]

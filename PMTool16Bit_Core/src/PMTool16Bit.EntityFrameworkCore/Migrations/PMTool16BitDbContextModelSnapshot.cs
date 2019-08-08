@@ -1113,6 +1113,8 @@ namespace PMTool16Bit.Migrations
                     b.Property<string>("TaskName")
                         .HasMaxLength(256);
 
+                    b.Property<int>("TaskOrder");
+
                     b.HasKey("Id");
 
                     b.HasIndex("TaskGroupId");
