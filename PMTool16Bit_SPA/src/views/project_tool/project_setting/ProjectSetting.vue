@@ -3,7 +3,7 @@
   <div v-if="reset">
     <v-layout row wrap>
       <v-flex lg6>
-        <h3>Project info</h3>
+        <h3 class="my-3">Project info</h3>
         <v-text-field
           v-model="editedItem.projectName"
           name="Project name"

@@ -37,6 +37,7 @@ export default {
     "returnId",
     "returnObject",
     "taskGroupId",
+    "projectId",
     "newLabel"
   ],
   mounted() {
@@ -50,7 +51,8 @@ export default {
       this.axios
         .get("EventTaskService/GetEventTaskDropdown", {
           params: {
-            taskGroupId: me.taskGroupId
+            taskGroupId : me.taskGroupId,
+            projectId :me.projectId
           }
         })
         .then(response => {

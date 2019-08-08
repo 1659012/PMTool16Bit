@@ -33,31 +33,31 @@ export default {
         fullName: "Hoan",
         id: 1659012,
         role: "Team leader",
-        avatarUrl: "https://vignette.wikia.nocookie.net/leagueoflegends/images/e/eb/Darius_Poro_Icon.png/revision/latest/scale-to-width-down/480?cb=20150216223701"
+        avatarUrl: "/static/members/lol.jpg"
       },
        {
         fullName: "Thịnh",
         id: 1659029,
         role: "Dev",
-        avatarUrl: "https://vignette.wikia.nocookie.net/leagueoflegends/images/1/10/ProfileIcon0748_Icon_of_the_Poro_King.png/revision/latest?cb=20180202151337&path-prefix=it"
+        avatarUrl: "/static/members/lol.jpg"
       },
        {
         fullName: "Sơn",
         id: 1659027,
         role: "Tester",
-        avatarUrl: "https://media.lolusercontent.com/api/embedly/1/image/resize?url=http%3A%2F%2Fvignette2.wikia.nocookie.net%2Fleagueoflegends%2Fimages%2Fc%2Fc8%2FSona_Poro_Icon.png%2Frevision%2Flatest%3Fcb%3D20150214174347&key=f0abbd34f14549f3a15cd94dd9970851&width=425"
+        avatarUrl: "/static/members/lol.jpg"
       },
        {
         fullName: "Trí",
         id: 1659031,
         role: "Dev",
-        avatarUrl: "https://media.lolusercontent.com/api/embedly/1/image/resize?url=http%3A%2F%2Fvignette2.wikia.nocookie.net%2Fleagueoflegends%2Fimages%2F4%2F46%2FYasuo_Poro_Icon.png%2Frevision%2Flatest%3Fcb%3D20150214174528&key=f0abbd34f14549f3a15cd94dd9970851&width=425"
+        avatarUrl: "/static/members/lol.jpg"
       },
        {
         fullName: "Ý",
         id: 1659034,
         role: "Dev",
-        avatarUrl: "https://media.lolusercontent.com/api/embedly/1/image/resize?url=http%3A%2F%2Fvignette3.wikia.nocookie.net%2Fleagueoflegends%2Fimages%2F9%2F9b%2FShaco_Poro_Icon.png%2Frevision%2Flatest%3Fcb%3D20150220161436&key=f0abbd34f14549f3a15cd94dd9970851&width=425"
+        avatarUrl: "/static/members/lol.jpg"
       }
     ]
   }),

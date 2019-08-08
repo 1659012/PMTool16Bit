@@ -3,11 +3,9 @@
   <div v-if="eventTasks.length>0">
     <v-divider></v-divider>
     <v-list class="py-0">
-      <draggable v-model="eventTaskItems" :group="taskGroupId" @start="drag=true" @end="drag=false">
-
-        <div v-for="(eventTask, eventTaskIndex) in eventTaskItems" :key="eventTaskIndex" class="customeList pt-1">
-
-          <v-list-tile avatar ripple>
+      <draggable v-model="eventTaskItems" :group="taskGroupId" @start="drag=true" @end="drag=false; updateTaskOrder()">
+        <div v-for="(eventTask, eventTaskIndex) in eventTaskItems" :key="eventTaskIndex" class="customeList">
+          <v-list-tile avatar ripple @click="openEventTaskDetail(eventTask)">
             <v-list-tile-content>
               <v-list-tile-sub-title class="text--primary" style="display: flex;
               align-items: center;">
@@ -17,7 +15,7 @@
                   </template>
                   <span>{{eventTask.isCompleted?'Comleted':'Incomplete'}}</span>
                 </v-tooltip>
-                <span class="ml-1" @click="openEventTaskDetail(eventTask)">{{ eventTask.taskName }}</span>
+                <span class="ml-1">{{ eventTask.taskName }}</span>
               </v-list-tile-sub-title>
 
               <v-list-tile-sub-title class="text--primary" style="display: flex;
@@ -111,12 +109,15 @@ export default {
   computed: {},
 
   watch: {
-    eventTasks(val){
-       this.eventTaskItems = _.cloneDeep(val);
+    eventTasks(val) {
+      // this.eventTaskItems = _.cloneDeep(val);
+      this.eventTaskItems = _.orderBy(this.eventTasks, "taskOrder", "asc");
     }
   },
   mounted() {
-    this.eventTaskItems = _.cloneDeep(this.eventTasks);
+    // this.eventTaskItems = _.cloneDeep(this.eventTasks);
+    // this.eventTaskItems = _.orderBy(this.eventTaskItems, "taskOrder", "asc");
+    this.eventTaskItems = _.orderBy(this.eventTasks, "taskOrder", "asc");
   },
   methods: {
     openEventTaskDetail(item) {
@@ -142,6 +143,39 @@ export default {
         return names;
       }
       return " ";
+    },
+    updateTaskOrder() {
+      var items = this.eventTaskItems.map(function(item, index) {
+        return { id: item.id, taskOrder: index };
+      });
+      // var items = this.eventTaskItems
+      //   .map(function(item, index) {
+      //     return { id: item.id, taskOrder: index };
+      //   })
+      //   .filter(
+      //     item =>
+      //       item.taskOrder !=
+      //       this.eventTaskItems.find(p => p.id == item.id).taskOrder
+      //   );
+      // console.log(items);
+      let me = this;
+      this.axios
+        .put("EventTaskService/UpdateTaskOrder", items)
+        .then(response => {
+          if (response.data.success) {
+            me.$notify({
+              group: "message",
+              duration: 1500,
+              type: "success",
+              title: "Note",
+              text: "Task order changed"
+            });
+            me.loadData();
+          }
+        })
+        .catch(e => {
+          this.errors.push(e);
+        });
     },
     create() {
       this.$root.createItem(this.editedItem, "EventTaskService/Create", this);

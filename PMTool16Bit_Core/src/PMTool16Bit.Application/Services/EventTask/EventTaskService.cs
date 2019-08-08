@@ -52,7 +52,7 @@ namespace PMTool16Bit.Services
 
         public override Task<EventTaskDto> Create(EventTaskCreateDto input)
         {
-            var project = GetProject(input.TaskGroupId);
+            var project = GetProjectByTaskGroupId(input.TaskGroupId);
             var userName = userAppService.GetCurrentUserName();
             var description = userName + " created task " + input.TaskName + " in project " + project.ProjectName;
             var projectActivity = new ProjectActivity
@@ -70,7 +70,7 @@ namespace PMTool16Bit.Services
             eventTaskMemberRepository.Delete(p => p.EventTaskId == input.Id);
             todoRepository.Delete(p => p.EventTaskId == input.Id);
 
-            var project = GetProject(input.TaskGroupId);
+            var project = GetProjectByTaskGroupId(input.TaskGroupId);
             var userName = userAppService.GetCurrentUserName();
             var description = userName + " updated task " + input.TaskName + " in project " + project.ProjectName;
             var projectActivity = new ProjectActivity
@@ -84,11 +84,12 @@ namespace PMTool16Bit.Services
             return base.Update(input);
         }        
 
-        public List<EventTaskDropdownDto> GetEventTaskDropdown(int? taskGroupId)
+        public List<EventTaskDropdownDto> GetEventTaskDropdown(int? taskGroupId, int? projectId)
         {
             return Repository
-                   .GetAllIncluding(p => p.TaskGroup)
+                    .GetAllIncluding(p => p.TaskGroup)                    
                     .WhereIf(taskGroupId != null, p => p.TaskGroupId == taskGroupId)
+                    .WhereIf(projectId != null, p => p.TaskGroup.ProjectId == projectId)
                     .Select(p => new EventTaskDropdownDto
                     {
                         Id = p.Id,
@@ -99,7 +100,7 @@ namespace PMTool16Bit.Services
                     .ToList();
         }
 
-        private Project GetProject(int taskGroupId)
+        private Project GetProjectByTaskGroupId(int taskGroupId)
         {
             var taskGroup = taskGroupRepository.FirstOrDefault(taskGroupId);
             var project = projectRepository.FirstOrDefault(taskGroup.ProjectId);
@@ -157,6 +158,25 @@ namespace PMTool16Bit.Services
                 eventTask.TaskOrder = item.TaskOrder;
                 var result = await Repository.UpdateAsync(eventTask);
                 await CurrentUnitOfWork.SaveChangesAsync();
+            }
+
+            if (eventTaskOrders.Count > 0)
+            {
+                var taskGroupId = Repository
+                                    .FirstOrDefault(eventTaskOrders[0].Id)
+                                    .TaskGroupId;
+                var taskGroup = taskGroupRepository.FirstOrDefault(taskGroupId);
+                var project = projectRepository.FirstOrDefault(taskGroup.ProjectId);
+                var userName = userAppService.GetCurrentUserName();
+                var description = userName + " updated task order of group: " + taskGroup.TaskGroupName 
+                                    + " in project " + project.ProjectName;
+                var projectActivity = new ProjectActivity
+                {
+                    ProjectId = project.Id,
+                    Description = description
+                };
+
+                await projectActivityRepository.InsertAsync(projectActivity);
             }
         }
     }

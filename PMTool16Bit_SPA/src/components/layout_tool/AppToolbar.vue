@@ -16,11 +16,11 @@
       <v-icon>fullscreen</v-icon>
     </v-btn>
 
-    <v-btn flat icon color="error" title="Logout" @click="logout">
+    <v-btn flat icon color="red lighten-3" title="Logout" @click="logout">
       <v-icon>exit_to_app</v-icon>
     </v-btn>
     
-    <v-menu offset-y origin="center center" class="elelvation-1" :nudge-bottom="14" transition="scale-transition">
+    <!-- <v-menu offset-y origin="center center" class="elelvation-1" :nudge-bottom="14" transition="scale-transition">
       <v-btn icon flat slot="activator">
         <v-badge color="red" overlap>
           <span slot="badge">3</span>
@@ -28,7 +28,7 @@
         </v-badge>
       </v-btn>
       <notification-list></notification-list>
-    </v-menu>
+    </v-menu> -->
     <v-menu offset-y origin="center center" :nudge-bottom="10" transition="scale-transition">
       <v-btn icon large flat slot="activator">
         <v-avatar size="30px">
@@ -39,13 +39,7 @@
       <v-list class="pa-0">
         <v-list-tile
           v-for="(item,index) in items"
-          :to="!item.href ? { name: item.name } : null"
-          :href="item.href"
-          @click="item.click"
-          ripple="ripple"
-          :disabled="item.disabled"
-          :target="item.target"
-          rel="noopener"
+          :to="item.href"          
           :key="index"
         >
           <v-list-tile-action v-if="item.icon">
@@ -60,7 +54,6 @@
   </v-toolbar>
 </template>
 <script>
-// import NotificationList from "@/components/widgets/list/NotificationList";
 import NotificationList from "../../components/widgets/list/NotificationList";
 import Util from "@/util";
 import {APP_MUTATIONS } from "../../store/store";
@@ -73,28 +66,25 @@ export default {
     items: [
       {
         icon: "account_circle",
-        href: "#",
-        title: "Profile",
-        click: e => {
-          console.log(e);
-        }
+        href: "/profile",
+        title: "Profile"     
       },
       {
         icon: "settings",
         href: "#",
         title: "Settings",
-        click: e => {
-          console.log(e);
-        }
+        // click: e => {
+        //   console.log(e);
+        // }
       },
-      {
-        icon: "fullscreen_exit",
-        href: "#",
-        title: "Logout",
-        click: () => {
-          window.getApp.$emit("APP_LOGOUT");
-        }
-      }
+      // {
+      //   icon: "fullscreen_exit",
+      //   href: "#",
+      //   title: "Logout",
+      //   click: () => {
+      //     window.getApp.$emit("APP_LOGOUT");
+      //   }
+      // }
     ]
   }),
   mounted(){

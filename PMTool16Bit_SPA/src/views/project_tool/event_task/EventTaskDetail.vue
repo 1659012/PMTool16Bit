@@ -76,7 +76,8 @@
               :defaultId="editedItem.taskDependencyId"
               :returnId.sync="editedItem.taskDependencyId"
               :returnObject.sync="dependencyEventTask"
-              newLabel="Task defendency"
+              :projectId="projectId"
+              newLabel="Task dependency"
             />
           </v-flex>
           <v-flex lg6>
@@ -108,7 +109,7 @@
         :projectId="projectId"
         :loadData="loadData"
         :duplicate="isDuplicated"
-        @close="changeGroupdialog=false;isDuplicated=false;loadData();"
+        @close="changeGroupdialog=false;isDuplicated=false;close();"
         @cancel="changeGroupdialog=false;"
       />
     </v-dialog>
