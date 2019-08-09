@@ -21,7 +21,7 @@
               <v-list-tile-sub-title class="text--primary" style="display: flex;
               align-items: center;">
                 <v-layout row wrap>
-                  <v-flex xs6>
+                  <v-flex xs6 style="display: flex; align-items: center;">
                     <v-tooltip left>
                       <template v-slot:activator="{ on }">
                         <v-icon :color="eventTask.dueDate?'light-blue accent-1':'grey lighten-2'" v-on="on">event</v-icon>
@@ -31,7 +31,7 @@
                     <span class="caption ml-1">{{eventTask.dueDate?eventTask.dueDate:""|date}}</span>
                   </v-flex>
 
-                  <v-flex xs6>
+                  <v-flex xs6 class="text-xs-right">
                     <v-tooltip left v-if="eventTask.eventTaskMembers.length==0">
                       <template v-slot:activator="{ on }">
                         <v-icon color="grey lighten-2" v-on="on">assignment_ind</v-icon>
@@ -40,7 +40,7 @@
                     </v-tooltip>
 
                     <span
-                      class="caption"
+                      class="caption pt-2"
                       :title="eventTask.eventTaskMembers.length > 1?getMemberNames(eventTask.eventTaskMembers):''"
                     >{{getMemberNames(eventTask.eventTaskMembers)|truncate(20)}}</span>
                   </v-flex>
