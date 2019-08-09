@@ -21,20 +21,17 @@
               <v-list-tile-sub-title class="text--primary" style="display: flex;
               align-items: center;">
                 <v-layout row wrap>
-                  <v-flex xs6 style="display: flex;
-              align-items: center;">
+                  <v-flex xs6>
                     <v-tooltip left>
                       <template v-slot:activator="{ on }">
                         <v-icon :color="eventTask.dueDate?'light-blue accent-1':'grey lighten-2'" v-on="on">event</v-icon>
                       </template>
                       <span>{{eventTask.dueDate? 'Due date': 'Unassign due date'}}</span>
                     </v-tooltip>
-
-                    <span class>{{eventTask.dueDate?eventTask.dueDate:""|date}}</span>
+                    <span class="caption ml-1">{{eventTask.dueDate?eventTask.dueDate:""|date}}</span>
                   </v-flex>
 
-                  <v-flex xs6 style="display: flex;
-              align-items: center;">
+                  <v-flex xs6>
                     <v-tooltip left v-if="eventTask.eventTaskMembers.length==0">
                       <template v-slot:activator="{ on }">
                         <v-icon color="grey lighten-2" v-on="on">assignment_ind</v-icon>
@@ -43,16 +40,16 @@
                     </v-tooltip>
 
                     <span
-                      class="ml-2"
-                      :title="eventTask.eventTaskMembers.length > 0?getMemberNames(eventTask.eventTaskMembers):''"
-                    >{{getMemberNames(eventTask.eventTaskMembers)|truncate(15)}}</span>
+                      class="caption"
+                      :title="eventTask.eventTaskMembers.length > 1?getMemberNames(eventTask.eventTaskMembers):''"
+                    >{{getMemberNames(eventTask.eventTaskMembers)|truncate(20)}}</span>
                   </v-flex>
                 </v-layout>
               </v-list-tile-sub-title>
             </v-list-tile-content>
 
             <v-list-tile-action>
-              <v-list-tile-action-text>{{momentFromNow(eventTask.lastModificationTime)}}</v-list-tile-action-text>
+              <v-list-tile-action-text class="caption">{{momentFromNow(eventTask.lastModificationTime)}}</v-list-tile-action-text>
 
               <div>
                 <v-tooltip left>

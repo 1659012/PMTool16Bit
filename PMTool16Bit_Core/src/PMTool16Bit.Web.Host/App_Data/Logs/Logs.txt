@@ -5283,3 +5283,695 @@ INFO  2019-08-09 00:44:30,073 [25   ] ore.Mvc.Internal.ControllerActionInvoker -
 INFO  2019-08-09 00:44:30,079 [5    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
 INFO  2019-08-09 00:44:30,079 [5    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.EventTaskService.GetEventTaskCalendar (PMTool16Bit.Application) in 42.2301ms
 INFO  2019-08-09 00:44:30,079 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 49.1994ms 200 application/json; charset=utf-8
+DEBUG 2019-08-09 09:38:41,004 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-08-09 09:38:41,220 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2019-08-09 09:38:41,237 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: PMTool16Bit.Web.Host.Startup.PMTool16BitWebHostModule, PMTool16Bit.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-08-09 09:38:41,239 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: PMTool16Bit.PMTool16BitWebCoreModule, PMTool16Bit.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-08-09 09:38:41,240 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: PMTool16Bit.PMTool16BitApplicationModule, PMTool16Bit.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-08-09 09:38:41,240 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: PMTool16Bit.PMTool16BitCoreModule, PMTool16Bit.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-08-09 09:38:41,240 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-08-09 09:38:41,240 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-08-09 09:38:41,241 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-08-09 09:38:41,241 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-08-09 09:38:41,246 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: PMTool16Bit.EntityFrameworkCore.PMTool16BitEntityFrameworkModule, PMTool16Bit.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-08-09 09:38:41,246 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-08-09 09:38:41,246 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-08-09 09:38:41,246 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-08-09 09:38:41,247 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-08-09 09:38:41,247 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-08-09 09:38:41,247 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-08-09 09:38:41,250 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2019-08-09 09:38:41,305 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-08-09 09:38:41,306 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-08-09 09:38:41,306 [1    ] o.Configuration.LanguageManagementConfig - Converted PMTool16Bit (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-08-09 09:38:41,306 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-08-09 09:38:41,905 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: PMTool16Bit.EntityFrameworkCore.PMTool16BitDbContext, PMTool16Bit.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-08-09 09:38:42,426 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-08-09 09:38:42,477 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-08-09 09:38:42,488 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-08-09 09:38:42,494 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: PMTool16Bit
+DEBUG 2019-08-09 09:38:42,499 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-08-09 09:38:42,542 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-08-09 09:38:42,591 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 25 classes define auto mapping attributes
+DEBUG 2019-08-09 09:38:42,591 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-08-09 09:38:42,598 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Users.CreateUserDto
+DEBUG 2019-08-09 09:38:42,599 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Users.UserDto
+DEBUG 2019-08-09 09:38:42,600 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Users.UserSimpleDto
+DEBUG 2019-08-09 09:38:42,600 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2019-08-09 09:38:42,600 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Sessions.Dto.UserLoginInfoDto
+DEBUG 2019-08-09 09:38:42,600 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Roles.Dto.CreateRoleDto
+DEBUG 2019-08-09 09:38:42,600 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Roles.Dto.PermissionDto
+DEBUG 2019-08-09 09:38:42,600 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Roles.Dto.RoleDto
+DEBUG 2019-08-09 09:38:42,601 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2019-08-09 09:38:42,601 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.MultiTenancy.Dto.TenantDto
+DEBUG 2019-08-09 09:38:42,601 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.CommentDto
+DEBUG 2019-08-09 09:38:42,601 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.EventTaskDropdownDto
+DEBUG 2019-08-09 09:38:42,601 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.EventTaskDto
+DEBUG 2019-08-09 09:38:42,601 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.EventTaskMemberDto
+DEBUG 2019-08-09 09:38:42,601 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.EventTaskOrderDto
+DEBUG 2019-08-09 09:38:42,601 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.EventTaskSimpleDto
+DEBUG 2019-08-09 09:38:42,602 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.FileEntityCreateDto
+DEBUG 2019-08-09 09:38:42,602 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.FileEntityDto
+DEBUG 2019-08-09 09:38:42,602 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.ProjectActivityDto
+DEBUG 2019-08-09 09:38:42,602 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.ProjectMemberDto
+DEBUG 2019-08-09 09:38:42,602 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.ProjectCreateDto
+DEBUG 2019-08-09 09:38:42,602 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.ProjectDto
+DEBUG 2019-08-09 09:38:42,602 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.TaskGroupDto
+DEBUG 2019-08-09 09:38:42,603 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - PMTool16Bit.Services.TodoDto
+INFO  2019-08-09 09:38:47,383 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/  
+INFO  2019-08-09 09:38:48,750 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action PMTool16Bit.Web.Host.Controllers.HomeController.Index (PMTool16Bit.Web.Host)
+INFO  2019-08-09 09:38:49,217 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Web.Host.Controllers.HomeController.Index (PMTool16Bit.Web.Host) - Validation state: Valid
+INFO  2019-08-09 09:38:49,228 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Web.Host.Controllers.HomeController.Index (PMTool16Bit.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 5.6116ms.
+INFO  2019-08-09 09:38:49,483 [6    ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-08-09 09:38:49,495 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Web.Host.Controllers.HomeController.Index (PMTool16Bit.Web.Host) in 741.2519ms
+INFO  2019-08-09 09:38:49,560 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2180.8154ms 302 
+INFO  2019-08-09 09:38:49,571 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/index.html  
+INFO  2019-08-09 09:38:49,623 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 51.1219ms 200 text/html
+INFO  2019-08-09 09:38:49,647 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui.css  
+INFO  2019-08-09 09:38:49,669 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui.css was not modified
+INFO  2019-08-09 09:38:49,672 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 25.4305ms 304 text/css
+INFO  2019-08-09 09:38:49,810 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-bundle.js  
+INFO  2019-08-09 09:38:49,811 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui-bundle.js was not modified
+INFO  2019-08-09 09:38:49,811 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.2258ms 304 application/javascript
+INFO  2019-08-09 09:38:49,835 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/swagger-ui-standalone-preset.js  
+INFO  2019-08-09 09:38:49,838 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui-standalone-preset.js was not modified
+INFO  2019-08-09 09:38:49,838 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.945ms 304 application/javascript
+INFO  2019-08-09 09:38:51,022 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/swagger/v1/swagger.json  
+INFO  2019-08-09 09:38:51,430 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 408.5038ms 200 application/json;charset=utf-8
+INFO  2019-08-09 09:38:55,210 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:21021/api/TokenAuth/Authenticate application/json 50
+WARN  2019-08-09 09:38:55,216 [7    ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:38:55,217 [7    ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:38:55,263 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Authenticate", controller = "TokenAuth", area = ""}. Executing action PMTool16Bit.Controllers.TokenAuthController.Authenticate (PMTool16Bit.Web.Core)
+WARN  2019-08-09 09:38:55,263 [7    ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:38:55,264 [7    ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:38:55,989 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Controllers.TokenAuthController.Authenticate (PMTool16Bit.Web.Core) with arguments (PMTool16Bit.Models.TokenAuth.AuthenticateModel) - Validation state: Valid
+INFO  2019-08-09 09:38:56,695 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Controllers.TokenAuthController.Authenticate (PMTool16Bit.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 705.7222ms.
+INFO  2019-08-09 09:38:56,867 [7    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 09:38:56,888 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Controllers.TokenAuthController.Authenticate (PMTool16Bit.Web.Core) in 1624.8429ms
+INFO  2019-08-09 09:38:56,890 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1679.458ms 200 application/json; charset=utf-8
+INFO  2019-08-09 09:46:47,704 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/images/636992280188287395_cat.jpg  
+INFO  2019-08-09 09:46:47,713 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/EventTaskService/GetEventTaskCalendar  
+WARN  2019-08-09 09:46:47,713 [33   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:46:47,713 [33   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:46:47,716 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.4664ms 204 
+INFO  2019-08-09 09:46:47,716 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectActivityService/GetAllRecentActivities?maxResultCount=5  
+WARN  2019-08-09 09:46:47,717 [33   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:46:47,717 [33   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:46:47,717 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.6456ms 204 
+INFO  2019-08-09 09:46:47,731 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/EventTaskService/GetEventTaskCalendar  
+WARN  2019-08-09 09:46:47,731 [33   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:46:47,731 [33   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:46:47,753 [26   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/images/636992280188287395_cat.jpg'. Physical path: 'D:\PMTool16Bit\PMTool16Bit_Core\src\PMTool16Bit.Web.Host\wwwroot\images\636992280188287395_cat.jpg'
+INFO  2019-08-09 09:46:47,753 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 48.5822ms 200 image/jpeg
+INFO  2019-08-09 09:46:47,762 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectActivityService/GetAllRecentActivities?maxResultCount=5  
+WARN  2019-08-09 09:46:47,762 [26   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:46:47,762 [26   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:46:47,793 [26   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 09:46:47,793 [33   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 09:46:47,855 [37   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetEventTaskCalendar", controller = "EventTaskService"}. Executing action PMTool16Bit.Services.EventTaskService.GetEventTaskCalendar (PMTool16Bit.Application)
+WARN  2019-08-09 09:46:47,855 [37   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:46:47,855 [37   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:46:47,859 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAllRecentActivities", controller = "ProjectActivityService"}. Executing action PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application)
+WARN  2019-08-09 09:46:47,859 [26   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:46:47,859 [26   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:46:48,645 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application) with arguments (5) - Validation state: Valid
+INFO  2019-08-09 09:46:48,722 [37   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.EventTaskService.GetEventTaskCalendar (PMTool16Bit.Application) - Validation state: Valid
+INFO  2019-08-09 09:46:49,046 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 400.9622ms.
+INFO  2019-08-09 09:46:49,062 [36   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 09:46:49,064 [36   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application) in 1204.1858ms
+INFO  2019-08-09 09:46:49,064 [36   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1302.0243ms 200 application/json; charset=utf-8
+INFO  2019-08-09 09:46:49,064 [37   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.EventTaskService.GetEventTaskCalendar (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 342.1919ms.
+INFO  2019-08-09 09:46:49,075 [33   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 09:46:49,077 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.EventTaskService.GetEventTaskCalendar (PMTool16Bit.Application) in 1221.5998ms
+INFO  2019-08-09 09:46:49,077 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1345.7611ms 200 application/json; charset=utf-8
+INFO  2019-08-09 09:47:38,521 [34   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+INFO  2019-08-09 09:47:38,521 [36   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/Get?id=2  
+WARN  2019-08-09 09:47:38,522 [34   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+WARN  2019-08-09 09:47:38,522 [36   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:47:38,522 [34   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:47:38,522 [36   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:47:38,522 [34   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.337ms 204 
+INFO  2019-08-09 09:47:38,522 [36   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3152ms 204 
+INFO  2019-08-09 09:47:38,529 [34   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+WARN  2019-08-09 09:47:38,529 [34   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:47:38,529 [34   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:47:38,530 [34   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 09:47:38,531 [36   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/Get?id=2  
+WARN  2019-08-09 09:47:38,531 [36   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:47:38,531 [36   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:47:38,532 [36   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 09:47:38,533 [34   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetGanttChartData", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application)
+WARN  2019-08-09 09:47:38,533 [34   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:47:38,533 [34   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:47:38,537 [34   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) with arguments (2) - Validation state: Valid
+INFO  2019-08-09 09:47:38,554 [36   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "Get", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application)
+WARN  2019-08-09 09:47:38,554 [36   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:47:38,554 [36   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:47:38,578 [36   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) with arguments (Abp.Application.Services.Dto.EntityDto`1[System.Int32]) - Validation state: Valid
+INFO  2019-08-09 09:47:38,888 [34   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 350.2441ms.
+INFO  2019-08-09 09:47:38,918 [34   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 09:47:38,922 [34   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) in 388.327ms
+INFO  2019-08-09 09:47:38,922 [34   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 392.6541ms 200 application/json; charset=utf-8
+INFO  2019-08-09 09:47:39,078 [34   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 499.9868ms.
+INFO  2019-08-09 09:47:39,090 [41   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 09:47:39,103 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) in 549.1775ms
+INFO  2019-08-09 09:47:39,104 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 572.3302ms 200 application/json; charset=utf-8
+INFO  2019-08-09 09:47:39,298 [34   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+WARN  2019-08-09 09:47:39,298 [34   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:47:39,299 [34   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:47:39,299 [34   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 09:47:39,303 [34   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetGanttChartData", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application)
+WARN  2019-08-09 09:47:39,303 [34   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:47:39,303 [34   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:47:39,305 [34   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) with arguments (2) - Validation state: Valid
+INFO  2019-08-09 09:47:39,308 [34   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2.6643ms.
+INFO  2019-08-09 09:47:39,328 [34   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 09:47:39,328 [34   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) in 25.6624ms
+INFO  2019-08-09 09:47:39,329 [34   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 30.2654ms 200 application/json; charset=utf-8
+INFO  2019-08-09 09:48:40,977 [40   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/EventTaskService/GetEventTaskCalendar  
+INFO  2019-08-09 09:48:40,977 [32   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectActivityService/GetAllRecentActivities?maxResultCount=5  
+WARN  2019-08-09 09:48:40,977 [40   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:48:40,977 [40   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+WARN  2019-08-09 09:48:40,977 [32   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:48:40,977 [32   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:48:40,977 [40   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1825ms 204 
+INFO  2019-08-09 09:48:40,977 [32   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2883ms 204 
+INFO  2019-08-09 09:48:40,983 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/EventTaskService/GetEventTaskCalendar  
+WARN  2019-08-09 09:48:40,983 [49   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:48:40,983 [49   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:48:40,983 [49   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 09:48:40,987 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetEventTaskCalendar", controller = "EventTaskService"}. Executing action PMTool16Bit.Services.EventTaskService.GetEventTaskCalendar (PMTool16Bit.Application)
+WARN  2019-08-09 09:48:40,987 [49   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:48:40,987 [49   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:48:40,989 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectActivityService/GetAllRecentActivities?maxResultCount=5  
+WARN  2019-08-09 09:48:40,989 [39   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:48:40,989 [39   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:48:40,991 [39   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 09:48:40,992 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.EventTaskService.GetEventTaskCalendar (PMTool16Bit.Application) - Validation state: Valid
+INFO  2019-08-09 09:48:40,994 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAllRecentActivities", controller = "ProjectActivityService"}. Executing action PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application)
+WARN  2019-08-09 09:48:40,994 [39   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:48:40,994 [39   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:48:40,997 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application) with arguments (5) - Validation state: Valid
+INFO  2019-08-09 09:48:41,054 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 56.39ms.
+INFO  2019-08-09 09:48:41,059 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.EventTaskService.GetEventTaskCalendar (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 67.2882ms.
+INFO  2019-08-09 09:48:41,061 [39   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 09:48:41,061 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application) in 67.1294ms
+INFO  2019-08-09 09:48:41,061 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 72.0101ms 200 application/json; charset=utf-8
+INFO  2019-08-09 09:48:41,065 [49   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 09:48:41,065 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.EventTaskService.GetEventTaskCalendar (PMTool16Bit.Application) in 77.9971ms
+INFO  2019-08-09 09:48:41,065 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 82.4794ms 200 application/json; charset=utf-8
+INFO  2019-08-09 09:48:41,703 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+INFO  2019-08-09 09:48:41,703 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/Get?id=2  
+WARN  2019-08-09 09:48:41,703 [39   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+WARN  2019-08-09 09:48:41,703 [49   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:48:41,703 [39   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:48:41,703 [49   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:48:41,704 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2007ms 204 
+INFO  2019-08-09 09:48:41,704 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1459ms 204 
+INFO  2019-08-09 09:48:41,710 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+WARN  2019-08-09 09:48:41,710 [39   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:48:41,710 [39   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:48:41,710 [39   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 09:48:41,714 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/Get?id=2  
+WARN  2019-08-09 09:48:41,714 [50   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:48:41,714 [50   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:48:41,714 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetGanttChartData", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application)
+WARN  2019-08-09 09:48:41,714 [39   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:48:41,714 [39   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:48:41,715 [50   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 09:48:41,716 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) with arguments (2) - Validation state: Valid
+INFO  2019-08-09 09:48:41,718 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "Get", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application)
+WARN  2019-08-09 09:48:41,718 [50   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:48:41,718 [50   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:48:41,723 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) with arguments (Abp.Application.Services.Dto.EntityDto`1[System.Int32]) - Validation state: Valid
+INFO  2019-08-09 09:48:41,784 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 67.3254ms.
+INFO  2019-08-09 09:48:41,807 [50   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 09:48:41,807 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) in 92.7062ms
+INFO  2019-08-09 09:48:41,807 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 97.2168ms 200 application/json; charset=utf-8
+INFO  2019-08-09 09:48:41,829 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 105.5949ms.
+INFO  2019-08-09 09:48:41,874 [50   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 09:48:41,874 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) in 155.8322ms
+INFO  2019-08-09 09:48:41,874 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 160.3357ms 200 application/json; charset=utf-8
+INFO  2019-08-09 09:48:42,287 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+WARN  2019-08-09 09:48:42,287 [49   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:48:42,287 [49   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:48:42,288 [49   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 09:48:42,291 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetGanttChartData", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application)
+WARN  2019-08-09 09:48:42,291 [49   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:48:42,291 [49   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:48:42,293 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) with arguments (2) - Validation state: Valid
+INFO  2019-08-09 09:48:42,295 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2.266ms.
+INFO  2019-08-09 09:48:42,300 [49   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 09:48:42,300 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) in 9.6959ms
+INFO  2019-08-09 09:48:42,300 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 13.2228ms 200 application/json; charset=utf-8
+INFO  2019-08-09 09:49:08,108 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+WARN  2019-08-09 09:49:08,108 [50   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:49:08,108 [50   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:49:08,108 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2306ms 204 
+INFO  2019-08-09 09:49:08,108 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/Get?id=2  
+WARN  2019-08-09 09:49:08,108 [50   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:49:08,108 [50   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:49:08,109 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.126ms 204 
+INFO  2019-08-09 09:49:08,117 [48   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+WARN  2019-08-09 09:49:08,117 [48   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:49:08,117 [48   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:49:08,117 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/Get?id=2  
+INFO  2019-08-09 09:49:08,117 [48   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-08-09 09:49:08,117 [50   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:49:08,117 [50   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:49:08,118 [50   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 09:49:08,120 [48   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetGanttChartData", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application)
+WARN  2019-08-09 09:49:08,120 [48   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:49:08,120 [48   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:49:08,120 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "Get", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application)
+WARN  2019-08-09 09:49:08,120 [50   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:49:08,120 [50   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:49:08,121 [48   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) with arguments (2) - Validation state: Valid
+INFO  2019-08-09 09:49:08,121 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) with arguments (Abp.Application.Services.Dto.EntityDto`1[System.Int32]) - Validation state: Valid
+INFO  2019-08-09 09:49:08,130 [48   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 8.6455ms.
+INFO  2019-08-09 09:49:08,135 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 13.108ms.
+INFO  2019-08-09 09:49:08,138 [48   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 09:49:08,138 [48   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) in 18.7527ms
+INFO  2019-08-09 09:49:08,138 [48   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 21.9893ms 200 application/json; charset=utf-8
+INFO  2019-08-09 09:49:08,150 [50   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 09:49:08,150 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) in 30.6496ms
+INFO  2019-08-09 09:49:08,151 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 33.7653ms 200 application/json; charset=utf-8
+INFO  2019-08-09 09:49:08,388 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+WARN  2019-08-09 09:49:08,388 [39   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:49:08,388 [39   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:49:08,388 [39   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 09:49:08,391 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetGanttChartData", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application)
+WARN  2019-08-09 09:49:08,391 [39   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:49:08,391 [39   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:49:08,393 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) with arguments (2) - Validation state: Valid
+INFO  2019-08-09 09:49:08,395 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2.2403ms.
+INFO  2019-08-09 09:49:08,400 [50   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 09:49:08,400 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) in 9.2049ms
+INFO  2019-08-09 09:49:08,400 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 12.58ms 200 application/json; charset=utf-8
+INFO  2019-08-09 09:49:10,364 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/GetProjectMembers?projectId=2  
+WARN  2019-08-09 09:49:10,364 [50   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:49:10,364 [50   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:49:10,364 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4022ms 204 
+INFO  2019-08-09 09:49:10,365 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/EventTaskService/GetEventTaskDropdown?projectId=2  
+WARN  2019-08-09 09:49:10,365 [39   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:49:10,365 [39   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:49:10,365 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4224ms 204 
+INFO  2019-08-09 09:49:10,372 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetProjectMembers?projectId=2  
+WARN  2019-08-09 09:49:10,372 [39   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:49:10,372 [39   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:49:10,373 [39   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 09:49:10,375 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/EventTaskService/GetEventTaskDropdown?projectId=2  
+WARN  2019-08-09 09:49:10,375 [50   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:49:10,375 [50   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:49:10,375 [50   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 09:49:10,378 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetEventTaskDropdown", controller = "EventTaskService"}. Executing action PMTool16Bit.Services.EventTaskService.GetEventTaskDropdown (PMTool16Bit.Application)
+WARN  2019-08-09 09:49:10,378 [50   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:49:10,378 [50   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:49:10,381 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetProjectMembers", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetProjectMembers (PMTool16Bit.Application)
+WARN  2019-08-09 09:49:10,381 [39   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 09:49:10,381 [39   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 09:49:10,385 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.EventTaskService.GetEventTaskDropdown (PMTool16Bit.Application) with arguments (, 2) - Validation state: Valid
+INFO  2019-08-09 09:49:10,386 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetProjectMembers (PMTool16Bit.Application) with arguments (2) - Validation state: Valid
+INFO  2019-08-09 09:49:10,411 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.EventTaskService.GetEventTaskDropdown (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 25.7917ms.
+INFO  2019-08-09 09:49:10,422 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetProjectMembers (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 36.049ms.
+INFO  2019-08-09 09:49:10,461 [50   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 09:49:10,461 [39   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 09:49:10,462 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetProjectMembers (PMTool16Bit.Application) in 80.793ms
+INFO  2019-08-09 09:49:10,462 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 89.869ms 200 application/json; charset=utf-8
+INFO  2019-08-09 09:49:10,462 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.EventTaskService.GetEventTaskDropdown (PMTool16Bit.Application) in 83.9109ms
+INFO  2019-08-09 09:49:10,462 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 87.7434ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:08:59,351 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+INFO  2019-08-09 10:08:59,351 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/Get?id=2  
+WARN  2019-08-09 10:08:59,351 [71   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+WARN  2019-08-09 10:08:59,351 [70   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:08:59,351 [71   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:08:59,351 [70   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:08:59,351 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.237ms 204 
+INFO  2019-08-09 10:08:59,351 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4378ms 204 
+INFO  2019-08-09 10:08:59,359 [77   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/Get?id=2  
+WARN  2019-08-09 10:08:59,359 [77   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:08:59,359 [77   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:08:59,360 [77   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:08:59,360 [78   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+WARN  2019-08-09 10:08:59,360 [78   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:08:59,360 [78   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:08:59,360 [78   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:08:59,374 [79   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "Get", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application)
+WARN  2019-08-09 10:08:59,374 [79   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:08:59,374 [79   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:08:59,375 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetGanttChartData", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application)
+WARN  2019-08-09 10:08:59,375 [71   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:08:59,375 [71   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:08:59,377 [79   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) with arguments (Abp.Application.Services.Dto.EntityDto`1[System.Int32]) - Validation state: Valid
+INFO  2019-08-09 10:08:59,381 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) with arguments (2) - Validation state: Valid
+INFO  2019-08-09 10:08:59,459 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 78.0237ms.
+INFO  2019-08-09 10:08:59,483 [71   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:08:59,483 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) in 108.1727ms
+INFO  2019-08-09 10:08:59,483 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 123.5426ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:08:59,487 [70   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 110.5192ms.
+INFO  2019-08-09 10:08:59,493 [70   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:08:59,493 [70   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) in 118.709ms
+INFO  2019-08-09 10:08:59,493 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 134.1902ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:08:59,772 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+WARN  2019-08-09 10:08:59,772 [71   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:08:59,772 [71   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:08:59,772 [71   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:08:59,775 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetGanttChartData", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application)
+WARN  2019-08-09 10:08:59,775 [71   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:08:59,775 [71   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:08:59,777 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) with arguments (2) - Validation state: Valid
+INFO  2019-08-09 10:08:59,780 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.063ms.
+INFO  2019-08-09 10:08:59,798 [71   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:08:59,798 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) in 22.8672ms
+INFO  2019-08-09 10:08:59,798 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 26.3219ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:09:05,094 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/GetProjectMembers?projectId=2  
+WARN  2019-08-09 10:09:05,094 [71   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:09:05,094 [71   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:09:05,094 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4429ms 204 
+INFO  2019-08-09 10:09:05,094 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/EventTaskService/GetEventTaskDropdown?projectId=2  
+WARN  2019-08-09 10:09:05,095 [71   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:09:05,095 [71   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:09:05,095 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3916ms 204 
+INFO  2019-08-09 10:09:05,103 [78   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetProjectMembers?projectId=2  
+INFO  2019-08-09 10:09:05,103 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/EventTaskService/GetEventTaskDropdown?projectId=2  
+WARN  2019-08-09 10:09:05,103 [71   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:09:05,103 [71   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+WARN  2019-08-09 10:09:05,103 [78   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:09:05,103 [78   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:09:05,103 [71   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:09:05,103 [78   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:09:05,106 [78   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetProjectMembers", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetProjectMembers (PMTool16Bit.Application)
+INFO  2019-08-09 10:09:05,106 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetEventTaskDropdown", controller = "EventTaskService"}. Executing action PMTool16Bit.Services.EventTaskService.GetEventTaskDropdown (PMTool16Bit.Application)
+WARN  2019-08-09 10:09:05,106 [78   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+WARN  2019-08-09 10:09:05,106 [71   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:09:05,106 [78   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:09:05,106 [71   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:09:05,108 [78   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetProjectMembers (PMTool16Bit.Application) with arguments (2) - Validation state: Valid
+INFO  2019-08-09 10:09:05,109 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.EventTaskService.GetEventTaskDropdown (PMTool16Bit.Application) with arguments (, 2) - Validation state: Valid
+INFO  2019-08-09 10:09:05,124 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.EventTaskService.GetEventTaskDropdown (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 14.3262ms.
+INFO  2019-08-09 10:09:05,126 [78   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetProjectMembers (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 18.1786ms.
+INFO  2019-08-09 10:09:05,148 [78   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:09:05,148 [78   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.EventTaskService.GetEventTaskDropdown (PMTool16Bit.Application) in 42.8609ms
+INFO  2019-08-09 10:09:05,149 [78   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 45.8617ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:09:05,149 [71   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:09:05,149 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetProjectMembers (PMTool16Bit.Application) in 43.672ms
+INFO  2019-08-09 10:09:05,149 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 46.6174ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:13:50,047 [87   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+WARN  2019-08-09 10:13:50,047 [87   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:13:50,047 [87   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:13:50,047 [87   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3412ms 204 
+INFO  2019-08-09 10:13:50,047 [88   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/Get?id=2  
+WARN  2019-08-09 10:13:50,047 [88   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:13:50,047 [88   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:13:50,047 [88   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2861ms 204 
+INFO  2019-08-09 10:13:50,058 [90   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+INFO  2019-08-09 10:13:50,058 [91   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/Get?id=2  
+WARN  2019-08-09 10:13:50,058 [90   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+WARN  2019-08-09 10:13:50,058 [91   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:13:50,058 [90   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:13:50,058 [91   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:13:50,059 [91   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:13:50,059 [90   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:13:50,061 [91   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "Get", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application)
+WARN  2019-08-09 10:13:50,061 [91   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:13:50,061 [91   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:13:50,064 [91   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) with arguments (Abp.Application.Services.Dto.EntityDto`1[System.Int32]) - Validation state: Valid
+INFO  2019-08-09 10:13:50,065 [90   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetGanttChartData", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application)
+WARN  2019-08-09 10:13:50,065 [90   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:13:50,065 [90   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:13:50,068 [90   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) with arguments (2) - Validation state: Valid
+INFO  2019-08-09 10:13:50,116 [90   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 48.0181ms.
+INFO  2019-08-09 10:13:50,135 [90   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:13:50,135 [90   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) in 69.4381ms
+INFO  2019-08-09 10:13:50,135 [90   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 76.8026ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:13:50,204 [90   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 140.0463ms.
+INFO  2019-08-09 10:13:50,210 [90   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:13:50,210 [90   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) in 148.6165ms
+INFO  2019-08-09 10:13:50,210 [90   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 151.9824ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:13:50,433 [91   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+WARN  2019-08-09 10:13:50,433 [91   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:13:50,433 [91   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:13:50,434 [91   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:13:50,436 [91   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetGanttChartData", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application)
+WARN  2019-08-09 10:13:50,436 [91   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:13:50,436 [91   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:13:50,439 [91   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) with arguments (2) - Validation state: Valid
+INFO  2019-08-09 10:13:50,441 [91   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2.5835ms.
+INFO  2019-08-09 10:13:50,446 [91   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:13:50,446 [91   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) in 10.085ms
+INFO  2019-08-09 10:13:50,447 [91   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 13.4124ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:17:42,661 [92   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/GetProjectMembers?projectId=2  
+WARN  2019-08-09 10:17:42,661 [92   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:42,661 [92   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:42,661 [92   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2206ms 204 
+INFO  2019-08-09 10:17:42,661 [96   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/EventTaskService/GetEventTaskDropdown?projectId=2  
+WARN  2019-08-09 10:17:42,662 [96   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:42,662 [96   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:42,662 [96   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2572ms 204 
+INFO  2019-08-09 10:17:42,670 [98   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetProjectMembers?projectId=2  
+WARN  2019-08-09 10:17:42,670 [98   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:42,670 [98   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:42,671 [92   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/EventTaskService/GetEventTaskDropdown?projectId=2  
+INFO  2019-08-09 10:17:42,671 [98   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-08-09 10:17:42,671 [92   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:42,671 [92   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:42,671 [92   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:17:42,674 [92   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetEventTaskDropdown", controller = "EventTaskService"}. Executing action PMTool16Bit.Services.EventTaskService.GetEventTaskDropdown (PMTool16Bit.Application)
+INFO  2019-08-09 10:17:42,674 [98   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetProjectMembers", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetProjectMembers (PMTool16Bit.Application)
+WARN  2019-08-09 10:17:42,674 [92   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+WARN  2019-08-09 10:17:42,674 [98   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:42,674 [92   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:42,674 [98   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:42,676 [98   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetProjectMembers (PMTool16Bit.Application) with arguments (2) - Validation state: Valid
+INFO  2019-08-09 10:17:42,678 [92   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.EventTaskService.GetEventTaskDropdown (PMTool16Bit.Application) with arguments (, 2) - Validation state: Valid
+INFO  2019-08-09 10:17:42,707 [92   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.EventTaskService.GetEventTaskDropdown (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 29.3519ms.
+INFO  2019-08-09 10:17:42,728 [98   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetProjectMembers (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 51.7335ms.
+INFO  2019-08-09 10:17:42,771 [101  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:17:42,771 [101  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetProjectMembers (PMTool16Bit.Application) in 97.7274ms
+INFO  2019-08-09 10:17:42,771 [101  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 101.5048ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:17:42,772 [100  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:17:42,773 [100  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.EventTaskService.GetEventTaskDropdown (PMTool16Bit.Application) in 98.9421ms
+INFO  2019-08-09 10:17:42,773 [100  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 102.1055ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:17:49,859 [98   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/EventTaskService/Update  
+WARN  2019-08-09 10:17:49,859 [98   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:49,859 [98   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:49,859 [98   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.9285ms 204 
+INFO  2019-08-09 10:17:49,862 [98   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 PUT http://localhost:21021/api/services/app/EventTaskService/Update application/json;charset=UTF-8 795
+WARN  2019-08-09 10:17:49,862 [98   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:49,862 [98   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:49,862 [98   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:17:49,871 [98   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "Update", controller = "EventTaskService"}. Executing action PMTool16Bit.Services.EventTaskService.Update (PMTool16Bit.Application)
+WARN  2019-08-09 10:17:49,871 [98   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:49,871 [98   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:49,931 [98   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.EventTaskService.Update (PMTool16Bit.Application) with arguments ([EventTaskUpdateDto 53]) - Validation state: Valid
+INFO  2019-08-09 10:17:50,126 [100  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.EventTaskService.Update (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 195.5585ms.
+INFO  2019-08-09 10:17:50,132 [98   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:17:50,132 [98   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.EventTaskService.Update (PMTool16Bit.Application) in 261.3486ms
+INFO  2019-08-09 10:17:50,132 [98   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 270.6703ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:17:50,191 [100  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/Get?id=2  
+WARN  2019-08-09 10:17:50,191 [100  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:50,191 [100  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:50,191 [100  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2046ms 204 
+INFO  2019-08-09 10:17:50,196 [100  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/Get?id=2  
+WARN  2019-08-09 10:17:50,196 [100  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:50,196 [100  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:50,196 [100  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:17:50,200 [100  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "Get", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application)
+WARN  2019-08-09 10:17:50,201 [100  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:50,201 [100  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:50,206 [100  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) with arguments (Abp.Application.Services.Dto.EntityDto`1[System.Int32]) - Validation state: Valid
+INFO  2019-08-09 10:17:50,268 [98   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 61.349ms.
+INFO  2019-08-09 10:17:50,273 [98   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:17:50,273 [98   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) in 72.7632ms
+INFO  2019-08-09 10:17:50,273 [98   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 77.4124ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:17:50,389 [103  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+WARN  2019-08-09 10:17:50,389 [103  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:50,389 [103  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:50,389 [103  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2469ms 204 
+INFO  2019-08-09 10:17:50,393 [103  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=2  
+WARN  2019-08-09 10:17:50,394 [103  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:50,394 [103  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:50,394 [103  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:17:50,397 [103  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetGanttChartData", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application)
+WARN  2019-08-09 10:17:50,397 [103  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:50,397 [103  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:50,400 [103  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) with arguments (2) - Validation state: Valid
+INFO  2019-08-09 10:17:50,421 [103  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 20.799ms.
+INFO  2019-08-09 10:17:50,425 [103  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:17:50,426 [103  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) in 28.7682ms
+INFO  2019-08-09 10:17:50,426 [103  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 32.177ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:17:52,095 [103  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/GetProjectMembers?projectId=2  
+WARN  2019-08-09 10:17:52,095 [103  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:52,095 [103  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:52,095 [102  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/EventTaskService/GetEventTaskDropdown?projectId=2  
+INFO  2019-08-09 10:17:52,095 [103  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3043ms 204 
+WARN  2019-08-09 10:17:52,095 [102  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:52,095 [102  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:52,095 [102  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2219ms 204 
+INFO  2019-08-09 10:17:52,101 [102  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetProjectMembers?projectId=2  
+INFO  2019-08-09 10:17:52,101 [103  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/EventTaskService/GetEventTaskDropdown?projectId=2  
+WARN  2019-08-09 10:17:52,101 [102  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:52,101 [102  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+WARN  2019-08-09 10:17:52,101 [103  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:52,101 [103  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:52,102 [103  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:17:52,102 [102  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:17:52,104 [102  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetProjectMembers", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetProjectMembers (PMTool16Bit.Application)
+INFO  2019-08-09 10:17:52,104 [103  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetEventTaskDropdown", controller = "EventTaskService"}. Executing action PMTool16Bit.Services.EventTaskService.GetEventTaskDropdown (PMTool16Bit.Application)
+WARN  2019-08-09 10:17:52,104 [102  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+WARN  2019-08-09 10:17:52,104 [103  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:17:52,104 [102  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:52,104 [103  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:17:52,107 [102  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetProjectMembers (PMTool16Bit.Application) with arguments (2) - Validation state: Valid
+INFO  2019-08-09 10:17:52,108 [103  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.EventTaskService.GetEventTaskDropdown (PMTool16Bit.Application) with arguments (, 2) - Validation state: Valid
+INFO  2019-08-09 10:17:52,110 [103  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.EventTaskService.GetEventTaskDropdown (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1.9545ms.
+INFO  2019-08-09 10:17:52,110 [102  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetProjectMembers (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.267ms.
+INFO  2019-08-09 10:17:52,115 [92   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:17:52,115 [92   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.EventTaskService.GetEventTaskDropdown (PMTool16Bit.Application) in 10.933ms
+INFO  2019-08-09 10:17:52,115 [92   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 14.238ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:17:52,116 [103  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:17:52,116 [103  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetProjectMembers (PMTool16Bit.Application) in 12.0483ms
+INFO  2019-08-09 10:17:52,116 [103  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 15.3249ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:18:02,409 [92   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/FileService/ExportTasksInProject?projectId=2  
+INFO  2019-08-09 10:18:02,418 [92   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "ExportTasksInProject", controller = "FileService", area = ""}. Executing action PMTool16Bit.Controllers.FileServiceController.ExportTasksInProject (PMTool16Bit.Web.Host)
+INFO  2019-08-09 10:18:02,422 [92   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Controllers.FileServiceController.ExportTasksInProject (PMTool16Bit.Web.Host) with arguments (2) - Validation state: Valid
+INFO  2019-08-09 10:18:03,153 [92   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Controllers.FileServiceController.ExportTasksInProject (PMTool16Bit.Web.Host), returned result Microsoft.AspNetCore.Mvc.FileStreamResult in 731.6101ms.
+INFO  2019-08-09 10:18:03,162 [92   ] .Infrastructure.FileStreamResultExecutor - Executing Microsoft.AspNetCore.Mvc.FileStreamResult, sending file with download name 'ProjectTasks.xlsx' ...
+INFO  2019-08-09 10:18:03,177 [92   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Controllers.FileServiceController.ExportTasksInProject (PMTool16Bit.Web.Host) in 758.833ms
+INFO  2019-08-09 10:18:03,177 [92   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 768.3298ms 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+INFO  2019-08-09 10:18:43,623 [92   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/GetAll?skipCount=0&maxResultCount=10&sorting=projectName+ASC&memberId=3  
+WARN  2019-08-09 10:18:43,623 [92   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:43,623 [92   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:43,623 [92   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1998ms 204 
+INFO  2019-08-09 10:18:43,629 [105  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetAll?skipCount=0&maxResultCount=10&sorting=projectName+ASC&memberId=3  
+WARN  2019-08-09 10:18:43,629 [105  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:43,629 [105  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:43,630 [105  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:18:43,639 [105  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetAll (PMTool16Bit.Application)
+WARN  2019-08-09 10:18:43,639 [105  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:43,639 [105  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:43,647 [105  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetAll (PMTool16Bit.Application) with arguments (PMTool16Bit.Services.ProjectFilter) - Validation state: Valid
+INFO  2019-08-09 10:18:43,810 [105  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetAll (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 162.4212ms.
+INFO  2019-08-09 10:18:43,817 [105  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:18:43,819 [105  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetAll (PMTool16Bit.Application) in 179.5946ms
+INFO  2019-08-09 10:18:43,819 [105  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 189.8702ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:18:44,524 [105  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/EventTaskService/GetEventTaskCalendar  
+WARN  2019-08-09 10:18:44,524 [105  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:44,524 [105  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:44,524 [105  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.7906ms 204 
+INFO  2019-08-09 10:18:44,524 [106  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectActivityService/GetAllRecentActivities?maxResultCount=5  
+WARN  2019-08-09 10:18:44,524 [106  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:44,524 [106  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:44,525 [106  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1857ms 204 
+INFO  2019-08-09 10:18:44,539 [106  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/EventTaskService/GetEventTaskCalendar  
+WARN  2019-08-09 10:18:44,539 [106  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:44,539 [106  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:44,540 [109  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectActivityService/GetAllRecentActivities?maxResultCount=5  
+INFO  2019-08-09 10:18:44,540 [106  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+WARN  2019-08-09 10:18:44,540 [109  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:44,540 [109  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:44,540 [109  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:18:44,543 [106  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetEventTaskCalendar", controller = "EventTaskService"}. Executing action PMTool16Bit.Services.EventTaskService.GetEventTaskCalendar (PMTool16Bit.Application)
+WARN  2019-08-09 10:18:44,543 [106  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:44,543 [106  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:44,543 [109  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetAllRecentActivities", controller = "ProjectActivityService"}. Executing action PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application)
+WARN  2019-08-09 10:18:44,543 [109  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:44,543 [109  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:44,547 [106  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.EventTaskService.GetEventTaskCalendar (PMTool16Bit.Application) - Validation state: Valid
+INFO  2019-08-09 10:18:44,548 [109  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application) with arguments (5) - Validation state: Valid
+INFO  2019-08-09 10:18:44,573 [106  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.EventTaskService.GetEventTaskCalendar (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 26.3094ms.
+INFO  2019-08-09 10:18:44,576 [109  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 27.9541ms.
+INFO  2019-08-09 10:18:44,576 [106  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:18:44,577 [106  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.EventTaskService.GetEventTaskCalendar (PMTool16Bit.Application) in 33.9225ms
+INFO  2019-08-09 10:18:44,577 [106  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 37.4747ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:18:44,582 [109  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:18:44,582 [109  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectActivityService.GetAllRecentActivities (PMTool16Bit.Application) in 38.7098ms
+INFO  2019-08-09 10:18:44,582 [109  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 42.2454ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:18:54,643 [109  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=3  
+WARN  2019-08-09 10:18:54,644 [109  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:54,644 [109  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:54,644 [109  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.8207ms 204 
+INFO  2019-08-09 10:18:54,644 [108  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/Get?id=3  
+WARN  2019-08-09 10:18:54,644 [108  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:54,644 [108  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:54,644 [108  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1709ms 204 
+INFO  2019-08-09 10:18:54,651 [109  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=3  
+INFO  2019-08-09 10:18:54,651 [108  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/Get?id=3  
+WARN  2019-08-09 10:18:54,651 [108  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:54,651 [108  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+WARN  2019-08-09 10:18:54,651 [109  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:54,651 [109  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:54,652 [108  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:18:54,652 [109  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:18:54,654 [108  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "Get", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application)
+INFO  2019-08-09 10:18:54,654 [109  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetGanttChartData", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application)
+WARN  2019-08-09 10:18:54,654 [108  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+WARN  2019-08-09 10:18:54,654 [109  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:54,654 [108  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:54,654 [109  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:54,657 [109  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) with arguments (3) - Validation state: Valid
+INFO  2019-08-09 10:18:54,657 [108  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) with arguments (Abp.Application.Services.Dto.EntityDto`1[System.Int32]) - Validation state: Valid
+INFO  2019-08-09 10:18:54,727 [109  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 70.1931ms.
+INFO  2019-08-09 10:18:54,737 [107  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:18:54,737 [107  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) in 82.8877ms
+INFO  2019-08-09 10:18:54,737 [107  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 86.2815ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:18:54,778 [107  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 120.814ms.
+INFO  2019-08-09 10:18:54,790 [109  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:18:54,791 [109  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) in 136.794ms
+INFO  2019-08-09 10:18:54,791 [109  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 140.122ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:18:55,754 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=3  
+WARN  2019-08-09 10:18:55,754 [41   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:55,754 [41   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:55,755 [41   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:18:55,758 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetGanttChartData", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application)
+WARN  2019-08-09 10:18:55,758 [41   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:55,758 [41   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:55,762 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) with arguments (3) - Validation state: Valid
+INFO  2019-08-09 10:18:55,771 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 8.8165ms.
+INFO  2019-08-09 10:18:55,779 [41   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:18:55,780 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) in 21.5294ms
+INFO  2019-08-09 10:18:55,780 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 25.4969ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:18:57,695 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=13  
+WARN  2019-08-09 10:18:57,696 [41   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:57,696 [41   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:57,696 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2373ms 204 
+INFO  2019-08-09 10:18:57,697 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:21021/api/services/app/ProjectService/Get?id=13  
+WARN  2019-08-09 10:18:57,697 [41   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:57,697 [41   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:57,697 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1712ms 204 
+INFO  2019-08-09 10:18:57,705 [109  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=13  
+WARN  2019-08-09 10:18:57,705 [109  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:57,705 [109  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:57,705 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/Get?id=13  
+WARN  2019-08-09 10:18:57,705 [41   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:57,705 [41   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:57,705 [41   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:18:57,706 [109  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:18:57,708 [109  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetGanttChartData", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application)
+WARN  2019-08-09 10:18:57,708 [109  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:57,708 [109  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:57,708 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "Get", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application)
+WARN  2019-08-09 10:18:57,708 [41   ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:57,708 [41   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:57,710 [109  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) with arguments (13) - Validation state: Valid
+INFO  2019-08-09 10:18:57,710 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) with arguments (Abp.Application.Services.Dto.EntityDto`1[System.Int32]) - Validation state: Valid
+INFO  2019-08-09 10:18:57,716 [109  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 6.086ms.
+INFO  2019-08-09 10:18:57,720 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 9.7354ms.
+INFO  2019-08-09 10:18:57,720 [92   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:18:57,721 [92   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) in 12.7318ms
+INFO  2019-08-09 10:18:57,721 [92   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 15.7608ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:18:57,728 [109  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:18:57,728 [109  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.Get (PMTool16Bit.Application) in 20.1771ms
+INFO  2019-08-09 10:18:57,728 [109  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 23.2158ms 200 application/json; charset=utf-8
+INFO  2019-08-09 10:18:57,931 [108  ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:21021/api/services/app/ProjectService/GetGanttChartData?projectId=13  
+WARN  2019-08-09 10:18:57,931 [108  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:57,931 [108  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:57,931 [108  ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-08-09 10:18:57,934 [108  ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetGanttChartData", controller = "ProjectService"}. Executing action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application)
+WARN  2019-08-09 10:18:57,934 [108  ] pNetCore.Cors.Infrastructure.CorsService - The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-09 10:18:57,934 [108  ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2019-08-09 10:18:57,936 [108  ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) with arguments (13) - Validation state: Valid
+INFO  2019-08-09 10:18:57,938 [108  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2.0274ms.
+INFO  2019-08-09 10:18:57,941 [108  ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-08-09 10:18:57,942 [108  ] ore.Mvc.Internal.ControllerActionInvoker - Executed action PMTool16Bit.Services.ProjectService.GetGanttChartData (PMTool16Bit.Application) in 7.5483ms
+INFO  2019-08-09 10:18:57,942 [108  ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 10.6732ms 200 application/json; charset=utf-8
