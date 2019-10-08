@@ -15,15 +15,15 @@ namespace PMTool16Bit.Tests.Users
             _userAppService = Resolve<IUserAppService>();
         }
 
-        [Fact]
-        public async Task GetUsers_Test()
-        {
-            // Act
-            var output = await _userAppService.GetAll(new PagedUserResultRequestDto { MaxResultCount = 20, SkipCount = 0 });
+        //[Fact]
+        //public async Task GetUsers_Test()
+        //{
+        //    // Act
+        //    var output = await _userAppService.GetAll(new PagedUserResultRequestDto { MaxResultCount = 20, SkipCount = 0 });
 
-            // Assert
-            output.Items.Count.ShouldBeGreaterThan(0);
-        }
+        //    // Assert
+        //    output.Items.Count.ShouldBeGreaterThan(0);
+        //}
 
         [Fact]
         public async Task CreateUser_Test()

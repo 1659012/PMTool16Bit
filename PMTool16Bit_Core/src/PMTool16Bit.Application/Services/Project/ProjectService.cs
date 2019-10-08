@@ -1,8 +1,12 @@
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
+using Abp.ObjectMapping;
+using Abp.UI;
 using Microsoft.EntityFrameworkCore;
+using PMTool16Bit.Authorization;
 using PMTool16Bit.Models;
 using PMTool16Bit.Models.Enum;
 using PMTool16Bit.Users;
@@ -18,16 +22,21 @@ namespace PMTool16Bit.Services
     {
         private readonly IRepository<ProjectMember> projectMemberRepository;
         private readonly IUserAppService userAppService;
+        private readonly IObjectMapper objectMapper;
+
 
         public ProjectService(
             IRepository<Project> repository,
             IRepository<ProjectMember> projectMemberRepository,
-            IUserAppService userAppService
+            IUserAppService userAppService,
+            IObjectMapper objectMapper
 
             ) : base(repository)
         {
+            DeletePermissionName = PermissionNames.ProjectDeletePermission;
             this.projectMemberRepository = projectMemberRepository;
             this.userAppService = userAppService;
+            this.objectMapper = objectMapper;
         }
 
         protected override IQueryable<Project> CreateFilteredQuery(ProjectFilter input)
@@ -37,6 +46,7 @@ namespace PMTool16Bit.Services
                 //.Include(p => p.ProjectMembers)
                 //.ThenInclude(p => p.Member)
                 //.Include(p => p.GroupTasks)
+                .AsNoTracking()
                 .WhereIf(input.Id != null, p => p.Id == input.Id)
                 .WhereIf(input.MemberId != null, p => p.Id == input.MemberId
                                                      || p.ProjectMembers.Any(q => q.MemberId == input.MemberId)
@@ -85,15 +95,17 @@ namespace PMTool16Bit.Services
                 .ThenInclude(m => m.Todos)
                 .Where(p => p.Id == input.Id);
 
-            var result = query.FirstOrDefaultAsync();
-
-            return base.Get(input);
+            var project = query.FirstOrDefaultAsync();
+            var result = objectMapper.Map<Task<ProjectDto>>(project);
+            return result;
+            //return base.Get(input);
         }
 
         public List<UserDropdownDto> GetProjectMembers(int projectId)
         {
             return Repository
                     .GetAll()
+                    .AsNoTracking()
                     .Include(p => p.ProjectMembers)
                     .ThenInclude(q => q.Member)
                     .FirstOrDefault(p => p.Id == projectId)
@@ -188,6 +200,7 @@ namespace PMTool16Bit.Services
                     .ThenInclude(p => p.EventTasks)
                     .ThenInclude(q => q.EventTaskMembers)
                     .ThenInclude(m => m.Member)
+                    .AsNoTracking()
                     .FirstOrDefault(p => p.Id == projectId);
             if (project == null)
             {
@@ -234,29 +247,17 @@ namespace PMTool16Bit.Services
             return taskList;
         }
 
-        //public List<EventTaskSimpleDto> GetEventTaskCalendar()
-        //{
-        //    var projectIdList = GetProjectIdListByCurrentUser();
-        //    var taskList = new List<EventTaskSimpleDto>();
-        //    if (projectIdList.Count == 0)
-        //        return taskList;
-
-        //    var projectList = Repository.GetAll()
-        //        .Where(p => projectIdList.Any(q => q == p.Id))
-        //        .Include(p => p.TaskGroups)
-        //        .ThenInclude(p => p.EventTasks)
-        //        .ThenInclude(p => p.EventTaskMembers)
-        //        .ThenInclude(m => m.Member)
-        //        .ToList();
-           
-        //    foreach (var project in projectList)
-        //    {
-        //        foreach (var taskGroup in project.TaskGroups)
-        //        {
-
-        //        }
-
-        //    }
-        //}
+        //[AbpAuthorize(PermissionNames.ProjectDeletePermission)]
+        public override Task Delete(EntityDto<int> input)
+        {
+            //CheckPermission(PermissionNames.ProjectDeletePermission);
+            //if (!PermissionChecker.IsGranted(PermissionNames.ProjectDeletePermission))
+            //{
+            //    throw new UserFriendlyException("You are not authorized to delete project!");
+            //}
+            PermissionChecker.Authorize(PermissionNames.ProjectDeletePermission);
+            return base.Delete(input);
+        }
+       
     }
 }

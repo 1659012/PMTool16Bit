@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PMTool16Bit.Users
 {
-    public interface IUserAppService : IAsyncCrudAppService<UserDto, long, PagedUserResultRequestDto, CreateUserDto, UserDto>
+    public interface IUserAppService : IAsyncCrudAppService<UserDto, long, UserFilter, CreateUserDto, UserDto>
     {
         Task<ListResultDto<RoleDto>> GetRoles();
 

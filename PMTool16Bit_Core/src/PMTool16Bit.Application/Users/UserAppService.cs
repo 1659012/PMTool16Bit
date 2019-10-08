@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 namespace PMTool16Bit.Users
 {
     [AbpAuthorize(PermissionNames.Pages_Users)]
-    public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedUserResultRequestDto, CreateUserDto, UserDto>, IUserAppService
+    public class UserAppService : AsyncCrudAppService<User, UserDto, long, UserFilter, CreateUserDto, UserDto>, IUserAppService
     {
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
@@ -53,6 +53,17 @@ namespace PMTool16Bit.Users
             _abpSession = abpSession;
             _logInManager = logInManager;
             this.fileService = fileService;
+        }
+
+        protected override IQueryable<User> CreateFilteredQuery(UserFilter input)
+        {
+            return Repository
+                .GetAllIncluding(x => x.Roles)
+                .WhereIf(input.UserName.IsNotNullOrEmpty(), p => p.UserName.Contains(input.UserName))
+                .WhereIf(input.FullName.IsNotNullOrEmpty(), p => p.FullName.Contains(input.FullName))
+                .WhereIf(input.EmailAdress.IsNotNullOrEmpty(), p => p.FullName.Contains(input.EmailAdress))
+                //.WhereIf(input.RolesName.IsNotNullOrEmpty(),p=>p.Roles.Any(q=>q.U.ToString().Contains(input.RolesName)))
+                ;
         }
 
         [AbpAllowAnonymous]
@@ -143,14 +154,7 @@ namespace PMTool16Bit.Users
             //    userDto.RoleNames = roles.ToArray();
             //}
             return userDto;
-        }
-
-        protected override IQueryable<User> CreateFilteredQuery(PagedUserResultRequestDto input)
-        {
-            return Repository.GetAllIncluding(x => x.Roles)
-                .WhereIf(!input.Keyword.IsNullOrWhiteSpace(), x => x.UserName.Contains(input.Keyword) || x.Name.Contains(input.Keyword) || x.EmailAddress.Contains(input.Keyword))
-                .WhereIf(input.IsActive.HasValue, x => x.IsActive == input.IsActive);
-        }
+        }       
 
         protected override async Task<User> GetEntityByIdAsync(long id)
         {
@@ -166,7 +170,7 @@ namespace PMTool16Bit.Users
             return user;
         }
 
-        protected override IQueryable<User> ApplySorting(IQueryable<User> query, PagedUserResultRequestDto input)
+        protected override IQueryable<User> ApplySorting(IQueryable<User> query, UserFilter input)
         {
             return query.OrderBy(r => r.UserName);
         }

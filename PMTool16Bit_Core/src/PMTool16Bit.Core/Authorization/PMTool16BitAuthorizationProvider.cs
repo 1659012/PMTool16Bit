@@ -11,6 +11,12 @@ namespace PMTool16Bit.Authorization
             context.CreatePermission(PermissionNames.Pages_Users, L("Users"));
             context.CreatePermission(PermissionNames.Pages_Roles, L("Roles"));
             context.CreatePermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
+
+            #region Project
+            //var projectPermission = context.CreatePermission(PermissionNames.ProjectPermission, L("Project"));
+            //projectPermission.CreateChildPermission(PermissionNames.ProjectDeletePermission, L("Delete project"));
+            var projectDeletePermission = context.CreatePermission(PermissionNames.ProjectDeletePermission, L("Delete project"));
+            #endregion
         }
 
         private static ILocalizableString L(string name)

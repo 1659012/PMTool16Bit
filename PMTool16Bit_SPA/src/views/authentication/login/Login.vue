@@ -7,27 +7,44 @@
             <v-card class="elevation-1 pa-3">
               <v-card-text>
                 <div class="layout column align-center">
-                  <img src="/static/m.png" alt="Vue Material Admin" width="120" height="120">
+                  <img src="/static/m.png" alt="Vue Material Admin" width="120" height="120" />
                   <h1 class="flex my-4 primary--text">PMTool16Bit</h1>
                 </div>
                 <v-form>
-                  <v-text-field append-icon="person" name="login" label="Login" type="text" v-model="model.userNameOrEmailAddress"></v-text-field>
-                  <v-text-field append-icon="lock" name="password" label="Password" id="password" type="password" v-model="model.password"></v-text-field>
+                  <v-text-field
+                    append-icon="person"
+                    name="login"
+                    label="Login"
+                    type="text"
+                    v-model="model.userNameOrEmailAddress"
+                  ></v-text-field>
+                  <v-text-field
+                    append-icon="lock"
+                    name="password"
+                    label="Password"
+                    id="password"
+                    type="password"
+                    v-model="model.password"
+                  ></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
-                <!-- <v-btn icon>
+                <v-btn icon>
                   <v-icon color="blue">fa fa-facebook-square fa-lg</v-icon>
                 </v-btn>
                 <v-btn icon>
-                  <v-icon color="red">fa fa-google fa-lg</v-icon>
+                  <v-icon color="red" @click="loginGoogle">fa fa-google fa-lg</v-icon>
                 </v-btn>
                 <v-btn icon>
                   <v-icon color="light-blue">fa fa-twitter fa-lg</v-icon>
-                </v-btn> -->
+                </v-btn>
                 <v-card-text>
                   <span>Don’t have an account?</span>
-                  <span class="primary--text ml-3" style="cursor: pointer;" @click="$router.push('/register');">Create Account</span>
+                  <span
+                    class="primary--text ml-3"
+                    style="cursor: pointer;"
+                    @click="$router.push('/register');"
+                  >Create Account</span>
                 </v-card-text>
                 <v-spacer></v-spacer>
                 <v-btn block color="primary" @click="login" :loading="loading">Login</v-btn>
@@ -88,7 +105,7 @@ export default {
             window.location.reload();
             setTimeout(() => {
               me.$store.commit(APP_MUTATIONS.LOGIN_SUCCESS);
-               
+
               me.$store.dispatch(APP_ACTIONS.LOGIN, {
                 token: response.data.result.accessToken,
                 profile: response.data.result.profile,
@@ -98,7 +115,7 @@ export default {
                 roles: null
               });
             }, 3000);
-            // console.log(response.data.result.accessToken);            
+            // console.log(response.data.result.accessToken);
           } else {
             // me.loading = false;
             me.$notify({
@@ -109,6 +126,24 @@ export default {
               text: response.data.error.details
             });
           }
+        });
+    },
+    loginGoogle() {
+      this.$gAuth
+        .getAuthCode()
+        .then(authCode => {
+          //on success
+          console.log(authCode);
+          // return this.$http.post("http://your-backend-server.com/auth/google", {
+          //   code: authCode,
+          //   redirect_uri: "postmessage"
+          // });
+        })
+        .then(response => {
+          //after ajax
+        })
+        .catch(error => {
+          //on fail do something
         });
     }
   }
