@@ -129,22 +129,22 @@ export default {
         });
     },
     loginGoogle() {
-      this.$gAuth
-        .getAuthCode()
-        .then(authCode => {
-          //on success
-          console.log(authCode);
-          // return this.$http.post("http://your-backend-server.com/auth/google", {
-          //   code: authCode,
-          //   redirect_uri: "postmessage"
-          // });
-        })
-        .then(response => {
-          //after ajax
-        })
-        .catch(error => {
-          //on fail do something
-        });
+      // this.$gAuth
+      //   .getAuthCode()
+      //   .then(authCode => {
+      //     //on success
+      //     console.log(authCode);
+      //     // return this.$http.post("http://your-backend-server.com/auth/google", {
+      //     //   code: authCode,
+      //     //   redirect_uri: "postmessage"
+      //     // });
+      //   })
+      //   .then(response => {
+      //     //after ajax
+      //   })
+      //   .catch(error => {
+      //     //on fail do something
+      //   });
     }
   }
 };
