@@ -72,8 +72,9 @@ export default {
     // console.log(process.env.NODE_ENV);
     this.baseUrl =
       process.env.NODE_ENV !== "production"
-        ? "http://localhost:21021/api/"
-        : "http://api.pmtool16bit.vn/api/";
+        // ? "http://localhost:21021/api/services/app/"
+        ? "https://pmtool16bitapi.azurewebsites.net/api/"
+        : "https://pmtool16bitapi.azurewebsites.net/api/";
   },
   methods: {
     login() {

@@ -23,18 +23,6 @@ import VueHighcharts from 'vue-highcharts';
 import Highcharts from 'highcharts';
 import loadGantt from "highcharts/modules/gantt";
 
-//google login
-import GAuth from 'vue-google-oauth2'
-const gauthOption = {
-  clientId: 'CLIENT_ID.apps.googleusercontent.com',
-  scope: 'profile email',
-  prompt: 'select_account'
-}
-Vue.use(GAuth, gauthOption)
-
-// import paths from "./router/paths";
-// import Breabcrumbs from 'vue-2-breadcrumbs';
-
 loadGantt(Highcharts);
 Vue.use(VueHighcharts, { Highcharts });
 
@@ -46,8 +34,6 @@ Vue.use(VeeValidate);
 Vue.use(Vue2Filters);
 Vue.use(FileUpload);
 
-
-// Vue.use(Breabcrumbs);
 
 Vue.use(require("vue-moment"), {
   moment
