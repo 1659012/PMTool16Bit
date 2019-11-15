@@ -5,6 +5,7 @@
 obj/
 bin/
 Logs/
+dist/
 PMTool16Bit/PMTool16Bit_Core/src/PMTool16Bit.Web.Host/App_Data/Logs
 PMTool16Bit/PMTool16Bit_Core/src/PMTool16Bit.Migrator/Logs/Logs.txt
 Database/PMTool16BitDb_log.ldf
