@@ -24,7 +24,6 @@
     "vue": "^2.5.21",
     "vue-axios": "^2.1.4",
     "vue-fullcalendar": "^1.0.9",
-    "vue-google-oauth2": "^1.4.0",
     "vue-highcharts": "^0.1.0",
     "vue-localstorage": "^0.6.2",
     "vue-moment": "^4.0.0",

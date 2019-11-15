@@ -1,8 +1,12 @@
-
 <template>
   <v-container fluid grid-list-lg>
     <v-toolbar dense flat color="transparent">
-      <v-btn color="deep-purple darken-1" flat class="ml-2" @click="createProject">
+      <v-btn
+        color="deep-purple darken-1"
+        flat
+        class="ml-2"
+        @click="createProject"
+      >
         <v-icon left dark class>add_circle_outline</v-icon>New Project
       </v-btn>
 
@@ -23,7 +27,7 @@
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn
-            :color="listView && !gridView ?'primary':'grey'"
+            :color="listView && !gridView ? 'primary' : 'grey'"
             dark
             v-on="on"
             icon
@@ -40,7 +44,7 @@
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn
-            :color="!listView && gridView ?'primary':'grey'"
+            :color="!listView && gridView ? 'primary' : 'grey'"
             dark
             v-on="on"
             icon
@@ -57,7 +61,7 @@
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn
-            :color="gridView && listView ?'primary':'grey'"
+            :color="gridView && listView ? 'primary' : 'grey'"
             dark
             v-on="on"
             icon
@@ -71,7 +75,12 @@
         <span>All View</span>
       </v-tooltip>
       <v-dialog lazy v-model="dialog" max-width="600px" persistent>
-        <ProjectCreate v-if="dialog" lazy @close="closeDialog" @cancel="cancelDialog" />
+        <ProjectCreate
+          v-if="dialog"
+          lazy
+          @close="closeDialog"
+          @cancel="cancelDialog"
+        />
       </v-dialog>
       <v-dialog lazy v-model="deleteProjectDialog" max-width="600px" persistent>
         <ConfirmDeleteProject
@@ -91,7 +100,7 @@
           :headers="headers"
           :items="items"
           class="elevation-1"
-          :rows-per-page-items="[10,20,50,100]"
+          :rows-per-page-items="[10, 20, 50, 100]"
           :loading="loading"
           :pagination.sync="pagination"
           :total-items="totalItems"
@@ -104,10 +113,15 @@
           >
             <tr class="tableRow">
               <td class="colMax150">{{ props.item.projectName }}</td>
+              <td class="colMax150">{{ props.item.creationTime | date }}</td>
               <td class="colMax150">{{ props.item.shortDescription }}</td>
-              <td
-                class="colMax150"
-              >{{ props.item.projectOwner?props.item.projectOwner.fullName:"" }}</td>
+              <td class="colMax150">
+                {{
+                  props.item.projectOwner
+                    ? props.item.projectOwner.fullName
+                    : ""
+                }}
+              </td>
               <td class="text-lg-center colMax120">
                 <v-btn flat icon :to="`/ProjectDetail/${props.item.id}`">
                   <v-icon small>edit</v-icon>
@@ -119,7 +133,7 @@
                       icon
                       v-on="on"
                       @click="openDeleteConfirm(props.item)"
-                      :disabled="props.item.projectOwnerId!=userId"
+                      :disabled="props.item.projectOwnerId != userId"
                     >
                       <v-icon small>delete</v-icon>
                     </v-btn>
@@ -142,7 +156,7 @@
           <v-card slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
             <v-card-title primary-title>
               <div>
-                <h4 class="mb-0">{{item.projectName}}</h4>
+                <h4 class="mb-0">{{ item.projectName }}</h4>
                 <h5>
                   <v-tooltip bottom>
                     <template v-slot:activator="{ on }">
@@ -150,19 +164,25 @@
                     </template>
                     <span>Project owner</span>
                   </v-tooltip>
-                  {{item.projectOwner?item.projectOwner.fullName:""}}
+                  {{ item.projectOwner ? item.projectOwner.fullName : "" }}
                 </h5>
               </div>
             </v-card-title>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn flat color="blue darken-1" :to="`/ProjectDetail/${item.id}`">Detail</v-btn>
+              <v-btn
+                flat
+                color="blue darken-1"
+                :to="`/ProjectDetail/${item.id}`"
+                >Detail</v-btn
+              >
               <v-btn
                 flat
                 color="red darken-1"
                 @click="openDeleteConfirm(item)"
-                :disabled="item.projectOwnerId!==userId"
-              >Delete</v-btn>
+                :disabled="item.projectOwnerId !== userId"
+                >Delete</v-btn
+              >
             </v-card-actions>
           </v-card>
         </v-hover>
@@ -201,6 +221,7 @@ export default {
         text: "Project name",
         value: "projectName"
       },
+      { text: "Time Created", value: "creationTime" },
       {
         text: "Short description",
         value: "shortDescription"

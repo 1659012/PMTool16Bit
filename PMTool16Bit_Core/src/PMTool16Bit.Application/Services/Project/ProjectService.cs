@@ -41,6 +41,9 @@ namespace PMTool16Bit.Services
 
         protected override IQueryable<Project> CreateFilteredQuery(ProjectFilter input)
         {
+            if (input.ProjectName.IsNotNullOrEmpty())
+                input.ProjectName = input.ProjectName.Trim();
+
             return base.CreateFilteredQuery(input)
                 .Include(p => p.ProjectOwner)
                 //.Include(p => p.ProjectMembers)
