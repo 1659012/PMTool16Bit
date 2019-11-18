@@ -54,13 +54,13 @@
   </v-toolbar>
 </template>
 <script>
-import NotificationList from "../../components/widgets/list/NotificationList";
+// import NotificationList from "../../components/widgets/list/NotificationList";
 import Util from "@/util";
 import {APP_MUTATIONS } from "../../store/store";
 export default {
   name: "app-toolbar",
   components: {
-    NotificationList
+    // NotificationList
   },
   data: () => ({
     items: [
