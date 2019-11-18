@@ -33,7 +33,7 @@
         </v-menu>
       </v-card-title>
       <v-container grid-list-md px-3 py-2 id="eventTaskBody">
-        <v-layout row wrap>
+        <v-layout row wrap dense>
           <v-flex lg12>
             <v-text-field
               v-model="editedItem.taskName"
@@ -57,7 +57,7 @@
             <v-checkbox v-model="editedItem.isMarked" label="BookMark" color="orange"></v-checkbox>
           </v-flex>
           <v-flex lg3>
-            <p class="subheading text--lighten-3 mt-3">
+            <p class="subheading text--lighten-3 mt-3 pt-1">
               <span class="font-weight-light">Priority level:</span>
               {{priorityLevels[editedItem.priorityLevel].text}}
             </p>
@@ -65,13 +65,13 @@
           <v-flex lg3 class="pr-3">
             <v-slider v-model="editedItem.priorityLevel" :max="3" :min="0" :color="priorityLevels[editedItem.priorityLevel].color" thumb-label></v-slider>
           </v-flex>
-          <v-flex lg12>
+          <v-flex xs12>
             <v-textarea name="Description" label="Description" v-model="editedItem.description" v-validate="{ max:500 }" rows="2"></v-textarea>
           </v-flex>
           <v-flex lg12>
             <TaskMemberCombobox :projectId="projectId" :defaultItems="editedItem.eventTaskMembers" :returnItems.sync="editedItem.eventTaskMembers" />
           </v-flex>
-          <v-flex lg6>
+          <v-flex lg12>
             <EventTaskDropdown
               :defaultId="editedItem.taskDependencyId"
               :returnId.sync="editedItem.taskDependencyId"
@@ -80,7 +80,7 @@
               newLabel="Task dependency"
             />
           </v-flex>
-          <v-flex lg6>
+          <v-flex lg12>
             <div v-if="editedItem.taskDependencyId">
               <label class="caption">Task group</label>
               <p>{{dependencyEventTask.taskGroupName}}</p>

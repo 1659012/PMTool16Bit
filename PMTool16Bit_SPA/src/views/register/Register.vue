@@ -141,7 +141,7 @@ export default {
         .post("User/Create", this.model)
         .then(response => {
           if (response.data.success) {
-            console.log(response.data.result);
+            // console.log(response.data.result);
             me.$notify({
               group: "message",
               duration: 3000,
