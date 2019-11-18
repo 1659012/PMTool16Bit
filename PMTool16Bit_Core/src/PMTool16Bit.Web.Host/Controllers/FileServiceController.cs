@@ -129,10 +129,16 @@ namespace PMTool16Bit.Controllers
         {
             var abstractDataExport = new AbstractDataExportBridge();
             var workbook = abstractDataExport.Export(list, "sheet1");
-            const string serverFolder = ".\\Download\\";
-            foreach (var file in Directory.GetFiles(Path.Combine(serverFolder)))
-                System.IO.File.Delete(file);
-            Directory.CreateDirectory(Path.Combine(serverFolder));
+            string webRootPath = hostingEnvironment.WebRootPath;
+            const string downloadFolder = ".\\Download\\";
+            string serverFolder = Path.Combine(webRootPath, downloadFolder);
+            Directory.CreateDirectory(serverFolder);
+            var oldFiles = Directory.GetFiles(serverFolder);
+            if (oldFiles.HasData() && oldFiles.Length > 0)
+            {
+                foreach (var file in oldFiles)
+                    System.IO.File.Delete(file);
+            }
             var xfile = new FileStream(Path.Combine(serverFolder, fileName), FileMode.Create, System.IO.FileAccess.Write);
             workbook.Write(xfile);
             xfile.Close();
