@@ -11,8 +11,8 @@ namespace PMTool16Bit.Configuration
             return new[]
             {
                 new SettingDefinition(AppSettingNames.UiTheme, "red", scopes: SettingScopes.Application | SettingScopes.Tenant | SettingScopes.User, isVisibleToClients: true),
-                new SettingDefinition(SettingKey.App_BaseUrl, "http://localhost:21021/", scopes: SettingScopes.Application | SettingScopes.Tenant | SettingScopes.User, isVisibleToClients: false),
-                new SettingDefinition(SettingKey.App_FrontEndBaseUrl, "http://localhost:8080/", scopes: SettingScopes.Application | SettingScopes.Tenant | SettingScopes.User, isVisibleToClients: false),
+                new SettingDefinition(SettingKey.App_BaseUrl, "https://pmtool16bitapi.azurewebsites.net", scopes: SettingScopes.Application | SettingScopes.Tenant | SettingScopes.User, isVisibleToClients: false),
+                new SettingDefinition(SettingKey.App_FrontEndBaseUrl, "https://pmtool16bit.azurewebsites.net", scopes: SettingScopes.Application | SettingScopes.Tenant | SettingScopes.User, isVisibleToClients: false),
             };
         }
     }

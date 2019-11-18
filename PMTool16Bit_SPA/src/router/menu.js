@@ -111,11 +111,11 @@ const Menu = [
 
   { header: "PMTool16Bit info" },
   {
-    name: "AboutUs",
-    title: "About us",
+    name: "AboutMe",
+    title: "About me",
     group: "projectInfo",
     icon: "group_work",
-    component: "AboutUs"
+    component: "AboutMe"
   },
   {
     name: "AboutProject",

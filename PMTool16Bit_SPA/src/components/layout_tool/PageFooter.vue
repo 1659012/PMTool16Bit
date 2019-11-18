@@ -1,14 +1,16 @@
-  <template>
+<template>
   <v-footer height="30" class="white pa-3 app--footer">
-    <span class="caption">Itec-16bit &copy; {{ new Date().getFullYear() }}</span>
+    <span class="caption"
+      >Itec-16bit &copy; {{ new Date().getFullYear() }}</span
+    >
     <v-spacer></v-spacer>
-    <span class="caption mr-1">Make With Love</span>
-    <v-icon color="pink" small>favorite</v-icon>
+    <span class="caption mr-1">Hoan Le</span>
+    <v-icon color="blue" small>sentiment_satisfied_alt</v-icon>
   </v-footer>
 </template>
 
 <script>
-import menu from "../../router/menu";
+// import menu from "../../router/menu";
 export default {
   data() {
     return {};
