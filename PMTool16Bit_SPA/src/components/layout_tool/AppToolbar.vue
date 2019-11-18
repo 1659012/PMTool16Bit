@@ -16,7 +16,7 @@
       <v-icon>fullscreen</v-icon>
     </v-btn>
 
-    <v-btn flat icon color="red lighten-3" title="Logout" @click="logout">
+    <v-btn flat icon color="purple darken-4" title="Logout" @click="logout">
       <v-icon>exit_to_app</v-icon>
     </v-btn>
     
