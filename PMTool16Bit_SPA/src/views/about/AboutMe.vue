@@ -49,7 +49,7 @@
           <v-card-text>
             <p>
               <v-icon color="blue-grey darken-2">language</v-icon>
-              Code languages: C#, Javascript, PHP...
+              Code languages: C#, Javascript, PHP
             </p>
             <p>
               <v-icon color="blue-grey darken-2">favorite</v-icon>
