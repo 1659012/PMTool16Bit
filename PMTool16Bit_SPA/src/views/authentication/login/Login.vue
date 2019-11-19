@@ -29,7 +29,7 @@
                 </v-form>
               </v-card-text>
               <v-card-actions>
-                <v-btn icon>
+                <!-- <v-btn icon>
                   <v-icon color="blue">fa fa-facebook-square fa-lg</v-icon>
                 </v-btn>
                 <v-btn icon>
@@ -37,7 +37,7 @@
                 </v-btn>
                 <v-btn icon>
                   <v-icon color="light-blue">fa fa-twitter fa-lg</v-icon>
-                </v-btn>
+                </v-btn> -->
                 <v-card-text>
                   <span>Don’t have an account?</span>
                   <span
