@@ -58,7 +58,7 @@
         <span>Grid View</span>
       </v-tooltip>
 
-      <v-tooltip bottom>
+      <!-- <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn
             :color="gridView && listView ? 'primary' : 'grey'"
@@ -73,7 +73,7 @@
           </v-btn>
         </template>
         <span>All View</span>
-      </v-tooltip>
+      </v-tooltip> -->
       <v-dialog lazy v-model="dialog" max-width="600px" persistent>
         <ProjectCreate
           v-if="dialog"
@@ -113,9 +113,9 @@
           >
             <tr class="tableRow">
               <td class="colMax150">{{ props.item.projectName }}</td>
-              <td class="colMax150">{{ props.item.creationTime | date }}</td>
-              <td class="colMax150">{{ props.item.shortDescription }}</td>
-              <td class="colMax150">
+              <td class="colMax120">{{ props.item.creationTime | date }}</td>
+              <td class="colMax200">{{ props.item.shortDescription }}</td>
+              <td class="colMax120">
                 {{
                   props.item.projectOwner
                     ? props.item.projectOwner.fullName
@@ -343,3 +343,74 @@ export default {
   }
 };
 </script>
+<style scoped>
+/* Format fixed width column in table */
+.colMax50 {
+  width: 50px !important;
+  min-width: 50px !important;
+  max-width: 50px !important;
+  word-wrap: break-word;
+}
+.colMax80 {
+  width: 80px;
+  min-width: 80px;
+  max-width: 80px;
+  word-wrap: break-word;
+}
+
+.colMax100 {
+  width: 100px !important;
+  min-width: 100px !important;
+  max-width: 100px !important;
+  word-wrap: break-word;
+}
+
+.colMax120 {
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+  word-wrap: break-word;
+}
+
+.colMax150 {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  word-wrap: break-word;
+}
+
+.colMax180 {
+  width: 180px;
+  min-width: 180px;
+  max-width: 180px;
+  word-wrap: break-word;
+}
+
+.colMax200 {
+  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
+  word-wrap: break-word;
+}
+
+.colMax250 {
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  word-wrap: break-word;
+}
+
+.colMax300 {
+  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+.colMax350 {
+  width: 350px;
+  min-width: 350px;
+  max-width: 350px;
+  word-wrap: break-word;
+}
+</style>
