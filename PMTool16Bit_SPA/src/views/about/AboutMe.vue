@@ -4,7 +4,11 @@
     <v-layout row wrap dense>
       <v-flex lg4 class="text-xs-center">
         <v-avatar size="300">
-          <img src="../../../public/static/avatar/me.jpg" alt="About me" />
+          <img
+            src="../../../public/static/avatar/me.jpg"
+            alt="About me"
+            style="object-fit: cover;"
+          />
         </v-avatar>
       </v-flex>
       <v-flex lg8>
@@ -49,7 +53,7 @@
           <v-card-text>
             <p>
               <v-icon color="blue-grey darken-2">language</v-icon>
-              Code languages: C#, Javascript, PHP
+              Code languages: C#, PHP, Javascript
             </p>
             <p>
               <v-icon color="blue-grey darken-2">favorite</v-icon>
