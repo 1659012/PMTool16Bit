@@ -22,7 +22,7 @@
     </v-dialog>
 
     <div style="display:flex;">
-      <v-btn color="deep-purple darken-1" flat class="pl-0" @click="memberDialog=true;" :disabled="!isAdmin">
+      <v-btn color="deep-purple darken-1" flat class="pl-0" @click="memberDialog=true;" :disabled="!isAdmin" :title="isAdmin?'':'Only Project owner can add members'">
         <v-icon left dark class="ml-2">add_circle_outline</v-icon>Add member
       </v-btn>
 
