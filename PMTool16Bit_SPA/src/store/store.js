@@ -35,8 +35,8 @@ export const store = new Vuex.Store({
     permissionFailed: false,
     baseUrl:
       process.env.NODE_ENV !== "production"
-        ? "http://hoanpmtoolapi.azurewebsites.net/"
-        : "http://hoanpmtoolapi.azurewebsites.net/",
+        ? "https://hoanpmtoolapi.azurewebsites.net/"
+        : "https://hoanpmtoolapi.azurewebsites.net/",
     notifications: [],
     notificationCount: 0
     // roles: ""

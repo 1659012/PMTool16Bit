@@ -48,14 +48,14 @@ interceptor();
 var ApiURL = (axios.defaults.baseURL =
   process.env.NODE_ENV !== "production"
     // ? "http://localhost:21021/api/services/app/"
-    ? "http://hoanpmtoolapi.azurewebsites.net/api/services/app/"
-    : "http://hoanpmtoolapi.azurewebsites.net/api/services/app/");
+    ? "https://hoanpmtoolapi.azurewebsites.net/api/services/app/"
+    : "https://hoanpmtoolapi.azurewebsites.net/api/services/app/");
 
 var BaseUrl =
   process.env.NODE_ENV !== "production"
     // ? "http://localhost:21022/"
-    ? "http://hoanpmtoolapi.azurewebsites.net/"
-    : "http://hoanpmtoolapi.azurewebsites.net/";
+    ? "https://hoanpmtoolapi.azurewebsites.net/"
+    : "https://hoanpmtoolapi.azurewebsites.net/";
     // : "http://api.pmtool16bit.vn/";
 
 //Filter datetime
