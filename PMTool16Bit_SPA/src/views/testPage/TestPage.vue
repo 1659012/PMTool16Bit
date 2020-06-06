@@ -59,7 +59,7 @@ export default {
       let me = this;
       this.axios
         .get(
-          "https://pmtool16bitapi.azurewebsites.net/api/services/app/ProjectService/GetById?",
+          "http://hoanpmtoolapi.azurewebsites.net/api/services/app/ProjectService/GetById?",
           {
             params: {
               id: 2

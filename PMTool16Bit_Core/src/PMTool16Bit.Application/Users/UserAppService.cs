@@ -2,7 +2,6 @@
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
-using Abp.Extensions;
 using Abp.IdentityFramework;
 using Abp.Linq.Extensions;
 using Abp.Localization;
@@ -154,7 +153,7 @@ namespace PMTool16Bit.Users
             //    userDto.RoleNames = roles.ToArray();
             //}
             return userDto;
-        }       
+        }
 
         protected override async Task<User> GetEntityByIdAsync(long id)
         {
@@ -326,11 +325,12 @@ namespace PMTool16Bit.Users
         }
 
         #endregion Customize UserData
+
         public long? GetCurrentUserId()
-        {            
+        {
             return _abpSession.UserId;
         }
-        
+
         public string GetCurrentUserName()
         {
             var userId = _abpSession.UserId ?? default(long);

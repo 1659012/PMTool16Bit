@@ -73,8 +73,8 @@ export default {
     this.baseUrl =
       process.env.NODE_ENV !== "production"
         // ? "http://localhost:21021/api/services/app/"
-        ? "https://pmtool16bitapi.azurewebsites.net/api/"
-        : "https://pmtool16bitapi.azurewebsites.net/api/";
+        ? "http://hoanpmtoolapi.azurewebsites.net/api/"
+        : "http://hoanpmtoolapi.azurewebsites.net/api/";
   },
   methods: {
     login() {

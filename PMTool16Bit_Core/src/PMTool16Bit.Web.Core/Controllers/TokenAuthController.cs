@@ -56,11 +56,11 @@ namespace PMTool16Bit.Controllers
         [HttpPost]
         public async Task<AuthenticateResultModel> Authenticate([FromBody] AuthenticateModel model)
         {
-            var loginResult = await GetLoginResultAsync(
+            var loginResult = GetLoginResultAsync(
                 model.UserNameOrEmailAddress,
                 model.Password,
                 GetTenancyNameOrNull()
-            );
+            ).Result;
             DateTime? now = DateTime.Now;
             var accessToken = CreateAccessToken(CreateJwtClaims(loginResult.Identity));
             var profile = _userAppService.GetUserProfile(loginResult.User.Id).Result;

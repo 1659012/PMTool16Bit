@@ -18,7 +18,7 @@ export default {
   components: {},
   props: ["returnAvatarId", "returnAvatarUrl", "defaultAvatarId"],
   data: () => ({
-    url: "https://pmtool16bitapi.azurewebsites.net/api/services/app/FileService/UploadImage",
+    url: "http://hoanpmtoolapi.azurewebsites.net/api/services/app/FileService/UploadImage",
     headers: {},
     filesUploaded: [],
     file: {}
